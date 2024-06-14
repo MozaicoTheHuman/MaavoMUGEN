@@ -1,0 +1,977 @@
+;---------------------------------------------------------------------------
+;Standing Strong Punch - Motion Trail
+[StateDef 221]
+type = S
+movetype= A
+anim = 221
+poweradd = 0
+sprpriority = -1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State a]
+type = BindtoRoot
+trigger1 = time < 13
+time = -1
+facing = 1
+pos = 20,-25
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 54
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Jump Strong Punch - Motion Trail
+[StateDef 231]
+type = S
+movetype= A
+anim = 621
+poweradd = 0
+sprpriority = -1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State a]
+type = BindtoRoot
+trigger1 = 1
+time = -1
+facing = 1
+pos = -10,-25
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -54
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Counter de Papel - Papel
+[StateDef 2001]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 2001
+poweradd = 0
+sprpriority = 0
+
+[State 2001]
+type = BindtoRoot
+trigger1 = 1
+time = -1
+facing = 1
+pos = 2,2
+
+[State 0, end]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+[State 0, end]
+type = DestroySelf
+trigger1 = parent, stateno != 2000
+
+;Counter de Papel - Papel (Pedazo 1)
+[StateDef 20011]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 2005
+poweradd = 0
+sprpriority = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S2000,3
+
+[State 0, AfterImage]
+type = AfterImage
+trigger1 = time = 0
+time = 5
+length = 10
+palinvertall = 0
+palbright = 230,30,30
+palcontrast = 220,20,20
+palpostbright = 220,20,20
+paladd = 25,5,5
+palmul = .75,.25,.25
+timegap = 1
+framegap = 1
+trans = add
+ignorehitpause = 1
+
+[State 1100, 3]
+type = AngleDraw
+Trigger1 = 1
+value = -10*time
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time = 1
+x = 10
+y = -10
+
+[State 0, end]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;Counter de Papel - Papel (Pedazo 2)
+[StateDef 20012]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 2004
+poweradd = 0
+sprpriority = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S2000,3
+
+[State 0, AfterImage]
+type = AfterImage
+trigger1 = time = 0
+time = 5
+length = 10
+palinvertall = 0
+palbright = 230,30,30
+palcontrast = 220,20,20
+palpostbright = 220,20,20
+paladd = 25,5,5
+palmul = .75,.25,.25
+timegap = 1
+framegap = 1
+trans = add
+ignorehitpause = 1
+
+[State 1100, 3]
+type = AngleDraw
+Trigger1 = 1
+value = 10*time
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time = 1
+x = -10
+y = 10
+
+[State 0, end]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;---------------------------------------------------------------------------
+;Estocada Veloz - Hit Spark
+[StateDef 22101]
+type = S
+movetype= A
+anim = 3001
+poweradd = 0
+sprpriority = -1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 0
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Estocada Veloz - Hit Spark
+[StateDef 22102]
+type = S
+movetype= A
+anim = 3001
+poweradd = 0
+sprpriority = -1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 10
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Estocada Veloz - Hit Spark
+[StateDef 22103]
+type = S
+movetype= A
+anim = 3001
+poweradd = 0
+sprpriority = -1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 25
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Estocada Veloz - Trail
+[StateDef 2220]
+type = S
+movetype= A
+anim = 2501
+poweradd = 0
+sprpriority = -1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = parent, stateno = 230
+value = 25015
+persistent = 0
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 0
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Estocada Veloz - Trail
+[StateDef 2221]
+type = S
+movetype= A
+anim = 2501
+poweradd = 0
+sprpriority = -1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = 16
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Estocada Veloz - Trail
+[StateDef 2222]
+type = S
+movetype= A
+anim = 2501
+poweradd = 0
+sprpriority = -1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = -15
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Ve, Ivette! - Ivette Cayendo (FX 1)
+[Statedef 99022]
+type    = S
+movetype= A
+physics = N
+velset = 0,0
+ctrl = 0
+anim = 13042
+facep2 = 1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = sub
+ignorehitpause = 1
+
+[State a]
+type = BindtoParent
+trigger1 = 1
+time = -1
+facing = 1
+pos = 0,0
+
+[State 1100, 3]
+type = AngleDraw
+Trigger1 = 1
+value = -55
+ignorehitpause = 1
+
+[State 9902, 3]
+type = SprPriority
+trigger1 = Time = 0
+value = 3
+
+[State 9902, 2]
+type = VelAdd
+trigger1 = time = 0
+x = 6
+y = 14
+
+[State 0, VelMul]
+type = VelMul
+triggerall = pos y < 0
+trigger1 = time
+x = 1.025
+y = 1.025
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[state 9902, 3]
+type = velset
+trigger1 = pos y >=0
+x = 0
+y = 0
+[state 9902, 3]
+type = posset
+trigger1 = pos y >=0
+y = 0
+
+[State 9902, ChangeState]
+type = DestroySelf
+trigger1 = parent, stateno = 182
+triggerall = pos y >=0
+
+[State 9902, 4]
+type = DestroySelf
+Trigger1 = pos y >=0  ;40
+
+;---------------------------------------------------------------------------
+;Ve, Ivette! - Ivette Cayendo (FX 2)
+[Statedef 99023]
+type    = S
+movetype= A
+physics = N
+velset = 0,0
+ctrl = 0
+anim = 13043
+facep2 = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State a]
+type = BindtoParent
+trigger1 = 1
+time = -1
+facing = 1
+pos = 0,0
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+ignorehitpause = 1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = time = 0 
+time = 30
+add = 0,0,0
+mul = 256,0,0
+sinadd = 0,0,0,1
+invertall = 0
+color = 256
+ignorehitpause = 1
+
+[State 1100, 3]
+type = AngleDraw
+Trigger1 = 1
+value = -55
+ignorehitpause = 1
+
+[State 9902, 3]
+type = SprPriority
+trigger1 = Time = 0
+value = 3
+
+[State 9902, 2]
+type = VelAdd
+trigger1 = time = 0
+x = 6
+y = 14
+
+[State 0, VelMul]
+type = VelMul
+triggerall = pos y < 0
+trigger1 = time
+x = 1.025
+y = 1.025
+
+[state 9902, 3]
+type = velset
+trigger1 = pos y >=0
+x = 0
+y = 0
+[state 9902, 3]
+type = posset
+trigger1 = pos y >=0
+y = 0
+
+[State 9902, ChangeState]
+type = DestroySelf
+trigger1 = parent, stateno = 182
+triggerall = pos y >=0
+
+[State 9902, 4]
+type = DestroySelf
+Trigger1 = pos y >=0  ;40
+
+;---------------------------------------------------------------------------
+;Hyper - Air Juggle (Hitspark)
+[StateDef 190021]
+type = S
+movetype= A
+anim = 1900051+random%6
+poweradd = 0
+sprpriority = 3
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause =1 
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = 1
+scale = (0.8 + 0.8*time/15),(0.8 + 0.8*time/15)
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time >= 10
+
+;---------------------------------------------------------------------------
+;Hit Spark - > (1)
+[StateDef 3000]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 10
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - > (2)
+[StateDef 3001]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 0
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - > (3)
+[StateDef 3002]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -10
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - V (1)
+[StateDef 3003]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -80
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - V (2)
+[StateDef 3004]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -75
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - V (3)
+[StateDef 3005]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -85
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - Meteor
+[StateDef 3006]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -90
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - Ivette
+[StateDef 3007]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -45
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - >^ (1)
+[StateDef 3008]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 35
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - >^ (2)
+[StateDef 3009]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 30
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - >^ (3)
+[StateDef 3010]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 40
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - >V (1)
+[StateDef 3011]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -30
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - >V (2)
+[StateDef 3012]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -35
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hit Spark - >V (3)
+[StateDef 3013]
+type = S
+anim = 3000
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add ;none, add, addalpha, add1, sub
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -40
+ignorehitpause = 1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0

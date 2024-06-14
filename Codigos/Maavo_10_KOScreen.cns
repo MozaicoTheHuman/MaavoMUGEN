@@ -1,0 +1,83 @@
+;---------------------------------------------------------------------------
+;Pantalla K.O. de Smash Bros. Ultimate
+[Statedef 911]
+anim = 616
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = winko
+var(39) = 1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = 0
+y = -10
+
+[State 119911991, 1]
+type = AssertSpecial
+trigger1 = time < 50
+flag = nobardisplay
+flag2 = nomusic
+[State 119911991, 1]
+type = AssertSpecial
+triggerall = root,var(14) > 0
+trigger1 = matchover
+flag = nomusic
+
+[State 911, SuperPause]
+type = Pause
+trigger1 = time = 0
+time = 42
+movetime = 42
+[State 911, SuperPause]
+type = Pause
+triggerall = time %3 = 0
+triggerall = time = [50,120]
+trigger1 = enemy, statetype != L
+trigger1 = roundstate < 4
+trigger1 = root, stateno != 1213
+time = 2
+movetime = 2
+[State 911, SuperPause]
+type = Pause
+triggerall = time %2 = 0
+triggerall = time = [121,160]
+trigger1 = enemy, statetype != L
+trigger1 = roundstate < 4
+trigger1 = root, stateno != 1213
+time = 1
+movetime = 1
+
+[State 911, 1]
+type = Explod
+trigger1 = Time = 0
+id = 911
+anim = 911
+pos = 0+ (root,var(17) * -70),0
+postype = back
+sprpriority = -5
+removeongethit = 1
+removetime = 72
+scale = .5+(root,var(17) * .2),.5+ (root,var(17) * .2)
+bindtime = -1
+ownpal = 1
+removeongethit = 1
+supermovetime = 9999
+pausemovetime = 99999
+
+[State 911, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = ifelse((root,var(16)=20),520,21649),0
+channel = 3
+
+[State 911, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 50
+value = S50505,1
+
+[State 123456789, DestroySelf]
+type = null;DestroySelf
+trigger1 = time = 70
+ignorehitpause = 1
