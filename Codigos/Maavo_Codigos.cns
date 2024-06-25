@@ -19367,6 +19367,13 @@ text = "scaling table = %d numhits = %d cooldown = %d\nproration = %f rage = %f 
 params = var(10),var(11), var(8), fvar(11), fvar(12), fvar(8)
 ignorehitpause = 1
 
+;[State 0, AppendToClipboard]
+;type = DisplayToClipboard
+;trigger1 = 1
+;text = "x = %d,y = %d"
+;params = GameWidth, GameHeight
+;ignorehitpause = 1
+
 [State 0, Cooldown]
 type = VarSet
 triggerall = var(5) = 120

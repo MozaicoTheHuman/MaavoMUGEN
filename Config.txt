@@ -1,4 +1,4 @@
-;En este archivo, puedes facilmente cambiar el idioma de Maavo. Agradecimientos a Oliver As Latias por ensearme como funciona esto
+;En este archivo, puedes facilmente cambiar el idioma de Maavo. Agradecimientos a Oliver As Latias por enseñarme como funciona esto
 ;In this file, you can easily change Maavo's language. Special thanks to Oliver for teaching me how this works lol
 [Statedef 5900]
 type = S	
@@ -51,11 +51,34 @@ ignorehitpause = 0
 
 [State 0, Screen Resoultion?]
 type = VarSet
-trigger1 = 1
+trigger1 = GameHeight = 1080
+trigger2 = GameHeight = 720
+trigger3 = GameHeight = 360
+trigger4 = GameHeight = 180
+var(17) = 0
+;0 - Widescreen (16:9)
+;1 - Normal Screen (4:3)
+ignorehitpause = 1
+
+[State 0, Screen Resoultion?]
+type = VarSet
+trigger1 = GameHeight = 1332
+trigger2 = GameHeight = 888
+trigger3 = GameHeight = 480
+trigger4 = GameHeight = 240
 var(17) = 1
 ;0 - Widescreen (16:9)
 ;1 - Normal Screen (4:3)
 ignorehitpause = 1
+
+
+;[State 0, Screen Resoultion?]
+;type = VarSet
+;trigger1 = 1
+;var(17) = 1
+;;0 - Widescreen (16:9)
+;;1 - Normal Screen (4:3)
+;ignorehitpause = 1
 
 [State 0, MUGEN Version?]
 type = VarSet
