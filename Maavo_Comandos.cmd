@@ -654,7 +654,7 @@ type = changestate
 triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall = aiLevel && roundstate=2 && alive && numenemy
 triggerall = ctrl || stateno=[120,140]||stateno = 0 ||(stateno = [100,109]) || stateno = 1022
-triggerall = statetype != A
+triggerall = statetype != A && pos y = 0
 trigger1 = (enemynear(0),movetype = A && enemynear(0),hitdefattr = SCA, NA, SA, HA || enemynear(1),movetype = A && enemynear(1),hitdefattr = SCA, NA, SA, HA)
 trigger1 = inguarddist
 trigger2 = stateno=130&& prevstateno = 151
