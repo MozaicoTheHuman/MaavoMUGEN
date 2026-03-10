@@ -113,17 +113,17 @@ victory37 = "Hehe! Not bad!"
 victory38 = "So, how did I do? Did I do good?"
 victory39 = "And... cut!"
 victory40 = "I could do this all day!"
-victory41 = "Every fight’s a show, and tonight the stars were perfect!"
-victory42 = "Once I start moving, it’s really hard for me to stop!"
-victory43 = "Hehe… wanna go another round?"
+victory41 = "Every fight's a show, and tonight the stars were perfect!"
+victory42 = "Once I start moving, it's really hard for me to stop!"
+victory43 = "Hehe... wanna go another round?"
 
 ;Maritza K.O.
-victory44 = "Did you see that? That’s my little sister!"
-victory45 = "Maritzaaa! Just because you got the last hit doesn’t mean you won!"
-victory46 = "If you hear a hammer, it’s already too late!"
+victory44 = "Did you see that? That's my little sister!"
+victory45 = "Maritzaaa! Just because you got the last hit doesn't mean you won!"
+victory46 = "If you hear a hammer, it's already too late!"
 
 ;Ivette K.O.
-victory47 = "See? You’re stronger than you think, Ivy. I’ll remind you every time you forget!"
+victory47 = "See? You're stronger than you think, Ivy. I'll remind you every time you forget!"
 victory48 = "Fighting with you makes everything feel calmer, Ivette."
 victory49 = "See? You could do it, Ivette! I knew it!"
 
@@ -133,10 +133,10 @@ victory51 = "So this is what fighting me feels like? No wonder people panic."
 victory52 = "Have I always had that dumb smile?"
 
 ;Vs. Rudy
-victory53 = "Hey… if we don’t find your money, we can pretend it never existed!"
+victory53 = "Hey... if we don't find your money, we can pretend it never existed!"
 victory54 = "If it makes you feel better, I once lost my wallet too!"
 victory55 = "Ohhh, so THIS is what stress looks like!"
-victory56 = "Hey, look on the bright side! At least you’re getting exercise!"
+victory56 = "Hey, look on the bright side! At least you're getting exercise!"
 
 ;Vs. Oliver
 victory57 = "Did you see that, Maritza? I think I just beat Mega Man!"
@@ -145,23 +145,23 @@ victory57 = "Did you see that, Maritza? I think I just beat Mega Man!"
 victory58 = "Sorry, do we know each other? Your face looks familiar..."
 
 ;Vs. Chase
-victory59 = "You’re kinda like me… just louder!"
+victory59 = "You're kinda like me... just louder!"
 victory60 = "I like fighting people who can keep up. Makes it exciting!"
 victory61 = "Can you imagine us on the same team? Nobody could keep up!"
-victory62 = "You move like you’re chasing the future. I just enjoy the moment!"
+victory62 = "You move like you're chasing the future. I just enjoy the moment!"
 victory63 = "That was fun, Chase! You push me harder than most."
 
 ;Vs. Hanzo
 victory64 = "Wow, you really go for the vitals, huh? Bold choice!"
-victory65 = "Heh, I’ll need stitches later. Totally worth it!"
+victory65 = "Heh, I'll need stitches later. Totally worth it!"
 victory66 = "Is that your final form? Or do you have more?"
 victory67 = "When you burst into flames like that, you really remind me of my little sister when I hide her stuff."
-victory68 = "You’re good with that knife! Clean cuts. Efficient."
+victory68 = "You're good with that knife! Clean cuts. Efficient."
 
 ;Vs. Alex
 victory69 = "You laugh at danger. I respect that!"
 victory70 = "That whole half-and-half thing... do you fight with yourself sometimes? Or did you already make peace?"
-victory71 = "You know… I like to think your demon side does the fighting, and your angel side does the smiling."
+victory71 = "You know... I like to think your demon side does the fighting, and your angel side does the smiling."
 
 ;--var list
 ; var(0):= 2201, 2202, 2102, 87872
