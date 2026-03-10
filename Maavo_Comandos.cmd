@@ -508,7 +508,7 @@ triggerall = aiLevel>=3 && roundstate=2 && alive && numenemy
 triggerall = (stateno != [120,132])
 triggerALL =  enemynear,movetype != H && enemynear(!enemynear,alive),statetype !=L
 triggerall = enemynear,movetype = A
-trigger1 = ctrl || stateno = 0 || (stateno = [21,22]) || stateno = [100,101] || stateno = 1022|| stateno = 50
+trigger1 = ctrl || stateno = 0 || (stateno = [21,22]) || stateno = [100,109] || stateno = 1022|| stateno = 50
 trigger1 = inguarddist && !(enemynear, hitdefattr = SCA, AT)
 ;Guard
 [State -1, AI GuardCancel]
@@ -533,8 +533,19 @@ type = ChangeState
 value = 41
 triggerall = random < var(59)*5 && ctrl
 triggerall = aiLevel && roundstate=2 && alive && numenemy && statetype = S && enemynear,statetype != L 
-triggerall = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || stateno = 1022
-trigger1 = ((enemynear,pos y) + (enemynear,vel y)) < -20 && enemynear,movetype!=H
+triggerall = (stateno != [100,109]) 
+trigger1 = ((enemynear,pos y) + (enemynear,vel y)) < -20 && p2bodydist x < 120 && enemynear,movetype != H
+[State -1, AI Run]
+type = ChangeState
+value = 100
+triggerall = AILevel && roundstate = 2 && alive && numenemy
+triggerall = (stateno != [100,109]) && stateno != 1022
+triggerall = statetype != A
+;triggerall = enemy,statetype != L
+triggerall = ctrl||stateno = 0||stateno = 21
+triggerall = p2bodydist x - (enemynear,vel x*4) > 100
+trigger1 = random < 50 
+trigger2 = enemynear,stateno = 3745 
 [State -1, AI Walk]
 type = ChangeState
 value = 21
@@ -543,24 +554,13 @@ triggerall = stateno != 21
 triggerall = random < 50
 trigger1 = statetype != A
 trigger1 = ctrl||stateno = 0 
-trigger1 = p2bodydist x > 10
+trigger1 = p2bodydist x = [10,100]
 [State -1, AI Walk Cancel]
 type = ChangeState
 value = 0
 triggerall = AILevel && roundstate = 2 && alive && numenemy
 triggerall = stateno = 21
-trigger1 = p2bodydist x < 10
-[State -1, AI Run]
-type = ChangeState
-value = 100
-triggerall = AILevel && roundstate = 2 && alive && numenemy
-triggerall = (stateno != [100,109]) && stateno != 1022
-triggerall = statetype != A
-triggerall = enemy,statetype != L
-triggerall = ctrl||stateno = 0 
-triggerall = p2bodydist x > 100
-trigger1 = random < 50 
-trigger2 = enemynear,stateno = 3745 
+trigger1 = p2bodydist x != [0,100]
 [State -1, AI Throw]
 type = Changestate
 triggerall = aiLevel && roundstate=2 && alive && numenemy
@@ -587,20 +587,20 @@ triggerall = power >= 3000
 triggerall = statetype != A
 triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500 
-triggerall = (enemynear,pos y + (enemynear,vel y * 4))  = [-60*const(size.yscale),0]
+triggerall = (p2bodydist x - enemynear,vel y * 4)  = [-60*const(size.yscale),0]
 trigger1 = (stateno = [200,299]) || (stateno = [400,499]) || (stateno = [600,699])
 trigger1 = movecontact
 trigger2 = ((stateno = [500,520]) && anim = 1091) || (stateno = 2002 && anim = 2009) || (stateno = [2210,2212])
 trigger2 = movecontact
 trigger3 = !inguarddist  && ctrl
 ;All-Out Attack
-[State -1, Level 1 Supers]
+[State -1, AI Tornado Super]
 type = ChangeState
 value =  87871
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
 triggerall = power >= 1000
 triggerall = statetype != A
-triggerall = p2bodydist x = [0,180]
+triggerall = p2bodydist x = [0,130]
 triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500 
 trigger1 = (stateno = [200,299]) || (stateno = [400,499]) || (stateno = [600,699])
@@ -609,7 +609,7 @@ trigger2 = ((stateno = [500,520]) && anim = 1091) || (stateno = 2002 && anim = 2
 trigger2 = movecontact
 trigger3 = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || stateno = 1022
 ;All-Out Attack
-[State -1, Level 1 Supers]
+[State -1, AI Air Combo Super]
 type = ChangeState
 value =  19000
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
@@ -631,7 +631,7 @@ triggerall = var(5) <= 0
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
 triggerall = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || stateno = 1022
 triggerall = enemynear(!enemynear,alive), statetype != L && enemynear(!enemynear,alive), statetype != A
-triggerall = (enemynear,pos x + enemynear,vel x * 6) = [0, 60]
+triggerall = (p2bodydist x - enemynear,vel x * 6) = [0, 60]
 trigger1 = EnemyNear,movetype = A && !inguarddist
 trigger1 =  random < var(59)*ifelse(life < (lifemax*.5),3,1);&& random < 500 
 ;Ve, Maritza!
@@ -643,7 +643,7 @@ triggerall = aiLevel && roundstate=2 && alive && numenemy
 triggerall = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || stateno = 1022
 triggerall = enemynear(!enemynear,alive), statetype != L && enemynear(!enemynear,alive), statetype != A
 triggerall = enemynear,pos y =[-20,0]
-triggerall = (enemynear,pos x + enemynear,vel x * 10) = [enemynear,pos x-40, enemynear,pos x+40]
+triggerall = (p2bodydist x - enemynear,vel x * 10) = [enemynear,pos x-40, enemynear,pos x+40]
 trigger1 = EnemyNear,movetype = A && !inguarddist
 trigger1 =  random < var(59)*ifelse(life < (lifemax*.5),3,1) ;&& random < 500 
 
@@ -666,8 +666,8 @@ value = ifelse(power >= 500&&random<500+ifelse(life < (lifemax*.5),200,0),2212,2
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
 triggerall = ctrl||stateno = 0||(stateno = [20,22])|| (stateno = [100,109]) || stateno = 1022
 triggerall = enemynear(!enemynear,alive), statetype != L
-triggerall = (enemynear,pos x + (enemynear,vel x * 9)) = [90,109]
-triggerall = (enemynear,pos y + (enemynear,vel y * 9))  = [-38,0]
+triggerall = (p2bodydist x - (enemynear,vel x * 9)) = [70,80]
+triggerall = (p2bodydist y - (enemynear,vel y * 9))  = [-38,0]
 triggerall = statetype != A 
 triggerall =  random < var(59)*ifelse(life < (lifemax*.5),5,3) ;&& random < 500 
 trigger1 =  1 ;&& random < 500 
@@ -676,9 +676,10 @@ trigger1 =  1 ;&& random < 500
 type = ChangeState
 value = ifelse(power >= 500&&random<500+ifelse(life < (lifemax*.5),200,0),520,500)
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
-triggerall = (stateno = [100,109]) || stateno = 1022
 triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall = statetype != A 
+trigger1 = (stateno = [100,109]) 
+trigger1 = p2bodydist y = [-70,0]
 trigger1 = (((enemynear,pos x + enemynear,vel x * 11) - (pos x + vel x * 11)) = [100*const(size.xscale), 145*const(size.xscale)]) 
 trigger1 =  random < var(59)*ifelse(life < (lifemax*.5),7,5) ;&& random < 500
 ;Punch1
@@ -689,7 +690,7 @@ triggerall = aiLevel && roundstate=2 && alive && numenemy
 triggerall = ctrl||stateno = 0||(stateno = [20,22])|| (stateno = [100,109]) || stateno = 1022
 triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall = p2bodydist x < 115*const(size.xscale)
-triggerall = (enemynear,pos y + (enemynear,vel y * 4))  = [-38,0]
+triggerall = p2bodydist y - (enemynear,vel y * 4) = [-30,0]
 triggerall = statetype != A 
 trigger1 =  random < var(59)*ifelse(life < (lifemax*.5),7,5) ;&& random < 500 
 [State -1, AI CLP]
@@ -698,8 +699,8 @@ value = 400
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
 triggerall = ctrl||stateno = 0||(stateno = [20,22])|| (stateno = [100,109]) || stateno = 1022
 triggerall = enemynear(!enemynear,alive), statetype != L
-triggerall = (enemynear,pos x + (enemynear,vel x * 3)) = [0,170*const(size.xscale)] 
-triggerall = (enemynear,pos y + (enemynear,vel y * 3)) = [-40*const(size.yscale),0]
+triggerall = (p2bodydist x - (enemynear,vel x * 2)) = [0,160*const(size.xscale)] 
+triggerall = (p2bodydist y - (enemynear,vel y * 2)) = [-5,0]
 triggerall = statetype != A 
 triggerall =  random < var(59)*ifelse(life < (lifemax*.5),7,5) ;&& random < 500 
 trigger1 = 1
@@ -710,8 +711,8 @@ value = 420
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
 triggerall = ctrl||stateno = 0||(stateno = [20,22])|| (stateno = [100,109]) || stateno = 1022
 triggerall = enemynear(!enemynear,alive), statetype != L
-triggerall = (enemynear,pos x + (enemynear,vel x * 9)) = [90, 120]
-triggerall = (enemynear,pos y + (enemynear,vel y * 9))  = [-40*const(size.yscale),0]
+triggerall = (p2bodydist x - (enemynear,vel x * 9)) = [90, 120]
+triggerall = (p2bodydist y - (enemynear,vel y * 9))  = [-40*const(size.yscale),0]
 triggerall = statetype != A 
 trigger1 =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500 
 trigger1 = enemynear,animtime < 0 && !(enemynear,ctrl)
@@ -724,17 +725,17 @@ triggerall = ctrl || stateno = 50
 triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall = statetype = A
 triggerall = random < var(59)*ifelse(life < (lifemax*.5),7,5) 
-trigger1 = (((enemynear,pos y + enemynear,vel y * 3) - (pos y + vel y * 3))  = [-42,40])
-trigger1 = (enemynear,pos x + enemynear,vel x * 3) = [0, 110*const(size.xscale)]
+trigger1 = (p2bodydist y - enemynear,vel y * 3)  = [0,20]
+trigger1 = (p2bodydist x - enemynear,vel x * 3) = [0, 110*const(size.xscale)]
 
 [State -1, AI Combo from CrouchLightPunch]
 type = ChangeState
 value = var(54)
 triggerall = AILevel>1 && RoundState = 2&& numenemy 
-trigger1 = stateno = 400 && movecontact
-trigger1 = var(54):= ifelse((enemynear,pos y + (enemynear,vel y * 6))  < -5&& enemynear,statetype=A,210,410) || 1
+trigger1 = stateno = 400 && movecontact && (p2bodydist x - (enemynear,vel x * 10)) = [0,130*const(size.xscale)] 
+trigger1 = var(54):= ifelse((p2bodydist y - (enemynear,vel y * 6))  < -5 && enemynear,statetype=A,200,410) || 1
 trigger2 = stateno = 410 && movecontact
-trigger2 = var(54):= ifelse((enemynear,pos y + (enemynear,vel y * 7))  < -5&& enemynear,statetype=A,220,420) || 1
+trigger2 = var(54):= 420 || 1
 trigger3 = stateno = 420 && movecontact 
 trigger3 = var(54):= 41 || 1
 
@@ -753,15 +754,11 @@ trigger4 = stateno = 240 && movecontact
 trigger4 = var(54):= 220 || 1
 trigger5 = stateno = 220 && movecontact 
 trigger5 = var(54):= ifelse(random<300,ifelse(power >= 500&&random<500+ifelse(life < (lifemax*.5),200,0),2212,2210),ifelse(random<500,41,920)) || 1
-
-
-
 [State -1, AI kick to air combo]
 type = ChangeState
 value = var(54)
 triggerall = AILevel>1 && RoundState = 2 && numenemy 
-triggerall = random<ifelse(var(11)>30,500,1000)
-trigger1 = stateno = 901 || stateno=50 && prevstateno=41
+trigger1 = stateno = 901 || stateno=50 && prevstateno=41 && p2bodydist y = [-135*const(size.xscale),0]
 trigger1 = var(54):= ifelse(p2bodydist x > 100*const(size.xscale),610,600) || 1
 trigger2 = stateno = 600 && movecontact
 trigger2 = var(54):= 630 || 1
@@ -770,7 +767,7 @@ trigger3 = var(54):= 610 || 1
 trigger4 = stateno = 610 && movecontact 
 trigger4 = var(54):= 640 || 1
 trigger5 = stateno = 640 && movecontact 
-trigger5 = p2bodydist x < 170*const(size.xscale) && p2bodydist y > -120*const(size.xscale)
+trigger5 = p2bodydist x < 30 && p2bodydist y > -120*const(size.xscale)
 trigger5 = var(54):= ifelse(random<200,650,620) || 1
 trigger6 = stateno = 620&&animelemtime(8)>0 || stateno = 650
 trigger6 = movecontact && var(5) <= 0
