@@ -1,5 +1,5 @@
-;En este archivo, puedes facilmente cambiar el idioma de Maavo. Agradecimientos a Oliver As Latias por enseñarme como funciona esto
-;In this file, you can easily change Maavo's language. Special thanks to Oliver for teaching me how this works lol
+;En este archivo, puedes facilmente cambiar el idioma, modo de juego, etc. Agradecimientos a Oliver As Latias por enseñarme como funciona esto
+;In this file, you can easily change Maavo's language, input type, etc. Special thanks to Oliver for teaching me how this works lol
 [Statedef 5900]
 type = S	
 	
@@ -25,7 +25,7 @@ ignorehitpause = 1
 [State 0, Assist Y Pos?]
 type = VarSet
 trigger1 = 1
-var(14) = 48
+var(14) = 180
 ignorehitpause = 1
 
 [State 0, Voice Language?]
@@ -34,7 +34,6 @@ trigger1 = 1
 var(16) = 0
 ;0 - Spanish
 ;1 - English
-;2 - Japanese
 ignorehitpause = 0
 
 [State 0, Text Language?]
@@ -49,42 +48,28 @@ var(20) = 0
 ;5 - Italian
 ignorehitpause = 0
 
-[State 0, Screen Resoultion?]
+[State 0, Scrapped Moves?]
 type = VarSet
-trigger1 = GameHeight = 1080
-trigger2 = GameHeight = 720
-trigger3 = GameHeight = 360
-trigger4 = GameHeight = 180
-var(17) = 0
-;0 - Widescreen (16:9)
-;1 - Normal Screen (4:3)
+trigger1 = 1
+var(33) = 0
+;0 - Off
+;1 - On
 ignorehitpause = 1
 
 [State 0, Screen Resoultion?]
 type = VarSet
-trigger1 = GameHeight = 1332
-trigger2 = GameHeight = 888
-trigger3 = GameHeight = 480
-trigger4 = GameHeight = 240
-var(17) = 1
+trigger1 = 1
+var(17) = 2
 ;0 - Widescreen (16:9)
 ;1 - Normal Screen (4:3)
+;2 - Auto
 ignorehitpause = 1
-
-
-;[State 0, Screen Resoultion?]
-;type = VarSet
-;trigger1 = 1
-;var(17) = 1
-;;0 - Widescreen (16:9)
-;;1 - Normal Screen (4:3)
-;ignorehitpause = 1
 
 [State 0, MUGEN Version?]
 type = VarSet
 trigger1 = 1
 var(18) = 0
-;0 - 1.1
+;0 - 1.1/Ikemen GO
 ;1 - 1.0
 ignorehitpause = 1
 
@@ -103,8 +88,8 @@ type = VarSet
 trigger1 = 1
 var(52) = 2
 ;0: N/A
-;1: Game! - Sketch (Short) > Results Screen - Super Smash Brothers for 3DS and Wii U
-;2: Game! - Sketch (Looped)
+;1: Victory! (Old) by Rossiter (Short) > Results Screen - Super Smash Brothers for 3DS and Wii U
+;2: Victory! (Showtime) by Kakowo (this is the default song)
 ;3: After the Battle - Persona 3
 ;4: Period - Persona 4
 ;5: Triumph - Persona 5
@@ -128,18 +113,31 @@ trigger1 = partner, name = "Maavo"
 fvar(10) = 1
 ignorehitpause = 1
 
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(17) = 2
+trigger1 = (GameWidth / GameHeight) >= 1.7
+var(17) = 0
+ignorehitpause = 1
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(17) = 2
+trigger1 = (GameWidth / GameHeight) < 1.7
+var(17) = 1
+ignorehitpause = 1
+
 [State 5900, 3] ;Change palette
 type = RemapPal
 trigger1 = 1
 source = 1,1
 dest = 1,palno
 
-[State 5900, 3] ;Intro for round 1
+[State 5900, 4] ;Intro for round 1
 type = ChangeState
 trigger1 = roundno = 1
 value = 190
 
-[State 5900, 4]
+[State 5900, 5] ;All other rounds
 type = ChangeState
-trigger1 = RoundNo >= 1
-value = 1911
+trigger1 = 1
+value = 0

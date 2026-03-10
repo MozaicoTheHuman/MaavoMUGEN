@@ -1,0 +1,35 @@
+<#f0f000>To change your input type, check the config.txt file</>
+
+<#ff0000>:Assists:</>
+Ve, <#6b00ff>Ivette!</>						_AIROK_QDB^LP 
+Ve, <#ff0099>Maritza!</>					_AIROK_QDB^MP 
+
+<#ff0000>:Specials:</>
+Throw										[_B/_F]_+^MP 
+Dash Attack									_F_F^LP 
+Rising Pencil								_QDF^LP 
+Paper Counter_COUNTER						_QDF^HP
+Multiple Stab								_QDF^LP 
+
+<#ff0000>:Specials (New Input):</>
+Dash Attack M								_F_F^MP 
+Dash Attack_EX <#bebebe>(500)</>			_F_F^LP_+^MP 
+Rising Pencil L								_DSF^LP
+Rising Pencil M								_DSF^MP 
+Rising Pencil_EX <#bebebe>(500)</>			_DSF^LP_+^MP 
+Multiple Stab M								_QDF^MP 
+Multiple Stab_EX <#bebebe>(500)</>			_QDF^LP_+^MP 
+
+<#ff0000>:Supers:</>
+Air Juggle <#bebebe>(1000)</>				_AIROK_QDF_QDF^LP/^MP
+Gran Tornado <#bebebe>(1000)</>				_QDB_QDB^LP/^MP
+All-Out Attack <#bebebe>(3000)</>			_QDB_QDF^LP/^MP
+
+<#a2a2a2>:Scrapped Moves:</>
+Masterpiece <#bebebe>(3000)</>				_QDB_QDF^LK/^MK
+Escudo Trazado								_QDF^HK
+Boomerang M									_QDB^MK
+Boomerang L									_QDB^LK
+Media Luna M								_QDF^MK
+Media Luna L								_QDF^LK
+

@@ -1,0 +1,1800 @@
+;---------------------------------------------------------------------------
+; Lose by Time Over
+[Statedef 170]
+type = S
+ctrl = 0
+anim = 170
+velset = 0,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S170,0
+
+[State 170, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+;Clap Animation [1280x720]
+[Statedef 1701801]
+physics=N
+velset=0,0
+
+[State 119904 , 1]
+type = Explod
+trigger1 = Time = 1
+anim = 17583581
+pos = 40, 194
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 35
+scale = .235,.235
+
+[State 119904 , 1]
+type = Explod
+trigger1 = Time = 1
+anim = 17583582
+pos = 40, 194
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 34
+scale = .235,.235
+
+;---------------------------------------------------------------------------
+;Clap Animation [640x480]
+[Statedef 1701802]
+physics=N
+velset=0,0
+
+[State 119904 , 1]
+type = Explod
+trigger1 = Time = 1
+anim = 17583581
+pos = 40, 252
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 35
+scale = .235,.235
+
+[State 119904 , 1]
+type = Explod
+trigger1 = Time = 1
+anim = 17583582
+pos = 40, 252
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 34
+scale = .235,.235
+
+;---------------------------------------------------------------------------
+; Win state decider
+[Statedef 180]
+type = S
+
+[State 180, 1]
+type = ChangeState
+trigger1 = MatchOver = 0
+value = 181
+
+[State 180, 1]
+type = ChangeState
+trigger1 = MatchOver = 1
+trigger1 = Win
+value = 180180+ (var(17) * 1)
+;---------------------------------------------------------------------------
+;Smash Bros. Win Screen confirm [1280x720] (This is for the characters that has the clap animation)
+[Statedef 180180]
+type = S
+ctrl = 0
+
+[State 0, All Out Attack]
+type = ChangeState
+trigger1 = var(45) = 1
+value = 180140
+ctrl = 0
+
+[State 180180, 1]
+type = ChangeState
+trigger1 = Time = 1
+value = 181
+
+;---------------------------------------------------------------------------
+;Smash Bros. Win Screen confirm [640x480] (This is for the characters that has the clap animation)
+[Statedef 180181]
+type = S
+ctrl = 0
+
+[State 0, All Out Attack]
+type = ChangeState
+trigger1 = var(45) = 1
+value = 180140
+ctrl = 0
+
+[State 180180, 1]
+type = ChangeState
+trigger1 = Time = 1
+value = 181
+
+;---------------------------------------------------------------------------
+;Win
+[Statedef 181]
+type = S
+ctrl = 0
+anim = 181
+
+[State 180, Ganar por el Finisher]
+type=changestate
+trigger1=prevstateno=140005
+value=180140
+
+[State 0, Helper]
+type = Helper
+triggerall = MatchOver = 1
+trigger1 = Win
+trigger1 = time = 0
+helpertype = normal ;player
+name = "Win Screen"
+ID = 1810
+stateno = 1810
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 9999
+pausemovetime = 9999
+persistent = 0
+
+;---------------------------------------------------------------------------
+; Win pose 1
+[Statedef 1810]
+type = S
+ctrl = 0
+anim = 180
+velset = 0,0
+
+[State 119911991, 1]
+type = AssertSpecial
+triggerall = var(52) != 0
+trigger1 = 1
+flag = nomusic
+ignorehitpause = 1
+
+[state turn]
+type = turn
+trigger1 = facing != 1
+[State 181, 2]
+type = PlaySnd
+triggerall = root,var(52) = 22
+trigger1 = time = 30
+value = 888,0+random%2
+loop = 1
+
+;==========================================
+;THIS IS STUFF FOR THE CLAP ANIMATION THINGY UUUH I DONT WANNA DOCUMENT ALL DAT
+[State 119904 , 1]
+type = Explod
+trigger1 = enemy, stateno = 1701801
+anim = 17424342
+pos = 0, 177
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 38
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+trigger1 = enemy, stateno = 1701802
+anim = 17424342
+pos = 0, 234
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 38
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 0
+trigger1 = enemy, stateno = 1701801
+anim = ifelse(teamside=1,17323234,1732323)
+pos = 0, 177
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 34
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 0
+trigger1 = enemy, stateno = 1701802
+anim = ifelse(teamside=1,17323234,1732323)
+pos = 0, 234
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 34
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
+trigger1 = enemy, stateno = 1701801
+anim = 16323234
+pos = 0, 177
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 34
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
+trigger1 = enemy, stateno = 1701802
+anim = 16323234
+pos = 0, 234
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 34
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 0
+trigger1 = enemy, stateno = 1701801
+anim = ifelse(teamside=1,17323235,17323236)
+pos = 0, 177
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 38
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 0
+trigger1 = enemy, stateno = 1701802
+anim = ifelse(teamside=1,17323235,17323236)
+pos = 0, 234
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 38
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
+trigger1 = enemy, stateno = 1701801
+anim = 16323236
+pos = 0, 177
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 38
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
+trigger1 = enemy, stateno = 1701802
+anim = 16323236
+pos = 0, 234
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 38
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 0
+trigger1 = enemy, stateno = 1701801
+anim = ifelse(teamside=1,17323237,17323238)
+pos = 0, 177
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 37
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 0
+trigger1 = enemy, stateno = 1701802
+anim = ifelse(teamside=1,17323237,17323238)
+pos = 0, 234
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 37
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
+trigger1 = enemy, stateno = 1701801
+anim = 16323238
+pos = 0, 177
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 37
+scale = .5,.5
+persistent = 0
+
+[State 119904 , 1]
+type = Explod
+triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
+trigger1 = enemy, stateno = 1701802
+anim = 16323238
+pos = 0, 234
+postype = left
+removetime=-1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 37
+scale = .5,.5
+persistent = 0
+;==========================================
+[State Victory Transition]
+type = Explod
+trigger1 = Time = 1
+id = 11911
+anim = 11911 
+pos = -25,0 
+postype = back
+sprpriority = 30
+removeongethit = 1
+removetime = 25
+SuperMovetime = 9999
+PauseMovetime = 9999
+scale = .3,.5
+bindtime = -1
+ownpal = 1
+removeongethit = 1
+
+[State Black BG]
+type = Explod
+trigger1 = Time = 16
+id = 11821
+anim = 11821
+pos = -25,-25
+postype = back
+sprpriority = 25
+removeongethit = 1
+removetime=-1
+scale = 99,99
+supermovetime=-1
+OnTop = 0
+bindtime=-1
+supermovetime = -1
+pausemovetime = -1
+sprpriority=-7
+removeongethit = 1
+
+[State White FadeIn]
+type = Explod
+trigger1 = Time = 16
+id = 11917
+anim = 11917
+pos = -25,-25
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 29
+removeongethit = 1
+removetime=38
+scale = 99,99
+supermovetime=-1
+OnTop = 0
+bindtime=-1
+supermovetime = -1
+pausemovetime = -1
+sprpriority=37
+removeongethit = 1
+
+[State MaavoLineart]
+type = Explod
+trigger1 = Time = 168
+id = 1803
+anim = 1803
+pos = 180+ (root,var(17) * -35),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 34
+removeongethit = 1
+removetime=-1
+scale = .25+(root,var(17) * .1),.25+ (root,var(17) * .1)
+OnTop = 0
+supermovetime=999
+bindtime=-1
+supermovetime = -1
+pausemovetime = -1
+removeongethit = 1
+
+[State Maavo Color]
+type = Explod
+trigger1 = Time = 168
+id = 18031
+anim = 18031
+pos = 180+ (root,var(17) * -35),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 33
+removeongethit = 1
+removetime=-1
+scale = .25+(root,var(17) * .1),.25+ (root,var(17) * .1)
+OnTop = 0
+supermovetime=999
+bindtime=-1
+supermovetime = -1
+pausemovetime = -1
+removeongethit = 1
+
+[State Anim + BG]
+type = Explod
+trigger1 = Time = 16
+id = 1801
+anim = 1801
+pos = 0+ (root,var(17) * -115),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 26
+removeongethit = 1
+removetime=-1
+scale = .25+(root,var(17) * .1),.25+ (root,var(17) * .1)
+OnTop = 0
+supermovetime=999
+bindtime=-1
+supermovetime = -1
+pausemovetime = -1
+removeongethit = 1
+
+[State Stars Up (Clap)]
+Type = Explod
+triggerall = enemy, stateno = 1701802
+Trigger1 = time = 168
+Anim = 18312
+ID = 18312
+pos = 15,-45+(root,var(17) * 25)
+PosType = Back
+Facing = IfElse(Facing=-1,-1,1)
+BindTime = -1
+RemoveTime = -1
+scale = .31,.31
+OnTop = 0
+sprpriority = 30
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMove = -1
+SuperMovetime = -1
+PauseMovetime = -1
+[State Stars Up (Clap)]
+Type = Explod
+triggerall = enemy, stateno = 1701801
+Trigger1 = time = 168
+Anim = 18312
+ID = 18312
+pos = 15,-45+(root,var(17) * 25)
+PosType = Back
+Facing = IfElse(Facing=-1,-1,1)
+BindTime = -1
+RemoveTime = -1
+scale = .31,.31
+OnTop = 0
+sprpriority = 30
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMove = -1
+SuperMovetime = -1
+PauseMovetime = -1
+[State Name (Clap)]
+Type = Explod
+triggerall = enemy, stateno = 1701802
+Trigger1 = time = 168
+Anim = 1813
+ID = 1813
+pos = -26,95+(root,var(17) * 25)
+PosType = Back
+Facing = IfElse(Facing=-1,-1,1)
+BindTime = 0
+RemoveTime = -1
+sprpriority = 34
+scale = .3+(root,var(17) * .04),.3+(root,var(17) * .04)
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMove = -1
+SuperMovetime = -1
+PauseMovetime = -1
+[State Name (Clap)]
+Type = Explod
+triggerall = enemy, stateno = 1701801
+Trigger1 = time = 168
+Anim = 1812
+ID = 1812
+pos = -26,95+(root,var(17) * 25)
+PosType = Back
+Facing = IfElse(Facing=-1,-1,1)
+BindTime = 0
+RemoveTime = -1
+sprpriority = 34
+scale = .3+(root,var(17) * .04),.3+(root,var(17) * .04)
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMove = -1
+SuperMovetime = -1
+PauseMovetime = -1
+[State Name]
+Type = Explod
+triggerall = enemy, stateno != 1701801
+triggerall = enemy, stateno != 1701802
+Trigger1 = time = 168
+Anim = 1811
+ID = 1811
+pos = -26,95+(root,var(17) * 25)
+PosType = Back
+Facing = IfElse(Facing=-1,-1,1)
+BindTime = 0
+RemoveTime = -1
+scale = .3+(root,var(17) * .04),.3+(root,var(17) * .04)
+sprpriority = 34
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMove = -1
+SuperMovetime = -1
+PauseMovetime = -1
+
+[State Stars Up]
+Type = Explod
+triggerall = enemy, stateno != 1701801
+triggerall = enemy, stateno != 1701802
+Trigger1 = time = 168
+Anim = 1831
+ID = 1831
+pos = 15,-45+(root,var(17) * 25)
+PosType = Back
+Facing = IfElse(Facing=-1,-1,1)
+BindTime = -1
+RemoveTime = -1
+scale = .31,.31
+OnTop = 0
+sprpriority = 30
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMove = -1
+SuperMovetime = -1
+PauseMovetime = -1
+
+[State Stars Down]
+Type = Explod
+Trigger1 = time = 168
+Anim = 1821
+ID = 1821
+pos = 10,150+(root,var(17) * 35)
+PosType = Back
+Facing = IfElse(Facing=-1,-1,1)
+BindTime = -1
+RemoveTime = -1
+scale = .31+(root,var(17) * .05),.31+(root,var(17) * .05)
+OnTop = 0
+sprpriority = 30
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMove = -1
+SuperMovetime = -1
+PauseMovetime = -1
+
+[State N1]
+Type = Explod
+Trigger1 = time = 245
+Anim = 184
+ID = 184
+pos = 0,0
+PosType = Back
+Facing = IfElse(Facing=-1,-1,1)
+BindTime = -1
+RemoveTime = -1
+scale = .25,.25
+OnTop = 1
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+PauseMovetime = -1
+
+[State P1/P2 Name]
+Type = Explod
+triggerall = root,ailevel = 0
+Trigger1 = time = 245
+Anim = ifelse(teamside=1,185,186)
+ID = 185
+pos = 0,0
+PosType = Back
+Facing = IfElse(Facing=-1,-1,1)
+BindTime = -1
+RemoveTime = -1
+scale = .25,.25
+OnTop = 1
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+PauseMovetime = -1
+[State CPU Name]
+Type = Explod
+triggerall = root,ailevel = 1 || root,ailevel = 2 || root,ailevel = 3 || root,ailevel = 4 || root,ailevel = 5 || root,ailevel = 6 || root,ailevel = 7 || root,ailevel = 8
+Trigger1 = time = 245
+Anim = 187
+ID = 187
+pos = 0,0
+PosType = Back
+Facing = IfElse(Facing=-1,-1,1)
+BindTime = -1
+RemoveTime = -1
+scale = .25,.25
+OnTop = 1
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+PauseMovetime = -1
+
+[State 19001, Splash Name Flash]
+type = Explod
+trigger1 = Time = 168
+id = 1849
+anim = 1849
+pos = 0,0
+postype = back
+sprpriority = 50
+removeongethit = 1
+removetime=6
+scale = 5,5
+supermovetime=85
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+sprpriority=70
+removeongethit = 1
+
+[State 0, Transition Sound]
+type = PlaySnd
+trigger1 = time = 1
+value = S50505,0
+
+;This code was maded by Orbi
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 2
+trigger1 = time = 53
+value = S50505,17
+channel = 10
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 2
+trigger1 = time = 53
+value = S50505,17
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 2
+trigger1 = time = 168
+value = S50505,8
+loop = 1
+channel = 10
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 2
+trigger1 = time = 168
+value = S50505,8
+loop = 1
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 3
+trigger1 = time = 25
+value = S50505,10
+loop = 1
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 3
+trigger1 = time = 25
+value = S50505,10
+loop = 1
+channel = 10
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 4
+trigger1 = time = 25
+value = S50505,7
+loop = 1
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 5
+trigger1 = time = 25
+value = S50505,9
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 5
+trigger1 = time = 33
+value = S50505,5
+loop = 1
+channel = 9
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 5
+trigger1 = time = 33
+value = S50505,5
+loop = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 1
+trigger1 = time = 25
+value = S50505,14
+channel = 8
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 1
+trigger1 = time = 530
+value = S50505,15
+channel = 9
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 1
+trigger1 = time = 540
+value = S50505,16
+loop = 1
+channel = 9
+;This code was maded by Orbi
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = palno = 6
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 2
+value = S50505,1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = 0
+y = -10
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = root,life != lifemax
+channel = 2
+ignorehitpause = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+trigger1 = time = 30
+value = S50505,2 + (root,var(16) * 10000)
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root, var(16) = 2
+trigger1 = time = 30
+value = S50505,10002
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root, var(16) = 2
+trigger1 = time = 30
+value = S50505,10002
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root, var(16) = 1
+trigger1 = time = 30
+value = S50505,10002
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root, var(16) = 2
+trigger1 = time = 30
+value = S50505,10002
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+trigger1 = time = 30
+value = S50505,2 + (root,var(16) * 10000)
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root,var(16) = 2
+trigger1 = time = 100
+value = S50505,20003
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root,var(16) = 2
+trigger1 = time = 100
+value = S50505,20003
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root,var(16) = 1
+trigger1 = time = 100
+value = S50505,10003
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root,var(16) = 1
+trigger1 = time = 100
+value = S50505,10003
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) != 20
+triggerall = root,life = lifemax
+trigger1 = time = 30
+value = S50505,69 + (root,var(16) * 10000)
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) != 20
+triggerall = root,life = lifemax
+trigger1 = time = 30
+value = S50505,69 + (root,var(16) * 10000)
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) != 20
+trigger1 = time = 168
+value = S50505,4
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 20
+trigger1 = time = 120
+value = S520,1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 20
+trigger1 = time = 120
+value = S520,1
+
+[State 0, PlaySnd]
+triggerall = root,var(16) = 20
+type = PlaySnd
+trigger1 = time = 120
+value = S1208,0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 2
+triggerall = root,life = lifemax
+trigger1 = time = 30
+value = S50505,10069
+volumescale = 255
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root,var(16) = 0
+trigger1 = time = 186
+value = S50505,3
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root,var(16) = 0
+trigger1 = time = 186
+value = S50505,3
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 57
+value = S50,0
+
+[State 0, PlaySnd]
+triggerall = root,var(16) = 20
+type = PlaySnd
+trigger1 = time = 120
+value = S1208,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 85
+value = S50,1
+
+[State 0, SuperPause]
+type = Pause
+trigger1 = time = 0
+time = 245
+movetime = 245
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 20
+triggerall = root,life = lifemax
+trigger1 = time = 30
+value = S1208,3
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 20
+triggerall = root,life = lifemax
+trigger1 = time = 30
+value = S1208,3
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root,var(16) = 20
+trigger1 = time = 30
+value = S1208,1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 20
+triggerall = root,life != lifemax
+trigger1 = time = 30
+value = S1208,1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 20
+triggerall = root,life != lifemax
+trigger1 = time = 137
+value = S1208,2
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 20
+triggerall = root,life != lifemax
+trigger1 = time = 137
+value = S1208,2
+
+[State RoundNotOverYet]
+type = AssertSpecial
+trigger1 = root,ailevel = 0
+trigger2 = time < 500
+flag = Roundnotover
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+[State 180180, 1]
+type = ChangeState
+triggerall = random <=1
+trigger1 = time = 0
+value = 888
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = time >= 16
+flag= noBG
+flag2= noFG
+[State RoundNotOverYet]
+type = AssertSpecial
+trigger1 = root,ailevel = 1
+trigger1 = 1
+flag = Roundnotover
+[State dou]
+type = StopSnd
+trigger1 = Time = 0
+channel = -1
+persistent = 0
+[State 181, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+;Win (All-Out Attack)
+[Statedef 180140]
+type = S
+anim = 616
+[state turn]
+type = turn
+trigger1 = facing != 1
+
+[State 0, Pause]
+type = Pause
+trigger1 = time > 1
+time = 999
+movetime = 999
+[State 181, 2]
+type = PlaySnd
+triggerall = var(52) = 22
+trigger1 = time = 50
+value = 888,0+random%2
+loop = 1
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = 1
+time = 999
+add = 0,0,0
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 0
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+triggerall = var(52) != 0
+trigger1 = 1
+flag = NoMusic
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+flag2 = noFG
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoBG
+
+[State RoundNotOverYet]
+type = AssertSpecial
+trigger1 = ailevel = 0
+trigger2 = time < 335
+flag = Roundnotover
+
+[State RoundNotOverYet]
+type = AssertSpecial
+trigger1 = ailevel = 1
+trigger1 = 1
+flag = Roundnotover
+
+[State Explod]
+Type = Explod
+Trigger1 = time = 20
+Anim = 7967
+ID = 7967
+pos = 12,130+ (var(17) * 55)
+PosType = Back
+Facing = IfElse(Facing=-1,-1,1)
+BindTime = -1
+RemoveTime = 251
+scale = .17,.17
+OwnPal = 1
+IgnoreHitPause = 1
+sprpriority = 99
+Persistent = 0
+SuperMove = 9999
+SuperMovetime = -1
+PauseMovetime = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(52) != 0
+triggerall = var(52) != [3,4]
+trigger1 = time = 55
+value = S50505,9
+channel = 9
+
+[State Explod]
+Type = Explod
+triggerall = var(52) != [3,4]
+Trigger1 = time = 15
+Anim = 7966
+ID = 7966
+pos = 80,150+(var(17) * 50)
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 100
+removeongethit = 1
+removetime=-1
+scale = .5,.5
+OnTop = 0
+ownpal = 1
+bindtime=-1
+supermovetime = -1
+pausemovetime = -1
+
+[State Explod]
+Type = Explod
+triggerall = var(52) = 3
+Trigger1 = time = 15
+Anim = 7964
+ID = 7966
+pos = 80,150+(var(17) * 50)
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 100
+removeongethit = 1
+removetime=-1
+scale = .5,.5
+OnTop = 0
+ownpal = 1
+bindtime=-1
+supermovetime = -1
+pausemovetime = -1
+[State 181, 2]
+type = PlaySnd
+triggerall = root,var(52) = 22
+trigger1 = time = 30
+value = 888,0+random%2
+loop = 1
+[State Explod]
+Type = Explod
+triggerall = var(52) = 4
+Trigger1 = time = 15
+Anim = 7965
+ID = 7966
+pos = 80,150+(var(17) * 50)
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 100
+removeongethit = 1
+removetime=-1
+scale = .5,.5
+OnTop = 0
+ownpal = 1
+bindtime=-1
+supermovetime = -1
+pausemovetime = -1
+
+[State 0, Victory Old Intro]
+type = PlaySnd
+triggerall = var(52) = 1
+trigger1 = time = 25
+value = S50505,14
+channel = 8
+[State 0, Victory Old Intro]
+type = PlaySnd
+triggerall = var(52) = 1
+trigger1 = time = 25
+value = S50505,14
+channel = 9
+[State 0, Victory Old Mid]
+type = PlaySnd
+triggerall = var(52) = 1
+trigger1 = time = 530
+value = S50505,15
+channel = 9
+[State 0, Victory Old Mid]
+type = PlaySnd
+triggerall = var(52) = 1
+trigger1 = time = 530
+value = S50505,15
+channel = 10
+[State 0, Victory Old Loop]
+type = PlaySnd
+triggerall = var(52) = 1
+trigger1 = time = 540
+value = S50505,16
+loop = 1
+channel = 9
+[State 0, Victory Old Loop]
+type = PlaySnd
+triggerall = var(52) = 1
+trigger1 = time = 540
+value = S50505,16
+loop = 1
+channel = 10
+
+[State 0, Showtime Intro]
+type = PlaySnd
+triggerall = var(52) = 2
+trigger1 = time = 55
+value = S50505,17
+channel = 9
+[State 0, Showtime Intro]
+type = PlaySnd
+triggerall = var(52) = 2
+trigger1 = time = 55
+value = S50505,17
+channel = 10
+[State 0, Showtime Loop]
+type = PlaySnd
+triggerall = var(52) = 2
+trigger1 = time = 168
+value = S50505,8
+loop = 1
+channel = 9
+[State 0, Showtime Loop]
+type = PlaySnd
+triggerall = var(52) = 2
+trigger1 = time = 168
+value = S50505,8
+loop = 1
+channel = 10
+
+[State 0, Persona 3]
+type = PlaySnd
+triggerall = var(52) = 3
+trigger1 = time = 55
+value = S50505,10
+loop = 1
+channel = 9
+persistent = 0
+[State 0, Persona 3]
+type = PlaySnd
+triggerall = var(52) = 3
+trigger1 = time = 55
+value = S50505,10
+loop = 1
+channel = 10
+persistent = 0
+
+[State 0, Persona 4]
+type = PlaySnd
+triggerall = var(52) = 4
+trigger1 = time = 55
+value = S50505,7
+loop = 1
+channel = 9
+persistent = 0
+[State 0, Persona 4]
+type = PlaySnd
+triggerall = var(52) = 4
+trigger1 = time = 55
+value = S50505,7
+loop = 1
+channel = 10
+persistent = 0
+
+[State 0, Persona 5 Intro]
+type = PlaySnd
+triggerall = var(52) = 5
+trigger1 = time = 55
+value = S50505,9
+channel = 9
+[State 0, Persona 5 Intro]
+type = PlaySnd
+triggerall = var(52) = 5
+trigger1 = time = 55
+value = S50505,9
+channel = 10
+[State 0, Persona 5 Loop]
+type = PlaySnd
+triggerall = var(52) = 5
+trigger1 = time = 65
+value = S50505,5
+loop = 1
+channel = 9
+[State 0, Persona 5 Loop]
+type = PlaySnd
+triggerall = var(52) = 5
+trigger1 = time = 65
+value = S50505,5
+loop = 1
+channel = 10
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 15
+value = S21931,9
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 15
+value = S21931,9
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 15
+value = S21931,9
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 15
+value = S21931,9
+
+;---------------------------------------------------------------------------
+; Intro
+[Statedef 190]
+type = S
+ctrl = 0
+anim = 190
+velset = 0,0
+
+;[State 190, 0] ;V.S. Oliver
+;type = ChangeState
+;trigger1 = enemy, name = "Oliver Andersen" && EnemyNear,AuthorName = "Oliver As Latias"
+;value = 1951
+
+[State 190, 4] ;Intro 1
+type = ChangeState
+trigger1 = time = 0
+value = 191
+
+[State 190, 2] ;Assert this until you want "round 1, fight" to begin
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 190, 4] ;Change to stand state
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+;Intro - Game Freeze
+[Statedef 190190]
+type = S
+ctrl = 0
+anim = 190190
+velset = 0,0
+
+[State 190, 2] ;Assert this until you want "round 1, fight" to begin
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = 1
+value = 190190
+
+;---------------------------------------------------------------------------
+;Intro 1
+[Statedef 191]
+type = S
+ctrl = 0
+anim = 190
+velset = 0,0
+
+[State 100, Land Effect]
+type = Explod
+trigger1 = AnimElem = 5
+anim = 32849
+scale = 0.3,0.3
+postype = p1
+pos = 0,5
+sprpriority = 3
+ownpal = 1
+removeongethit = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 19001, EnvShake]
+type = EnvShake
+trigger1 = AnimElem =  5
+time = 5
+freq = 60
+ampl = -6
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S191,2
+freqmul = 0.9+(random/7333.3)
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = S191,0
+freqmul = 0.9+(random/7333.3)
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = S191,3
+freqmul = 0.9+(random/7333.3)
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 11
+value = S191,1
+freqmul = 0.9+(random/7333.3)
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 11
+value = S192,0+random%4
+
+[State 190, 2] ;Assert this until you want "round 1, fight" to begin
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 190, 4] ;Change to stand state
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+;---------------------------------------------------------------------------
+;Intro (Special) - V.S. Oliver
+;[Statedef 1951]
+;type = S
+;ctrl = 0
+;anim = 1951
+;velset = 0,0
+;
+;[State 0, AssertSpecial]
+;type = AssertSpecial
+;trigger1 =1 
+;flag = nomusic
+;
+;[State 19001, 1]
+;type = Explod
+;trigger1 = Time = 0
+;id = 19513
+;anim = 19513+ (var(16) * 10000)
+;pos = 0+ (var(17) * -60),0
+;postype = back
+;Facing = IfElse(facing = 1, 1, -1)
+;sprpriority = 30
+;removeongethit = 1
+;removetime=650
+;ontop = 1
+;scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+;bindtime=-1
+;removeongethit = 1
+;
+;[State 19001, 1]
+;type = Explod
+;trigger1 = AnimElem = 30
+;id = 19514
+;anim = 19514
+;pos = 0,0
+;postype = p1
+;sprpriority = 3
+;removeongethit = 1
+;removetime= 999
+;scale = .4,.4
+;supermovetime = 9999
+;pausemovetime = 99999
+;removeongethit = 1
+;
+;[State 0, RemoveExplod]
+;type = RemoveExplod
+;trigger1 = AnimElem = 31
+;id = 19514
+;ignorehitpause = 1
+;
+;[State 0, Helper]
+;type = Helper
+;trigger1 = animelem = 2
+;helpertype = normal
+;name = "Slow Motion Sound" 
+;ID = 19512
+;stateno = 19512+random%2
+;pos = 0,0
+;postype = p1
+;facing = 1
+;keyctrl = 0
+;ownpal = 0
+;supermovetime = 0
+;pausemovetime = 0
+;ignorehitpause = 1
+;
+;[State 0, Helper]
+;type = Helper
+;trigger1 = time = 0
+;helpertype = normal
+;name = "Sketchbook" 
+;ID = 19511
+;stateno = 19511
+;pos = -35,0
+;postype = p1 
+;facing = 1
+;keyctrl = 0
+;ownpal = 0
+;supermovetime = 0
+;pausemovetime = 0
+;ignorehitpause = 1
+;
+;[State 0, PlaySnd]
+;type = PlaySnd
+;trigger1 = AnimElem = 16
+;value = S240,3
+;channel = 18
+;
+;[State 0, PlaySnd]
+;type = PlaySnd
+;trigger1 = AnimElem = 20
+;value = S1920,1
+;channel = 18
+;
+;[State 0, PlaySnd]
+;type = PlaySnd
+;trigger1 = time = 248
+;value = S190,0
+;
+;[State 190, 2]
+;type = AssertSpecial
+;trigger1 = 1
+;flag = Intro
+;
+;[State 190, 4]
+;type = ChangeState
+;trigger1 = AnimTime = 0
+;value = 0
+;
+;---------------------------------------------------------------------------
+;Intro (Special) - V.S. Oliver - Sketchbook
+;[Statedef 19511]
+;type = S
+;ctrl = 0
+;anim = 19511
+;velset = 0,0
+;
+;[State 19001, 1]
+;type = Explod
+;trigger1 = Time = 248
+;id = 29814
+;anim = 29814
+;pos = 0,0
+;postype = back
+;sprpriority = 40
+;removeongethit = 1
+;removetime=6
+;scale = 20,20
+;supermovetime=6
+;bindtime=-1
+;supermovetime = 9999
+;pausemovetime = 99999
+;removeongethit = 1
+;
+;[State 0, Explod]
+;type = Explod
+;trigger1 = AnimElem = 247
+;anim = 19512
+;ID = 19512
+;pos = 0,0
+;postype = p1
+;facing = 1
+;vfacing = 1
+;bindtime = 1
+;removetime = 4
+;sprpriority = 3
+;
+;[State 190, 2]
+;type = AssertSpecial
+;trigger1 = 1
+;flag = noshadow
+;
+;[State 1100, 3]
+;type = AngleDraw
+;Trigger1 = time > 250
+;value = 3*time
+;
+;[State 0, VelSet]
+;type = Velset
+;trigger1 = time > 250
+;x = -2
+;y = -2
+;
+;[State 0, VelSet]
+;type = Velset
+;trigger1 = time > 250 && time < 253
+;x = -3
+;y = -3
+;
+;[State 190, 4]
+;type = destroyself
+;trigger1 = time = 328
+;
+;---------------------------------------------------------------------------
+;Intro (Special) - V.S. Oliver - Slow 1
+;[StateDef 19512]
+;Type    = A
+;movetype= I
+;physics = N
+;anim= 616
+;
+;[State 0, PlaySnd]
+;type = PlaySnd
+;trigger1 = time = 0
+;value = S1951,0
+;
+;[State 0, PlaySnd]
+;type = PlaySnd
+;trigger1 = time = 0
+;value = S1951,0
+;
+;[State 0, DestroySelf]
+;type = DestroySelf
+;trigger1 = time = 5 
+;
+;---------------------------------------------------------------------------
+;Intro (Special) - V.S. Oliver - Slow 2
+;[StateDef 19513]
+;Type    = A
+;movetype= I
+;physics = N
+;anim= 616
+;
+;[State 0, PlaySnd]
+;type = PlaySnd
+;trigger1 = time = 0
+;value = S1951,1
+;
+;[State 0, PlaySnd]
+;type = PlaySnd
+;trigger1 = time = 0
+;value = S1951,1
+;
+;[State 0, PlaySnd]
+;type = PlaySnd
+;trigger1 = time = 0
+;value = S1951,1
+;
+;[State 0, DestroySelf]
+;type = DestroySelf
+;trigger1 = time = 5 
+
+;---------------------------------------------------------------------------
+;Neutral Taunt
+[Statedef 195]
+type = S
+ctrl = 0
+anim = 195
+velset = 0,0
+movetype = I
+poweradd = 0
+physics = S
+sprpriority = 2
+
+[State 0]
+type = PlaySnd
+triggerall = var(16) = 20
+trigger1 = time = 0
+value = S519, 2
+freqmul = 0.9+(random/7333.3)
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S191,1
+freqmul = 0.9+(random/7333.3)
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S191,1
+freqmul = 0.9+(random/7333.3)
+[State 0]
+type = PlaySnd
+triggerall = var(16) != 20
+trigger1 = AnimElem = 2
+value = S195, 0+random%5
+channel = 0
+[State 195, VarSet]
+type = VarSet
+trigger1 = time = 0
+var(57) = 1
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = roundstate = 2 && time = 20
+value = 1
+ignorehitpause = 1
+[State 195]
+type = ChangeState
+trigger1 = Animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Side Taunt
+[Statedef 196]
+type = S
+ctrl = 0
+anim = 196
+velset = 0,0
+movetype = I
+poweradd = 0
+physics = S
+sprpriority = 2
+
+[State 0]
+type = PlaySnd
+triggerall = var(16) = 20
+trigger1 = time = 0
+value = S519, 3
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = S191,1
+freqmul = 0.9+(random/7333.3)
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = S191,1
+freqmul = 0.9+(random/7333.3)
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = roundstate = 2 && time = 20
+value = 1
+ignorehitpause = 1
+[State 195, VarSet]
+type = VarSet
+trigger1 = time = 0
+var(57) = 1
+[State 196]
+type = ChangeState
+trigger1 = Animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Air Taunt
+[Statedef 295]
+type    = A
+physics = A
+ctrl = 0
+anim = 295
+
+[State 0]
+type = PlaySnd
+triggerall = var(16) = 20
+trigger1 = time = 0
+value = S519, 0
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = roundstate = 2 && time = 20
+value = 1
+ignorehitpause = 1

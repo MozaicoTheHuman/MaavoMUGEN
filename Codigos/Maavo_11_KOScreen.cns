@@ -1,11 +1,6 @@
 [Statedef 911]
 anim = 616
 
-[State 0, VarSet]
-type = VarSet
-trigger1 = winko
-var(39) = 1
-
 [State 0, PosSet]
 type = PosSet
 trigger1 = 1
@@ -17,11 +12,6 @@ type = AssertSpecial
 trigger1 = time < 50
 flag = nobardisplay
 flag2 = nomusic
-[State 119911991, 1]
-type = AssertSpecial
-triggerall = root,var(14) > 0
-trigger1 = matchover
-flag = nomusic
 
 [State 911, SuperPause]
 type = Pause
@@ -46,7 +36,6 @@ trigger1 = roundstate < 4
 trigger1 = root, stateno != 1213
 time = 1
 movetime = 1
-
 [State 911, 1]
 type = Explod
 trigger1 = Time = 0
@@ -64,22 +53,60 @@ removeongethit = 1
 supermovetime = 9999
 pausemovetime = 99999
 
-[State 0]
-type = varadd
-trigger1 = time <= 5
-fvar(0) = 0.09
+;============================================================
+; le epic camera zoom system by Mozaico, commented so y'all can understand what the fuck does this do
+; this thing does a camera zoom on the opponent with ease in, hold and ease out
+;------------------------------------------------------------
+; fvar(2) controls when the camera targets the opponent.
+; 1 = opponent camera
+; 0 = back to normal
+;------------------------------------------------------------
 
-[State 0]
+[State 911, Camera Follow Start]
+type = VarSet
+trigger1 = time = 0
+fvar(2) = 1
+
+; this makes the camera follow smoothly ease out to normal
+[State 911, Camera Follow EaseOut]
+type = VarSet
+trigger1 = time = [71,110]
+fvar(2) = ((110.0 - time) / 39.0) * ((110.0 - time) / 39.0)
+
+;------------------------------------------------------------
+; fvar(0) controls your zoom value
+; scale = 1 + fvar(0)
+
+; quick example of this
+; fvar(0) = 0.6 = 1.6
+;------------------------------------------------------------
+[State 911, Zoom EaseIn]
+type = VarSet
+trigger1 = time <= 20
+fvar(0) = 0.6 * (1 - (((20 - time) / 20.0) * ((20 - time) / 20.0) * ((20 - time) / 20.0)))
+
+[State 911, Zoom Hold]
+type = VarSet
+trigger1 = time = 21
+fvar(0) = 0.6
+
+[State 911, Zoom EaseOut]
+type = VarSet
+trigger1 = time = [71,110]
+fvar(0) = 0.6 * (((110 - time) / 40.0) * ((110 - time) / 40.0) * ((110 - time) / 40.0))
+
+[State 911, Zoom Reset]
+type = VarSet
+trigger1 = time > 110
+fvar(0) = 0
+
+[State 911, Zoom Controller]
 type = Zoom
-trigger1 = 1
-pos = enemy,pos x,enemy,pos y*camerazoom
-scale = 1+fvar(0)
+trigger1 = time <= 110
+scale = 1 + fvar(0)
+pos = (enemynear,pos x - pos x) * fvar(2), (enemynear,pos y - pos y) * fvar(2)
+bound = 0
 ignorehitpause = 1
-
-[State 0]
-type = varadd
-trigger1 = time >= 50
-fvar(0) = -0.09
 
 [State 911, PlaySnd]
 type = PlaySnd

@@ -18,9 +18,9 @@ value = 0
 [State 0, b]
 type = ChangeAnim
 triggerall = life <= (lifemax*.25)
-trigger1 = Anim != 1 && Anim != 5 && Anim != 31005
+trigger1 = Anim != 0 && Anim != 5 && Anim != 31005
 trigger2 = (Anim = 5 || anim = 31005) && AnimTime = 0 ;Turn anim over
-value = 1
+value = 0
 
 [State 0, 2]
 type = VelSet
@@ -44,12 +44,6 @@ value = 5050
 type    = C
 physics = C
 anim = 10
-
-[State 197]
-type = ChangeState
-trigger1 = command = "start"
-value = 197
-ctrl = 0
 
 [State 10, 1]
 type = VelMul
@@ -104,11 +98,13 @@ value = 1
 type = PlaySnd
 trigger1 = AnimElem=5
 value = S20,0+random%2
+freqmul = 0.9+(random/7333.3)
 
 [State FootSteps]
 type = PlaySnd
 trigger1 = AnimElem=10
 value = S21,0+random%2
+freqmul = 0.9+(random/7333.3)
 
 [State 20, 1]
 type = VelSet
@@ -117,6 +113,7 @@ x = const(velocity.walk.fwd.x)
 
 [State 20, 2]
 type = VelSet
+trigger1= !ailevel
 trigger1 = command = "holdback"
 x = const(velocity.walk.back.x)
 
@@ -129,20 +126,61 @@ value = 20
 
 [State 20, 4]
 type = ChangeAnim
+trigger1= !ailevel
 triggerall = vel x < 0
 trigger1 = Anim != 21 && Anim != 5
 trigger2 = Anim = 5 && AnimTime = 0
 value = 21
 
 ;---------------------------------------------------------------------------
+; AI Walk
+[Statedef 21]
+type    = S
+physics = S
+sprpriority = 0
+anim = 20
+
+[State 0, PowerAdd]
+type = PowerAdd
+triggerall = !var(8)
+trigger1 = p2dist x > 0 && vel x > 0
+trigger2 = p2dist x < 0 && vel x < 0
+value = 1
+
+[State FootSteps]
+type = PlaySnd
+trigger1 = AnimElem=5
+value = S20,0+random%2
+freqmul = 0.9+(random/7333.3)
+
+[State FootSteps]
+type = PlaySnd
+trigger1 = AnimElem=10
+value = S21,0+random%2
+freqmul = 0.9+(random/7333.3)
+
+[State 20, 1]
+type = VelSet
+trigger1 = 1
+x = const(velocity.walk.fwd.x)
+
+;---------------------------------------------------------------------------
 ; Jump Start
 [Statedef 40]
 type    = S
 physics = S
-anim = 40
 ctrl = 0
 sprpriority = 1
-
+[State 0, FUCK YOU DEFAULT AI]
+type = ChangeState
+trigger1 = ailevel >= 4
+value = 0
+ctrl = 1
+[State 0, FUCK YOU DEFAULT AI]
+type = Changeanim
+trigger1 = ailevel <= 4
+trigger1 = !time
+value = 40
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = Animelem = 1
@@ -260,6 +298,46 @@ value = 50
 ctrl = 1
 
 ;---------------------------------------------------------------------------
+; AI Jump Start
+[Statedef 41]
+type    = S
+physics = S
+anim = 40
+ctrl = 0
+sprpriority = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = Animelem = 1
+value = S50,0
+
+[State 0, Jump Normal]
+type = VarSet
+trigger1 = p2bodydist x = [-9,9]
+sysvar(1) = 0
+[State 0, Jump Back]
+type = VarSet
+trigger1 = p2bodydist x < -10
+sysvar(1) = -1
+[State 0, Jump Forward]
+type = VarSet
+trigger1 = p2bodydist x > 10
+sysvar(1) = 1
+
+[State 41, Velset]
+type = VelSet
+trigger1 = AnimTime = 0
+x = ifelse(sysvar(1)=0, const(velocity.jump.neu.x), ifelse(sysvar(1)=1, ifelse(prevstateno=101,const(velocity.runjump.fwd.x),const(velocity.jump.fwd.x)), const(velocity.jump.back.x)))
+y = ifelse(p2bodydist y < -30,const(velocity.jump.y),const(velocity.jump.y)/1.5) ;Shorthop code
+
+[State 40, 6]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+
+;---------------------------------------------------------------------------
 ; AirJump Start
 [Statedef 45]
 type    = A
@@ -368,6 +446,7 @@ anim = 47
 type = PlaySnd
 trigger1 = time = 0
 value = S50,1
+freqmul = 0.9+(random/5333.3)
 
 [State 0, StopSnd]
 type = StopSnd
@@ -453,14 +532,16 @@ type = AssertSpecial
 trigger1 = 1
 flag = NoAutoTurn
 
-[State 0, ChangeState]
+[State 0, Jump]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = command = "up"
 value = 40
 ignorehitpause = 1
 
-[State 20, 2]
+[State 20, Dash Stop]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = command = "holdback"
 value = 102
 
@@ -470,15 +551,19 @@ trigger1 = Time > 10
 trigger1 = Vel X > 0
 x = 0.5
 
-[State 100, 3]
+[State 100, Turn to Run]
 type = ChangeState
-triggerall = command = "holdfwd"
+trigger1 = command = "holdfwd"
+trigger1 = !ailevel
 trigger1 = time > 10
+trigger2 = ailevel
+trigger2 = time > 10
 value = 101
 
-[State 100, 3]
+[State 100, Dash Stop]
 type = ChangeState
-triggerall = command != "holdfwd"
+trigger1 = command != "holdfwd"
+trigger1 = !ailevel
 trigger1 = time > 10
 value = 102
 
@@ -499,7 +584,7 @@ value = 1
 
 [State 100, Run Effect 2]
 type = Explod
-trigger1 = AnimElemtime(10) = 10
+trigger1 = AnimElem = 1
 anim = 3235
 scale = 0.4,0.4
 postype = p1
@@ -513,7 +598,7 @@ ignorehitpause = 1
 
 [State 100, Run Effect 2]
 type = Explod
-trigger1 = AnimElemtime(5) = 5
+trigger1 = AnimElem = 6
 anim = 3235
 scale = 0.4,0.4
 postype = p1
@@ -527,14 +612,14 @@ ignorehitpause = 1
 
 [State FootSteps]
 type = PlaySnd
-trigger1 = AnimElemtime(10) = 10
+trigger1 = AnimElem=4
 value = S20,2+random%2
-
+freqmul = 0.9+(random/7333.3)
 [State FootSteps]
 type = PlaySnd
-trigger1 = AnimElemtime(5) = 5
+trigger1 = AnimElem=9
 value = S21,2+random%2
-
+freqmul = 0.9+(random/7333.3)
 [State 100, 0]
 type = AssertSpecial
 trigger1 = 1
@@ -550,21 +635,24 @@ type = AssertSpecial
 trigger1 = 1
 flag = NoAutoTurn
 
-[State 0, ChangeState]
+[State 0, Jump]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = command = "up"
 value = 40
 ignorehitpause = 1
 
-[State 20, 2]
+[State 20, Go Back]
 type = ChangeState
 triggerall = time > 10
+trigger1 = !ailevel
 trigger1 = command = "holdback"
 value = 103
 
-[State 20, 2]
+[State 20, Go Back]
 type = ChangeState
 triggerall = time < 10
+trigger1 = !ailevel
 trigger1 = command = "holdback"
 value = 105
 
@@ -574,9 +662,12 @@ trigger1 = Time > 10
 trigger1 = Vel X > 0
 x = 0.5
 
-[State 100, 3]
+[State 100, Stop Running]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = command != "holdfwd"
+trigger2 = ailevel
+trigger2 = p2bodydist x < 90
 value = 1022
 
 ; Dash Stop
@@ -605,17 +696,26 @@ persistent = 0
 
 [State 0, ChangeState]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = command = "up"
 value = 40
 ignorehitpause = 1
-
+[State 0, AIJump]
+type = ChangeState
+trigger1 = ailevel
+trigger1 = random < 100
+trigger1 = p2bodydist x < 90 
+value = 41
+ignorehitpause = 1
 [State 100, 3]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = command = "holdback"
 value = 105
 
 [State 100, 3]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = command = "holdfwd"
 value = 100
 
@@ -650,17 +750,20 @@ persistent = 0
 
 [State 0, ChangeState]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = command = "up"
 value = 40
 ignorehitpause = 1
 
 [State 100, 3]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = command = "holdback"
 value = 105
 
 [State 100, 3]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = command = "holdfwd"
 value = 100
 
@@ -871,7 +974,7 @@ value = 1
 
 [State 100, Run Effect 2]
 type = Explod
-trigger1 = AnimElemtime(10) = 10
+trigger1 = AnimElem = 1
 anim = 3236
 scale = 0.4,0.4
 postype = p1
@@ -885,7 +988,7 @@ ignorehitpause = 1
 
 [State 100, Run Effect 2]
 type = Explod
-trigger1 = AnimElemtime(5) = 5
+trigger1 = AnimElem = 6
 anim = 3236
 scale = 0.4,0.4
 postype = p1
@@ -911,14 +1014,14 @@ value = 103
 
 [State FootSteps]
 type = PlaySnd
-trigger1 = AnimElemtime(10) = 10
+trigger1 = AnimElem=4
 value = S20,2+random%2
-
+freqmul = 0.9+(random/7333.3)
 [State FootSteps]
 type = PlaySnd
-trigger1 = AnimElemtime(5) = 5
+trigger1 = AnimElem=9
 value = S21,2+random%2
-
+freqmul = 0.9+(random/7333.3)
 [State 105, 0]
 type = AssertSpecial
 trigger1 = 1
@@ -1047,6 +1150,36 @@ value = 0
 type = U    ;Leave state type unchanged
 physics = U ;Leave physics unchanged
 
+[State 0, Hi to Lo]
+type = StateTypeSet
+TriggerAll = StateType = S
+triggerall = ailevel
+Trigger1 = var(59) = 0 && command = "holddown"
+Trigger2 = var(59) != 0 && P2StateType != A && (Random <= var(59)*20 || var(59) > 9)
+stateType = C
+physics = C
+
+[State 0, Lo to Hi]
+type = StateTypeSet
+TriggerAll = StateType = C
+TriggerAll = ailevel
+Trigger1 = var(59) = 0 && command != "holddown"
+Trigger2 = var(59) != 0 && P2StateType = A && (Random <= var(59)*20 || var(59) > 9)
+stateType = S
+physics = S
+
+[State 0, Stop Guarding]
+type = ChangeState
+value = 140
+triggerall = ailevel
+trigger1 = var(59) = 0
+trigger1 = command != "holdback"
+trigger2 = !InGuardDist
+trigger3 = var(59) >= 1
+trigger3 = var(59) <= 9
+trigger3 = P2BodyDist X < 0
+trigger3 = Random <= (10 - var(59)) * 40
+
 [State 120, 1]
 type = ChangeAnim
 trigger1 = Time = 0
@@ -1079,13 +1212,19 @@ trigger1 = statetype = C && command != "holddown"
 statetype = S
 physics = S
 
-[State 120, 5]
+[State 120, ChangeNotAi]
 type = ChangeState
+triggerall = !ailevel
 trigger1 = AnimTime = 0
 value = 130 + (statetype = C) + (statetype = A)*2
-
+[State 120, ChangeAi]
+type = ChangeState
+triggerall = ailevel
+trigger1 = AnimTime = 0
+value = ifelse((enemy,statetype=C),131,130)
 [State 120, Stop Guarding]
 type = ChangeState
+triggerall = !ailevel
 trigger1 = command != "holdback"
 trigger2 = !inguarddist
 value = 140
@@ -1096,6 +1235,24 @@ value = 140
 type    = S
 physics = S
 
+[State 0, Hi to Lo]
+type = StateTypeSet
+TriggerAll = StateType = S
+triggerall = ailevel
+Trigger1 = var(59) = 0 && command = "holddown"
+Trigger2 = var(59) != 0 && P2StateType != A && (Random <= var(59)*20 || var(59) > 9)
+stateType = C
+physics = C
+
+[State 0, Lo to Hi]
+type = StateTypeSet
+TriggerAll = StateType = C
+TriggerAll = ailevel
+Trigger1 = var(59) = 0 && command != "holddown"
+Trigger2 = var(59) != 0 && P2StateType = A && (Random <= var(59)*20 || var(59) > 9)
+stateType = S
+physics = S
+
 [State 130, 1]
 type = ChangeAnim
 trigger1 = Anim != 130
@@ -1103,11 +1260,13 @@ value = 130
 
 [State 130, Hi to Lo]
 type = ChangeState
+triggerall = !ailevel
 trigger1 = command = "holddown"
 value = 131
 
 [State 130, Stop Guarding]
 type = ChangeState
+triggerall = !ailevel
 trigger1 = command != "holdback"
 trigger2 = !inguarddist
 value = 140
@@ -1118,6 +1277,12 @@ value = 140
 type    = C
 physics = C
 
+[State 0, Stop Guarding]
+type = ChangeState
+value = 140
+triggerall = ailevel
+trigger1 = !InGuardDist
+
 [State 131, 1]
 type = ChangeAnim
 trigger1 = Anim != 131
@@ -1125,14 +1290,9 @@ value = 131
 
 [State 131, Lo to Hi]
 type = ChangeState
+triggerall = !ailevel
 trigger1 = command != "holddown"
 value = 130
-
-[State 131, Stop Guarding]
-type = ChangeState
-trigger1 = command != "holdback"
-trigger2 = !inguarddist
-value = 140
 
 ;---------------------------------------------------------------------------
 ; AIR GUARD (guarding)
@@ -1167,6 +1327,7 @@ y = 0
 
 [State 132, 6]
 type = ChangeState
+triggerall = !ailevel
 trigger1 = sysvar(0)
 trigger1 = command = "holdback"
 trigger1 = inguarddist
@@ -1179,6 +1340,7 @@ value = 52
 
 [State 132, Stop Guarding]
 type = ChangeState
+triggerall = !ailevel
 trigger1 = command != "holdback"
 trigger2 = !inguarddist
 value = 140
@@ -1189,6 +1351,24 @@ value = 140
 type = U    ;Leave state type unchanged
 physics = U ;Leave physics unchanged
 ctrl = 1
+
+[State 0, Hi to Lo]
+type = StateTypeSet
+TriggerAll = StateType = S
+triggerall = ailevel
+Trigger1 = var(59) = 0 && command = "holddown"
+Trigger2 = var(59) != 0 && P2StateType != A && (Random <= var(59)*20 || var(59) > 9)
+stateType = C
+physics = C
+
+[State 0, Lo to Hi]
+type = StateTypeSet
+TriggerAll = StateType = C
+TriggerAll = ailevel
+Trigger1 = var(59) = 0 && command != "holddown"
+Trigger2 = var(59) != 0 && P2StateType = A && (Random <= var(59)*20 || var(59) > 9)
+stateType = S
+physics = S
 
 [State 140, 1]
 type = ChangeAnim
@@ -1235,6 +1415,24 @@ movetype= H
 physics = N
 velset = 0,0
 
+[State 0, Hi to Lo]
+type = StateTypeSet
+TriggerAll = StateType = S
+triggerall = ailevel
+Trigger1 = var(59) = 0 && command = "holddown"
+Trigger2 = var(59) != 0 && P2StateType != A && (Random <= var(59)*20 || var(59) > 9)
+stateType = C
+physics = C
+
+[State 0, Lo to Hi]
+type = StateTypeSet
+TriggerAll = StateType = C
+TriggerAll = ailevel
+Trigger1 = var(59) = 0 && command != "holddown"
+Trigger2 = var(59) != 0 && P2StateType = A && (Random <= var(59)*20 || var(59) > 9)
+stateType = S
+physics = S
+
 [State 150, 1]
 type = ChangeAnim
 trigger1 = 1
@@ -1242,8 +1440,15 @@ value = 150
 
 [State 150, 2]
 type = ChangeState
+triggerall = !ailevel
 trigger1 = HitShakeOver
 value = 151 + 2*(command = "holddown")
+
+[State 150, 2]
+type = ChangeState
+triggerall = ailevel
+trigger1 = HitShakeOver
+value = 151
 
 [State 150, Hi to Lo]
 type = StateTypeSet
@@ -1301,10 +1506,15 @@ physics = S
 
 [State 151, 4]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = HitOver
 value = 130
 ctrl = 1
-
+[State 151, 4]
+type = ChangeState
+trigger1 = ailevel
+trigger1 = HitOver
+value = ifelse((enemy,statetype=C),131,130)
 ;---------------------------------------------------------------------------
 ; CGUARDHIT (shaking)
 [Statedef 152]
@@ -1320,9 +1530,14 @@ value = 151
 
 [State 152, 3]
 type = ChangeState
+triggerall = !ailevel
 trigger1 = HitShakeOver
 value = 151 + 2*(command = "holddown")
-
+[State 150, 2]
+type = ChangeState
+triggerall = ailevel
+trigger1 = HitShakeOver
+value = 151
 [State 152, Hi to Lo]
 type = StateTypeSet
 trigger1 = statetype = S && command = "holddown"
@@ -1379,10 +1594,15 @@ physics = S
 
 [State 153, 4]
 type = ChangeState
+trigger1 = !ailevel
 trigger1 = HitOver
 value = 131
 ctrl = 1
-
+[State 151, 4]
+type = ChangeState
+trigger1 = ailevel
+trigger1 = HitOver
+value = ifelse((enemy,statetype=C),131,130)
 ;---------------------------------------------------------------------------
 ; AGUARDHIT (shaking)
 [Statedef 154]
@@ -3516,16 +3736,14 @@ ignorehitpause = 1
 [State 0, Astral Bullshit]
 type = VarSet
 trigger1 = ((root,stateno = 180140 || root,stateno = 181) || root,stateno = 140002 || (root,stateno = 141002 || roundstate>2 && root, prevstateno = 141002) || root,stateno = 1410025 || root,numhelper(911)) && root,movetype != H
-trigger2 = enemy, name = "Dilly" || enemy, name = "Parallel Dilly" || enemy, name = "Unlimited Dilly" || enemy, name = "Hypha the Chespin"
-trigger2 = enemy, stateno = [4010,4099]
-trigger3 = enemy, name = "Oliver Andersen"
-trigger3 = enemy, stateno = [4301,4399]
-trigger4 = enemy, name = "Nick (Mega Man)"
-trigger4 = enemy, stateno = [4002,4099]
-trigger5 = enemy, name = "Greninja_GBVS" || enemy, name = "NoNerfs_GBVS"
-trigger5 = (enemy, stateno = [3010,3019]) && enemy,movetype != H || (matchover && enemy,teammode != simul && (enemy,fvar(2)||enemy,stateno=[180,189])); I know it's called a Super Skybound Art and not an Astral Heat, but shut up
-trigger6 = enemy, name = "Maavo"
-trigger6 = ((enemy,stateno = 180140 || enemy,stateno = 181) || enemy,stateno = 140002 || (enemy,stateno = 141002 || roundstate>2 && enemy, prevstateno = 141002) || enemy,stateno = 1410025 || enemy,numhelper(911)) && enemy,movetype != H
+trigger2 = enemy, name = "Oliver Andersen"
+trigger2 = enemy, stateno = [4301,4399]
+trigger3 = enemy, name = "Nick (Mega Man)"
+trigger3 = enemy, stateno = [4002,4099]
+trigger4 = enemy, name = "Greninja_GBVS" || enemy, name = "NoNerfs_GBVS"
+trigger4 = (enemy, stateno = [3010,3019]) && enemy,movetype != H || (matchover && enemy,teammode != simul && (enemy,fvar(2)||enemy,stateno=[180,189])); I know it's called a Super Skybound Art and not an Astral Heat, but shut up
+trigger5 = enemy, name = "Maavo"
+trigger5 = ((enemy,stateno = 180140 || enemy,stateno = 181) || enemy,stateno = 140002 || (enemy,stateno = 141002 || roundstate>2 && enemy, prevstateno = 141002) || enemy,stateno = 1410025 || enemy,numhelper(911)) && enemy,movetype != H
 var(40) = 1
 ignorehitpause = 1
 
@@ -3982,7 +4200,7 @@ trigger33 = enemy, name = "Kuromaru/Strike"
 trigger34 = enemy, name = "roper"
 trigger35 = enemy, name = "Tendril"
 trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
+trigger37 = Name != "Maavo" 
 trigger38 = Authorname != "MaavoTheHuman"
 value = S1,0
 loop = 1
