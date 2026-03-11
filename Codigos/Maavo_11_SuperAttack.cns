@@ -258,14 +258,20 @@ size.yscale = .30
 
 [State 19000, end]
 type = ChangeState
-triggerall = var(9) <= 1
-trigger1 = AnimTime = 0
+triggerall = AnimTime = 0
+trigger1 = !AILevel
+trigger1 = var(9) <= 1
+trigger2 = AILevel
+trigger2 = p2bodydist x < 35
 value = 190001
 ctrl = 0
 [State 19000, end]
 type = ChangeState
-triggerall = var(9) >= 2
-trigger1 = AnimTime = 0
+triggerall = AnimTime = 0
+trigger1 = !AILevel
+trigger1 = var(9) >= 2
+trigger2 = AILevel
+trigger2 = p2bodydist x > 35
 value = 190002
 ctrl = 0
 
@@ -508,14 +514,20 @@ size.yscale = .30
 
 [State 19000, end]
 type = ChangeState
-triggerall = var(9) <= 1
-trigger1 = AnimTime = 0
+triggerall = AnimTime = 0
+trigger1 = !AILevel
+trigger1 = var(9) <= 1
+trigger2 = AILevel
+trigger2 = p2bodydist x < 35
 value = 190001
 ctrl = 0
 [State 19000, end]
 type = ChangeState
-triggerall = var(9) >= 2
-trigger1 = AnimTime = 0
+triggerall = AnimTime = 0
+trigger1 = !AILevel
+trigger1 = var(9) >= 2
+trigger2 = AILevel
+trigger2 = p2bodydist x > 35
 value = 190002
 ctrl = 0
 

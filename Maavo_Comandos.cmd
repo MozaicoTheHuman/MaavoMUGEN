@@ -631,7 +631,6 @@ type = ChangeState
 value =  19000
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
 triggerall = power >= 1000 
-triggerall = p2bodydist x = [-20,30]&& var(9):=1 || p2bodydist x = [31,160]&& var(9):=2
 triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500 
 trigger1 = (stateno = [200,299]) || (stateno = [400,499]) || (stateno = [600,699])
