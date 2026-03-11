@@ -48,14 +48,6 @@ var(20) = 0
 ;5 - Italian
 ignorehitpause = 0
 
-[State 0, Scrapped Moves?]
-type = VarSet
-trigger1 = 1
-var(33) = 0
-;0 - Off
-;1 - On
-ignorehitpause = 1
-
 [State 0, Screen Resoultion?]
 type = VarSet
 trigger1 = 1
@@ -77,8 +69,8 @@ ignorehitpause = 1
 type = VarSet
 trigger1 = 1
 var(19) = 0
-;0 - Old (QCF inputs only, one version per move, no EX variants)
-;1 - New (more complex inputs, two versions for most moves, some moves have EX versions)
+;0 - Normal (QCF inputs only, one version per move, no EX variants)
+;1 - Alternative (more complex inputs, two versions for most moves, some moves have EX versions)
 ignorehitpause = 1
 
 [State 0, Victory BGM?]
@@ -95,7 +87,15 @@ var(52) = 2
 ;5: Triumph - Persona 5
 ignorehitpause = 1
 
-;-------------------------------------------------------------------------------------------------
+[State 0, Scrapped Moves?]
+type = VarSet
+trigger1 = 1
+var(33) = 0
+;0 - Off
+;1 - On
+ignorehitpause = 1
+
+;------------------------------------------------------------------------------------------------
 ; DO NOT EDIT ANYTHING BELOW THIS LINE
 ;-------------------------------------------------------------------------------------------------
 
