@@ -482,6 +482,37 @@ time = 1
 ;COOL FUCKIN AI STARTS HERE---------------------------------------------------------------------------
 
 
+;===========================================================================
+;This is not a move, but it sets up var(1) to be 1 if conditions are right
+;for a combo into a special move (used below).
+;Since a lot of special moves rely on the same conditions, this reduces
+;redundant logic.
+[State -1, Combo condition Reset]
+type = VarSet
+trigger1 = 1
+var(1) = 0
+
+[State -1, Combo condition Check]
+type = VarSet
+trigger1 = ctrl || (stateno = [100,109]) || stateno = 1022
+trigger2 = (stateno = [200,299]) || (stateno = [400,499]) || (stateno = [600,699])
+trigger2 = movecontact
+var(1) = 1
+
+[State -1, Combo condition Reset]
+type = VarSet
+trigger1 = 1
+var(2) = 0
+
+[State -1, Combo condition Check]
+type = VarSet
+trigger1 = statetype = A
+trigger1 = ctrl
+trigger2 = ((stateno = [500,520]) && anim = 1091) || (stateno = 2002 && anim = 2009) || (stateno = [2210,2212])
+trigger2 = movecontact
+var(2) = 1
+
+
 [State -1, Default Shit Disabled]
 type = AssertSpecial
 trigger1 = AILevel
@@ -489,12 +520,14 @@ flag = nowalk
 flag2 = NoStandGuard
 flag3 = NoCrouchGuard
 ignorehitpause = 1
+
 [State -1, Default Shit Disabled]
 type = AssertSpecial
 trigger1 = AILevel
 flag = noairguard
 flag2 = nocrouch
 ignorehitpause = 1
+
 [State 0, AI Probability]
 type = VarSet
 trigger1 = aiLevel
@@ -603,12 +636,8 @@ triggerall = statetype != A
 triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500 
 triggerall = (p2bodydist x - enemynear,vel y * 4)  = [-60*const(size.yscale),0]
-trigger1 = (stateno = [200,299]) || (stateno = [400,499]) || (stateno = [600,699])
-trigger1 = movecontact
-trigger2 = ((stateno = [500,520]) && anim = 1091) || (stateno = 2002 && anim = 2009) 
-trigger2 = (stateno = [2210,2212]) || stateno = 2002 && anim = 20032 && animelemtime(2) < 0
-trigger2 = movecontact
-trigger3 = !inguarddist  && ctrl
+trigger1 = var(1)||var(2)
+trigger2 = !inguarddist  && ctrl
 ;All-Out Attack
 [State -1, AI Tornado Super]
 type = ChangeState
@@ -619,12 +648,8 @@ triggerall = statetype != A
 triggerall = p2bodydist x = [0,60]&& var(9):=1 || p2bodydist x = [60,200]&& var(9):=2
 triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500 
-trigger1 = (stateno = [200,299]) || (stateno = [400,499]) || (stateno = [600,699])
-trigger1 = movecontact
-trigger2 = ((stateno = [500,520]) && anim = 1091) || (stateno = 2002 && anim = 2009) 
-trigger2 = (stateno = [2210,2212]) || stateno = 2002 && anim = 20032 && animelemtime(2) < 0
-trigger2 = movecontact
-trigger3 = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || stateno = 1022
+trigger1 = var(1)||var(2)
+trigger2 = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || stateno = 1022
 ;All-Out Attack
 [State -1, AI Air Combo Super]
 type = ChangeState
@@ -632,13 +657,9 @@ value =  19000
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
 triggerall = power >= 1000 
 triggerall = enemynear(!enemynear,alive), statetype != L
-triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500 
-trigger1 = (stateno = [200,299]) || (stateno = [400,499]) || (stateno = [600,699])
-trigger1 = movecontact
-trigger2 = ((stateno = [500,520]) && anim = 1091) || (stateno = 2002 && anim = 2009) 
-trigger2 = (stateno = [2210,2212]) || stateno = 2002 && anim = 20032 && animelemtime(2) < 0
-trigger2 = movecontact
-trigger3 = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || stateno = 1022
+triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500  
+trigger1 = var(1)||var(2)
+trigger2 = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || stateno = 1022
 ;--------------------------------------------z-------------------------------
 ;Ve, Maritza!
 [State -1, AI Ivvete]
@@ -800,36 +821,6 @@ triggerall = !aiLevel
 trigger1 = command = "BB"
 trigger1 = statetype = S
 trigger1 = ctrl
-
-;===========================================================================
-;This is not a move, but it sets up var(1) to be 1 if conditions are right
-;for a combo into a special move (used below).
-;Since a lot of special moves rely on the same conditions, this reduces
-;redundant logic.
-[State -1, Combo condition Reset]
-type = VarSet
-trigger1 = 1
-var(1) = 0
-
-[State -1, Combo condition Check]
-type = VarSet
-trigger1 = ctrl || (stateno = [100,109]) || stateno = 1022
-trigger2 = (stateno = [200,299]) || (stateno = [400,499]) || (stateno = [600,699])
-trigger2 = movecontact
-var(1) = 1
-
-[State -1, Combo condition Reset]
-type = VarSet
-trigger1 = 1
-var(2) = 0
-
-[State -1, Combo condition Check]
-type = VarSet
-trigger1 = statetype = A
-trigger1 = ctrl
-trigger2 = ((stateno = [500,520]) && anim = 1091) || (stateno = 2002 && anim = 2009) || (stateno = [2210,2212])
-trigger2 = movecontact
-var(2) = 1
 
 ;===========================================================================
 ;---------------------------------------------------------------------------
