@@ -1059,13 +1059,18 @@ type = S
 physics = N
 anim = 100
 sprpriority = 1
-poweradd = ceil(23*fvar(8))
+
 ctrl = 0
 [State 0, VarRandom]
 type = VarSet
 trigger1 = time = 1
 fv = 23
 value = 3+(random/280)
+
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = time = 1
+value = ceil(23*fvar(8))
 
 [State FootSteps]
 type = PlaySnd
@@ -1149,13 +1154,17 @@ physics = N
 anim = 105
 sprpriority = 1
 ctrl = 0
-poweradd = ceil(23*fvar(8))
 
 [State 0, VarRandom]
 type = VarSet
 trigger1 = time = 1
 fv = 23
 value = 3+(random/280)
+
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = time = 1
+value = ceil(23*fvar(8))
 
 [State FootSteps]
 type = PlaySnd
