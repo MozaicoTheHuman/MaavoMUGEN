@@ -844,7 +844,7 @@ trigger5 = movecontact && var(5) <= 0
 trigger5 = var(54):= 1321 || 1
 ;---------------------------------------------------------------------------
 ;Run Fwd
-z[State -1, Run Fwd]
+[State -1, Run Fwd]
 type = ChangeState
 value = 100
 triggerall = !aiLevel
