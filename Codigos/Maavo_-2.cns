@@ -327,8 +327,8 @@ ignorehitpause = 1
 [State 0, AppendToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "scaling table = %d numhits = %d cooldown = %d\nproration = %f rage = %f gain = %f"
-params = var(10),var(11), var(8), fvar(11), fvar(12), fvar(8)
+text = "scaling table = %d numhits = %d cooldown = %d\nproration = %f rage = %f gain = %f gain = %d"
+params = var(10),var(11), var(8), fvar(11), fvar(12), fvar(8), var(54)
 ignorehitpause = 1
 
 [State 0, Cooldown]
