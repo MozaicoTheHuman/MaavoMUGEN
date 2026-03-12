@@ -494,9 +494,10 @@ var(1) = 0
 
 [State -1, Combo condition Check]
 type = VarSet
-trigger1 = ctrl || (stateno = [100,109]) || stateno = 1022
+trigger1 = ctrl || (stateno = [100,109]) || stateno = 1022||(stateno = [116,117])
 trigger2 = (stateno = [200,299]) || (stateno = [400,499]) || (stateno = [600,699])
 trigger2 = movecontact
+trigger3 = helper(84803),movehit
 var(1) = 1
 
 [State -1, Combo condition Reset]
@@ -573,7 +574,7 @@ trigger2 = enemynear,stateno = 528|| enemynear,stateno = 628 || enemynear,staten
 type = ChangeState
 value = 116
 triggerall = AILevel && roundstate = 2 && alive && numenemy
-triggerall = statetype != A && random < 50+ifelse(life<lifemax*.5||enemynear,statetype = L,100,0)
+triggerall = statetype != A && random < 50+ifelse(life<lifemax*.5||enemynear,statetype = L,50,0)
 ;triggerall = enemy,statetype != L
 triggerall = ctrl||stateno = 0||(stateno = [20,22])|| (stateno = [100,109])
 trigger1 = !InGuardDist
@@ -586,8 +587,7 @@ triggerall = statetype != A
 triggerall = ctrl||stateno = 0||stateno = 21
 trigger1 = p2bodydist x - (enemynear,vel x*4) >= 120
 trigger1 = random < 100 
-trigger2 = enemynear,stateno = 3745 && p2bodydist x  >= 60
-trigger3 = enemynear,stateno = 528 && (p2bodydist x- enemynear,vel x * 4)  >= 60
+trigger2 = enemynear,stateno = 528 && (p2bodydist x- enemynear,vel x * 4)  >= 60
 
 [State -1, AI Walk]
 type = ChangeState
@@ -610,7 +610,7 @@ trigger1 = p2bodydist x != [0,100]
 [State -1, AI Counter]
 type = changestate
 triggerall = enemynear(!enemynear,alive), statetype != L
-triggerall = aiLevel && roundstate=2 && alive && numenemy
+triggerall = aiLevel && roundstate=2 && alive && numenemy && !helper(84803),movehit
 triggerall = ctrl || stateno=[120,140]||stateno = 0 ||(stateno = [100,109]) || stateno = 1022
 triggerall = statetype != A && pos y = 0
 trigger1 = (enemynear(0),movetype = A && enemynear(0),hitdefattr = SCA, NA, SA, HA || enemynear(1),movetype = A && enemynear(1),hitdefattr = SCA, NA, SA, HA)
