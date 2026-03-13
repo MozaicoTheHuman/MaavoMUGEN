@@ -731,6 +731,7 @@ physics = N
 anim = 104
 sprpriority = 1
 ctrl = 0
+
 [State 0, ClearClipboard]
 type = CtrlSet
 trigger1 = animelem = 2
@@ -1065,7 +1066,7 @@ ctrl = 0
 type = VarSet
 trigger1 = time = 1
 fv = 23
-value = 3+(random/280)
+value = 2+(random/285)
 
 [State 0, PowerAdd]
 type = PowerAdd
@@ -1159,7 +1160,7 @@ ctrl = 0
 type = VarSet
 trigger1 = time = 1
 fv = 23
-value = 3+(random/280)
+value = 2+(random/285)
 
 [State 0, PowerAdd]
 type = PowerAdd
@@ -3870,7 +3871,7 @@ type = PlaySnd
 trigger1 = time = 0
 value = S5500, 0
 
-[State 5500, 1] ;Use continue animation if available
+[State 5500, 1]
 type = ChangeAnim
 trigger1 = time = 0
 trigger1 = SelfAnimExist(5500)

@@ -431,12 +431,12 @@ time = 1
 name = "holdfwd";Required (do not remove)
 command = /$F
 time = 1
-
+buffer.time = 3
 [Command]
 name = "holdback";Required (do not remove)
 command = /$B
 time = 1
-
+buffer.time = 3
 [Command]
 name = "holdup" ;Required (do not remove)
 command = /$U
@@ -557,10 +557,10 @@ trigger1 =  !inguarddist && enemynear,movetype != A
 type = ChangeState
 value = var(54)
 triggerall = AILevel>4 && RoundState = 2 && numenemy 
+triggerall = statetype != A       
+triggerall = pos y = 0     
 trigger1 = stateno = [130,131] && enemynear,moveguarded && enemynear,animtime < 0 && !(enemynear,ctrl)
 trigger1 = var(54):= ifelse(random<500,420,200) || 1
-
-
 
 [State -1, AI Jump]
 type = ChangeState
