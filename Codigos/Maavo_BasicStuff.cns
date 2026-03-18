@@ -1366,10 +1366,10 @@ ctrl = 0
 anim = 190
 velset = 0,0
 
-;[State 190, 0] ;V.S. Oliver
-;type = ChangeState
-;trigger1 = enemy, name = "Oliver Andersen" && EnemyNear,AuthorName = "Oliver As Latias"
-;value = 1951
+[State 190, 0] ;V.S. Oliver
+type = ChangeState
+trigger1 = enemy, name = "Oliver Andersen" && EnemyNear,AuthorName = "Oliver As Latias"
+value = 1951
 
 [State 190, 4] ;Intro 1
 type = ChangeState
@@ -1433,7 +1433,7 @@ ampl = -6
 
 [State 0, PlaySnd]
 type = PlaySnd
-trigger1 = AnimElem = 1
+trigger1 = time = 1
 value = S191,2
 freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
@@ -1468,225 +1468,225 @@ value = 0
 
 ;---------------------------------------------------------------------------
 ;Intro (Special) - V.S. Oliver
-;[Statedef 1951]
-;type = S
-;ctrl = 0
-;anim = 1951
-;velset = 0,0
-;
-;[State 0, AssertSpecial]
-;type = AssertSpecial
-;trigger1 =1 
-;flag = nomusic
-;
-;[State 19001, 1]
-;type = Explod
-;trigger1 = Time = 0
-;id = 19513
-;anim = 19513+ (var(16) * 10000)
-;pos = 0+ (var(17) * -60),0
-;postype = back
-;Facing = IfElse(facing = 1, 1, -1)
-;sprpriority = 30
-;removeongethit = 1
-;removetime=650
-;ontop = 1
-;scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
-;bindtime=-1
-;removeongethit = 1
-;
-;[State 19001, 1]
-;type = Explod
-;trigger1 = AnimElem = 30
-;id = 19514
-;anim = 19514
-;pos = 0,0
-;postype = p1
-;sprpriority = 3
-;removeongethit = 1
-;removetime= 999
-;scale = .4,.4
-;supermovetime = 9999
-;pausemovetime = 99999
-;removeongethit = 1
-;
-;[State 0, RemoveExplod]
-;type = RemoveExplod
-;trigger1 = AnimElem = 31
-;id = 19514
-;ignorehitpause = 1
-;
-;[State 0, Helper]
-;type = Helper
-;trigger1 = animelem = 2
-;helpertype = normal
-;name = "Slow Motion Sound" 
-;ID = 19512
-;stateno = 19512+random%2
-;pos = 0,0
-;postype = p1
-;facing = 1
-;keyctrl = 0
-;ownpal = 0
-;supermovetime = 0
-;pausemovetime = 0
-;ignorehitpause = 1
-;
-;[State 0, Helper]
-;type = Helper
-;trigger1 = time = 0
-;helpertype = normal
-;name = "Sketchbook" 
-;ID = 19511
-;stateno = 19511
-;pos = -35,0
-;postype = p1 
-;facing = 1
-;keyctrl = 0
-;ownpal = 0
-;supermovetime = 0
-;pausemovetime = 0
-;ignorehitpause = 1
-;
-;[State 0, PlaySnd]
-;type = PlaySnd
-;trigger1 = AnimElem = 16
-;value = S240,3
-;channel = 18
-;
-;[State 0, PlaySnd]
-;type = PlaySnd
-;trigger1 = AnimElem = 20
-;value = S1920,1
-;channel = 18
-;
-;[State 0, PlaySnd]
-;type = PlaySnd
-;trigger1 = time = 248
-;value = S190,0
-;
-;[State 190, 2]
-;type = AssertSpecial
-;trigger1 = 1
-;flag = Intro
-;
-;[State 190, 4]
-;type = ChangeState
-;trigger1 = AnimTime = 0
-;value = 0
-;
+[Statedef 1951]
+type = S
+ctrl = 0
+anim = 1951
+velset = 0,0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 =1 
+flag = nomusic
+
+[State 19001, 1]
+type = Explod
+trigger1 = Time = 0
+id = 19513
+anim = 19513+ (var(16) * 10000)
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 30
+removeongethit = 1
+removetime=650
+ontop = 1
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+removeongethit = 1
+
+[State 19001, 1]
+type = Explod
+trigger1 = AnimElem = 30
+id = 19514
+anim = 19514
+pos = 0,0
+postype = p1
+sprpriority = 3
+removeongethit = 1
+removetime= 999
+scale = 0.43,0.43
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = AnimElem = 31
+id = 19514
+ignorehitpause = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 2
+helpertype = normal
+name = "Slow Motion Sound" 
+ID = 19512
+stateno = 19512+random%2
+pos = 0,0
+postype = p1
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+ignorehitpause = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = time = 0
+helpertype = normal
+name = "Sketchbook" 
+ID = 19511
+stateno = 19511
+pos = -35,0
+postype = p1 
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+ignorehitpause = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 16
+value = S240,3
+channel = 18
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 20
+value = S1920,1
+channel = 18
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 248
+value = S190,0
+
+[State 190, 2]
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 190, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
 ;---------------------------------------------------------------------------
 ;Intro (Special) - V.S. Oliver - Sketchbook
-;[Statedef 19511]
-;type = S
-;ctrl = 0
-;anim = 19511
-;velset = 0,0
-;
-;[State 19001, 1]
-;type = Explod
-;trigger1 = Time = 248
-;id = 29814
-;anim = 29814
-;pos = 0,0
-;postype = back
-;sprpriority = 40
-;removeongethit = 1
-;removetime=6
-;scale = 20,20
-;supermovetime=6
-;bindtime=-1
-;supermovetime = 9999
-;pausemovetime = 99999
-;removeongethit = 1
-;
-;[State 0, Explod]
-;type = Explod
-;trigger1 = AnimElem = 247
-;anim = 19512
-;ID = 19512
-;pos = 0,0
-;postype = p1
-;facing = 1
-;vfacing = 1
-;bindtime = 1
-;removetime = 4
-;sprpriority = 3
-;
-;[State 190, 2]
-;type = AssertSpecial
-;trigger1 = 1
-;flag = noshadow
-;
-;[State 1100, 3]
-;type = AngleDraw
-;Trigger1 = time > 250
-;value = 3*time
-;
-;[State 0, VelSet]
-;type = Velset
-;trigger1 = time > 250
-;x = -2
-;y = -2
-;
-;[State 0, VelSet]
-;type = Velset
-;trigger1 = time > 250 && time < 253
-;x = -3
-;y = -3
-;
-;[State 190, 4]
-;type = destroyself
-;trigger1 = time = 328
-;
+[Statedef 19511]
+type = S
+ctrl = 0
+anim = 19511
+velset = 0,0
+
+[State 19001, 1]
+type = Explod
+trigger1 = Time = 248
+id = 29814
+anim = 29814
+pos = 0,0
+postype = back
+sprpriority = 40
+removeongethit = 1
+removetime=6
+scale = 20,20
+supermovetime=6
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 247
+anim = 19512
+ID = 19512
+pos = 0,0
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 4
+sprpriority = 3
+
+[State 190, 2]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 1100, 3]
+type = AngleDraw
+Trigger1 = time > 250
+value = 3*time
+
+[State 0, VelSet]
+type = Velset
+trigger1 = time > 250
+x = -2
+y = -2
+
+[State 0, VelSet]
+type = Velset
+trigger1 = time > 250 && time < 253
+x = -3
+y = -3
+
+[State 190, 4]
+type = destroyself
+trigger1 = time = 328
+
 ;---------------------------------------------------------------------------
 ;Intro (Special) - V.S. Oliver - Slow 1
-;[StateDef 19512]
-;Type    = A
-;movetype= I
-;physics = N
-;anim= 616
-;
-;[State 0, PlaySnd]
-;type = PlaySnd
-;trigger1 = time = 0
-;value = S1951,0
-;
-;[State 0, PlaySnd]
-;type = PlaySnd
-;trigger1 = time = 0
-;value = S1951,0
-;
-;[State 0, DestroySelf]
-;type = DestroySelf
-;trigger1 = time = 5 
-;
+[StateDef 19512]
+Type    = A
+movetype= I
+physics = N
+anim= 616
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1951,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1951,0
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 5 
+
 ;---------------------------------------------------------------------------
 ;Intro (Special) - V.S. Oliver - Slow 2
-;[StateDef 19513]
-;Type    = A
-;movetype= I
-;physics = N
-;anim= 616
-;
-;[State 0, PlaySnd]
-;type = PlaySnd
-;trigger1 = time = 0
-;value = S1951,1
-;
-;[State 0, PlaySnd]
-;type = PlaySnd
-;trigger1 = time = 0
-;value = S1951,1
-;
-;[State 0, PlaySnd]
-;type = PlaySnd
-;trigger1 = time = 0
-;value = S1951,1
-;
-;[State 0, DestroySelf]
-;type = DestroySelf
-;trigger1 = time = 5 
+[StateDef 19513]
+Type    = A
+movetype= I
+physics = N
+anim= 616
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1951,1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1951,1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1951,1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 5 
 
 ;---------------------------------------------------------------------------
 ;Neutral Taunt
@@ -1798,3 +1798,383 @@ type = CtrlSet
 trigger1 = roundstate = 2 && time = 20
 value = 1
 ignorehitpause = 1
+
+
+;---------------------------------------------------------------------------
+; Standing Parry
+[Statedef 700]
+type    = S
+movetype = I
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 700
+
+[State 100, Land Effect]
+type = Explod
+trigger1 = animelemtime(2) = 0
+anim = 3004
+scale = 0.9,0.9
+postype = p1
+pos = 1,-35
+sprpriority = -2
+ownpal = 1
+removeongethit = 1
+pausemovetime = 99999
+supermovetime = 99999
+ignorehitpause = 1
+persistent = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(2) = 0
+value = S709,0
+channel = 1
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time < 18
+value = SCA
+time = 1
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = animelemtime(2) = 0
+time = 5
+freq = 100
+ampl = -4
+phase = 90
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = animelemtime(2) = 5
+time = 6
+freq = 100
+ampl = -2
+phase = 90
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = animelemtime(2) = 0
+time = 1
+add = 256,256,256
+ignorehitpause = 1
+[State 0, PalFX]
+type = PalFX
+triggerall = time %2 = 0
+trigger1 = animelemtime(2) > 0
+trigger1 = animelemtime(2) < 10
+time = 1
+add = 128,128,128
+ignorehitpause = 1
+
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 0
+time = 4
+mul = 128,128,128
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 4
+time = 1
+mul = 149,149,149
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 5
+time = 1
+mul = 170,170,170
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = -1
+trigger2 = animelemtime(2) = 6
+time = 1
+mul = 191,191,191
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 7
+time = 1
+mul = 212,212,212
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 8
+time = 1
+mul = 233,233,233
+ignorehitpause = 1
+[State 0, Pause]
+type = Pause
+trigger1 = !time
+time = 18
+movetime = 18
+pausebg = 0
+ignorehitpause = 1
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = time = 18
+value = 1
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Crouching Parry
+[Statedef 710]
+type    = C
+movetype = I
+physics = C
+velset = 0,0
+ctrl = 0
+anim = 710
+
+[State 100, Land Effect]
+type = Explod
+trigger1 = animelemtime(2) = 0
+anim = 3004
+scale = 0.9,0.9
+postype = p1
+pos = 1,-35
+sprpriority = -2
+ownpal = 1
+removeongethit = 1
+pausemovetime = 99999
+supermovetime = 99999
+ignorehitpause = 1
+persistent = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(2) = 0
+value = S709,0
+channel = 1
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time < 18
+value = SCA
+time = 1
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = animelemtime(2) = 0
+time = 5
+freq = 100
+ampl = -4
+phase = 90
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = animelemtime(2) = 5
+time = 6
+freq = 100
+ampl = -2
+phase = 90
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = animelemtime(2) = 0
+time = 1
+add = 256,256,256
+ignorehitpause = 1
+[State 0, PalFX]
+type = PalFX
+triggerall = time %2 = 0
+trigger1 = animelemtime(2) > 0
+trigger1 = animelemtime(2) < 10
+time = 1
+add = 128,128,128
+ignorehitpause = 1
+
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 0
+time = 4
+mul = 128,128,128
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 4
+time = 1
+mul = 149,149,149
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 5
+time = 1
+mul = 170,170,170
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = -1
+trigger2 = animelemtime(2) = 6
+time = 1
+mul = 191,191,191
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 7
+time = 1
+mul = 212,212,212
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 8
+time = 1
+mul = 233,233,233
+ignorehitpause = 1
+[State 0, Pause]
+type = Pause
+trigger1 = !time
+time = 18
+movetime = 18
+pausebg = 0
+ignorehitpause = 1
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = time = 18
+value = 1
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = animtime = 0
+value = 1
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Jumping Parry
+[Statedef 720]
+type    = A
+movetype = I
+physics = N
+velset = vel x,vel y
+ctrl = 0
+anim = 720
+
+[State 100, Land Effect]
+type = Explod
+trigger1 = animelemtime(2) = 0
+anim = 3004
+scale = 0.9,0.9
+postype = p1
+pos = 1,-35
+sprpriority = -2
+ownpal = 1
+removeongethit = 1
+pausemovetime = 99999
+supermovetime = 99999
+ignorehitpause = 1
+persistent = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(2) = 0
+value = S709,0
+channel = 1
+ignorehitpause = 1
+
+[State 0, VelSet]
+type = VelSet
+triggerall = !time
+trigger1 = vel y > -3
+y = -3
+persistent = 0
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time < 18
+value = SCA
+time = 1
+
+[State 0, PosFreeze]
+type = PosFreeze
+trigger1 = time < 18
+value = 1
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = time = 18
+physics = A         ;A,C,S,N
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = animelemtime(2) = 0
+time = 5
+freq = 100
+ampl = -4
+phase = 90
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = animelemtime(2) = 5
+time = 6
+freq = 100
+ampl = -2
+phase = 90
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = animelemtime(2) = 0
+time = 1
+add = 256,256,256
+ignorehitpause = 1
+[State 0, PalFX]
+type = PalFX
+triggerall = time %2 = 0
+trigger1 = animelemtime(2) > 0
+trigger1 = animelemtime(2) < 10
+time = 1
+add = 128,128,128
+ignorehitpause = 1
+
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 0
+time = 4
+mul = 128,128,128
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 4
+time = 1
+mul = 149,149,149
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 5
+time = 1
+mul = 170,170,170
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = -1
+trigger2 = animelemtime(2) = 6
+time = 1
+mul = 191,191,191
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 7
+time = 1
+mul = 212,212,212
+ignorehitpause = 1
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = animelemtime(2) = 8
+time = 1
+mul = 233,233,233
+ignorehitpause = 1
+[State 0, Pause]
+type = Pause
+trigger1 = !time
+time = 18
+movetime = 18
+pausebg = 0
+ignorehitpause = 1
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = time = 18
+value = 1

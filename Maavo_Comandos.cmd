@@ -431,12 +431,12 @@ time = 1
 name = "holdfwd";Required (do not remove)
 command = /$F
 time = 1
-buffer.time = 3
+;buffer.time = 3
 [Command]
 name = "holdback";Required (do not remove)
 command = /$B
 time = 1
-buffer.time = 3
+;buffer.time = 3
 [Command]
 name = "holdup" ;Required (do not remove)
 command = /$U
@@ -1151,6 +1151,55 @@ triggerall = !aiLevel
 triggerall = command = "FF_x"
 trigger1 = statetype != A
 trigger1 = var(1) ;Use combo condition (above)
+
+;---------------------------------------------------------------------------
+; Parry
+[State 0, Standing]
+type = HitOverride
+triggerall = !ailevel && roundstate = 2
+triggerall = statetype = S || stateno=5120
+trigger1 = ctrl || stateno = 700 || stateno = 710 || stateno=5120
+trigger1 = command = "fwd" && command != "down" && command != "up" && command != "back"
+trigger1 = var(24):=1
+attr = SA,AA,AP
+stateno = 700
+slot = 0
+time = 7
+
+[State 0, Crouching]
+type = HitOverride
+triggerall = !ailevel && roundstate = 2
+triggerall = statetype != A
+trigger1 = ctrl || stateno = 700 || stateno = 710 || stateno=5120
+trigger1 = command = "down" && command != "fwd" && command != "up" && command != "back"
+trigger1 = var(24):=2
+attr = C,AA,AP
+stateno = 710
+slot = 0
+time = 7
+
+[State 0, Jumping]
+type = HitOverride
+triggerall = !ailevel && roundstate = 2
+triggerall = statetype = A
+trigger1 = ctrl || stateno=720
+trigger1 = command = "fwd" && command != "down" && command != "up" && command != "back"
+trigger1 = var(24):=3
+attr = SA,AA,AP
+stateno = 720
+forceair = 1
+slot = 0
+time = 7
+
+[State 0, Cancel]
+type = HitOverride
+trigger1 = !ctrl&&(stateno != [700,720])&&stateno != 5120
+trigger2 = movetype != I || (stateno = [100,109]) || (stateno = [120,132])
+trigger3 = !ailevel && (command = "holdback" || command = "holdup")
+trigger4 = (statetype = S || statetype = C) && var(24) != [1,2]
+trigger5 = statetype = A && var(24) != 3
+slot = 0
+time = 0
 
 ;---------------------------------------------------------------------------
 ;Taunt

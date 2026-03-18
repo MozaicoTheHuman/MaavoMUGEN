@@ -129,9 +129,6 @@ removeongethit = 1
 type = RemoveExplod
 trigger1 = animelem = 6
 id = 190011
-;ignorehitpause = 
-;persistent = 
-
 [State 19001, 1]
 type = Explod
 trigger1 = animelem = 3

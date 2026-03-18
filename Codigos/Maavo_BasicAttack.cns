@@ -86,7 +86,7 @@ type = Helper
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
-ID = 3000
+ID = 33101
 stateno = 3000+random%3
 pos = 55,-47
 postype = p1
@@ -511,7 +511,7 @@ hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 2, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 ;Hit/Miss/Dodge type (Def: Hit)
 pausetime = 8, 8                 ;Time attacker pauses, time opponent shakes
-sparkno = S3000                      ;Spark anim no (Def: set above)
+sparkno = S616                      ;Spark anim no (Def: set above)
 sparkxy = -20,-75              ;X-offset for the "hit spark" rel. to p2,
 ;Y-offset for the spark rel. to p1
 hitsound = S240,6                  ;Sound to play on hit
@@ -549,7 +549,24 @@ PauseMoveTime = 9999
 SuperMoveTime = 9999
 ignorehitpause = 1
 persistent = 0
-
+[State 0, Helper]
+type = Helper
+trigger1 = movehit
+helpertype = normal ;player
+name = "Hit Spark"
+ID = 33101
+stateno = 33101
+pos = 75,-80
+postype = p1
+facing = 1
+keyctrl = 0
+ownpal = 1
+size.xscale = .70
+size.yscale = .70
+PauseMoveTime = 9999
+SuperMoveTime = 9999
+persistent = 0
+ignorehitpause = 1
 [State 0, CtrlSet]
 type = CtrlSet
 trigger1 = time > 15
@@ -677,14 +694,14 @@ type = Helper
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
-ID = 3000
-stateno = 3000+random%3
+ID = 33102
+stateno = 33102;+random%3
 pos = 65,-47
 postype = p1
 keyctrl = 0
 ownpal = 0
-size.xscale = .90
-size.yscale = .90
+size.xscale = .70
+size.yscale = .70
 persistent = 0
 ignorehitpause = 1
 
@@ -787,14 +804,14 @@ type = Helper
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
-ID = 3000
-stateno = 3011+random%3
-pos = 45,-50
+ID = 33103
+stateno = 33103;+random%3
+pos = 55,-30
 postype = p1
 keyctrl = 0
 ownpal = 0
-size.xscale = .90
-size.yscale = .90
+size.xscale = .70
+size.yscale = .70
 persistent = 0
 ignorehitpause = 1
 
@@ -2977,17 +2994,17 @@ air.velocity = -1.4,-4
 
 [State 0, Helper]
 type = Helper
-trigger1 = movehit
+trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
-ID = 3000
-stateno = 3008+random%3
-pos = 40,-65
+ID = 33101
+stateno = 33101
+pos = 75,-80
 postype = p1
 keyctrl = 0
-ownpal = 1
-size.xscale = .90
-size.yscale = .90
+ownpal = 0
+size.xscale = .70
+size.yscale = .70
 persistent = 0
 ignorehitpause = 1
 
@@ -3081,17 +3098,17 @@ air.velocity = -1.4,-3
 
 [State 0, Helper]
 type = Helper
-trigger1 = movehit = 1
+trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
-ID = 3000
-stateno = 3011+random%3
-pos = 50,-45
+ID = 33103
+stateno = 33103;+random%3
+pos = 45,-50
 postype = p1
 keyctrl = 0
-ownpal = 1
-size.xscale = .90
-size.yscale = .90
+ownpal = 0
+size.xscale = .70
+size.yscale = .70
 persistent = 0
 ignorehitpause = 1
 
@@ -3293,6 +3310,11 @@ ctrl = 0
 velset = 0, 0
 anim = 800
 
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+var(7) = 0
+
 [State 0, 1]
 type = HitDef
 trigger1 = Time = 0
@@ -3327,11 +3349,19 @@ poweradd = 0
 sprpriority = -1
 
 [State 0, ChangeState]
-type = ChangeState
-triggerall =-numtarget(800)
+type = VarSet
+triggerall = numtarget(800)
 triggerall = anim = 809 && time < 9
 trigger1 = target(800), command = "y"
 trigger1 = target(800), command = "holdfwd" || target(800), command = "holdback"
+var(7) = 1
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = anim = 809 && animelemtime(3) > 0
+trigger1 = numtarget(800) && var(7)
+trigger2 = !numtarget(800)
 value = 880
 ctrl = 0
 ignorehitpause = 1

@@ -196,25 +196,21 @@ statetype = A
 movetype = A
 physics = N
 
-[State 0, Hit Spark]
-type = Explod
+[State 0, Helper]
+type = Helper
 trigger1 = MoveHit
-anim = 3000
-ID = 3000
+helpertype = normal ;player
+name = "Hit Spark"
+ID = 33102
+stateno = 33102;+random%3
 pos = 40,-40
-postype = p1  ;p2,front,back,left,right
-facing = 1
-vfacing = 1
-bindtime = 1
-vel = 0,0
-accel = 0,0
-removetime = 16
-scale = .9,.9
+postype = p1
+keyctrl = 0
+ownpal = 0
+size.xscale = .70
+size.yscale = .70
 persistent = 0
-sprpriority = -2
 ignorehitpause = 1
-pausemovetime = 99999
-supermovetime = 99999
 
 [State 0, Movement Effect]
 type = Explod
@@ -1146,6 +1142,7 @@ value = S2000,2
 type = HitOverride
 trigger1 = Animelem = 3
 attr = SCA, AA, AP, AT
+slot = 1
 stateno = 2002
 time = 25
 
