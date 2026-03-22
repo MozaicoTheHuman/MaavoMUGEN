@@ -1060,11 +1060,11 @@ type = S
 physics = N
 anim = 100
 sprpriority = 1
-
 ctrl = 0
+
 [State 0, VarRandom]
 type = VarSet
-trigger1 = time = 1
+trigger1 = time = 0
 fv = 23
 value = 2+(random/285)
 
@@ -1158,7 +1158,7 @@ ctrl = 0
 
 [State 0, VarRandom]
 type = VarSet
-trigger1 = time = 1
+trigger1 = time = 0
 fv = 23
 value = 2+(random/285)
 

@@ -941,7 +941,6 @@ pos = (enemynear,pos x - root,pos x) * fvar(2), ((enemynear,pos y - pos y) - 70)
 bound = 0
 ignorehitpause = 1
 
-
 [State 0, PosSet]
 type = PosSet
 triggerall = NumTarget(19000)
@@ -980,14 +979,34 @@ pos = 0+ (var(17) * -110),0+ (var(17) * -25)
 postype = back
 sprpriority = -6
 removeongethit = 1
-removetime=200
+removetime=99999
 scale = .5+(var(17) * .3),.5+ (var(17) * .4)
-supermovetime=200
+bindtime=-1
+supermovetime = 99999
+pausemovetime = 99999
+removeongethit = 1
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Animelem = 29
+id = 611
+ignorehitpause = 1
+[State 19001, 1]
+type = Explod
+trigger1 = Animelem = 29
+id = 6111
+anim = 6111
+pos = 0+ (var(17) * -110),0+ (var(17) * -25)
+postype = back
+sprpriority = -6
+removeongethit = 1
+removetime=20
+scale = .5+(var(17) * .3),.5+ (var(17) * .4)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-
+ignorehitpause = 1
 [State 19001, Helper]
 type = Helper
 trigger1 = numhelper(911) = 0
@@ -1233,7 +1252,7 @@ trigger4 = AnimElem = 25 || AnimElem = 29
 helpertype = normal ;player
 name = "Hit Spark"
 ID = 3000
-stateno = 3000+random%3
+stateno = 4000+random%3
 pos = 60,-45
 postype = p1
 facing = 1
@@ -1386,7 +1405,7 @@ ignorehitpause = 1
 
 ;---------------------------------------------------------------------------
 ;Hyper - Gran Tornado! (Startup)
-[Statedef 87871]
+[Statedef 3000]
 type = S
 ctrl = 0
 anim = ifelse(var(9)=2,8788,8787)
@@ -1396,6 +1415,23 @@ movetype = A
 poweradd = 0
 physics = S
 sprpriority = 2
+
+[State 19001, 1]
+type = Explod
+trigger1 = animelem = 3
+id = 2271
+anim = 712
+pos = 0,0
+postype = back
+sprpriority = -6
+removeongethit = 1
+removetime=110
+scale = .5,.7
+supermovetime=110
+bindtime=-1
+pausemovetime = 99999
+sprpriority=-7
+removeongethit = 1
 
 [State 911, Zoom Snap]
 type = VarSet
@@ -1457,7 +1493,6 @@ ignorehitpause = 1
 
 [State 19001, 1]
 type = Explod
-triggerall = var(16) = 0
 trigger1 = AnimElem = 10
 id = 8789
 anim = 8789
@@ -1468,22 +1503,6 @@ removeongethit = 1
 bindtime = -1
 removetime=-1
 scale = .43,.43
-supermovetime = 9999
-removeongethit = 1
-
-[State 19001, 1]
-type = Explod
-triggerall = var(16) = 1
-trigger1 = AnimElem = 10
-id = 87891
-anim = 87891
-pos = 0,0
-postype = p1
-sprpriority = 3
-removeongethit = 1
-bindtime = -1
-removetime=-1
-scale = .4,.4
 supermovetime = 9999
 removeongethit = 1
 
@@ -1568,12 +1587,12 @@ size.yscale = .73
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = animelem = 5
-value = S24500,0+ (var(16) * 10000)
+value = S24500,0
 
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = animelem = 10
-value = S24500, 1+ (var(16) * 10000)
+value = S24500, 1
 
 [State 0, PlaySnd]
 type = PlaySnd
@@ -1606,23 +1625,6 @@ type = PlaySnd
 trigger1 = animelem = 10
 value = S24500,2
 channel = 3
-[State 19001, 1]
-type = Explod
-trigger1 = animelem = 3
-id = 3232
-anim = 712
-pos = 0,0
-postype = back
-sprpriority = -6
-removeongethit = 1
-removetime=120
-scale = .5,.7
-supermovetime=130
-bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
-sprpriority=-7
-removeongethit = 1
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1 = AnimElem = 12
@@ -1787,11 +1789,7 @@ pausemovetime = 99999
 supermovetime = 99999
 ignorehitpause = 1
 persistent = 1
-[State 0]
-type = Pause
-trigger1 = Name != "Maavo"
-trigger2 = Authorname != "MaavoTheHuman"
-time = 999
+
 [State 0, AngleDraw]
 type = AngleDraw
 trigger1 = time < 4
@@ -3734,41 +3732,13 @@ trigger1 = 1
 ignorehitpause=1
 flag=nokosnd
 
-[State 0, Helper]
-type = Helper
-triggerall = root,var(18) = 1
-trigger1 = Time = 1
-helpertype = normal
-name = "Final Touch"
-ID = 14673
-stateno = 14673
-ownpal = 0
-postype = back   ;p2,front,back,left,right
-size.xscale = .27+ (root,var(17) * .03)
-size.yscale = .27+ (root,var(17) * .03)
-
 [State 181, AssertSpecial]
 type = AssertSpecial
 trigger1 = 1
 flag = noBG
 
-[State 0, Helper]
-type = Helper
-triggerall = root,var(18) = 1
-trigger1 = Time = 2
-helpertype = normal
-name = "Text"
-ID = 1400031
-stateno = 1400031
-pos = 0,0
-ownpal = 0
-postype = back   ;p2,front,back,left,right
-size.xscale = .27
-size.yscale = .27
-
 [State 19001, 1]
 type = Explod
-triggerall = root,var(18) = 0
 trigger1 = Time = 0
 id = 672
 anim = 672
@@ -3794,7 +3764,6 @@ angle = 0.007*time
 
 [State 19001, 1]
 type = Explod
-triggerall = root,var(18) = 0
 trigger1 = Time = 2
 id = 675
 anim = 675
@@ -3816,37 +3785,8 @@ trigger1 = time > 2
 ID = 675
 angle = 0.007*time
 
-[State 0, Helper]
-type = Helper
-triggerall = root,var(18) = 1
-trigger1 = Time = 2
-helpertype = normal
-name = "Text lines"
-ID = 140003
-stateno = 140003
-pos = 0,0
-ownpal = 0
-postype = back   ;p2,front,back,left,right
-size.xscale = .27
-size.yscale = .27
-
-[State 0, Helper]
-type = Helper
-triggerall = root, var(18) = 1
-trigger1 = Time = 9999999
-helpertype = normal
-name = "Final Touch Shadow"
-ID = 146731
-stateno = 146731
-pos = 0,0
-ownpal = 0
-postype = back   ;p2,front,back,left,right
-size.xscale = .27+ (root,var(17) * .03)
-size.yscale = .27+ (root,var(17) * .03)
-
 [State 19001, 1]
 type = Explod
-triggerall = root,var(18) = 0
 trigger1 = Time = 2
 id = 676
 anim = 676
@@ -3864,7 +3804,6 @@ removeongethit = 1
 
 [State 19001, 1]
 type = Explod
-triggerall = root,var(18) = 0
 trigger1 = Time = 2
 id = 678
 anim = 678
@@ -3909,7 +3848,6 @@ size.yscale = .2
 
 [State 19001, 1]
 type = Explod
-triggerall = root,var(18) = 0
 trigger1 = Time = 2
 id = 673
 anim = 673
@@ -3931,37 +3869,8 @@ trigger1 = time > 2
 ID = 673
 angle = 0.007*time
 
-[State 0, Helper]
-type = Helper
-triggerall = root,var(18) = 1
-trigger1 = Time = 0
-helpertype = normal
-name = "BG"
-ID = 140671
-stateno = 140671
-pos = 30,20
-ownpal = 0
-postype = back   ;p2,front,back,left,right
-size.xscale = .26+ (root,var(17) * .03)
-size.yscale = .26+ (root,var(17) * .03)
-
-[State 0, Helper]
-type = Helper
-triggerall = root,var(18) = 1
-trigger1 = Time = 0
-helpertype = normal
-name = "Splash"
-ID = 140603
-stateno = 140603
-pos = 30,20
-ownpal = 0
-postype = back   ;p2,front,back,left,right
-size.xscale = .26+ (root,var(17) * .03)
-size.yscale = .26+ (root,var(17) * .03)
-
 [State 19001, 1]
 type = Explod
-triggerall = root,var(18) = 0
 trigger1 = Time = 0
 id = 671
 anim = 671

@@ -57,14 +57,6 @@ var(17) = 2
 ;2 - Auto
 ignorehitpause = 1
 
-[State 0, MUGEN Version?]
-type = VarSet
-trigger1 = 1
-var(18) = 0
-;0 - 1.1/Ikemen GO
-;1 - 1.0
-ignorehitpause = 1
-
 [State 0, Input Type?]
 type = VarSet
 trigger1 = 1

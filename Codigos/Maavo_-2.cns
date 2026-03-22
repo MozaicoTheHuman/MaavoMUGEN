@@ -8,7 +8,7 @@ type = VarSet
 trigger1 = stateno != 2002
 trigger1 = stateno != 19000
 trigger1 = stateno != [190001,190002]
-trigger1 = stateno != 87871
+trigger1 = stateno != 3000
 trigger1 = stateno != [17000,17002]
 trigger1 = stateno != 1210
 trigger2 = movecontact || movereversed
@@ -272,7 +272,7 @@ type = VarSet
 triggerall = fvar(11) < .25
 trigger1 = stateno = 19001
 trigger2 = stateno = 190001
-trigger3 = stateno = 87871
+trigger3 = stateno = 3000
 fvar(11) = .20
 ignorehitpause = 1
 ;[State 0, Damage Scaling]
@@ -327,8 +327,8 @@ ignorehitpause = 1
 [State 0, AppendToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "scaling table = %d numhits = %d cooldown = %d\nproration = %f rage = %f gain = %f gain = %d"
-params = var(10),var(11), var(8), fvar(11), fvar(12), fvar(8), var(54)
+text = "scaling table = %d numhits = %d cooldown = %d\nproration = %f rage = %f gain = %f"
+params = var(10),var(11), var(8), fvar(11), fvar(12), fvar(8)
 ignorehitpause = 1
 
 [State 0, Cooldown]
@@ -373,7 +373,7 @@ var(6) = -1
 type = VarAdd
 triggerall = var(8) > 1 || var(8) = 1 && (!numenemy || numenemy && (enemy, movetype != H || enemy, stateno = [5120,5150]))
 trigger1 = (stateno != 19000 && stateno != 190000) || ((stateno = 19000 || stateno = 190000) && (animelemtime(3) < 0 || animelemtime(3) > 26))
-trigger1 = (stateno != 87871) || ((stateno = 87871) && (animelemtime(3) < 0 || animelemtime(9) >= 0))
+trigger1 = (stateno != 3000) || ((stateno = 3000) && (animelemtime(3) < 0 || animelemtime(9) >= 0))
 trigger1 = (stateno != 17000) || (stateno = 17000 && (animelemtime(3) < 0 || animelemtime(3) > 26))
 trigger1 = (stateno != 17002 && stateno != 140002 && stateno != 141002)
 var(8) = -1
