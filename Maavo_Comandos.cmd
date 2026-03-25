@@ -613,6 +613,7 @@ value = 100
 triggerall = AILevel && roundstate = 2 && alive && numenemy
 triggerall = (stateno != [100,109]) && stateno != 1022
 triggerall = statetype != A
+triggerall = pos y = 0 
 triggerall = ctrl||stateno = 0||stateno = 21
 trigger1 = p2bodydist x - (enemynear,vel x*4) >= 120
 trigger1 = random < 100 
@@ -625,7 +626,8 @@ triggerall = AILevel && roundstate = 2 && alive && numenemy
 triggerall = stateno != 21 
 triggerall = random < 50
 triggerall = enemynear,movetype != A
-trigger1 = statetype != A
+triggerall = statetype != A
+triggerall = pos y = 0 
 trigger1 = ctrl||stateno = 0 
 trigger1 = p2bodydist x = [0,100]
 [State -1, AI Walk Cancel]

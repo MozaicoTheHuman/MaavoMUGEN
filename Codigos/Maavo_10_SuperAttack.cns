@@ -773,8 +773,6 @@ sprpriority = 2
 type = RemoveExplod
 trigger1 = time = 10
 id = 3232
-;ignorehitpause = 
-;persistent = 
 
 [State 0, PosSet]
 type = PosSet
@@ -814,13 +812,34 @@ pos = 0+ (var(17) * -110),0+ (var(17) * -25)
 postype = back
 sprpriority = -6
 removeongethit = 1
-removetime=200
+removetime=99999
 scale = .5+(var(17) * .3),.5+ (var(17) * .4)
-supermovetime=200
+bindtime=-1
+supermovetime = 99999
+pausemovetime = 99999
+removeongethit = 1
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Animelem = 29
+id = 611
+ignorehitpause = 1
+[State 19001, 1]
+type = Explod
+trigger1 = Animelem = 29
+id = 6111
+anim = 6111
+pos = 0+ (var(17) * -110),0+ (var(17) * -25)
+postype = back
+sprpriority = -6
+removeongethit = 1
+removetime=20
+scale = .5+(var(17) * .3),.5+ (var(17) * .4)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
+ignorehitpause = 1
 
 [State 19001, Helper]
 type = Helper

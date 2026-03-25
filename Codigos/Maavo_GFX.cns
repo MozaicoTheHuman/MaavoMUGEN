@@ -1222,6 +1222,54 @@ trigger1 = enemy,stateno = 700
 trigger2 = enemy,stateno = 710
 trigger3 = enemy,stateno = 720
 ;---------------------------------------------------------------------------
+;Hyper Portait - Fondo (1.1/Ikemen GO)
+[Statedef 81000]
+type = S
+movetype = I
+physics = S
+sprpriority = -2
+anim = 616
+
+[State Name]
+Type = Explod
+Trigger1 = time = 0
+Anim = 11000
+ID = 11000
+pos = -26,5
+PosType = Back
+Facing = 1
+BindTime = 0
+RemoveTime = 38
+scale = .3+(root,var(17) * .04),.3+(root,var(17) * .04)
+sprpriority = -2
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMove = -1
+SuperMovetime = -1
+PauseMovetime = -1
+
+[State 0, PosAdd]
+type = PosSet
+trigger1 = 1
+x = 0
+y = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S979,0
+
+[State 11000, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 46
+
+;---------------------------------------------------------------------------
 ;Hyper Portait - Fondo
 [Statedef 11000]
 type = S
@@ -1331,7 +1379,7 @@ y = 0
 
 [State 0, PlaySnd]
 type = PlaySnd
-trigger1 = time = 0
+trigger1 = !time
 value = S979,0
 
 [State 11000, AssertSpecial]
