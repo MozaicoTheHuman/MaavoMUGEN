@@ -1054,6 +1054,7 @@ trigger1 = 1
 flag = Roundnotover
 [State dou]
 type = StopSnd
+triggerall = var(52) != 0
 trigger1 = Time = 0
 channel = -1
 persistent = 0
@@ -1071,7 +1072,12 @@ anim = 616
 [state turn]
 type = turn
 trigger1 = facing != 1
-
+[State dou]
+type = StopSnd
+triggerall = var(52) != 0
+trigger1 = Time = 0
+channel = -1
+persistent = 0
 [State 0, Pause]
 type = Pause
 trigger1 = time > 1

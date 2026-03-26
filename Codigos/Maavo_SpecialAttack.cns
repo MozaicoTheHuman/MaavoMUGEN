@@ -1606,7 +1606,7 @@ ctrl = 1
 
 ;---------------------------------------------------------------------------
 ;Ve, Ivette!
-[StateDef 1301]
+[StateDef 1000]
 type = S
 movetype= A
 physics = S
@@ -1725,7 +1725,7 @@ value = S2525,4
 
 ;---------------------------------------------------------------------------
 ;Ve, Maritza!
-[StateDef 8805]
+[StateDef 1100]
 type = S
 movetype= A
 physics = S

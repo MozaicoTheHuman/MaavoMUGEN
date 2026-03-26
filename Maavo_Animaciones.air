@@ -175,7 +175,7 @@ Clsn2Default: 2
 
 ;--------------------------------------------------
 ; Dash
-[Begin Action 100]
+[Begin Action 102]
 Clsn2: 2
   Clsn2[0] = -25, -243, 36, -122
   Clsn2[1] = -35, -125, 36, 1
@@ -200,7 +200,7 @@ Clsn2: 2
 100,12, 0,0, 3
 
 ; Run Forward
-[Begin Action 102]
+[Begin Action 100]
 Clsn2default: 2
   Clsn2[0] = -4, -243, 57, -122
   Clsn2[1] = -35, -125, 36, 1
@@ -5911,7 +5911,7 @@ Clsn2Default: 2
 5000,10, 0,0, 1,, AS0D0
 5000,20, 0,0, 1,, AS0D0
 Loopstart
-5000,30, 0,0, 50, , AS0D0
+5000,20, 0,0, 50, , AS0D0
 
 
 ; All-Out Attack - Dash

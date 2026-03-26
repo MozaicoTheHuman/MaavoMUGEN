@@ -729,7 +729,7 @@ trigger2 = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || st
 ;Ve, Maritza!
 [State -1, AI Ivvete]
 type = ChangeState
-value = 1321
+value = 1000
 triggerall = var(5) <= 0
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
 triggerall = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109])||stateno = 1022||(stateno = [116,117])
@@ -742,7 +742,7 @@ trigger3 = var(1) && !numhelper(84803)
 ;Ve, Maritza!
 [State -1, AI Maritza]
 type = ChangeState
-value = 8805
+value = 1100
 triggerall = var(6) <= 0
 triggerall = aiLevel && roundstate=2 && alive && numenemy  && statetype != A && stateno != 2200
 triggerall = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || stateno = 1022||(stateno = [116,117])
@@ -979,22 +979,20 @@ type = ChangeState
 value =  3000
 triggerall = !aiLevel
 triggerall = power >= 1000
-triggerall = statetype != A && (var(1) || var(2)) && var(19) = 1
-trigger1 = command = "Twister_x"
-trigger1 = var(9):=1
-trigger2 = command = "Twister_y" 
-trigger2 = var(9):=2
+triggerall = statetype != A && (var(1) || var(2)) && var(19) != 1
+trigger1 = command = "Twister_x" || command = "Twister_y" 
+trigger1 = var(9):=2
 
-;---------------------------------------------------------------------------
-;Gran Tornado
 [State -1, Gran Tornado]
 type = ChangeState
 value =  3000
 triggerall = !aiLevel
 triggerall = power >= 1000
-triggerall = statetype != A && (var(1) || var(2)) && var(19) != 1
-trigger1 = command = "Twister_x" || command = "Twister_y" 
-trigger1 = var(9):=2
+triggerall = statetype != A && (var(1) || var(2)) && var(19) = 1
+trigger1 = command = "Twister_x"
+trigger1 = var(9):=1
+trigger2 = command = "Twister_y" 
+trigger2 = var(9):=2
 
 ;---------------------------------------------------------------------------
 ;All-Out Attack
@@ -1085,7 +1083,7 @@ trigger1 = var(1) ;Use combo condition (above)
 ;Ve, Ivette!
 [State -1, Ve, Ivette!]
 type = ChangeState
-value = 1301
+value = 1000
 triggerall = !aiLevel
 triggerall = var(5) <= 0
 triggerall = command = "QCB_x"
@@ -1107,7 +1105,7 @@ trigger1 = var(1) ;Use combo condition (above)
 ;Ve, Maritza!
 [State -1, Ve, Maritza!]
 type = ChangeState
-value = 8805
+value = 1100
 triggerall = !aiLevel
 triggerall = var(6) <= 0
 triggerall = command = "QCB_y"

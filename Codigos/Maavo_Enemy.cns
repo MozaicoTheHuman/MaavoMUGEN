@@ -1647,27 +1647,33 @@ ignorehitpause = 1
 type = Offset
 trigger1 = time > 84 && time < 91
 x = -90
-y =(-screenpos y) + floor(gameheight*5.790 + -1*time/.1)
+y =(-screenpos y) + floor(gameheight*2.534 + -1*time/.1)
 ignorehitpause = 1
-
-;4:3
-;[State 0, Offset]
-;type = Offset
-;trigger1 = time > 84 && time < 91
-;x = -90
-;y =(-screenpos y) + floor(gameheight*4.534 + -1*time/.1)
-;ignorehitpause = 1
 
 [State 0, Offset]
 type = Offset
 trigger1 = time > 90 && time < 149
 x = -90
-y =(-screenpos y) + floor(gameheight*.634 + 1*time/33)
+y =(-screenpos y) + floor(gameheight*.677 + 1*time/33)
 ignorehitpause = 1
 
 [State 0, Offset]
 type = Offset
-trigger1 = time > 148 
+trigger1 = time > 148
+x = -90
+y =(-screenpos y) + floor(gameheight*.750)
+ignorehitpause = 1
+
+[State 0, Offset]
+type = Offset
+trigger1 = time = 149
+x = -90
+y =(-screenpos y) + floor(gameheight*.750)
+ignorehitpause = 1
+
+[State 0, Offset]
+type = Offset
+trigger1 = time = 150
 x = -90
 y =(-screenpos y) + floor(gameheight*.750)
 ignorehitpause = 1
@@ -1803,10 +1809,16 @@ value = 0
 [State 0, Offset]
 type = Offset
 triggerall = prevstateno = 1700103
-trigger1 = time > 0
+trigger1 = 1
 x = -90
 y =(-screenpos y) + floor(gameheight*.870 + 1*time/80)
 ignorehitpause = 1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = time >= 114
+trigger1 = MatchOver = 0
+flag = invisible
 
 ;Hyper - All Out Attack (Custom State NOT dead)
 [Statedef 515044]
@@ -1878,7 +1890,7 @@ ignorehitpause = 1
 
 [State 0, PalFXWiz]
 type = PalFX
-trigger1 = time = 145
+trigger1 = time = 115
 time = 40
 add = 0,0,0
 mul = 256,256,256
@@ -1888,7 +1900,7 @@ color = 256
 
 [State 66363636, State]
 type = changestate
-trigger1 = Time = 146
+trigger1 = Time = 114
 value = 585044
 
 ;Hyper - All Out Attack (Custom State NOT dead)
@@ -1898,6 +1910,14 @@ movetype= H
 physics = N
 velset = -2.2,-7
 poweradd = 40
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = time %2 = 0
+time = 1
+add = 100,100,100
+mul = 256,256,256
+sinadd = 100,100,100,1
 
 [State 1215, Anim] ;Custom animation
 type = ChangeAnim

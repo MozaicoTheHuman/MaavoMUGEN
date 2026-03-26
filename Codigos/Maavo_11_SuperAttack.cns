@@ -1266,7 +1266,7 @@ ignorehitpause = 1
 [Statedef 3000]
 type = S
 ctrl = 0
-anim = ifelse(var(9)=2,8788,8787)
+anim = ifelse(var(9)=1,8787,8788)
 facep2=1
 velset = 0,0
 movetype = A
@@ -2737,7 +2737,7 @@ pos = 0,0
 postype = back
 sprpriority = 28
 removeongethit = 1
-removetime = 100
+removetime = 51
 pausemovetime = 0
 scale = 100,100
 OnTop = 0
@@ -2949,7 +2949,7 @@ pos = 0,0
 postype = back
 sprpriority = 21
 removeongethit = 1
-removetime = 300
+removetime = 200
 pausemovetime = 0
 scale = 100,100
 OnTop = 0
@@ -3201,7 +3201,6 @@ triggerall = enemy,life <= 1
 trigger1 = time = 262
 value = 141002
 
-
 ;Hyper - All Out Attack (Win)
 [Statedef 141002]
 type = S
@@ -3245,7 +3244,7 @@ ownpal = 0
 supermovetime = 9999
 pausemovetime = 99999
 
-[State 911, 1]
+[State 911, RED BG]
 type = Explod
 trigger1 = Time = 0
 id = 11701
@@ -3256,7 +3255,7 @@ sprpriority = 21
 removeongethit = 1
 removetime = 125
 pausemovetime = 0
-scale = 100,100
+scale = 999,999
 OnTop = 0
 bindtime = -1
 supermove = 1
@@ -3417,6 +3416,14 @@ mul = 256,256,256
 sinadd = 0,0,0,1
 invertall = 0
 color = 0
+
+[State 0, Won Round but not Match]
+type = ChangeState
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 264
+value = 140006
+ctrl = 1
 
 [State 0, Enemy stills alive]
 type = ChangeState
@@ -3638,6 +3645,20 @@ trigger1 = time > 110
 value = 1400062
 ctrl = 0
 
+[State 0, Won Round but not Match]
+type = ChangeState
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 110
+value = 1400062
+ctrl = 0
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = enemy,alive = 1
+trigger1 = time > 110
+id = 11701
+
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = parent, stateno = 180140
@@ -3647,7 +3668,7 @@ ctrl = 0
 [State 140003, end]
 type = changestate
 triggerall = root,win = 0
-trigger1 = time = 200
+trigger1 = time = 110
 value = 1400062
 
 ;Hyper - All Out Attack (Game Set)
@@ -4520,7 +4541,13 @@ value = -20
 [State 140003, end]
 type = DestroySelf
 triggerall = root,win = 0
-trigger1 = time =190
+trigger1 = time =113
+
+[State 140003, end]
+type = DestroySelf
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 113
 
 ;Hyper - All Out Attack (Floor)
 [StateDef 1400014]
@@ -4542,6 +4569,11 @@ ignorehitpause = 1
 [state turn]
 type = turn
 trigger1 = facing != 1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1 
+flag = noshadow
 
 [State 1100, 3]
 type = AngleDraw
@@ -4566,8 +4598,14 @@ y = -23
 
 [State 140003, end]
 type = DestroySelf
-triggerall = root,win = 0
-trigger1 = time = 315
+triggerall = root,win = 0 
+trigger1 = time = 225
+
+[State 140003, end]
+type = DestroySelf
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 225
 
 ;Hyper - All Out Attack (BG)
 [StateDef 140671]
@@ -4609,6 +4647,12 @@ type = PosSet
 trigger1 = 1
 x = 95
 y = 20
+
+[State 140003, end]
+type = DestroySelf
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 145
 
 [State 140003, end]
 type = DestroySelf
@@ -4763,6 +4807,16 @@ ctrl = 0
 anim = 666
 sprpriority = 28
 
+[State 0, White Flash AllPalFX]
+type = AllPalFX
+trigger1 = time = [0,9]
+time = 1
+add = ceil(255*(1 - (time/10.0))), ceil(255*(1 - (time/10.0))), ceil(255*(1 - (time/10.0)))
+mul = 256,256,256
+color = 256
+invertall = 0
+ignorehitpause = 1
+
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1 = 1
@@ -4885,7 +4939,7 @@ id = 678
 
 [State 0, ChangeState]
 type = destroyself
-trigger1 = 1
+trigger1 = time = 10
 ;---------------------------------------------------------------------------
 ;Hyper - Obra Maestra (Intro)
 [Statedef 1210]
