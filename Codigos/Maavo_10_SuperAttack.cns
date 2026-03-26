@@ -2995,7 +2995,7 @@ pos = 0,0
 postype = back
 sprpriority = 21
 removeongethit = 1
-removetime = 300
+removetime = 51
 pausemovetime = 0
 scale = 100,100
 OnTop = 0
@@ -3300,7 +3300,7 @@ pos = 0,0
 postype = back
 sprpriority = 21
 removeongethit = 1
-removetime = 125
+removetime = 200
 pausemovetime = 0
 scale = 100,100
 OnTop = 0
@@ -3437,10 +3437,10 @@ type=targetstate
 trigger1= time = 0
 value = 1700103
 
-[State 3300, p2state]
-type=targetstate
-trigger1= time = 155
-value = 5150
+;[State 3300, p2state]
+;type=targetstate
+;trigger1= time = 155
+;value = 5150
 
 [State 3300, p2state]
 type=targetstate
@@ -3451,7 +3451,7 @@ value = 515044
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = time > 265
-value = 0
+value = 140006
 ctrl = 1
 
 [State 0, PalFXWiz]
@@ -3470,6 +3470,15 @@ trigger1 = enemy,alive = 1
 trigger1 = time > 265
 value = 140006
 ctrl = 1
+
+[State 0, Won Round but not Match]
+type = ChangeState
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 264
+value = 140006
+ctrl = 1
+
 
 ;Hyper - All Out Attack (Final Art Screen)
 [Statedef 1410025]
@@ -3536,7 +3545,6 @@ trigger1 = time > 0
 ID = 672
 angle = 0.007*time
 
-
 [State 0, ModifyExplod]
 type = ModifyExplod
 trigger1 = time > 2
@@ -3545,7 +3553,6 @@ angle = 0.007*time
 
 [State 0, Helper]
 type = Helper
-triggerall = root,var(18) = 1
 trigger1 = Time = 2
 helpertype = normal
 name = "Text lines"
@@ -3605,7 +3612,6 @@ angle = 0.007*time
 
 [State 0, Helper]
 type = Helper
-triggerall = root,var(18) = 1
 trigger1 = Time = 0
 helpertype = normal
 name = "BG"
@@ -3671,6 +3677,14 @@ type = changestate
 triggerall = root,win = 0
 trigger1 = time = 200
 value = 1400062
+
+[State 0, Won Round but not Match]
+type = ChangeState
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 200
+value = 1400062
+ctrl = 1
 
 ;Hyper - All Out Attack (Game Set)
 [Statedef 14100285]
@@ -3876,7 +3890,13 @@ value = .007*time
 [State 140003, end]
 type = DestroySelf
 triggerall = root,win = 0
-trigger1 = time =145
+trigger1 = time =112
+
+[State 0, Won Round but not Match]
+type = DestroySelf
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 112
 
 ;Hyper - All Out Attack (Splash)
 [StateDef 140603]
@@ -3929,7 +3949,13 @@ value = .007*time
 [State 140003, end]
 type = DestroySelf
 triggerall = root,win = 0
-trigger1 = time =145
+trigger1 = time =112
+
+[State 0, Won Round but not Match]
+type = DestroySelf
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 112
 
 ;Hyper - All Out Attack (Final Touch)
 [StateDef 14673]
@@ -3984,7 +4010,13 @@ color = 0
 [State 140003, end]
 type = DestroySelf
 triggerall = root,win = 0
-trigger1 = time =145
+trigger1 = time =111
+
+[State 0, Won Round but not Match]
+type = DestroySelf
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 111
 
 ;Hyper - All Out Attack (Final Touch Shadow)
 [StateDef 146731]
@@ -4032,7 +4064,13 @@ scale = .95,.95
 [State 140003, end]
 type = DestroySelf
 triggerall = root,win = 0
-trigger1 = time =145
+trigger1 = time =111
+
+[State 0, Won Round but not Match]
+type = DestroySelf
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 111
 
 ;Hyper - All Out Attack (Hora del Show)
 [StateDef 1400031]
@@ -4071,6 +4109,12 @@ color = 0
 type = DestroySelf
 triggerall = root,win = 0
 trigger1 = time =145
+
+[State 0, Won Round but not Match]
+type = DestroySelf
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 145
 
 ;Hyper - All Out Attack (Maritza Dialogue: Esto te va a doler!)
 [StateDef 150002]
@@ -4542,7 +4586,13 @@ value = -20
 [State 140003, end]
 type = DestroySelf
 triggerall = root,win = 0
-trigger1 = time =190
+trigger1 = time =112
+
+[State 0, Won Round but not Match]
+type = DestroySelf
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 112
 
 ;Hyper - All Out Attack (Floor)
 [StateDef 1400014]
@@ -4589,7 +4639,13 @@ y = -23
 [State 140003, end]
 type = DestroySelf
 triggerall = root,win = 0
-trigger1 = time = 315
+trigger1 = time = 229
+
+[State 0, Won Round but not Match]
+type = DestroySelf
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 229
 
 ;Hyper - All Out Attack (BG)
 [StateDef 140671]
@@ -4635,7 +4691,13 @@ y = 20
 [State 140003, end]
 type = DestroySelf
 triggerall = root,win = 0
-trigger1 = time =145
+trigger1 = time =112
+
+[State 0, Won Round but not Match]
+type = DestroySelf
+trigger1 = Win = 1
+trigger1 = MatchOver = 0
+trigger1 = time > 112
 
 ;Hyper - All Out Attack (Not win)
 [StateDef 140006]

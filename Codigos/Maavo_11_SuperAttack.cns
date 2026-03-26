@@ -3395,11 +3395,11 @@ type=targetstate
 trigger1= time = 155
 value = 5150
 
-[State 3300, p2state]
-type=targetstate
-trigger1 = enemy,alive = 1
-trigger1= time = 155
-value = 515044
+;[State 3300, p2state]
+;type=targetstate
+;trigger1 = enemy,alive = 1
+;trigger1= time = 155
+;value = 515044
 
 [State 0, ChangeState]
 type = ChangeState

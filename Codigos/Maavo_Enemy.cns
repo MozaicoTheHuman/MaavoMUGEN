@@ -1816,6 +1816,7 @@ ignorehitpause = 1
 
 [State 0, AssertSpecial]
 type = AssertSpecial
+triggerall = prevstateno = 1700103 || prevstateno = 515044
 trigger1 = time >= 114
 trigger1 = MatchOver = 0
 flag = invisible
