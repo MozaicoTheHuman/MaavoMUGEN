@@ -183,8 +183,15 @@ trigger1 = !time
 value = 40
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = palno != 18 && palno != 19
 trigger1 = Animelem = 1
 value = S50,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = Animelem = 1
+value = S1959,2
 
 [State 40, 2]
 type = VarSet
@@ -444,8 +451,16 @@ anim = 47
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = palno != 18 && palno != 19
 trigger1 = time = 0
 value = S50,1
+freqmul = 0.9+(random/5333.3)
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = time = 0
+value = S1959,1
 freqmul = 0.9+(random/5333.3)
 
 [State 0, StopSnd]
@@ -514,8 +529,16 @@ persistent = 1
 
 [State 100, Dash Sound]
 type = PlaySnd
+triggerall = palno != 18 && palno != 19
 trigger1 =  AnimElem = 3
 value = 100, 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = Animelem = 3
+value = S1959,3
+
 
 [State 100, 0]
 type = AssertSpecial
@@ -788,8 +811,15 @@ ignorehitpause = 1
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = palno != 18 && palno != 19
 trigger1 = animelem = 1
 value = S100,9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = Animelem = 1
+value = S1959,4
 
 ; Run Turn
 [Statedef 103]
@@ -814,11 +844,6 @@ pausemovetime = 99999
 supermovetime = 99999
 ignorehitpause = 1
 persistent = 1
-[State 0]
-type = Pause
-trigger1 = Name != "Maavo"
-trigger2 = Authorname != "MaavoTheHuman"
-time = 999
 [State 100, Run Effect 1]
 type = Explod
 triggerall = prevstateno = 106
@@ -834,7 +859,11 @@ pausemovetime = 99999
 supermovetime = 99999
 ignorehitpause = 1
 persistent = 1
-
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = Animelem = 2
+value = S1959,4
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = animelem = 2
@@ -908,8 +937,15 @@ persistent = 0
 
 [State 100, Dash Sound]
 type = PlaySnd
+triggerall = palno != 18 && palno != 19
 trigger1 =  AnimElem = 3
 value = 100, 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = Animelem = 3
+value = S1959,3
 
 [State 20, 2]
 type = ChangeState
@@ -1912,234 +1948,10 @@ type = ChangeAnim
 trigger1 = SelfAnimExist(190)
 value = 190
 
-;Game Freeze
-[State -2, Game Freeze]
-type = LifeSet
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-value = lifemax
-ignorehitpause = 1
-persistent = 1
-
-[State -2, Game Freeze]
-type = SuperPause
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-time = 999
-anim = 616
-pos = 999, -999
-movetime = 999
-darken = 0
-p2defmul = 0
-poweradd = 0
-unhittable = 1
-
 [State 0, StopSnd]
 type = StopSnd
 trigger1 = stateno != 37001
 channel = 11
-
-[State -2 , Game Freeze]
-type = PlaySnd
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-value = S1,0
-loop = 1
-
-[State -2, Game Freeze]
-type = AssertSpecial
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-flag = NoMusic
-ignorehitpause=1
-
-[State 0, ChangeState]
-type = ChangeState
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-value = 190190
-ctrl = 0
-ignorehitpause = 1
 
 [State 190, 2] ;Go straight to intro.
 type = ChangeState
@@ -2187,235 +1999,6 @@ type = ChangeAnim
 trigger1 = Time = 0
 trigger1 = (GetHitVar(animtype) = [4,5]) && (SelfAnimExist(5047 + GetHitVar(animtype)))
 value = 5047 + GetHitVar(animtype) ;5051 - 4 + type
-
-;Game Freeze
-[State -2, Game Freeze]
-type = LifeSet
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-value = lifemax
-ignorehitpause = 1
-persistent = 1
-
-[State -2, Game Freeze]
-type = SuperPause
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-time = 999
-anim = 616
-pos = 999, -999
-movetime = 999
-darken = 0
-p2defmul = 0
-poweradd = 0
-unhittable = 1
-
-[State 0, StopSnd]
-type = StopSnd
-trigger1 = stateno != 37001
-channel = 11
-
-[State -2 , Game Freeze]
-type = PlaySnd
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-value = S1,0
-loop = 1
-
-[State -2, Game Freeze]
-type = AssertSpecial
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-flag = NoMusic
-ignorehitpause=1
-
-[State 0, ChangeState]
-type = ChangeState
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-value = 190190
-ctrl = 0
-ignorehitpause = 1
 
 [State 5000, 4] ;Freeze anim
 type = ChangeAnim
@@ -2852,235 +2435,6 @@ type = PlaySnd
 trigger1 = time = 10
 value = S5060,0
 channel = 5
-
-;Game Freeze
-[State -2, Game Freeze]
-type = LifeSet
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-value = lifemax
-ignorehitpause = 1
-persistent = 1
-
-[State -2, Game Freeze]
-type = SuperPause
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-time = 999
-anim = 616
-pos = 999, -999
-movetime = 999
-darken = 0
-p2defmul = 0
-poweradd = 0
-unhittable = 1
-
-[State 0, StopSnd]
-type = StopSnd
-trigger1 = stateno != 37001
-channel = 11
-
-[State -2 , Game Freeze]
-type = PlaySnd
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-value = S1,0
-loop = 1
-
-[State -2, Game Freeze]
-type = AssertSpecial
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-flag = NoMusic
-ignorehitpause=1
-
-[State 0, ChangeState]
-type = ChangeState
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-value = 190190
-ctrl = 0
-ignorehitpause = 1
 
 [State 5050, 4] ;Recover near ground
 type = ChangeState
@@ -3524,12 +2878,6 @@ triggerall = SelfAnimExist(5110 + (anim % 10))
 trigger1 = AnimTime = 0
 trigger2 = SysVar(0) ;SysVar(0) = 1 avoids hit ground anim
 value = 5110 + (anim % 10)
-
-[State 0]
-type = Pause
-trigger1 = Name != "Maavo"
-trigger2 = Authorname != "MaavoTheHuman"
-time = 999
 
 [State 5110, 10] ;For normal
 type = ChangeAnim
@@ -4246,188 +3594,3 @@ triggerall = var(6) > 0 && var(6) < 120
 trigger1 = stateno != 8805 && stateno != 8825
 trigger1 = numhelper(84803) = 0
 var(6) = -1
-
-;Game Freeze
-[State -2, Game Freeze]
-type = LifeSet
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-value = lifemax
-ignorehitpause = 1
-persistent = 1
-
-[State -2, Game Freeze]
-type = SuperPause
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-time = 999
-anim = 616
-pos = 999, -999
-movetime = 999
-darken = 0
-p2defmul = 0
-poweradd = 0
-unhittable = 1
-
-[State 0, StopSnd]
-type = StopSnd
-trigger1 = stateno != 37001
-channel = 11
-
-[State -2 , Game Freeze]
-type = PlaySnd
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo" 
-trigger38 = Authorname != "MaavoTheHuman"
-value = S1,0
-loop = 1
-
-[State -2, Game Freeze]
-type = AssertSpecial
-trigger1 = enemy, name = "Developer Fags You Imbecile"
-trigger2 = enemy, name = "Omega Tiger Woods"
-trigger3 = enemy, name = "TEH ICON"
-trigger4 = enemy, name = "Super Mario 64"
-trigger5 = enemy, name = "Dark Donald"
-trigger6 = enemy, name = "Vore"
-trigger7 = enemy, name = "Abby Deel"
-trigger8 = enemy, name = "Bondage"
-trigger9 = enemy, name = "Tick L."
-trigger10 = enemy, name = "X-Pansion"
-trigger11 = enemy, name = "A joke char, built off my Candyman char"
-trigger12 = enemy, name = "Balfrog"
-trigger13 = enemy, name = "Y20k buggeroid"
-trigger14 = enemy, name = "Gogeta"
-trigger15 = enemy, name = "F1"
-trigger16 = enemy, name = "Kadelioscope"
-trigger17 = enemy, name = "Ayu Tukimiya"
-trigger18 = EnemyNear,Name = "Donald" && EnemyNear,AuthorName = "kishio&&Donalddesu"
-trigger19 = enemy, name = "Omega Donald"
-trigger20 = enemy, name = "Gloria"
-trigger21 = enemy, name = "Death Star"
-trigger22 = enemy, name = "DORAemon"
-trigger23 = enemy, name = "M-izer MK.III"
-trigger24 = enemy, name = "Pacifier"
-trigger25 = enemy, name = "Omega Flowey"
-trigger26 = enemy, name = "YOU WANNA HAVE A BAD TOM?"
-trigger27 = enemy, name = "Chuck_Norris"
-trigger28 = enemy, name = "Kuromaru"
-trigger29 = enemy, name = "Futamaru"
-trigger30 = enemy, name = "Rare Akuma"
-trigger31 = enemy, name = "Donald" && enemy, authorname = "kishio and PineappleProducer"
-trigger32 = enemy, name = "Slime"
-trigger33 = enemy, name = "Kuromaru/Strike"
-trigger34 = enemy, name = "roper"
-trigger35 = enemy, name = "Tendril"
-trigger36 = enemy, name = "Minotaur"
-trigger37 = Name != "Maavo"
-trigger38 = Authorname != "MaavoTheHuman"
-flag = NoMusic
-ignorehitpause=1

@@ -97,7 +97,7 @@ victory28 = "Apuntas directo a zonas vitales, eh? Buena eleccion!"
 victory29 = "Jeje, voy a necesitar puntos despues. Valio la pena!"
 victory30 = "Sabes usar ese cuchillo! Cortes limpios, precisos."
 victory31 = "Cuando te prendes en fuego asi, me recuerdas demasiado a mi hermana cuando le escondo algo."
-victory32 = "Esa era tu forma final? ¿O tienes más?"
+victory32 = "Esa era tu forma final? O tienes mas?"
 
 ;Vs. Alex
 victory33 = "Te ries del peligro. Eso no lo hace cualquiera!"
@@ -171,6 +171,7 @@ victory71 = "You know... I like to think your demon side does the fighting, and 
 ; var(4):= 40
 ; var(5):= 1301, 1321, -2, 3684
 ; var(6):= 8805, 8806, -2, 3684
+; var(7):= 800
 ; var(8):= 520, 920, 2212, 19000, 87871, 17000, 1210, -2
 ; var(9):= 2002, 19000, 190000, -1
 ;var(10):= 200, 210, 220, 230, 240, 250, 400, 410, 420, 430, 440, 450, 500, 510, 520, 600, 610, 620, 630, 640, 650, 900, 910, 920, 9902, 8902, 3742, 1402, 2210, 2211, 2212, 2102, 190001, 87872, 17001, -2
@@ -186,6 +187,7 @@ victory71 = "You know... I like to think your demon side does the fighting, and 
 ;var(20):= 5900
 ;var(21):= 9902, 8902, 3742, 1402, 2102, 87872, -2
 ;var(22):= 2002, -2
+;var(24):= -2
 ;var(29):= 19001
 ;var(31):= -2
 ;var(40):= -2, 3684

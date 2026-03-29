@@ -1,11 +1,27 @@
 [Info]
 name = "Maavo"
 displayname = "Maavo"
-versiondate = 01/15/2019
+versiondate = 29/03/2026
 mugenversion = 1.1
 author = "MaavoTheHuman" ;MozaicoTheRobot
-;Chase2006 for AI 
-;i ain't changing the author because this would break the clap anim compatibility
+;i ain't changing the authorname because this would break the clap anim compatibility
+
+
+;FULL CREDITS:
+;MozaicoTheRobot
+;Orbi
+;Soga Celeste
+;Wach
+;Chase2006
+;A_Creator
+;Oliver As Latias
+;PointyyESM
+;jade_midori
+;Poncho
+;Miki
+;Riusaki Fujioka
+
+
 pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
 
 [Files]
@@ -39,7 +55,25 @@ y2 = 8 ;No Straight Roads (2021 Palette Contest Winner: Rossiter)
 z2 = 9 ;Undertale (2021 Palette Contest Winner: Oraflame)
 a2 = 10 ;Jet Set Radio (2021 Palette Contest Winner: Lee425MGN)
 b2 = 11 ;Friday Night Funkin' (2021 Palette Contest Winner: Bacon1233TheArmy)
-c2 = 12 ;Abstracto
+c2 = 12 ;Abstract
+
+;THERE ARE WAY MORE PALETTES BUT YOU NEED TO PLAY IKEMEN GO NIGHTLY TO ACCESS THEM
+
+;13 - Skullgirls
+;14 - Pico School
+;15 - M.U.G.E.N. All-Stars
+;16 - FNAFHS
+;17 - FNAF 2
+;18 - Team Sonic
+;19 - Team Dark
+;20 - Old Anime
+;21 - Scooby-Doo
+;22 - Overwatch
+;23 - TF2
+;24 - Derker Bluer
+;25 - The Simpsons
+;26 - Danganronpa 2
+;27 - 2021 Demo
 
 [Arcade]
 intro.storyboard=

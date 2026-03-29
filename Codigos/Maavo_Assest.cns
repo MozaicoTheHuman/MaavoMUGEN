@@ -155,11 +155,6 @@ ontop = 0
 shadow = 0,0,0
 ownpal = 1
 removeongethit = 0
-[State 0]
-type = Pause
-trigger1 = Name != "Maavo"
-trigger2 = Authorname != "MaavoTheHuman"
-time = 999
 [State 901, HitDef]
 type = HitDef
 trigger1 = !movecontact
@@ -207,7 +202,7 @@ pos = 20,-5
 Facing = 1
 postype = p1
 keyctrl = 0
-ownpal = 0
+ownpal = 1
 size.xscale = .90
 size.yscale = .90
 persistent = 0
@@ -364,11 +359,6 @@ ontop = 0
 shadow = 0,0,0
 ownpal = 1
 removeongethit = 0
-[State 0]
-type = Pause
-trigger1 = Name != "Maavo"
-trigger2 = Authorname != "MaavoTheHuman"
-time = 999
 [State 0, Helper]
 type = Helper
 trigger1 = AnimElem = 1
@@ -429,12 +419,6 @@ trigger1 = 1
 value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 value2 = S,NA,AA
 ignorehitpause = 1
-
-[State 0]
-type = Pause
-trigger1 = Name != "Maavo"
-trigger2 = Authorname != "MaavoTheHuman"
-time = 999
 [State 0, Explod]
 type = Explod
 triggerall = root,win = 0
@@ -555,11 +539,6 @@ ontop = 0
 shadow = 0,0,0
 ownpal = 1
 removeongethit = 0
-[State 0]
-type = Pause
-trigger1 = Name != "Maavo"
-trigger2 = Authorname != "MaavoTheHuman"
-time = 999
 [State 901, HitDef]
 type = HitDef
 trigger1 = !movecontact
@@ -1012,7 +991,11 @@ type = PlaySnd
 triggerall = root, var(16) = 0
 trigger1 = animelem = 16
 value = S8986,0+random%3
-
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root, var(16) = 20
+trigger1 = animelem = 16
+value = S8986,0+random%3
 [State 0, Laugh]
 type = Helper
 TriggerAll = Root, Var(16) = 1
@@ -1075,11 +1058,6 @@ value = 3745
 ID = 8483
 ignorehitpause = 1
 persistent = 0
-[State 0]
-type = Pause
-trigger1 = Name != "Maavo"
-trigger2 = Authorname != "MaavoTheHuman"
-time = 999
 [State -2, Give 'em some Movehitoner]
 type = VarSet
 trigger1 = 1

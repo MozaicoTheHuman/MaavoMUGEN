@@ -1032,7 +1032,12 @@ type = AssertSpecial
 trigger1 = root,ailevel = 0
 trigger2 = time < 500
 flag = Roundnotover
-
+[State dou]
+type = StopSnd
+triggerall = var(52) != 0
+trigger1 = Time = 0
+channel = -1
+persistent = 0
 [State 181, AssertSpecial]
 type = AssertSpecial
 trigger1 = 1
@@ -1711,7 +1716,6 @@ type = PlaySnd
 triggerall = var(16) = 20
 trigger1 = time = 0
 value = S519, 2
-freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = AnimElem = 1
@@ -1737,6 +1741,7 @@ type = CtrlSet
 trigger1 = roundstate = 2 && time = 20
 value = 1
 ignorehitpause = 1
+
 [State 195]
 type = ChangeState
 trigger1 = Animtime = 0

@@ -25,7 +25,7 @@ ignorehitpause = 1
 [State 0, Assist Y Pos?]
 type = VarSet
 trigger1 = 1
-var(14) = 180
+var(14) = 48 ;180
 ignorehitpause = 1
 
 [State 0, Voice Language?]

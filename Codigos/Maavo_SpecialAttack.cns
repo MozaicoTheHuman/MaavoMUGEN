@@ -206,7 +206,7 @@ stateno = 33102;+random%3
 pos = 40,-40
 postype = p1
 keyctrl = 0
-ownpal = 0
+ownpal = 1
 size.xscale = .70
 size.yscale = .70
 persistent = 0
@@ -637,7 +637,7 @@ sprpriority = -2
 ignorehitpause = 1
 pausemovetime = 99999
 supermovetime = 99999
-
+ownpal = 1
 [State 0, Movement Effect]
 type = Explod
 triggerall = anim = 910
@@ -1003,7 +1003,7 @@ sprpriority = -2
 ignorehitpause = 1
 pausemovetime = 99999
 supermovetime = 99999
-
+ownpal = 1
 [State 0, Movement Effect]
 type = Explod
 triggerall = anim = 920
@@ -1520,11 +1520,6 @@ airguard.hittime = 16
 ground.velocity = -ifelse(var(42),9.5,3),-6
 air.velocity = -ifelse(var(42),9.5,3),-6
 fall = 1
-[State 0]
-type = Pause
-trigger1 = Name != "Maavo"
-trigger2 = Authorname != "MaavoTheHuman"
-time = 999
 [State 0, TargetState]
 type = TargetState
 triggerall = NumTarget(2000) = 1
@@ -1555,7 +1550,7 @@ sprpriority = -2
 ignorehitpause = 1
 pausemovetime = 99999
 supermovetime = 99999
-
+ownpal = 1
 [State 0, end]
 type = ChangeAnim
 trigger1 = anim = 20032
@@ -1626,7 +1621,7 @@ trigger1 = Animelem = 1
 helpertype = normal ;player
 name = "Ivette"
 ID = 9902
-stateno = ifelse(var(16)=20,8902,9902)
+stateno = ifelse(var(19)=20,8902,9902)
 pos = 0,-300
 size.xscale = .365
 size.yscale = .365
@@ -1691,11 +1686,11 @@ trigger1 = time = 0
 helpertype = normal ;player
 name = "Ivette"
 ID = 9902
-stateno = ifelse(var(16)=20,8902,9902)
+stateno = ifelse(var(19)=20,8902,9902)
 pos = 0,-125
 postype = p1
-size.xscale = .37
-size.yscale = .37
+size.xscale = .365
+size.yscale = .365
 facing = 1
 keyctrl = 0
 ownpal = 1
@@ -3608,11 +3603,6 @@ type = AngleDraw
 Trigger1 = 1
 value = 18*var(0)
 ignorehitpause = 1
-[State 0]
-type = Pause
-trigger1 = Name != "Maavo"
-trigger2 = Authorname != "MaavoTheHuman"
-time = 999
 [State 0, Offset]
 type = Offset
 trigger1 = ishelper(2101)

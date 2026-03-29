@@ -34,6 +34,133 @@ type = VarSet
 trigger1 = RoundState != 3
 var(57) = 0
 
+;VUELTA AL RUEDO
+[State -2, RemapPal]
+type = RemapPal
+triggerall = palno = 16
+trigger1 = var(20) = 1
+source = 1,1
+dest = 2,16
+ignorehitpause = 1
+[State -2, RemapPal]
+type = RemapPal
+triggerall = palno = 16
+trigger1 = var(20) = 0
+source = 1,1
+dest = 1,16
+ignorehitpause = 1
+[State -2, PalFX]
+type = PalFX
+triggerall = palno = 16
+trigger1 = var(21) > 0
+time = 2
+add = 255 - ((20 - var(21)) * 12), 255 - ((20 - var(21)) * 12), 255 - ((20 - var(21)) * 12)
+mul = 256,256,256
+ignorehitpause = 1
+[State -2, PalFX]
+type = PalFX
+triggerall = palno = 16
+trigger1 = var(21) <= 0
+time = 1
+add = 0,0,0
+mul = 256,256,256
+ignorehitpause = 1
+[State -2, VarAdd]
+type = VarAdd
+triggerall = palno = 16
+trigger1 = var(21) > 0
+var(21) = -1
+ignorehitpause = 1
+;VUELTA AL RUEDO
+
+;SUPER SONIC & SUPER SHADOW
+[State -2, VarSet]
+type = VarSet
+trigger1 = 1
+var(33) = ifelse(stateno = 19000 || stateno = 190000 || stateno = 190001 || stateno = 190002 || stateno = 19001 || stateno = 3000 || stateno = 17000 || stateno = 17001 || stateno = 17002,1,0)
+ignorehitpause = 1
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno != 19000
+trigger1 = stateno != 190000
+trigger1 = stateno != 190001
+trigger1 = stateno != 190002
+trigger1 = stateno != 19001
+trigger1 = stateno != 3000
+trigger1 = stateno != 17000
+trigger1 = stateno != 17001
+trigger1 = stateno != 17002
+var(33) = 0
+ignorehitpause = 1
+[State -2, VarSet]
+type = VarSet
+trigger1 = var(33) != var(35)
+var(36) = 1
+ignorehitpause = 1
+[State -2, VarSet]
+type = VarSet
+trigger1 = var(33) = var(35)
+var(36) = 0
+ignorehitpause = 1
+[State -2, VarSet]
+type = VarSet
+trigger1 = 1
+var(35) = var(33)
+ignorehitpause = 1
+[State -2, RemapPal]
+type = RemapPal
+trigger1 = var(33) = 1 && (palno = 18 || palno = 19)
+source = 1,1
+dest = 2,palno
+ignorehitpause = 1
+[State -2, RemapPal]
+type = RemapPal
+trigger1 = var(33) = 0 && (palno = 18 || palno = 19)
+source = 1,1
+dest = 1,palno
+ignorehitpause = 1
+[State -2, PalFX]
+type = PalFX
+trigger1 = var(36) = 1 && (palno = 18 || palno = 19)
+time = 20
+add = 255,255,255
+mul = 256,256,256
+sinadd = -255,-255,-255,20
+ignorehitpause = 1
+;SUPER SONIC & SUPER SHADOW
+
+;AY ESCUBI
+[State -2, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = (Anim = 100 || Anim = 102 || Anim = 105 || Anim = 107) && !(var(25) = 100 || var(25) = 102 || var(25) = 105 || var(25) = 107)
+value = S1959,0
+channel = 10
+loop = 1
+volumescale = 100
+ignorehitpause = 1
+[State -2, StopSnd]
+type = StopSnd
+triggerall = palno = 21
+trigger1 = Anim != 100 && Anim != 102 && Anim != 105 && Anim != 107
+channel = 10
+ignorehitpause = 1
+[State -2, VarSet]
+type = VarSet
+trigger1 = 1
+var(25) = Anim
+ignorehitpause = 1
+;AY ESCUBI
+
+;ora del shou 2016
+[State 0, Force Martin Voice on pal 3]
+type = VarSet
+triggerall = palno = 3
+trigger1 = 1
+var(16) = 20
+ignorehitpause = 0
+;ora del shou 2016
+
 [State -2]
 type = VelAdd
 triggerall = vel y >= 1 && pos Y <= -20
@@ -81,8 +208,6 @@ trigger1 = stateno != [19000,199999]
 trigger1 = stateno != [17000,17002]
 trigger1 = stateno != [1210,1212]
 id = 3232
-;ignorehitpause = 
-;persistent = 
 
 [State -2, Give 'em some Movehitoner]
 type = VarSet
@@ -518,6 +643,19 @@ value = 5300,0
 
 [State -2 , 1]
 type = PlaySnd
+triggerall = anim = 100 || anim = 107 || anim = 102 || anim = 105
+trigger1 = time = 1
+value = 1959,0
+channel = 11
+loop = 1
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = anim != 100 || anim != 107 || anim != 102 || anim != 105
+channel = 11
+
+[State -2 , 1]
+type = PlaySnd
 triggerall = anim = 5300
 trigger1 = time = 1
 value = 5300,1
@@ -828,6 +966,28 @@ value = 69 + random%3
 
 ;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 [Statedef -3]
+
+;This is for the special Pal 16 thingy
+[State -3, VarSet]
+type = VarSet
+triggerall = palno = 16
+trigger1 = command = "start"
+var(20) = !var(20)
+ignorehitpause = 1
+[State -3, PlaySnd]
+type = PlaySnd
+triggerall = palno = 16
+trigger1 = command = "start"
+value = S1958,0
+channel = 7
+volumescale = 100
+ignorehitpause = 1
+[State -3, VarSet]
+type = VarSet
+triggerall = palno = 16
+trigger1 = command = "start"
+var(21) = 20
+ignorehitpause = 1
 
 ;This controller plays a sound everytime the player lands from a jump, or
 ;from a back-dash.

@@ -566,16 +566,41 @@ triggerall = pos y = 0
 trigger1 = (stateno = [130,131]) && enemynear,moveguarded && (enemynear,animtime < 0) && !(enemynear,ctrl)
 trigger1 = var(54):= ifelse(random<500,420,200) || 1
 
-[State -1, Parry IN GENERAL]
+[State -1, Stand Parry]
 type = ChangeState
-value = ifelse(statetype=A,720,700)
+value = 700
 triggerall = AILevel>=6 && roundstate = 2 && alive && numenemy
 triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 450)
 triggerall = (stateno != [6565600,6565621]) || (stateno = [6565600,6565621]) && (stateno != [6565610,6565611])
 triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
 triggerall = stateno != 700
+triggerall = statetype != A
 triggerall = (stateno != [120,160])
 trigger1 = hitdefattr != SCA, HA, HP, HT
+
+[State -1, Air Parry]
+type = ChangeState
+value = 720
+triggerall = AILevel>=6 && roundstate = 2 && alive && numenemy
+triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 450)
+triggerall = (stateno != [6565600,6565621]) || (stateno = [6565600,6565621]) && (stateno != [6565610,6565611])
+triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
+triggerall = stateno != 720
+triggerall = statetype = A
+triggerall = (stateno != [120,160])
+trigger1 = hitdefattr != SCA, HA, HP, HT
+
+;Commented because he would sometimes do stand parrys mid-air for some reason
+;[State -1, Parry IN GENERAL]
+;type = ChangeState
+;value = ifelse(statetype=A,720,700)
+;triggerall = AILevel>=6 && roundstate = 2 && alive && numenemy
+;triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 450)
+;triggerall = (stateno != [6565600,6565621]) || (stateno = [6565600,6565621]) && (stateno != [6565610,6565611])
+;triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
+;triggerall = stateno != 700
+;triggerall = (stateno != [120,160])
+;trigger1 = hitdefattr != SCA, HA, HP, HT
 
 [State -1, AI Jump]
 type = ChangeState
