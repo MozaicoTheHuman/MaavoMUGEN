@@ -1291,7 +1291,7 @@ ignorehitpause = 1
 type = ChangeState
 triggerall = anim = 20032 && animelemtime(2) >= 0
 trigger1 = var(22) = 3
-value = 87871
+value = 3000
 ctrl = 0
 ignorehitpause = 1
 [State 0, ChangeState]

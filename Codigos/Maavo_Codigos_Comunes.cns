@@ -317,7 +317,16 @@ sprpriority = 1
 type = PlaySnd
 trigger1 = Animelem = 1
 value = S50,0
-
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno != 18 && palno != 19
+trigger1 = Animelem = 1
+value = S50,0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = Animelem = 1
+value = S1959,2
 [State 0, Jump Normal]
 type = VarSet
 trigger1 = p2bodydist x = [-9,9]
@@ -532,7 +541,7 @@ type = PlaySnd
 triggerall = palno != 18 && palno != 19
 trigger1 =  AnimElem = 3
 value = 100, 0
-
+freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = palno = 18 || palno = 19
@@ -940,7 +949,7 @@ type = PlaySnd
 triggerall = palno != 18 && palno != 19
 trigger1 =  AnimElem = 3
 value = 100, 0
-
+freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = palno = 18 || palno = 19
@@ -1108,13 +1117,17 @@ value = 2+(random/285)
 type = PowerAdd
 trigger1 = time = 1
 value = ceil(23*fvar(8))
-
-[State FootSteps]
+[State 100, Dash Sound]
 type = PlaySnd
+triggerall = palno != 18 && palno != 19
 trigger1 = time = 1
-value = S100,0
+value = 100, 0
 freqmul = 0.9+(random/7333.3)
-
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = time = 1
+value = S1959,3
 [State 100, Run Effect 2]
 type = Explod
 trigger1 = AnimElem = 1
@@ -1182,7 +1195,10 @@ value = 117
 type = ChangeState
 trigger1 = !ailevel
 value = 1022
-
+[State 100, Stop Running]
+type = ChangeState
+trigger1 = winko
+value = 1022
 ;---------------------------------------------------------------------------
 ; AI DASH DANCE LEFT
 [Statedef 117]
@@ -1203,12 +1219,17 @@ type = PowerAdd
 trigger1 = time = 1
 value = ceil(23*fvar(8))
 
-[State FootSteps]
+[State 100, Dash Sound]
 type = PlaySnd
+triggerall = palno != 18 && palno != 19
 trigger1 = time = 1
-value = S100,0
+value = 100, 0
 freqmul = 0.9+(random/7333.3)
-
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = time = 1
+value = S1959,3
 [State 100, Run Effect 2]
 type = Explod
 trigger1 = AnimElem = 1
@@ -1272,7 +1293,6 @@ x = 0.5
 type = ChangeState
 trigger1 = time >= fvar(23)
 value = 116
-
 
 ;---------------------------------------------------------------------------
 ; RUN_UP

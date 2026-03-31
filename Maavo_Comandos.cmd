@@ -590,18 +590,6 @@ triggerall = statetype = A
 triggerall = (stateno != [120,160])
 trigger1 = hitdefattr != SCA, HA, HP, HT
 
-;Commented because he would sometimes do stand parrys mid-air for some reason
-;[State -1, Parry IN GENERAL]
-;type = ChangeState
-;value = ifelse(statetype=A,720,700)
-;triggerall = AILevel>=6 && roundstate = 2 && alive && numenemy
-;triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 450)
-;triggerall = (stateno != [6565600,6565621]) || (stateno = [6565600,6565621]) && (stateno != [6565610,6565611])
-;triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
-;triggerall = stateno != 700
-;triggerall = (stateno != [120,160])
-;trigger1 = hitdefattr != SCA, HA, HP, HT
-
 [State -1, AI Jump]
 type = ChangeState
 value = 41
@@ -709,6 +697,7 @@ triggerall = aiLevel && roundstate=2 && alive && numenemy
 triggerall = power >= 1000
 triggerall = statetype != A
 triggerall = pos y = 0 
+triggerall = ctrl
 triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500  
 triggerall = var(30) = 0         
@@ -731,6 +720,7 @@ type = ChangeState
 value =  19000
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
 triggerall = power >= 1000 
+triggerall = ctrl
 triggerall = enemynear(!enemynear,alive), statetype != L 
 triggerall = enemynear, pos y > -10 
 triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500 
@@ -738,11 +728,13 @@ triggerall = var(30) = 0
 trigger1 = var(1)||var(2)
 trigger2 = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || stateno = 1022||(stateno = [116,117])
 ;--------------------------------------------z-------------------------------
-;Ve, Maritza!
-[State -1, AI Ivvete]
+;Ve, Ivette!
+[State -1, AI Ivette]
 type = ChangeState
 value = 1000
 triggerall = var(5) <= 0
+triggerall = statetype != A
+triggerall = pos y = 0 
 triggerall = aiLevel && roundstate=2 && alive && numenemy 
 triggerall = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109])||stateno = 1022||(stateno = [116,117])
 triggerall = enemynear(!enemynear,alive), statetype != L && enemynear(!enemynear,alive), statetype != A
@@ -751,20 +743,60 @@ triggerall =  random < var(59)*ifelse(life < (lifemax*.5),3,1)
 trigger1 = EnemyNear,movetype = A && !inguarddist;&& random < 500 
 trigger2 = EnemyNear,statetype = A 
 trigger3 = var(1) && !numhelper(84803)
+[State -1, AI Ivette Anti-Air]
+type = ChangeState
+value = 1000
+triggerall = var(5) <= 0
+triggerall = aiLevel && roundstate=2 && alive && numenemy
+triggerall = statetype != A 
+triggerall = pos y = 0 
+triggerall = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109])||stateno = 1022||(stateno = [116,117])
+triggerall = enemynear(!enemynear,alive), statetype != L
+triggerall = (p2bodydist x - enemynear,vel x * 6) = [0, 70]
+triggerall = random < var(59)*ifelse(life < (lifemax*.5),4,2)  
+trigger1 = EnemyNear,statetype = A && enemynear,pos y <= -30 && enemynear,vel y < 0   ; enemigo saltando hacia arriba
+trigger2 = EnemyNear,statetype = A && !inguarddist && random < 600
+trigger3 = var(1) && !numhelper(84803)
+[State -1, AI Ivette Air]
+type = ChangeState
+value = 1321
+triggerall = var(5) <= 0
+triggerall = aiLevel && roundstate=2 && alive && numenemy
+triggerall = statetype = A 
+triggerall = ctrl || stateno = [600,659]
+triggerall = enemynear(!enemynear,alive), statetype != L
+triggerall = (p2bodydist x - enemynear,vel x * 6) = [0, 80]  
+triggerall = random < var(59)*ifelse(life < (lifemax*.5),3,1)
+trigger1 = EnemyNear,movetype = A && !inguarddist && random < 500
+trigger2 = EnemyNear,statetype = A && enemynear,vel y >= 0   
+trigger3 = var(1) && !numhelper(84803)
 ;Ve, Maritza!
 [State -1, AI Maritza]
 type = ChangeState
 value = 1100
 triggerall = var(6) <= 0
-triggerall = aiLevel && roundstate=2 && alive && numenemy  && statetype != A && stateno != 2200
+triggerall = aiLevel && roundstate=2 && alive && numenemy && statetype != A && stateno != 2200
+triggerall = pos y = 0 
 triggerall = ctrl || stateno = 0||(stateno = [20,22])||(stateno = [100,109]) || stateno = 1022||(stateno = [116,117])
 triggerall = enemynear(!enemynear,alive), statetype != L && enemynear(!enemynear,alive), statetype != A
 triggerall = (enemynear,pos y + (enemynear,vel y * 10)) =[-20,0]
 triggerall = random < var(59)*ifelse(life < (lifemax*.5)||BackEdgeBodyDist<10,2,1)
 trigger1 = 1
-trigger2 = EnemyNear,movetype = A && !inguarddist&& random < 500 
+trigger2 = EnemyNear,movetype = A && !inguarddist && random < 500 
 trigger3 = var(1) && !numhelper(9902)
-
+[State -1, AI Maritza Air]
+type = ChangeState
+value = 8806
+triggerall = var(6) <= 0
+triggerall = aiLevel && roundstate=2 && alive && numenemy && stateno != 2200
+triggerall = statetype = A          
+triggerall = ctrl || stateno = [600,659]
+triggerall = enemynear(!enemynear,alive), statetype != L && enemynear(!enemynear,alive), statetype != A
+triggerall = (enemynear,pos y + (enemynear,vel y * 10)) =[-20,0] 
+triggerall = random < var(59)*ifelse(life < (lifemax*.5)||BackEdgeBodyDist<10,2,1)
+trigger1 = 1
+trigger2 = EnemyNear,movetype = A && !inguarddist && random < 500 
+trigger3 = var(1) && !numhelper(9902)
 ;Punch1
 [State -1, AI PencilJab]
 type = ChangeState

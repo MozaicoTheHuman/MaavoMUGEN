@@ -749,7 +749,13 @@ type = PlaySnd
 triggerall = var(16) = 0 || var(16) = 1 || var(16) = 2 || var(16) = 3
 trigger1 = AnimElem = 3
 value =S200,3+random%8
-
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1959,6
+persistent = 0
+ignorehitpause = 1
 [State 400, HitDef]
 type = HitDef
 trigger1 = !movecontact
@@ -787,6 +793,13 @@ trigger1 = time = 1
 trigger1 = random <=700
 value = S2790,1+random%5
 channel = 0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1959,6
+persistent = 0
+ignorehitpause = 1
 [State 0, Helper]
 type = Helper
 trigger1 = MoveHit

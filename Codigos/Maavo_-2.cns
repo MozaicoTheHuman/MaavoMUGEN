@@ -109,19 +109,19 @@ var(35) = var(33)
 ignorehitpause = 1
 [State -2, RemapPal]
 type = RemapPal
-trigger1 = var(33) = 1 && (palno = 18 || palno = 19)
+trigger1 = var(33) = 1 && (palno = 18 || palno = 19 || palno = 20 || palno = 21)
 source = 1,1
 dest = 2,palno
 ignorehitpause = 1
 [State -2, RemapPal]
 type = RemapPal
-trigger1 = var(33) = 0 && (palno = 18 || palno = 19)
+trigger1 = var(33) = 0 && (palno = 18 || palno = 19 || palno = 20 || palno = 21)
 source = 1,1
 dest = 1,palno
 ignorehitpause = 1
 [State -2, PalFX]
 type = PalFX
-trigger1 = var(36) = 1 && (palno = 18 || palno = 19)
+trigger1 = var(36) = 1 && (palno = 18 || palno = 19 || palno = 20 || palno = 21)
 time = 20
 add = 255,255,255
 mul = 256,256,256
