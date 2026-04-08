@@ -34,6 +34,19 @@ type = VarSet
 trigger1 = RoundState != 3
 var(57) = 0
 
+[State -2, VarSet]
+type = VarSet
+trigger1 = var(17) = 2
+trigger1 = (GameWidth / GameHeight) >= 1.7
+var(17) = 0
+ignorehitpause = 1
+[State -2, VarSet]
+type = VarSet
+trigger1 = var(17) = 2
+trigger1 = (GameWidth / GameHeight) < 1.7
+var(17) = 1
+ignorehitpause = 1
+
 ;VUELTA AL RUEDO
 [State -2, RemapPal]
 type = RemapPal
@@ -161,11 +174,55 @@ var(16) = 20
 ignorehitpause = 0
 ;ora del shou 2016
 
+[State -2, Random Victory BGM]
+type = VarSet
+trigger1 = var(52) = 6
+var(52) = (Random % 5) + 1
+ignorehitpause = 1
+
 [State -2]
 type = VelAdd
 triggerall = vel y >= 1 && pos Y <= -20
 trigger1 = command = "holddown"
-y = .5
+y = .55
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = 1
+var(30) = var(32) 
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = 1
+var(32) = (vel y >= 1 && pos Y <= -20 && command = "holddown")
+
+[State -2, PalFX]
+type = PalFX
+trigger1 = var(32) && !var(30)  
+time = 2
+add = 190,190,190     
+mul = 256,256,256
+
+[State 0, Movement Effect]
+type = Explod
+trigger1 = var(32) && !var(30) 
+anim = 48
+ID = 48
+pos = 35,-70
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+pausemovetime = 0
+scale = .1,.1
+sprpriority = 6
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+pausemovetime = 99999
+supermovetime = 99999
 
 [State 0, No Astral Bullshit]
 type = VarSet
@@ -622,7 +679,7 @@ persistent = 0
 type = ChangeState
 triggerall = teammode != simul && enemy, teammode != simul
 trigger1 = enemy, stateno = 180180
-trigger1 = Enemy, AuthorName = "MaavoTheHuman"
+trigger1 = Enemy, AuthorName = "Mozaico"
 value = 1701801
 ctrl = 0
 
@@ -631,7 +688,7 @@ ctrl = 0
 type = ChangeState
 triggerall = teammode != simul && enemy, teammode != simul
 trigger1 = enemy, stateno = 180181
-trigger1 = Enemy, AuthorName = "MaavoTheHuman"
+trigger1 = Enemy, AuthorName = "Mozaico"
 value = 1701802
 ctrl = 0
 
@@ -669,7 +726,7 @@ channel = 9
 
 [State -2, No Bar Display when you win using All-Out Attack]
 type = AssertSpecial
-trigger1 = var(55) = 1
+trigger1 = matchover && var(55) = 1
 flag = Nobardisplay
 flag2 = noFG
 flag3 = nobg

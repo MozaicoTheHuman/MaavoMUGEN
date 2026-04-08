@@ -66,23 +66,23 @@ var(19) = 0
 ignorehitpause = 1
 
 [State 0, Victory BGM?]
-; If set to 1 or 2, the AOA finish will default to 5.
-; In addition, certain opponents will force a specific theme to play when fought.
+; Certain opponents will force a specific theme to play when fought.
 type = VarSet
 trigger1 = 1
-var(52) = 2
+var(52) = 6
 ;0: N/A
 ;1: Victory! (Old) by Rossiter (Short) > Results Screen - Super Smash Brothers for 3DS and Wii U
-;2: Victory! (Showtime) by Kakowo (this is the default song)
+;2: Victory! (Showtime) by Kakow0 (this is the default song)
 ;3: After the Battle - Persona 3
 ;4: Period - Persona 4
 ;5: Triumph - Persona 5
+;6: Random
 ignorehitpause = 1
 
 [State 0, Scrapped Moves?]
 type = VarSet
 trigger1 = 1
-var(33) = 0
+var(39) = 0
 ;0 - Off
 ;1 - On
 ignorehitpause = 1
@@ -103,19 +103,6 @@ trigger1 = teammode = simul
 trigger1 = numpartner && (partner, id < id)
 trigger1 = partner, name = "Maavo"
 fvar(10) = 1
-ignorehitpause = 1
-
-[State 0, VarSet]
-type = VarSet
-trigger1 = var(17) = 2
-trigger1 = (GameWidth / GameHeight) >= 1.7
-var(17) = 0
-ignorehitpause = 1
-[State 0, VarSet]
-type = VarSet
-trigger1 = var(17) = 2
-trigger1 = (GameWidth / GameHeight) < 1.7
-var(17) = 1
 ignorehitpause = 1
 
 [State 5900, 3] ;Change palette

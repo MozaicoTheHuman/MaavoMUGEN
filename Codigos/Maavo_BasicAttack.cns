@@ -31,7 +31,7 @@ freqmul = 0.9+(random/5333.3)
 type = PlaySnd
 triggerall = var(16) = 0 || var(16) = 1 || var(16) = 2 || var(16) = 3
 trigger1 = time = 1
-trigger1 = random <=500 ;5/10 Chance of Saying
+trigger1 = random <=500
 value = S4200,6+random%2
 channel = 0
 
@@ -63,6 +63,7 @@ airguard.hittime = 8
 ground.velocity = -5
 air.type = High
 air.velocity = -2.4,-3
+
 [State 200, Voice]
 type = PlaySnd
 triggerall = var(16) = 20

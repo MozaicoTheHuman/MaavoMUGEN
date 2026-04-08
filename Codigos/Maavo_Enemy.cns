@@ -728,6 +728,11 @@ sinadd = 0,0,0,10
 invertall = 0
 color = 0
 
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+y = 0
+
 [State 0, ScreenBound]
 type = ScreenBound
 trigger1 = 1
@@ -2093,6 +2098,140 @@ value = 616
 type = SprPriority
 trigger1 = time > 56
 value = -4
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 2 - 4:3)
+[Statedef 9311]
+type     = A
+movetype = H
+physics  = S
+velset = 0,0
+sprpriority = 30
+
+[State 0, Turn]
+type = Turn
+trigger1 = facing != -1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = 7
+scale = 1.5,1.5
+ignorehitpause = 1
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 0
+value = 112015
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+x = 0
+y = -80
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time = 0
+x = 185
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time = 0
+x = -60
+
+[State 0, VelAdd]
+type = VelSet
+trigger1 = time = 6
+x = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 6
+value = 112016
+
+[State 0, Offset]
+type = Offset
+triggerall = Anim = 112016
+trigger1 = Time >= 0 && Time <= 18
+x = ceil(sin(time*pi/2))
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 42
+value = 112017
+
+[State 0, Offset]
+type = Offset
+triggerall = Anim = 112017
+trigger1 = AnimElemTime (1) >= 0 && AnimElemTime (1) <= 20
+y = ceil(sin(time*pi/2))
+
+[State 195, 2]
+type = ChangeState
+trigger1 = time = 76
+value = 9312
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 3 - 4:3)
+[Statedef 9312]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = 30
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = 0
+y = -43
+
+[state turn]
+type = turn
+trigger1 = facing != -1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = 0
+scale = 3.2,3.2
+ignorehitpause = 1
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 0
+value = 112018
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 55
+value = 616
+
+[State 0, SprPriority]
+type = SprPriority
+trigger1 = time > 56
+value = -4
+
 
 ;---------------------------------------------------------------------------
 ;Hyper - Obra Maestra (Custom State 4)

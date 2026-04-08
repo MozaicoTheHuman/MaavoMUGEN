@@ -1,10 +1,27 @@
 [Info]
 name = "Maavo"
 displayname = "Maavo"
-versiondate = 01/15/2019
-mugenversion = 1.1
-author = "MaavoTheHuman" ;MozaicoTheRobot
-;i ain't changing the author because this would break the clap anim compatibility
+versiondate = 02/04/2026
+mugenversion = 1.0
+author = "Mozaico" ;MozaicoTheRobot
+;i ain't changing the authorname because this would break the clap anim compatibility
+
+
+;FULL CREDITS:
+;MozaicoTheRobot
+;Orbi
+;Soga Celeste
+;Wach
+;Chase2006
+;A_Creator
+;Oliver As Latias
+;PointyyESM
+;jade_midori
+;Poncho
+;Kakow0
+;Miki
+;Riusaki Fujioka
+
 pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
 
 [Files]
@@ -24,13 +41,13 @@ stcommon = Codigos/Maavo_Codigos_Comunes.cns
 st6 = Codigos/Maavo_GFX.cns
 st7 = Codigos/Maavo_10_KOScreen.cns
 st8 = Config.txt
-movelist = moveset.dat     ;Ikemen feature: Movelist
+;movelist = moveset.dat     ;Ikemen feature: Movelist
 
 [Palette Keymap]
 x = 1 ;Default
 y = 2 ;Undershirt
-z = 3 ;Martín
-a = 4 ;Mozaico
+z = 3 ;Martín MUGEN
+a = 4 ;Mozaico The Robot
 b = 5 ;Viernes Noche Webiando': Trifunka
 c = 6 ;Persona 5
 x2 = 7 ;Scott Pilgrim

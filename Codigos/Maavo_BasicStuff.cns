@@ -174,7 +174,11 @@ triggerall = var(52) != 0
 trigger1 = 1
 flag = nomusic
 ignorehitpause = 1
-
+[State dou]
+type = StopSnd
+trigger1 = Time = 0
+channel = -1
+persistent = 0
 [state turn]
 type = turn
 trigger1 = facing != 1
@@ -453,6 +457,7 @@ removeongethit = 1
 
 [State MaavoLineart]
 type = Explod
+triggerall = palno != 3 && palno != 5 && palno != 9 && palno != 10 && palno != 11 && palno != 13 && palno != 14 && palno != 15 && palno != 16 && palno != 17 && palno != 21 && palno != 24 && palno != 25 && palno != 26
 trigger1 = Time = 168
 id = 1803
 anim = 1803
@@ -467,9 +472,83 @@ OnTop = 0
 supermovetime=999
 bindtime=-1
 supermovetime = -1
+ownpal = 1
 pausemovetime = -1
 removeongethit = 1
-
+[State MaavoLineart]
+type = Explod
+triggerall = palno != 3 && palno != 5 && palno != 9 && palno != 10 && palno != 11 && palno != 13 && palno != 14 && palno != 15 && palno != 16 && palno != 17 && palno != 21 && palno != 24 && palno != 25 && palno != 26
+trigger1 = Time = 168
+id = 1803
+anim = 1803
+pos = 180+ (root,var(17) * -35),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 34
+removeongethit = 1
+removetime=-1
+scale = .25+(root,var(17) * .1),.25+ (root,var(17) * .1)
+OnTop = 0
+supermovetime=999
+bindtime=-1
+ownpal = 1
+supermovetime = -1
+pausemovetime = -1
+removeongethit = 1
+[State MaavoLineart Gloveless]
+type = Explod
+triggerall = palno = 3 || palno = 5 || palno = 9 || palno = 10 || palno = 11 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 21 || palno = 24 || palno = 25 || palno = 26
+trigger1 = Time = 168
+id = 1804
+anim = 18904
+pos = 180 + (root,var(17) * -35), 0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 35
+removeongethit = 1
+removetime = -1
+scale = .25 + (root,var(17) * .1), .25 + (root,var(17) * .1)
+ontop = 0
+ownpal = 1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+[State MaavoLineart Gloveless]
+type = Explod
+triggerall = palno = 3 || palno = 5 || palno = 9 || palno = 10 || palno = 11 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 21 || palno = 24 || palno = 25 || palno = 26
+trigger1 = Time = 168
+id = 1804
+anim = 18904
+pos = 180 + (root,var(17) * -35), 0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 35
+removeongethit = 1
+removetime = -1
+scale = .25 + (root,var(17) * .1), .25 + (root,var(17) * .1)
+ontop = 0
+bindtime = -1
+ownpal = 1
+supermovetime = -1
+pausemovetime = -1
+[State MaavoLineart Gloveless]
+type = Explod
+triggerall = palno = 3 || palno = 5 || palno = 9 || palno = 10 || palno = 11 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 21 || palno = 24 || palno = 25 || palno = 26
+trigger1 = Time = 168
+id = 1805
+anim = 18905
+pos = 180 + (root,var(17) * -35), 0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 34
+removeongethit = 1
+removetime = -1
+scale = .25 + (root,var(17) * .1), .25 + (root,var(17) * .1)
+ontop = 0
+bindtime = -1
+ownpal = 1
+supermovetime = -1
+pausemovetime = -1
 [State Maavo Color]
 type = Explod
 trigger1 = Time = 168
@@ -485,10 +564,10 @@ scale = .25+(root,var(17) * .1),.25+ (root,var(17) * .1)
 OnTop = 0
 supermovetime=999
 bindtime=-1
+ownpal = 0
 supermovetime = -1
 pausemovetime = -1
 removeongethit = 1
-
 [State Anim + BG]
 type = Explod
 trigger1 = Time = 16
@@ -557,7 +636,7 @@ ID = 1813
 pos = -26,95+(root,var(17) * 25)
 PosType = Back
 Facing = IfElse(Facing=-1,-1,1)
-BindTime = 0
+BindTime =-1
 RemoveTime = -1
 sprpriority = 34
 scale = .3+(root,var(17) * .04),.3+(root,var(17) * .04)
@@ -576,7 +655,7 @@ ID = 1812
 pos = -26,95+(root,var(17) * 25)
 PosType = Back
 Facing = IfElse(Facing=-1,-1,1)
-BindTime = 0
+BindTime =-1
 RemoveTime = -1
 sprpriority = 34
 scale = .3+(root,var(17) * .04),.3+(root,var(17) * .04)
@@ -596,7 +675,7 @@ ID = 1811
 pos = -26,95+(root,var(17) * 25)
 PosType = Back
 Facing = IfElse(Facing=-1,-1,1)
-BindTime = 0
+BindTime = -1
 RemoveTime = -1
 scale = .3+(root,var(17) * .04),.3+(root,var(17) * .04)
 sprpriority = 34
@@ -1079,7 +1158,6 @@ type = turn
 trigger1 = facing != 1
 [State dou]
 type = StopSnd
-triggerall = var(52) != 0
 trigger1 = Time = 0
 channel = -1
 persistent = 0
@@ -1729,6 +1807,7 @@ freqmul = 0.9+(random/7333.3)
 [State 0]
 type = PlaySnd
 triggerall = var(16) != 20
+triggerall = prevstateno != 140006
 trigger1 = AnimElem = 2
 value = S195, 0+random%5
 channel = 0

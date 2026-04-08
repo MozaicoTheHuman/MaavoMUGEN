@@ -1145,7 +1145,6 @@ attr = SCA, AA, AP, AT
 slot = 1
 stateno = 2002
 time = 25
-
 [State 0, Explod]
 type = Explod
 trigger1 = AnimElem = 2
@@ -1223,6 +1222,14 @@ ampl = -4
 type = VarSet
 trigger1 = time = 0
 var(22) = 1
+ignorehitpause = 1
+[State 0, AI Counter Cancel]
+type = VarSet
+triggerall = AILevel > 2 && RoundState = 2 && alive && numenemy && power >= 1000
+triggerall = enemynear,ailevel > 0
+triggerall = anim = 20032 && animelemtime(2) >= 0 && animelemtime(8) < 0
+trigger1 = random < ifelse(life < (lifemax*.5), 850, 50)
+var(22) = ifelse(power >= 3000 && random < 400, 5, ifelse(random < 500, 2, 3))
 ignorehitpause = 1
 [State 0, VarSet A]
 type = VarSet
@@ -1308,7 +1315,6 @@ trigger1 = var(22) = 5
 value = 1210
 ctrl = 0
 ignorehitpause = 1
-
 [State 100, Strong Dash FX]
 type = Explod
 triggerall = anim != 2009
@@ -2193,7 +2199,7 @@ trigger1 = animtime = 0
 
 ;---------------------------------------------------------------------------
 ;Escudo Trazado - Maavo
-[Statedef 2200]
+[Statedef 2255]
 type = S
 ctrl = 0
 anim = 2200

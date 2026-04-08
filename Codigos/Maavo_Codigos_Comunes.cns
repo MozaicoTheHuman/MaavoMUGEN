@@ -298,6 +298,22 @@ trigger1 = AnimTime = 0
 trigger1 = var(4) >= 10 && sysvar(1) < 0
 x = const(velocity.runjump.back.x)
 
+[State 40, VarSet]
+type = VarSet
+trigger1 = Time = 0
+var(27) = 0
+[State 40, VarSet]
+type = VarSet
+trigger1 = Time = 0
+trigger1 = command = "SJ"
+trigger1 = command != "NoSJ"
+var(27) = 1 
+[State 40, VarSet]
+type = VarSet
+trigger1 = AnimTime = 0
+trigger1 = var(4) < 10
+var(27) = 0
+
 [State 40, 6]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -313,29 +329,29 @@ anim = 40
 ctrl = 0
 sprpriority = 1
 
-[State 0, PlaySnd]
+[State 41, PlaySnd]
 type = PlaySnd
 trigger1 = Animelem = 1
 value = S50,0
-[State 0, PlaySnd]
+[State 41, PlaySnd]
 type = PlaySnd
 triggerall = palno != 18 && palno != 19
 trigger1 = Animelem = 1
 value = S50,0
-[State 0, PlaySnd]
+[State 41, PlaySnd]
 type = PlaySnd
 triggerall = palno = 18 || palno = 19
 trigger1 = Animelem = 1
 value = S1959,2
-[State 0, Jump Normal]
+[State 41, Jump Normal]
 type = VarSet
 trigger1 = p2bodydist x = [-9,9]
 sysvar(1) = 0
-[State 0, Jump Back]
+[State 41, Jump Back]
 type = VarSet
 trigger1 = p2bodydist x < -10
 sysvar(1) = -1
-[State 0, Jump Forward]
+[State 41, Jump Forward]
 type = VarSet
 trigger1 = p2bodydist x > 10
 sysvar(1) = 1
@@ -346,12 +362,11 @@ trigger1 = AnimTime = 0
 x = ifelse(sysvar(1)=0, const(velocity.jump.neu.x), ifelse(sysvar(1)=1, ifelse(prevstateno=101,const(velocity.runjump.fwd.x),const(velocity.jump.fwd.x)), const(velocity.jump.back.x)))
 y = ifelse(p2bodydist y < -30,const(velocity.jump.y),const(velocity.jump.y)/1.5) ;Shorthop code
 
-[State 40, 6]
+[State 41, ChangeState]
 type = ChangeState
 trigger1 = AnimTime = 0
 value = 50
 ctrl = 1
-
 
 ;---------------------------------------------------------------------------
 ; AirJump Start
@@ -420,6 +435,27 @@ ctrl = 1
 [Statedef 50]
 type    = A
 physics = A
+
+[State 50, AfterImage]
+type = AfterImage
+trigger1 = var(27) = 1 
+trigger1 = time = 0
+time = 40
+TimeGap  = 1
+FrameGap = 2
+length = 5
+palbright = 40,0,0
+palcontrast = 220,0,0
+palpostbright = 0,0,0
+trans = add
+paladd = 120,0,0
+palmul = .65,.65,.65
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = var(27) = 1 
+trigger1 = time = 0
+value = S50,2
 
 [State 0, PowerAdd]
 type = PowerAdd
@@ -616,7 +652,7 @@ value = 1
 
 [State 100, Run Effect 2]
 type = Explod
-trigger1 = AnimElem = 1
+trigger1 = AnimElemtime(1) = 1
 anim = 3235
 scale = 0.4,0.4
 postype = p1
@@ -644,12 +680,12 @@ ignorehitpause = 1
 
 [State FootSteps]
 type = PlaySnd
-trigger1 = AnimElem=4
+trigger1 = AnimElemtime(1) = 1
 value = S20,2+random%2
 freqmul = 0.9+(random/7333.3)
 [State FootSteps]
 type = PlaySnd
-trigger1 = AnimElem=9
+trigger1 = AnimElem=6
 value = S21,2+random%2
 freqmul = 0.9+(random/7333.3)
 [State 100, 0]
@@ -1019,7 +1055,7 @@ value = 1
 
 [State 100, Run Effect 2]
 type = Explod
-trigger1 = AnimElem = 1
+trigger1 = AnimElemtime(1) = 1
 anim = 3236
 scale = 0.4,0.4
 postype = p1
@@ -1059,12 +1095,12 @@ value = 103
 
 [State FootSteps]
 type = PlaySnd
-trigger1 = AnimElem=4
+trigger1 = AnimElemtime(1) = 1
 value = S20,2+random%2
 freqmul = 0.9+(random/7333.3)
 [State FootSteps]
 type = PlaySnd
-trigger1 = AnimElem=9
+trigger1 = AnimElem=6
 value = S21,2+random%2
 freqmul = 0.9+(random/7333.3)
 [State 105, 0]
@@ -1111,7 +1147,7 @@ ctrl = 0
 type = VarSet
 trigger1 = time = 0
 fv = 23
-value = 2+(random/285)
+value = 2+(random/225)
 
 [State 0, PowerAdd]
 type = PowerAdd
@@ -1198,6 +1234,10 @@ value = 1022
 [State 100, Stop Running]
 type = ChangeState
 trigger1 = winko
+value = 1022
+[State 100, Stop Running]
+type = ChangeState
+trigger1 = power >= 3000
 value = 1022
 ;---------------------------------------------------------------------------
 ; AI DASH DANCE LEFT

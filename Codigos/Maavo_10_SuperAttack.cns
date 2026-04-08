@@ -206,7 +206,19 @@ supermovetime = 999
 pausemovetime = 999
 size.xscale = .30
 size.yscale = .30
-
+[State 190002, AfterImage]
+type = AfterImage
+trigger1 = time = 34         
+time = 10
+TimeGap  = 1
+FrameGap = 2
+length = 10
+palbright = 40,0,20
+palcontrast = 220,0,20
+palpostbright = 0,0,0
+trans = add
+paladd = 120,0,20
+palmul = .65,.65,.65
 [State 19000, end]
 type = ChangeState
 triggerall = var(9) <= 1
@@ -407,7 +419,19 @@ supermovetime = 999
 pausemovetime = 999
 size.xscale = .30
 size.yscale = .30
-
+[State 190002, AfterImage]
+type = AfterImage
+trigger1 = time = 34         
+time = 10
+TimeGap  = 1
+FrameGap = 2
+length = 10
+palbright = 40,0,20
+palcontrast = 220,0,20
+palpostbright = 0,0,0
+trans = add
+paladd = 120,0,20
+palmul = .65,.65,.65
 [State 19000, end]
 type = ChangeState
 triggerall = var(9) <= 1
@@ -720,7 +744,7 @@ poweradd = 0
 sprpriority = 2
 ctrl = 0
 
-[State 100, Strong Dash FX]
+[State 190002, Strong Dash FX]
 type = Explod
 trigger1 = time = 0
 anim = 3246
@@ -769,10 +793,24 @@ anim = 190005
 poweradd = 0
 sprpriority = 2
 
-[State 0, RemoveExplod]
+[State 19001, RemoveExplod]
 type = RemoveExplod
 trigger1 = time = 10
 id = 3232
+
+[State 19001, AfterImage]
+type = AfterImage
+trigger1 = time = 0            
+time = 181
+TimeGap  = 1
+FrameGap = 2
+length = 10
+palbright = 40,0,20
+palcontrast = 220,0,20
+palpostbright = 0,0,0
+trans = add
+paladd = 120,0,20
+palmul = .65,.65,.65
 
 [State 0, PosSet]
 type = PosSet
@@ -1242,7 +1280,7 @@ ignorehitpause = 1
 [Statedef 3000]
 type = S
 ctrl = 0
-anim = ifelse(var(9)=2,8788,8787)
+anim = ifelse(var(9)=1,8787,8788)
 facep2=1
 velset = 0,0
 movetype = A
@@ -1419,19 +1457,20 @@ channel = 3
 [State 19001, 1]
 type = Explod
 trigger1 = animelem = 3
-id = 2271
+id = 713
 anim = 712
 pos = 0,0
 postype = back
 sprpriority = -6
 removeongethit = 1
 removetime=110
-scale = .5,.7
+scale = .9,.5+ (var(17) * .2)
 supermovetime=110
 bindtime=-1
 pausemovetime = 99999
 sprpriority=-7
 removeongethit = 1
+ownpal = 1
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1 = AnimElem = 12
@@ -2003,21 +2042,20 @@ value = S21939,5
 [State 19001, 1]
 type = Explod
 trigger1 = animelem = 4
-id = 3232
+id = 713
 anim = 712
 pos = 0,0
 postype = back
 sprpriority = -6
 removeongethit = 1
 removetime=80
-scale = .5,.7
+scale = .9,.5+ (var(17) * .2)
 supermovetime=80
 bindtime=-1
-supermovetime = 9999
 pausemovetime = 99999
 sprpriority=-7
 removeongethit = 1
-
+ownpal = 1
 [State 0, Helper]
 type = Helper
 trigger1 = animelem = 4
@@ -3437,21 +3475,21 @@ type=targetstate
 trigger1= time = 0
 value = 1700103
 
-;[State 3300, p2state]
-;type=targetstate
-;trigger1= time = 155
-;value = 5150
-
 [State 3300, p2state]
 type=targetstate
-trigger1 = enemy,alive = 1
 trigger1= time = 155
-value = 515044
+value = 5150
+
+;[State 3300, p2state]
+;type=targetstate
+;trigger1 = enemy,alive = 1
+;trigger1= time = 155
+;value = 515044
 
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = time > 265
-value = 140006
+value = 0
 ctrl = 1
 
 [State 0, PalFXWiz]
@@ -3464,13 +3502,6 @@ sinadd = 0,0,0,1
 invertall = 0
 color = 0
 
-[State 0, Enemy stills alive]
-type = ChangeState
-trigger1 = enemy,alive = 1
-trigger1 = time > 265
-value = 140006
-ctrl = 1
-
 [State 0, Won Round but not Match]
 type = ChangeState
 trigger1 = Win = 1
@@ -3479,7 +3510,12 @@ trigger1 = time > 264
 value = 140006
 ctrl = 1
 
-
+[State 0, Enemy stills alive]
+type = ChangeState
+trigger1 = enemy,alive = 1
+trigger1 = time > 265
+value = 140006
+ctrl = 1
 ;Hyper - All Out Attack (Final Art Screen)
 [Statedef 1410025]
 type = S
@@ -3675,14 +3711,14 @@ ctrl = 0
 [State 140003, end]
 type = changestate
 triggerall = root,win = 0
-trigger1 = time = 200
+trigger1 = time = 110
 value = 1400062
 
 [State 0, Won Round but not Match]
 type = ChangeState
 trigger1 = Win = 1
 trigger1 = MatchOver = 0
-trigger1 = time > 200
+trigger1 = time > 110
 value = 1400062
 ctrl = 1
 
@@ -4146,13 +4182,13 @@ type = Explod
 trigger1 = Time = 3
 id = 6923
 anim = 6923 + (root,var(20) * 10000)
-pos = 325,20
+pos = 325+(root,var(17) * 40),20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 41
 removeongethit = 1
 removetime=127
-scale = .17,.19
+scale = .17+(root,var(17) * .11),.19+(root,var(17) * .11)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4164,13 +4200,13 @@ type = Explod
 trigger1 = Time = 0
 id = 6912
 anim = 6912
-pos = 325,20
+pos = 325,20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 40
 removeongethit = 1
 removetime=130
-scale = .17,.19
+scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4182,13 +4218,13 @@ type = Explod
 trigger1 = Time = 0
 id = 6913
 anim = 6913
-pos = 325,20
+pos = 325,20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 38
 removeongethit = 1
 removetime=130
-scale = .17,.19
+scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4200,13 +4236,13 @@ type = Explod
 trigger1 = Time = 3
 id = 6922
 anim = 6922
-pos = 327 ,19
+pos = 327 ,19+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 39
 removeongethit = 1
 removetime=127
-scale = .19,.2
+scale = .19+(root,var(17) * .07),.2+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4260,13 +4296,13 @@ type = Explod
 trigger1 = Time = 4
 id = 6927
 anim = 6927 + (root,var(20) * 10000)
-pos = 325,20
+pos = 325+(root,var(17) * 50),20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 41
 removeongethit = 1
 removetime=127
-scale = .17,.19
+scale = .17+(root,var(17) * .11),.19+(root,var(17) * .11)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4278,13 +4314,13 @@ type = Explod
 trigger1 = Time = 1
 id = 6912
 anim = 6912
-pos = 325,20
+pos = 325,20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 40
 removeongethit = 1
 removetime=130
-scale = .17,.19
+scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4296,13 +4332,13 @@ type = Explod
 trigger1 = Time = 1
 id = 6913
 anim = 6913
-pos = 325,20
+pos = 325,20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 38
 removeongethit = 1
 removetime=130
-scale = .17,.19
+scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4314,13 +4350,13 @@ type = Explod
 trigger1 = Time = 4
 id = 6922
 anim = 6922
-pos = 327 ,19
+pos = 327 ,19+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 39
 removeongethit = 1
 removetime=127
-scale = .19,.2
+scale = .19+(root,var(17) * .07),.2+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4358,13 +4394,13 @@ type = Explod
 trigger1 = Time = 3
 id = 6926
 anim = 6926 + (root,var(20) * 10000)
-pos = 325,20
+pos = 325+(root,var(17) * 40),20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 40
 removeongethit = 1
 removetime=127
-scale = .17,.19
+scale = .17+(root,var(17) * .11),.19+(root,var(17) * .11)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4376,13 +4412,13 @@ type = Explod
 trigger1 = Time = 0
 id = 6912
 anim = 6912
-pos = 325,20
+pos = 325,20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 40
 removeongethit = 1
 removetime=130
-scale = .17,.19
+scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4394,13 +4430,13 @@ type = Explod
 trigger1 = Time = 0
 id = 6913
 anim = 6913
-pos = 325,20
+pos = 325,20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 38
 removeongethit = 1
 removetime=130
-scale = .17,.19
+scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4412,13 +4448,13 @@ type = Explod
 trigger1 = Time = 3
 id = 6928
 anim = 6928
-pos = 327 ,19
+pos = 327 ,19+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 39
 removeongethit = 1
 removetime=127
-scale = .19,.2
+scale = .19+(root,var(17) * .07),.2+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4464,13 +4500,13 @@ type = Explod
 trigger1 = Time = 3
 id = 6929
 anim = 6929 + (root,var(20) * 10000)
-pos = 325,20
+pos = 325+(root,var(17) * 40),20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 40
 removeongethit = 1
 removetime=127
-scale = .17,.19
+scale = .17+(root,var(17) * .11),.19+(root,var(17) * .11)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4482,13 +4518,13 @@ type = Explod
 trigger1 = Time = 0
 id = 6912
 anim = 6912
-pos = 325,20
+pos = 325,20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 40
 removeongethit = 1
 removetime=130
-scale = .17,.19
+scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4500,13 +4536,13 @@ type = Explod
 trigger1 = Time = 0
 id = 6913
 anim = 6913
-pos = 325,20
+pos = 325,20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 38
 removeongethit = 1
 removetime=130
-scale = .17,.19
+scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4518,13 +4554,13 @@ type = Explod
 trigger1 = Time = 3
 id = 6928
 anim = 6928
-pos = 327 ,19
+pos = 327 ,19+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 39
 removeongethit = 1
 removetime=127
-scale = .19,.2
+scale = .19+(root,var(17) * .07),.2+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -4713,6 +4749,21 @@ sprpriority = 28
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1 = 1
+id = 625
+
+[State 0, RemoveExplod]  
+type = RemoveExplod
+trigger1 = 1
+id = 11701
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 12701
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
 id = 11700
 
 [State 0, RemoveExplod]
@@ -4847,6 +4898,31 @@ ctrl = 0
 anim = 666
 sprpriority = 28
 
+[State 0, White Flash AllPalFX]
+type = AllPalFX
+trigger1 = time = [0,9]
+time = 1
+add = ceil(255*(1 - (time/10.0))), ceil(255*(1 - (time/10.0))), ceil(255*(1 - (time/10.0)))
+mul = 256,256,256
+color = 256
+invertall = 0
+ignorehitpause = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 625
+
+[State 0, RemoveExplod]  
+type = RemoveExplod
+trigger1 = 1
+id = 11701
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 12701
+
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1 = 1
@@ -4969,7 +5045,7 @@ id = 678
 
 [State 0, ChangeState]
 type = destroyself
-trigger1 = 1
+trigger1 = time = 10
 ;---------------------------------------------------------------------------
 ;Hyper - Obra Maestra (Intro)
 [Statedef 1210]
