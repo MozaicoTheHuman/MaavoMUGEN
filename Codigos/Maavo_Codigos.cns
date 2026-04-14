@@ -192,7 +192,6 @@ victory71 = "You know... I like to think your demon side does the fighting, and 
 ; var(27):= 40, 50
 ; var(29):= 19001
 ; var(30):= -2, -1, 3742
-; var(31):= -2
 ; var(32):= -2
 ; var(33):= -2
 ; var(34):= -2
@@ -204,7 +203,6 @@ victory71 = "You know... I like to think your demon side does the fighting, and 
 ; var(42):= -2, 200, 210, 220, 230, 240, 250, 400, 410, 420, 500, 510, 520, 600, 610, 620, 630, 640, 650, 900, 910, 920, 1211, 1402, 2002, 2102, 2210, 2211, 2212, 3742, 8902, 9902, 17001, 19001, 87872, 190001
 ; var(43):= -2
 ; var(45):= 180180, 180181
-; var(47):= -2
 ; var(48):= -2
 ; var(49):= -2
 ; var(50):= 0
@@ -216,16 +214,7 @@ victory71 = "You know... I like to think your demon side does the fighting, and 
 ; var(59):= -1, 120, 130, 140, 150, 5001
 
 ;FREE VARS AS OF RN
-;var(15)
-;var(23)
-;var(26)
-;var(28)
-;var(37)
-;var(41)
-;var(44)
-;var(46)
-;var(51)
-;var(53)
+;34, 37, 41, 44, 46, 47, 48, 49, 50, 51, 53, 57
 
 ;---------------------- Float variable list ----------------------
 

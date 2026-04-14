@@ -952,6 +952,12 @@ x = 0-(45*facing)
 y = -100
 ignorehitpause = 1
 
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Animelem = 29
+id = 611
+ignorehitpause = 1
+
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 0
@@ -5551,9 +5557,140 @@ scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
-sprpriority=-7
 removeongethit = 1
 
+[State 19001, 1]
+type = Explod
+trigger1 = Time = 130
+id = 113021
+anim = 113021
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 42
+removeongethit = 1
+removetime=80
+scale = .55+ (var(17) * .1),.55+ (var(17) * .1)
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+vel = 0.06,0
+[State 19001, 1]
+type = Explod
+trigger1 = Time = 130
+id = 113022
+anim = 113022
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 42
+removeongethit = 1
+removetime=80
+scale = .48+ (var(17) * .1),.48+ (var(17) * .1)
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+vel = -0.03,0
+[State 19001, 1]
+type = Explod
+trigger1 = Time = 193
+id = 114020
+anim = 114020
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = -7
+removeongethit = 1
+removetime=158
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+sprpriority=-9
+removeongethit = 1
+[State 19001, 1]
+type = Explod
+trigger1 = enemy, name != "Wach" && EnemyNear,AuthorName != "Wach"
+trigger1 = enemy, name != "Dan" && EnemyNear,AuthorName != "Daniel9999999"
+trigger1 = enemy, name != "Rudy" && EnemyNear,AuthorName != "jade_midori"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Daniel9999999"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
+trigger1 = Time = 269
+id = 115020
+anim = 115020+random%4
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+removeongethit = 1
+removetime=161
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+sprpriority=-6
+removeongethit = 1
+[State 19001, 1]
+type = Explod
+trigger1 = enemy, name = "Wach" && EnemyNear,AuthorName = "Wach"
+trigger1 = Time = 269
+id = 115020
+anim = 115121
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+removeongethit = 1
+removetime=161
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+sprpriority=-6
+removeongethit = 1
+[State 19001, 1]
+type = Explod
+trigger1 = enemy, name = "Dan" && EnemyNear,AuthorName = "Daniel9999999"
+trigger2 = enemy, name = "Rudy" && EnemyNear,AuthorName = "jade_midori"
+trigger1 = Time = 269
+trigger2 = Time = 269
+id = 115020
+anim = 115120
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+removeongethit = 1
+removetime=161
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+sprpriority=-6
+removeongethit = 1
+[State 19001, 1]
+type = Explod
+trigger1 = Time = 270
+id = 114022
+anim = 114022
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+removeongethit = 1
+removetime=161
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+sprpriority=-5
+removeongethit = 1
+[State 19001, 1]
+type = Explod
+trigger1 = Time = 270
+id = 114021
+anim = 114021
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+removeongethit = 1
+removetime=181
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+sprpriority=-5
+removeongethit = 1
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 20
@@ -5569,9 +5706,15 @@ scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
-sprpriority=-7
 removeongethit = 1
-
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 193
+value = 12020,6
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 270
+value = 12020,5
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = time = 76
@@ -6077,6 +6220,16 @@ trigger1 = p2life <= 1
 time = 1
 pos = 50,0
 
+[State 0, White Flash AllPalFX]
+type = AllPalFX
+trigger1 = time = [0,9]
+time = 1
+add = ceil(255*(1 - (time/10.0))), ceil(255*(1 - (time/10.0))), ceil(255*(1 - (time/10.0)))
+mul = 256,256,256
+color = 256
+invertall = 0
+ignorehitpause = 1
+
 [State 3300, p2state]
 type=targetstate
 trigger1 = p2life <= 1
@@ -6106,7 +6259,21 @@ type = RemoveExplod
 trigger1 = 1
 id = 11201
 ignorehitpause = 1
-
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 114021
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 115020
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 114022
+ignorehitpause = 1
 [State 195, end]
 type = ChangeState
 trigger1 = AnimTime = 0

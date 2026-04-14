@@ -4,11 +4,6 @@ physics = S
 sprpriority = 0
 
 [State 0, 1]
-type = varset
-trigger1 = var(50) && ctrl
-var(50) = 1
-
-[State 0, 1]
 type = ChangeAnim
 triggerall = life > (lifemax*.25)
 trigger1 = Anim != 0 && Anim != 5 && Anim != 31005

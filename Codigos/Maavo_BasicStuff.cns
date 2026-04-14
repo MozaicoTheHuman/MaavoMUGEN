@@ -1919,9 +1919,12 @@ persistent = 0
 type = PlaySnd
 trigger1 = animelemtime(2) = 0
 value = S709,0
-channel = 1
 ignorehitpause = 1
-
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(2) = 0
+value = S709,0
+ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = time < 18
@@ -2042,9 +2045,12 @@ persistent = 0
 type = PlaySnd
 trigger1 = animelemtime(2) = 0
 value = S709,0
-channel = 1
 ignorehitpause = 1
-
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(2) = 0
+value = S709,0
+ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = time < 18
@@ -2165,9 +2171,12 @@ persistent = 0
 type = PlaySnd
 trigger1 = animelemtime(2) = 0
 value = S709,0
-channel = 1
 ignorehitpause = 1
-
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(2) = 0
+value = S709,0
+ignorehitpause = 1
 [State 0, VelSet]
 type = VelSet
 triggerall = !time

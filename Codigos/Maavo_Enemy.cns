@@ -226,8 +226,8 @@ value = 819
 
 [State 819, Safety Release]
 type = SelfState
-trigger1 = Time > 300                    ; después de 5 segundos
-trigger2 = !PlayerIDExist(EnemyNear,ID)  ; si el thrower desapareció
+trigger1 = Time > 300                 
+trigger2 = !PlayerIDExist(EnemyNear,ID)
 trigger3 = EnemyNear, StateNo != [800,880]
 trigger4 = EnemyNear, StateNo != 810
 value = 50
@@ -254,8 +254,8 @@ value = 820
 
 [State 820, Safety Release]
 type = SelfState
-trigger1 = Time > 300                    ; después de 5 segundos
-trigger2 = !PlayerIDExist(EnemyNear,ID)  ; si el thrower desapareció
+trigger1 = Time > 300                
+trigger2 = !PlayerIDExist(EnemyNear,ID)
 trigger3 = EnemyNear, StateNo != [800,880]
 trigger4 = EnemyNear, StateNo != 810
 value = 50
