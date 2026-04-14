@@ -5617,7 +5617,7 @@ trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Daniel9999999"
 trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
 trigger1 = Time = 269
 id = 115020
-anim = 115020+random%4
+anim = 115020+random%2
 pos = 0+ (var(17) * -60),0
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
