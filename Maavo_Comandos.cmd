@@ -593,30 +593,26 @@ trigger1 = var(54):= ifelse(random<500,420,200) || 1
 [State -1, Stand Parry]
 type = ChangeState
 value = 700
-triggerall = AILevel>=6 && roundstate = 2 && alive && numenemy
-triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 665)
-triggerall = (stateno != [6565600,6565621]) || (stateno = [6565600,6565621]) && (stateno != [6565610,6565611])
+triggerall = AILevel >= 7 && roundstate = 2 && alive && numenemy
+triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 567)
 triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
+triggerall = statetype != A && pos y = 0
 triggerall = stateno != 700
-triggerall = statetype != A
-triggerall = stateno != 2200
-triggerall = stateno != 2002
-triggerall = (stateno != [120,160])
-triggerall = (stateno != [19000,19999]) || stateno != 3000 || (stateno != [190000,199999]) 
+triggerall = prevstateno != [200,699]
+triggerall = prevstateno != [800,19999]
 trigger1 = hitdefattr != SCA, HA, HP, HT
 trigger2 = ctrl
 
 [State -1, Air Parry]
 type = ChangeState
 value = 720
-triggerall = AILevel>=6 && roundstate = 2 && alive && numenemy
-triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 665)
-triggerall = (stateno != [6565600,6565621]) || (stateno = [6565600,6565621]) && (stateno != [6565610,6565611])
+triggerall = AILevel >= 7 && roundstate = 2 && alive && numenemy
+triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 567)
 triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
-triggerall = stateno != 720
 triggerall = statetype = A
-triggerall = (stateno != [120,160])
-triggerall = (stateno != [19000,19999]) || stateno != 3000 || (stateno != [190000,199999]) 
+triggerall = stateno != 720
+triggerall = prevstateno != [600,699]
+triggerall = prevstateno != [800,19999]
 trigger1 = hitdefattr != SCA, HA, HP, HT
 trigger2 = ctrl
 
