@@ -1548,8 +1548,8 @@ bindtime = -1
 ownpal = 1
 sprpriority = 1
 removeongethit = 1
-removetime = 5
-scale = .55,.55
+removetime = 11
+scale = .7,.7
 pausemovetime = 99999
 supermovetime = 99999
 
@@ -1783,8 +1783,8 @@ bindtime = -1
 ownpal = 1
 sprpriority = 1
 removeongethit = 1
-removetime = 5
-scale = .55,.55
+removetime = 11
+scale = .7,.7
 pausemovetime = 99999
 supermovetime = 99999
 
@@ -2084,8 +2084,8 @@ bindtime = -1
 ownpal = 1
 sprpriority = 1
 removeongethit = 1
-removetime = 5
-scale = .55,.55
+removetime = 11
+scale = .7,.7
 pausemovetime = 99999
 supermovetime = 99999
 

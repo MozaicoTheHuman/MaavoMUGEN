@@ -2499,7 +2499,7 @@ persistent = 0
 [State 1507, VelSet]
 type = velmul
 trigger1 = animelem = 2
-x = .15
+x = .16
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -5190,7 +5190,7 @@ movetype = A
 physics = S
 ctrl = 0
 velset = 0,0
-anim = 13992
+anim = 14444
 facep2=1
 poweradd = 0
 sprpriority = 2
@@ -5198,7 +5198,7 @@ ctrl = 0
 
 [State 0, VarSet]
 type = VarSet
-triggerall = animelem = 4
+triggerall = animelem = 2
 trigger1 = var(8) < 240
 var(8) = 240
 ignorehitpause = 1
@@ -5230,7 +5230,7 @@ ignorehitpause = 1
 
 [State 19001, 1]
 type = Explod
-trigger1 = animelem = 4
+trigger1 = animelem = 2
 id = 713
 anim = 712
 pos = 0,0
@@ -5248,7 +5248,7 @@ ownpal = 1
 
 [State 0, Helper]
 type = Helper
-trigger1 = animelem = 4
+trigger1 = animelem = 2
 name = "Hyper Portrait"
 ID = 81000
 stateno = 81000
@@ -5264,9 +5264,9 @@ size.yscale = .30
 
 [State 3003, SuperPause]
 type = SuperPause
-trigger1 = animelem = 4
-time = 40
-movetime = 40
+trigger1 = animelem = 2
+time = 31
+movetime = 31
 anim = -1
 sound = -1
 movetime = 0
@@ -5288,8 +5288,19 @@ movetype= A
 physics = S
 velset = 0,0
 ctrl = 0
-anim = 1211
+anim = 14445
 sprpriority = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = AnimElem = 2
+x = 21
+ignorehitpause = 1
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = AnimElem = 6
+x = -21
+ignorehitpause = 1
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -5300,9 +5311,44 @@ ignorehitpause = 1
 
 [State 0, VelAdd]
 type = VelAdd
-trigger1 = time = 0
+trigger1 = time = 4
 x = 15
 y = 0
+[State 100, Dash Sound]
+type = PlaySnd
+trigger1 = time = 4
+value = S21931,13
+freqmul = 0.9+(random/7333.3)
+[State 100, Run Effect 1]
+type = Explod
+trigger1 = time = 4
+anim = 3233
+scale = 0.5,0.5
+postype = p1
+pos = 10,5
+sprpriority = 3
+ownpal = 1
+removeongethit = 1
+pausemovetime = 99999
+supermovetime = 99999
+ignorehitpause = 1
+persistent = 1
+
+[State 0, Movement Effect]
+type = Explod
+trigger1 = time = 5
+anim = 1092
+ID = 1092
+pos = 26, 0
+postype = p1 ;left
+bindtime = -1
+ownpal = 1
+sprpriority = 1
+removeongethit = 1
+removetime = 11
+scale = .7,.7
+pausemovetime = 99999
+supermovetime = 99999
 
 [State 210, 1]
 type = HitDef
@@ -5349,7 +5395,7 @@ type = Explod
 trigger1 = MoveHit
 anim = 3000
 ID = 3000
-pos = 40,-70
+pos = 87,-50
 postype = p1  ;p2,front,back,left,right
 facing = 1
 vfacing = 1
@@ -5429,7 +5475,7 @@ ignorehitpause = 1
 [State 0, ChangeAnim]
 type = ChangeAnim
 trigger1 = 1
-value = 1211
+value = 14445
 elem = animelemno(0)
 ignorehitpause = 1
 

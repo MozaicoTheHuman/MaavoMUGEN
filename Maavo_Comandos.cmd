@@ -431,12 +431,12 @@ time = 1
 name = "holdfwd";Required (do not remove)
 command = /$F
 time = 1
-;buffer.time = 3
+buffer.time = 3
 [Command]
 name = "holdback";Required (do not remove)
 command = /$B
 time = 1
-;buffer.time = 3
+buffer.time = 3
 [Command]
 name = "holdup" ;Required (do not remove)
 command = /$U
@@ -594,7 +594,7 @@ trigger1 = var(54):= ifelse(random<500,420,200) || 1
 type = ChangeState
 value = 700
 triggerall = AILevel >= 7 && roundstate = 2 && alive && numenemy
-triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 567)
+triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 777)
 triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
 triggerall = statetype != A && pos y = 0
 triggerall = stateno != 700
@@ -607,7 +607,7 @@ trigger2 = ctrl
 type = ChangeState
 value = 720
 triggerall = AILevel >= 7 && roundstate = 2 && alive && numenemy
-triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 567)
+triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 777)
 triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
 triggerall = statetype = A
 triggerall = stateno != 720

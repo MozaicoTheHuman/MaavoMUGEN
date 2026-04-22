@@ -913,17 +913,9 @@ physics = S
 ;juggle  = 1
 velset = 0,0
 ctrl = 0
-anim = 84804
+anim = 848041
 poweradd = 0
 sprpriority = 5
-
-[State 3742]
-type = ChangeAnim
-triggerall = palno = 2 || palno = 6 || palno = 7 || palno = 10
-trigger1 = time = 0
-value = 848041
-ignorehitpause = 1
-persistent = 0
 
 [State 0, Movement Effect]
 type = Explod
