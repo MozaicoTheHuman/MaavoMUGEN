@@ -75,11 +75,6 @@ value = S7275,0
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = time = 0
-value = S6553,3
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
 value = S6558,3
 freqmul = 0.9+(random/5333.3)
 
@@ -88,6 +83,12 @@ type = PlaySnd
 trigger1 = time = 0
 value = S6558,1
 channel = 8
+
+[State 0, Legacy Voice]
+type = PlaySnd
+triggerall = root,var(34) = 1
+trigger1 = animelem = 1
+value = S6553,0+random%4
 
 [State 0, Helper]
 type = Helper
@@ -978,30 +979,18 @@ type = PlaySnd
 trigger1 = time = 0
 value = S8983,1
 
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root, var(16) = 0
-trigger1 = animelem = 16
-value = S8986,0+random%3
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root, var(16) = 20
-trigger1 = animelem = 16
-value = S8986,0+random%3
 [State 0, Laugh]
-type = Helper
-TriggerAll = Root, Var(16) = 1
-Trigger1 = animelem = 16
-Name = "English Laugh"
-StateNo = 37424+random%5
-ID = 37424
-Pos = 0,0
-PosType = p1
-OwnPal = 1
-IgnoreHitPause = 1
-Persistent = 0
-PauseMoveTime = 9999
-SuperMoveTime = 9999
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = animelem = 15
+value = S18986,0+random%5
+
+[State 0, Legacy Voice]
+type = PlaySnd
+triggerall = root,var(34) = 1
+trigger1 = animelem = 16
+value = ifelse(root,var(16), 8985, 8986), ifelse(root,var(16), random%5, random%3)
+volume = 255
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1090,121 +1079,6 @@ removeongethit = 0
 type = DestroySelf
 triggerall = root,win = 0
 trigger1 = time = 90
-
-;---------------------------------------------------------------------------
-;Ve, Maritza! Laugh 1
-[StateDef 37424]
-type = S
-movetype= A
-anim = 616
-poweradd = 0
-sprpriority = -1
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S8985,0
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S8985,0
-
-[State 0, ChangeState]
-type = DestroySelf
-trigger1 = time = 2
-
-;---------------------------------------------------------------------------
-;Ve, Maritza! Laugh 2
-[StateDef 37425]
-type = S
-movetype= A
-anim = 616
-poweradd = 0
-sprpriority = -1
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S8985,1
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S8985,1
-
-[State 0, ChangeState]
-type = DestroySelf
-trigger1 = time = 2
-
-;---------------------------------------------------------------------------
-;Ve, Maritza! Laugh 3
-[StateDef 37426]
-type = S
-movetype= A
-anim = 616
-poweradd = 0
-sprpriority = -1
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S8985,2
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S8985,2
-
-[State 0, ChangeState]
-type = DestroySelf
-trigger1 = time = 2
-
-;---------------------------------------------------------------------------
-;Ve, Maritza! Laugh 4
-[StateDef 37427]
-type = S
-movetype= A
-anim = 616
-poweradd = 0
-sprpriority = -1
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S8985,3
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S8985,3
-
-[State 0, ChangeState]
-type = DestroySelf
-trigger1 = time = 2
-
-;---------------------------------------------------------------------------
-;Ve, Maritza! Laugh 5
-[StateDef 37428]
-type = S
-movetype= A
-anim = 616
-poweradd = 0
-sprpriority = -1
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S8985,4
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S8985,4
-
-[State 0, ChangeState]
-type = DestroySelf
-trigger1 = time = 2
 
 ;---------------------------------------------------------------------------
 ; Ve, Maritza! - shaking from the hit

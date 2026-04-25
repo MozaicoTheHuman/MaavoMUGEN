@@ -5078,50 +5078,7 @@ LoopStart
 
 
 ;
-[Begin Action 6914]
--1,0, 0,0, 2
-4290,2, 0,0, 1,, AS90D256
-4290,2, 0,0, 1,, AS150D256
-Loopstart
-4290,2, 0,0, 10
-
-
-;
-[Begin Action 6915]
--1,0, 0,0, 2
-4290,3, 0,0, 1,, AS90D256
-4290,3, 0,0, 1,, AS150D256
-Loopstart
-4290,3, 0,0, 10
-
-
-;
-[Begin Action 6916]
--1,0, 0,0, 2
-Loopstart
-5230,0, 0,0, 5
-5230,1, 0,0, 5
-5230,2, 0,0, 5
-
-
-;
-[Begin Action 6917]
--1,0, 0,0, 2
-Loopstart
-5231,0, 0,0, 10
-5231,1, 0,0, 5
-
-
-;
-[Begin Action 6919]
--1,0, 0,0, 2
-Loopstart
-5232,0, 0,0, 5
-5232,1, 0,0, 5
-5232,2, 0,0, 5
-
-
-;
+; Maritza Dialogue Portrait
 [Begin Action 6922]
 -1,0, 0,0, 2
 Loopstart
@@ -5130,32 +5087,7 @@ Loopstart
 5233,2, 0,0, 7
 
 ;
-[Begin Action 6923]
--1,0, 0,0, 2
-4290,6, 0,0, 1,, AS90D256
-4290,6, 0,0, 1,, AS150D256
-Loopstart
-4290,6, 0,0, 10
-
-
-;
-[Begin Action 6926]
--1,0, 0,0, 2
-4290,9, 0,0, 1,, AS90D256
-4290,9, 0,0, 1,, AS150D256
-Loopstart
-4290,9, 0,0, 10
-
-
-;
-[Begin Action 6927]
--1,0, 0,0, 2
-4290,10, 0,0, 1,, AS90D256
-4290,10, 0,0, 1,, AS150D256
-Loopstart
-4290,10, 0,0, 10
-
-
+; Ivette Dialogue Portrait
 [Begin Action 6928]
 -1,0, 0,0, 2
 Loopstart
@@ -5163,41 +5095,369 @@ Loopstart
 5233,4, 0,0, 11
 5233,5, 0,0, 11
 
+
+;================================================================
+; ALL OUT ATTACK DIALOGUES 
+; ola soy mozaico y estoy arreglando mi codigo spaghetti
+; de cuando tenia 14 años
+;================================================================
+
+;--- ESPAÑOL ---
+
+; Dialogue - Mariri 1 (Esp)
+[Begin Action 6930]
+-1,0, 0,0, 2
+4300,1, 0,0, 1, , AS90D256
+4300,1, 0,0, 1, , AS150D256
+Loopstart
+4300,1, 0,0, 10
+
+; Dialogue - Mariri 2 (Esp)
+[Begin Action 6931]
+-1,0, 0,0, 2
+4300,0, 0,0, 1, , AS90D256
+4300,0, 0,0, 1, , AS150D256
+Loopstart
+4300,0, 0,0, 10
+
+; Dialogue - Ivette 1 (Esp)
+[Begin Action 6932]
+-1,0, 0,0, 2
+4300,2, 0,0, 1, , AS90D256
+4300,2, 0,0, 1, , AS150D256
+Loopstart
+4300,2, 0,0, 10
+
+; Dialogue - Ivette 2 (Esp)
+[Begin Action 6933]
+-1,0, 0,0, 2
+4300,3, 0,0, 1, , AS90D256
+4300,3, 0,0, 1, , AS150D256
+Loopstart
+4300,3, 0,0, 10
+
+;--- ENGLISH ---
+
+; Dialogue - Mariri 1 (Eng)
+[Begin Action 6940]
+-1,0, 0,0, 2
+4301,1, 0,0, 1, , AS90D256
+4301,1, 0,0, 1, , AS150D256
+Loopstart
+4301,1, 0,0, 10
+
+; Dialogue - Mariri 2 (Eng)
+[Begin Action 6941]
+-1,0, 0,0, 2
+4301,0, 0,0, 1, , AS90D256
+4301,0, 0,0, 1, , AS150D256
+Loopstart
+4301,0, 0,0, 10
+
+; Dialogue - Ivette 1 (Eng)
+[Begin Action 6942]
+-1,0, 0,0, 2
+4301,2, 0,0, 1, , AS90D256
+4301,2, 0,0, 1, , AS150D256
+Loopstart
+4301,2, 0,0, 10
+
+; Dialogue - Ivette 2 (Eng)
+[Begin Action 6943]
+-1,0, 0,0, 2
+4301,3, 0,0, 1, , AS90D256
+4301,3, 0,0, 1, , AS150D256
+Loopstart
+4301,3, 0,0, 10
+
+
+;--- JAPANESE ---
+
+; Dialogue - Mariri 1 (Jap)
+[Begin Action 6950]
+-1,0, 0,0, 2
+4302,1, 0,0, 1, , AS90D256
+4302,1, 0,0, 1, , AS150D256
+Loopstart
+4302,1, 0,0, 10
+
+; Dialogue - Mariri 2 (Jap)
+[Begin Action 6951]
+-1,0, 0,0, 2
+4302,0, 0,0, 1, , AS90D256
+4302,0, 0,0, 1, , AS150D256
+Loopstart
+4302,0, 0,0, 10
+
+; Dialogue - Ivette 1 (Jap)
+[Begin Action 6952]
+-1,0, 0,0, 2
+4302,2, 0,0, 1, , AS90D256
+4302,2, 0,0, 1, , AS150D256
+Loopstart
+4302,2, 0,0, 10
+
+; Dialogue - Ivette 2 (Jap)
+[Begin Action 6953]
+-1,0, 0,0, 2
+4302,3, 0,0, 1, , AS90D256
+4302,3, 0,0, 1, , AS150D256
+Loopstart
+4302,3, 0,0, 10
+
+
+;--- PORTUGUESE ---
+
+; Dialogue - Mariri 1 (PT)
+[Begin Action 6960]
+-1,0, 0,0, 2
+4303,1, 0,0, 1, , AS90D256
+4303,1, 0,0, 1, , AS150D256
+Loopstart
+4303,1, 0,0, 10
+
+; Dialogue - Mariri 2 (PT)
+[Begin Action 6961]
+-1,0, 0,0, 2
+4303,0, 0,0, 1, , AS90D256
+4303,0, 0,0, 1, , AS150D256
+Loopstart
+4303,0, 0,0, 10
+
+; Dialogue - Ivette 1 (PT)
+[Begin Action 6962]
+-1,0, 0,0, 2
+4303,2, 0,0, 1, , AS90D256
+4303,2, 0,0, 1, , AS150D256
+Loopstart
+4303,2, 0,0, 10
+
+; Dialogue - Ivette 2 (PT)
+[Begin Action 6963]
+-1,0, 0,0, 2
+4303,3, 0,0, 1, , AS90D256
+4303,3, 0,0, 1, , AS150D256
+Loopstart
+4303,3, 0,0, 10
+
+;--- RUSSIAN ---
+
+; Dialogue - Mariri 1 (Rus)
+[Begin Action 6970]
+-1,0, 0,0, 2
+4304,1, 0,0, 1, , AS90D256
+4304,1, 0,0, 1, , AS150D256
+Loopstart
+4304,1, 0,0, 10
+
+; Dialogue - Mariri 2 (Rus)
+[Begin Action 6971]
+-1,0, 0,0, 2
+4304,0, 0,0, 1, , AS90D256
+4304,0, 0,0, 1, , AS150D256
+Loopstart
+4304,0, 0,0, 10
+
+; Dialogue - Ivette 1 (Rus)
+[Begin Action 6972]
+-1,0, 0,0, 2
+4304,2, 0,0, 1, , AS90D256
+4304,2, 0,0, 1, , AS150D256
+Loopstart
+4304,2, 0,0, 10
+
+; Dialogue - Ivette 2 (Rus)
+[Begin Action 6973]
+-1,0, 0,0, 2
+4304,3, 0,0, 1, , AS90D256
+4304,3, 0,0, 1, , AS150D256
+Loopstart
+4304,3, 0,0, 10
+
+
+;--- ITALIAN ---
+
+; Dialogue - Mariri 1 (Ita)
+[Begin Action 6980]
+-1,0, 0,0, 2
+4305,1, 0,0, 1, , AS90D256
+4305,1, 0,0, 1, , AS150D256
+Loopstart
+4305,1, 0,0, 10
+
+; Dialogue - Mariri 2 (Ita)
+[Begin Action 6981]
+-1,0, 0,0, 2
+4305,0, 0,0, 1, , AS90D256
+4305,0, 0,0, 1, , AS150D256
+Loopstart
+4305,0, 0,0, 10
+
+; Dialogue - Ivette 1 (Ita)
+[Begin Action 6982]
+-1,0, 0,0, 2
+4305,2, 0,0, 1, , AS90D256
+4305,2, 0,0, 1, , AS150D256
+Loopstart
+4305,2, 0,0, 10
+
+; Dialogue - Ivette 2 (Ita)
+[Begin Action 6983]
+-1,0, 0,0, 2
+4305,3, 0,0, 1, , AS90D256
+4305,3, 0,0, 1, , AS150D256
+Loopstart
+4305,3, 0,0, 10
+
+
+;================================================================
+; ALL OUT ATTACK DIALOGUES - LEGACY
+; pa los q no se acostumbran a las voces nuevas
+;================================================================
+
+;--- ESPAÑOL ---
+
+;legacy aoa dialogue
+[Begin Action 6923]
+-1,0, 0,0, 2
+4290,6, 0,0, 1,, AS90D256
+4290,6, 0,0, 1,, AS150D256
+Loopstart
+4290,6, 0,0, 10
+
+;legacy aoa dialogue
+[Begin Action 6926]
+-1,0, 0,0, 2
+4290,9, 0,0, 1,, AS90D256
+4290,9, 0,0, 1,, AS150D256
+Loopstart
+4290,9, 0,0, 10
+
+;legacy aoa dialogue
+[Begin Action 6927]
+-1,0, 0,0, 2
+4290,10, 0,0, 1,, AS90D256
+4290,10, 0,0, 1,, AS150D256
+Loopstart
+4290,10, 0,0, 10
+
+;legacy aoa dialogue
 [Begin Action 6929]
 -1,0, 0,0, 2
-4290,19, 0,0, 1, , AS90D256
-4290,19, 0,0, 1, , AS150D256
+4290,19, 0,0, 1,, AS90D256
+4290,19, 0,0, 1,, AS150D256
 Loopstart
 4290,19, 0,0, 10
 
-[Begin Action 6930]
--1,0, 0,0, 2
-Loopstart
-5232,0, 0,0, 7
-5232,1, 0,0, 7
-5232,2, 0,0, 7
+;--- ENGLISH ---
 
-[Begin Action 6931]
+;legacy aoa dialogue
+[Begin Action 16923]
 -1,0, 0,0, 2
-5290,21, 0,0, 1, , AS90D256
-5290,21, 0,0, 1, , AS150D256
+5290,6, 0,0, 1,, AS90D256
+5290,6, 0,0, 1,, AS150D256
 Loopstart
-5290,21, 0,0, 10
+5290,6, 0,0, 10
+
+;legacy aoa dialogue
+[Begin Action 16926]
+-1,0, 0,0, 2
+5290,9, 0,0, 1,, AS90D256
+5290,9, 0,0, 1,, AS150D256
+Loopstart
+5290,9, 0,0, 10
+
+;legacy aoa dialogue
+[Begin Action 16927]
+-1,0, 0,0, 2
+5290,10, 0,0, 1,, AS90D256
+5290,10, 0,0, 1,, AS150D256
+Loopstart
+5290,10, 0,0, 10
+
+;legacy aoa dialogue
+[Begin Action 16929]
+-1,0, 0,0, 2
+5290,19, 0,0, 1,, AS90D256
+5290,19, 0,0, 1,, AS150D256
+Loopstart
+5290,19, 0,0, 10
+
+;--- PORTUGUESE ---
+
+;legacy aoa dialogue
+[Begin Action 36923]
+-1,0, 0,0, 2
+5291,4, 0,0, 1,, AS90D256
+5291,4, 0,0, 1,, AS150D256
+Loopstart
+5291,4, 0,0, 10
+
+;legacy aoa dialogue
+[Begin Action 36926]
+-1,0, 0,0, 2
+5291,0, 0,0, 1,, AS90D256
+5291,0, 0,0, 1,, AS150D256
+Loopstart
+5291,0, 0,0, 10
+
+;legacy aoa dialogue
+[Begin Action 36927]
+-1,0, 0,0, 2
+5291,5, 0,0, 1,, AS90D256
+5291,5, 0,0, 1,, AS150D256
+Loopstart
+5291,5, 0,0, 10
+
+;legacy aoa dialogue
+[Begin Action 36929]
+-1,0, 0,0, 2
+5291,1, 0,0, 1,, AS90D256
+5291,1, 0,0, 1,, AS150D256
+Loopstart
+5291,1, 0,0, 10
+
+;--- RUSSIAN ---
+
+;legacy aoa dialogue
+[Begin Action 46923]
+-1,0, 0,0, 2
+5292,4, 0,0, 1,, AS90D256
+5292,4, 0,0, 1,, AS150D256
+Loopstart
+5292,4, 0,0, 10
+
+;legacy aoa dialogue
+[Begin Action 46926]
+-1,0, 0,0, 2
+5292,0, 0,0, 1,, AS90D256
+5292,0, 0,0, 1,, AS150D256
+Loopstart
+5292,0, 0,0, 10
+
+;legacy aoa dialogue
+[Begin Action 46927]
+-1,0, 0,0, 2
+5292,3, 0,0, 1,, AS90D256
+5292,3, 0,0, 1,, AS150D256
+Loopstart
+5292,3, 0,0, 10
+
+;legacy aoa dialogue
+[Begin Action 46929]
+-1,0, 0,0, 2
+5292,6, 0,0, 1,, AS90D256
+5292,6, 0,0, 1,, AS150D256
+Loopstart
+5292,6, 0,0, 10
+
+;--------------------------------
 
 ;
 [Begin Action 7565]
 1191,11, 0,0, 3,, AS32D223
 Loopstart
 1191,11, 0,0, 3,, AS256D150
-
-
-;
-[Begin Action 7777]
-1300,0, 0,0, 4
-1300,1, 0,0, 30
-1300,2, 0,0, 2
-1300,3, 0,0, 5
-1300,4, 0,0, 25
 
 
 ;
@@ -5432,6 +5692,7 @@ Clsn2: 2
 8788,2, 0,0, 5
 8788,4, 0,0, -1
 
+; gaming
 [Begin Action 8883]
 888,0, 0,0, 6
 888,1, 0,0, 6
@@ -5625,6 +5886,7 @@ LoopStart
 -1,0, 0,0, 2
 
 ;
+; ssbu hyper portrait
 [Begin Action 11000]
 1100,0, -626,0, 1
 1100,1, -350,0, 1
@@ -6094,6 +6356,7 @@ Clsn2: 2
   Clsn2[1] = -38, -125, 33, 1
 1305,10, 0,0, 2
 
+; Masterpiece Startup
 [Begin Action 14444]
 Clsn2: 2
   Clsn2[0] = -55, -120, 50, 2
@@ -6118,6 +6381,7 @@ Clsn2: 2
   Clsn2[1] = 24, -134, 90, 4
 1444,5, 0,0, 6
 
+; Masterpiece Startup 2
 [Begin Action 14445]
 Clsn2: 2
   Clsn2[0] = -11, -223, 73, -88
@@ -6135,11 +6399,11 @@ Clsn2: 3
   Clsn2[0] = -28, -194, 38, -137
   Clsn2[1] = -11, -150, 73, 1
   Clsn2[2] = 73, -131, 143, -80
-1444,9, -52,0, 6
+1444,9, -52,0, 3
 Clsn2: 2
   Clsn2[0] = -42, -208, 20, -115
   Clsn2[1] = -18, -128, 61, 6
-1444,10, -52,0, 6
+1444,10, -52,0, 2
 Clsn2: 2
   Clsn2[0] = -76, -130, 65, 3
   Clsn2[1] = -30, -202, 32, -130
@@ -6147,7 +6411,7 @@ Clsn2: 2
 Clsn2: 2
   Clsn2[0] = -76, -130, 65, 3
   Clsn2[1] = -30, -202, 32, -130
-800,11, -10,0, 6
+800,11, -10,0, 11
 
 [Begin Action 15500]
 3685,22, 0,0, 1
@@ -6219,6 +6483,7 @@ Clsn2: 2
 3685,0, 0,0, 1
 
 ;
+; ivette helper bar portrait
 [Begin Action 15550]
 3684,0, 0,0, 10
 
@@ -6291,56 +6556,9 @@ Clsn2: 2
 [Begin Action 15622]
 3686,0, 0,0, 1
 
+; maritza helper bar portrait
 [Begin Action 15650]
 3684,1, 0,0, 10
-[Begin Action 16914]
--1,0, 0,0, 2
-5290,0, 0,0, 1,, AS90D256
-5290,0, 0,0, 1,, AS150D256
-Loopstart
-5290,0, 0,0, 10
-
-[Begin Action 16915]
--1,0, 0,0, 2
-5290,1, 0,0, 1,, AS90D256
-5290,1, 0,0, 1,, AS150D256
-Loopstart
-5290,1, 0,0, 10
-
-[Begin Action 16923]
--1,0, 0,0, 2
-5290,6, 0,0, 1,, AS90D256
-5290,6, 0,0, 1,, AS150D256
-Loopstart
-5290,6, 0,0, 10
-
-[Begin Action 16926]
--1,0, 0,0, 2
-5290,9, 0,0, 1,, AS90D256
-5290,9, 0,0, 1,, AS150D256
-Loopstart
-5290,9, 0,0, 10
-
-[Begin Action 16927]
--1,0, 0,0, 2
-5290,10, 0,0, 1,, AS90D256
-5290,10, 0,0, 1,, AS150D256
-Loopstart
-5290,10, 0,0, 10
-
-[Begin Action 16929]
--1,0, 0,0, 2
-5290,19, 0,0, 1, , AS90D256
-5290,19, 0,0, 1, , AS150D256
-Loopstart
-5290,19, 0,0, 10
-
-[Begin Action 16931]
--1,0, 0,0, 2
-5290,20, 0,0, 1, , AS90D256
-5290,20, 0,0, 1, , AS150D256
-Loopstart
-5290,20, 0,0, 10
 
 [Begin Action 17210]
 1721,2, 55,-192, 10
@@ -6455,17 +6673,20 @@ Loopstart
 180,7, 0,-80, 4, , S
 180,8, 0,-80, 4, , S
 
+; Oliver Intro notepad
 [Begin Action 19511]
 190,4, 0,0, 248
 190,5, 0,0, 2
 190,6, 0,0, 3
 190,7, 0,0, -1
 
+; Oliver Intro Notepad glow
 [Begin Action 19512]
 1951,0, 0,0, 1, , AS200D256
 1951,0, 0,0, 2, , A
 1951,0, 0,0, 1, , AS200D256
 
+; Oliver intro Spanish Subs
 [Begin Action 19513]
 -1,0, 0,0, 120
 1906,0, 0,0, 110
@@ -6709,114 +6930,7 @@ Clsn1: 1
 3326,13, 0,0, 1, , A
 3326,14, 0,0, 1, , A
 
-[Begin Action 36914]
--1,0, 0,0, 2
-5291,2, 0,0, 1, , AS90D256
-5291,2, 0,0, 1, , AS150D256
-Loopstart
-5291,2, 0,0, 10
 
-[Begin Action 36915]
--1,0, 0,0, 2
-5291,3, 0,0, 1, , AS90D256
-5291,3, 0,0, 1, , AS150D256
-Loopstart
-5291,3, 0,0, 10
-
-
-[Begin Action 36923]
--1,0, 0,0, 2
-5291,4, 0,0, 1, , AS90D256
-5291,4, 0,0, 1, , AS150D256
-Loopstart
-5291,4, 0,0, 10
-
-
-[Begin Action 36926]
--1,0, 0,0, 2
-5291,0, 0,0, 1, , AS90D256
-5291,0, 0,0, 1, , AS150D256
-LoopStart
-5291,0, 0,0, 10
-
-
-[Begin Action 36927]
--1,0, 0,0, 2
-5291,5, 0,0, 1, , AS90D256
-5291,5, 0,0, 1, , AS150D256
-Loopstart
-5291,5, 0,0, 10
-
-
-[Begin Action 36929]
--1,0, 0,0, 2
-5291,1, 0,0, 1, , AS90D256
-5291,1, 0,0, 1, , AS150D256
-Loopstart
-5291,1, 0,0, 10
-
-
-[Begin Action 36931]
--1,0, 0,0, 2
-5291,6, 0,0, 1, , AS90D256
-5291,6, 0,0, 1, , AS150D256
-Loopstart
-5291,6, 0,0, 10
-
-
-
-;
-[Begin Action 46914]
--1,0, 0,0, 2
-5292,1, 0,0, 1, , AS90D256
-5292,1, 0,0, 1, , AS150D256
-Loopstart
-5292,1, 0,0, 10
-
-[Begin Action 46915]
--1,0, 0,0, 2
-5292,2, 0,0, 1,, AS90D256
-5292,2, 0,0, 1,, AS150D256
-Loopstart
-5292,2, 0,0, 10
-
-;
-[Begin Action 46923]
--1,0, 0,0, 2
-5292,4, 0,0, 1, , AS90D256
-5292,4, 0,0, 1, , AS150D256
-Loopstart
-5292,4, 0,0, 10
-
-;
-[Begin Action 46926]
--1,0, 0,0, 2
-5292,0, 0,0, 1, , AS90D256
-5292,0, 0,0, 1,, AS150D256
-Loopstart
-5292,0, 0,0, 10
-
-;
-[Begin Action 46927]
--1,0, 0,0, 2
-5292,3, 0,0, 1, , AS90D256
-5292,3, 0,0, 1, , AS150D256
-Loopstart
-5292,3, 0,0, 10
-
-[Begin Action 46929]
--1,0, 0,0, 2
-5292,6, 0,0, 1, , AS90D256
-5292,6, 0,0, 1, , AS150D256
-Loopstart
-5292,6, 0,0, 10
-
-[Begin Action 46931]
--1,0, 0,0, 2
-5292,5, 0,0, 1, , AS90D256
-5292,5, 0,0, 1, , AS150D256
-Loopstart
-5292,5, 0,0, 10
 
 [Begin Action 49101]
 9110,0, 0,0, -1
@@ -6860,6 +6974,7 @@ LoopStart
 2,10, 0,0, 30
 
 
+; AOA Cutscene Dust
 [Begin Action 61331]
 3674,0, -640,0, 2, , AS150D256
 3674,1, -640,0, 2, , A
@@ -6885,6 +7000,7 @@ LoopStart
 -1,0, -640,0, -1
 
 ;
+; AOA Cutscene Top Layer
 [Begin Action 61551]
 -1,0, 9999,9999, 130
 4247,65, -640,0, 2
@@ -6997,18 +7113,6 @@ LoopStart
 
 [Begin Action 87892]
 8788,4, 0,0, -1
-
-;Peketo fatal custom 2
-[Begin Action 91231]
-9123,11, 0,0, 10
-9123,12, 0,0, -1
-
-
-;Peketo fatal custom 3
-[Begin Action 91232]
-9123,13, 0,0, 4
-9123,14, 0,0, -1
-
 
 [Begin Action 112012]
 260,4, 0,0, 1
@@ -7548,26 +7652,6 @@ LoopStart
 24246,24, 0,0, 4
 24246,25, 0,0, 4
 
-;Peketo fatal custom - head 1
-[Begin Action 912320]
-9123,20, 0,0, 5
-9123,21, 0,0, 5
-9123,22, 0,0, 5
-9123,23, 0,0, 5
-9123,24, 0,0, 5
-9123,25, 0,0, 5
-9123,26, 0,0, 5
-9123,27, 0,0, 5
-
-
-;Peketo fatal custom - head 2
-[Begin Action 912321]
-9123,20, 0,0, 60
-9123,28, 0,0, 3
-9123,29, 0,0, 40
-9123,30, 0,0, -1
-
-
 [Begin Action 1400037]
 3330,0, 0,0, 1, , A
 3330,1, 0,0, 1, , A
@@ -7827,7 +7911,7 @@ Loopstart
 2230,10, -25,30, 1, , A
 2230,11, -25,30, 1, , A
 2230,12, -25,30, 1, , A
-2230,13, -25,30, 1, , AS138D256
+2230,13, -25,30, 1, , AS230D256
 2230,14, -25,30, 1, , A
 2230,15, -25,30, 34, , AS138D256
 

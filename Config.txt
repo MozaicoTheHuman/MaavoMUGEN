@@ -17,6 +17,14 @@ fvalue = 0
 ; DO NOT EDIT ANYTHING ABOVE THIS LINE
 ;-------------------------------------------------------------------------------------------------
 
+[State 0, Input Type?]
+type = VarSet
+trigger1 = 1
+var(19) = 0
+;0 - Normal (QCF inputs only, one version per move, no EX variants)
+;1 - Alternative (more complex inputs, two versions for most moves, some moves have EX versions)
+ignorehitpause = 1
+
 [State 0, Assist X Pos?]
 type = VarSet
 trigger1 = 1
@@ -26,6 +34,15 @@ ignorehitpause = 1
 type = VarSet
 trigger1 = 1
 var(14) = 48 ;180
+ignorehitpause = 1
+
+[State 0, Screen Resoultion?]
+type = VarSet
+trigger1 = 1
+var(17) = 2
+;0 - Widescreen (16:9)
+;1 - Normal Screen (4:3)
+;2 - Auto
 ignorehitpause = 1
 
 [State 0, Voice Language?]
@@ -48,21 +65,12 @@ var(20) = 0
 ;5 - Italian
 ignorehitpause = 0
 
-[State 0, Screen Resoultion?]
+[State 0, Maritza/Ivette voices?]
 type = VarSet
 trigger1 = 1
-var(17) = 2
-;0 - Widescreen (16:9)
-;1 - Normal Screen (4:3)
-;2 - Auto
-ignorehitpause = 1
-
-[State 0, Input Type?]
-type = VarSet
-trigger1 = 1
-var(19) = 0
-;0 - Normal (QCF inputs only, one version per move, no EX variants)
-;1 - Alternative (more complex inputs, two versions for most moves, some moves have EX versions)
+var(34) = 0
+;0 - 2026 voices (L1llian_V1sual & Flanmby)
+;1 - Legacy voices (Riusaki Fujioka & Miki)
 ignorehitpause = 1
 
 [State 0, Victory BGM?]

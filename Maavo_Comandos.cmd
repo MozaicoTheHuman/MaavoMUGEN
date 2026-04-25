@@ -526,14 +526,6 @@ var(58) = 0
 type = AssertSpecial
 trigger1 = AILevel
 flag = nowalk
-flag2 = NoStandGuard
-flag3 = NoCrouchGuard
-ignorehitpause = 1
-[State -1, Default Shit Disabled]
-type = AssertSpecial
-trigger1 = AILevel
-flag = noairguard
-ignorehitpause = 1
 [State -1, No Super During Super]
 type = VarSet
 trigger1 = 1
@@ -557,7 +549,11 @@ triggerall = inguarddist
 triggerall = enemynear, movetype = A
 triggerall = enemynear, stateno != [631,633]
 trigger1 = ctrl || (stateno = [21,22]) || stateno = 100 || stateno = 0
+trigger1 = statetype != A && pos y = 0
 trigger1 = random < var(59) * ifelse(life < lifemax*0.5, 20, 14)
+trigger2 = ctrl && statetype = A
+trigger2 = random < var(59) * ifelse(life < lifemax*0.5, 20, 14)
+
 [State -1, AI Guard Cancel]
 type = ChangeState
 value = ifelse(statetype = A, 50, 0)
@@ -696,7 +692,7 @@ triggerall = enemynear, statetype != A && enemynear, pos y = 0
 triggerall = enemynear, movetype != H && enemynear, statetype != L
 triggerall = stateno != 800
 triggerall = ctrl || stateno = 0 || (stateno = [20,22])
-triggerall = p2bodydist x = [-5, 60]
+triggerall = p2bodydist x = [-2, 60]
 trigger1 = ctrl || stateno = 0
 trigger1 = random < var(59) * ifelse(life < (lifemax*0.5) || BackEdgeBodyDist < 10, 3, 2)
 trigger2 = (enemynear, stateno = [120,155]) || (enemynear, prevstateno = [120,155])
@@ -746,6 +742,7 @@ triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall = enemynear, pos y >= -20
 triggerall = enemynear, stateno != 5100
 triggerall = enemynear, stateno != 5101
+triggerall = enemynear, stateno != 5110
 triggerall = random < var(59) * ifelse(life < lifemax*0.5, 2, 1)
 trigger1 = (var(1) || var(2)) && p2bodydist x = [0, 60]
 trigger1 = var(9) := 1 || 1
@@ -768,6 +765,7 @@ triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall = enemynear, pos y > -10
 triggerall = enemynear, stateno != 5100
 triggerall = enemynear, stateno != 5101
+triggerall = enemynear, stateno != 5110
 triggerall = random < var(59) * ifelse(life < lifemax*0.5, 2, 1)
 triggerall = p2bodydist x = [60, 220]
 trigger1 = var(1) || var(2)
@@ -991,7 +989,7 @@ trigger4 = stateno = 610 && movecontact
 trigger4 = var(54) := 640 || 1
 trigger5 = stateno = 640 && movecontact 
 trigger5 = p2bodydist x < 170*const(size.xscale) && p2bodydist y > -120*const(size.xscale)
-trigger5 = var(54) := ifelse( enemynear,ailevel > 0 && power > 1000 && power < 2200 && random < 5, 190000, ifelse(random<180, 650, 620) ) || 1
+trigger5 = var(54) := ifelse( enemynear,ailevel > 0 && power > 1000 && power < 2350 && random < 150, 190000, ifelse(random<180, 650, 620) ) || 1
 trigger6 = (stateno = 620 && animelemtime(8) > 0) || stateno = 650
 trigger6 = movecontact && var(5) <= 0
 trigger6 = var(54) := 1321 || 1

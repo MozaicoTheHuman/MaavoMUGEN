@@ -3278,7 +3278,7 @@ trigger1 = Time = 110
 helpertype = normal
 name = "Dialogue Box"
 ID = 150000
-stateno = 150002+random%3
+stateno = ifelse(random<400,150002, ifelse(random<800,150003, ifelse(random<900,150004,150005)))
 pos = 0,0
 postype = p1   ;p2,front,back,left,right
 keyctrl = 0
@@ -4036,254 +4036,7 @@ removeongethit = 1
 type = Null
 trigger1 = 1
 
-;Hyper - All Out Attack (The thing that spins)
-[StateDef 140003]
-type = S
-movetype= A
-physics = S
-juggle  = 1
-velset = 0,0
-ctrl = 0
-anim = 676
-sprpriority = 24
-
-[State 0, PalFXWiz]
-type = PalFX
-trigger1 = parent, stateno = 180140
-time = 999
-add = 0,0,0
-mul = 256,256,256
-sinadd = 0,0,0,1
-invertall = 0
-color = 0
-
-[State 0, Trans]
-type = Trans
-trigger1 = 1
-trans = sub
-ignorehitpause = 1
-persistent = 1
-
-[State 181, AssertSpecial]
-type = AssertSpecial
-trigger1 = 1
-flag = noBG
-
-[state turn]
-type = turn
-trigger1 = facing != 1
-
-[State 0, PosSet]
-type = PosSet
-trigger1 = 1
-x = 105+ (root,var(17) * -20)
-y = 32+ (root,var(17) * -15)
-
-[State 0, AngleAdd]
-type = AngleDraw
-trigger1 = 1
-value = .007*time
-
-[State 140003, end]
-type = DestroySelf
-triggerall = root,win = 0
-trigger1 = time =145
-
-;Hyper - All Out Attack (Splash)
-[StateDef 140603]
-type = S
-movetype= A
-physics = S
-juggle  = 1
-velset = 0,0
-ctrl = 0
-anim = 678
-sprpriority = 30
-
-[State 0, PalFXWiz]
-type = PalFX
-trigger1 = parent, stateno = 180140
-time = 999
-add = 0,0,0
-mul = 256,256,256
-sinadd = 0,0,0,1
-invertall = 0
-color = 0
-
-[State 0, Trans]
-type = Trans
-trigger1 = 1
-trans = sub
-ignorehitpause = 1
-persistent = 1
-
-[State 181, AssertSpecial]
-type = AssertSpecial
-trigger1 = 1
-flag = noBG
-
-[state turn]
-type = turn
-trigger1 = facing != 1
-
-[State 0, PosSet]
-type = PosSet
-trigger1 = 1
-x = 95
-y = 16+ (root,var(17) * 24)
-
-[State 0, AngleAdd]
-type = AngleDraw
-trigger1 = 1
-value = .007*time
-
-[State 140003, end]
-type = DestroySelf
-triggerall = root,win = 0
-trigger1 = time =145
-
-;Hyper - All Out Attack (Final Touch)
-[StateDef 14673]
-type = S
-movetype= A
-physics = S
-ctrl = 0
-anim = 672
-sprpriority = 30
-
-[State 181, AssertSpecial]
-type = AssertSpecial
-trigger1 = 1
-flag = noBG
-
-[State 0, AngleAdd]
-type = AngleAdd
-trigger1 = 1
-value = .007
-
-[State 0, PosSet]
-type = PosSet
-trigger1 = var(17) = 1
-x = 105
-y = 16
-
-[State 0, PosSet]
-type = PosSet
-trigger1 = var(17) = 0
-x = 105
-y = 22
-
-[state turn]
-type = turn
-trigger1 = facing != 1
-
-[State 0, AngleDraw]
-type = AngleDraw
-trigger1 = 1
-scale = .95,.95
-
-[State 0, PalFXWiz]
-type = PalFX
-trigger1 = parent, stateno = 180140
-time = 999
-add = 0,0,0
-mul = 256,256,256
-sinadd = 0,0,0,1
-invertall = 0
-color = 0
-
-[State 140003, end]
-type = DestroySelf
-triggerall = root,win = 0
-trigger1 = time =145
-
-;Hyper - All Out Attack (Final Touch Shadow)
-[StateDef 146731]
-type = S
-movetype= A
-physics = S
-anim = 673
-sprpriority = 29
-
-[State 0, PalFXWiz]
-type = PalFX
-trigger1 = time > 0
-time = 145
-add = 0,0,0
-mul = 0,0,0
-sinadd = 0,0,0,10
-invertall = 0
-color = 0
-
-[state turn]
-type = turn
-trigger1 = facing != 1
-
-[State 0, VelSet]
-type = Veladd
-trigger1 = 1
-x = 1.3
-
-[State 0, AngleAdd]
-type = AngleAdd
-trigger1 = 1
-value = .007
-
-[State 0, PosSet]
-type = PosSet
-trigger1 = 1
-x = 105
-y = 18
-
-[State 0, AngleDraw]
-type = AngleDraw
-trigger1 = 1
-scale = .95,.95
-
-[State 140003, end]
-type = DestroySelf
-triggerall = root,win = 0
-trigger1 = time =145
-
-;Hyper - All Out Attack (Hora del Show)
-[StateDef 1400031]
-type = S
-movetype= A
-physics = S
-anim = 675
-sprpriority = 28
-
-[State 0, AngleAdd]
-type = AngleDraw
-trigger1 = 1
-value = .007*time
-
-[State 0, PosSet]
-type = PosSet
-trigger1 = 1
-x = 105
-y = 30
-
-[state turn]
-type = turn
-trigger1 = facing != 1
-
-[State 0, PalFXWiz]
-type = PalFX
-trigger1 = parent, stateno = 180140
-time = 999
-add = 0,0,0
-mul = 256,256,256
-sinadd = 0,0,0,1
-invertall = 0
-color = 0
-
-[State 140003, end]
-type = DestroySelf
-triggerall = root,win = 0
-trigger1 = time =145
-
-;Hyper - All Out Attack (Maritza Dialogue: Esto te va a doler!)
+;Hyper - All Out Attack (Maritza Dialogue: Dale, dale, DALE!)
 [StateDef 150002]
 type = S
 movetype= A
@@ -4294,13 +4047,25 @@ ctrl = 0
 anim =616
 sprpriority = 100
 
-[State 0, PlaySnd]
+[State 0, 2026 Voice]
 type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,1 + (root,var(16) * 10000)
+[State 0, 2026 Voice]
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,1 + (root,var(16) * 10000)
+
+[State 0, Legacy Voice]
+type = PlaySnd
+triggerall = root,var(34) = 1
 trigger1 = time = 4
 value = S21932,7 + (root,var(16) * 10000)
-
-[State 0, PlaySnd]
+[State 0, Legacy Voice]
 type = PlaySnd
+triggerall = root,var(34) = 1
 trigger1 = time = 4
 value = S21932,7 + (root,var(16) * 10000)
 
@@ -4308,8 +4073,27 @@ value = S21932,7 + (root,var(16) * 10000)
 type = turn
 trigger1 = facing != 1
 
-[State 19001, 1]
+[State 19001, Dialogue]
 type = Explod
+triggerall = root,var(34) = 0
+trigger1 = Time = 3
+id = 6930
+anim = 6930 + (root,var(20) * 10)
+pos = 325+(root,var(17) * 40),20+(root,var(17) * 5)
+postype = back
+facing = IfElse(facing = 1, 1, -1)
+sprpriority = 41
+removeongethit = 1
+removetime=127
+scale = .17+(root,var(17) * .11),.19+(root,var(17) * .11)
+supermovetime=-1
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+[State 19001, Legacy Dialogues]
+type = Explod
+triggerall = root,var(34) = 1
 trigger1 = Time = 3
 id = 6923
 anim = 6923 + (root,var(20) * 10000)
@@ -4384,7 +4168,7 @@ removeongethit = 1
 type = DestroySelf
 trigger1 = time =125
 
-;Hyper - All Out Attack (Maritza Dialogue: Aqui vamos!)
+;Hyper - All Out Attack (Maritza Dialogue: Buenas noches!)
 [StateDef 150003]
 type = S
 movetype= A
@@ -4395,35 +4179,53 @@ ctrl = 0
 anim =616
 sprpriority = 100
 
-[State 0, PlaySnd]
+[State 0, 2026 Voice]
 type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,0 + (root,var(16) * 10000)
+[State 0, 2026 Voice]
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,0 + (root,var(16) * 10000)
+
+[State 0, Legacy Voice]
+type = PlaySnd
+triggerall = root,var(34) = 1
 trigger1 = time = 4
 value = S21932,6 + (root,var(16) * 10000)
-
-[State 0, PlaySnd]
+[State 0, Legacy Voice]
 type = PlaySnd
-triggerall = root,var(16) = 0
+triggerall = root,var(34) = 1
 trigger1 = time = 4
-value = S21932,6
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(16) = 1
-trigger1 = time = 4
-value = S21932,10006
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(16) = 1
-trigger1 = time = 4
-value = S21932,10006
+value = S21932,6 + (root,var(16) * 10000)
 
 [state turn]
 type = turn
 trigger1 = facing != 1
 
-[State 19001, 1]
+[State 19001, Dialogue]
 type = Explod
+triggerall = root,var(34) = 0
+trigger1 = Time = 3
+id = 6931
+anim = 6931 + (root,var(20) * 10)
+pos = 325+(root,var(17) * 40),20+(root,var(17) * 5)
+postype = back
+facing = IfElse(facing = 1, 1, -1)
+sprpriority = 41
+removeongethit = 1
+removetime=127
+scale = .17+(root,var(17) * .11),.19+(root,var(17) * .11)
+supermovetime=-1
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+[State 19001, Legacy Dialogue]
+type = Explod
+triggerall = root,var(34) = 1
 trigger1 = Time = 4
 id = 6927
 anim = 6927 + (root,var(20) * 10000)
@@ -4439,7 +4241,6 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 1
@@ -4498,13 +4299,6 @@ removeongethit = 1
 type = DestroySelf
 trigger1 = time =125
 
-[State 0, ChangeState]
-type = ChangeState
-triggerall = random <=500
-trigger1 = enemy,life <= 1 && time < 2
-value = 150004+random%2
-ignorehitpause = 1
-
 ;Hyper - All Out Attack (Ivette Dialogue: Acabemos con esto)
 [StateDef 150004]
 type = S
@@ -4520,8 +4314,43 @@ sprpriority = 100
 type = turn
 trigger1 = facing != 1
 
-[State 19001, 1]
+[State 0, Legacy Voice]
+type = PlaySnd
+triggerall = root,var(34) = 1
+trigger1 = time = 4
+value = S21932,8 + (root,var(16) * 10000)
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(34) = 1
+trigger1 = time = 4
+value = S21932,8 + (root,var(16) * 10000)
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(34) = 1
+trigger1 = time = 4
+value = S21932,8 + (root,var(16) * 10000)
+
+[State 19001, Dialogue]
 type = Explod
+triggerall = root,var(34) = 0
+trigger1 = Time = 3
+id = 6932
+anim = 6932 + (root,var(20) * 10)
+pos = 325+(root,var(17) * 40),20+(root,var(17) * 5)
+postype = back
+facing = IfElse(facing = 1, 1, -1)
+sprpriority = 41
+removeongethit = 1
+removetime=127
+scale = .17+(root,var(17) * .11),.19+(root,var(17) * .11)
+supermovetime=-1
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+[State 19001, Legacy Dialogue]
+type = Explod
+triggerall = root,var(34) = 1
 trigger1 = Time = 3
 id = 6926
 anim = 6926 + (root,var(20) * 10000)
@@ -4537,7 +4366,6 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 0
@@ -4555,7 +4383,6 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 0
@@ -4573,7 +4400,6 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 3
@@ -4591,21 +4417,6 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 4
-value = S21932,8 + (root,var(16) * 10000)
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 4
-value = S21932,8 + (root,var(16) * 10000)
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 4
-value = S21932,8 + (root,var(16) * 10000)
 
 [State 140003, end]
 type = DestroySelf
@@ -4626,8 +4437,43 @@ sprpriority = 100
 type = turn
 trigger1 = facing != 1
 
-[State 19001, 1]
+[State 0, Legacy Voice]
+type = PlaySnd
+triggerall = root,var(34) = 1
+trigger1 = time = 4
+value = S21932,9 + (root,var(16) * 10000)
+[State 0, Legacy Voice]
+type = PlaySnd
+triggerall = root,var(34) = 1
+trigger1 = time = 4
+value = S21932,9 + (root,var(16) * 10000)
+[State 0, Legacy Voice]
+type = PlaySnd
+triggerall = root,var(34) = 1
+trigger1 = time = 4
+value = S21932,9 + (root,var(16) * 10000)
+
+[State 19001, Dialogue]
 type = Explod
+triggerall = root,var(34) = 0
+trigger1 = Time = 3
+id = 6933
+anim = 6933 + (root,var(20) * 10)
+pos = 325+(root,var(17) * 40),20+(root,var(17) * 5)
+postype = back
+facing = IfElse(facing = 1, 1, -1)
+sprpriority = 41
+removeongethit = 1
+removetime=127
+scale = .17+(root,var(17) * .11),.19+(root,var(17) * .11)
+supermovetime=-1
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+[State 19001, Legacy Dialogue]
+type = Explod
+triggerall = root,var(34) = 1
 trigger1 = Time = 3
 id = 6929
 anim = 6929 + (root,var(20) * 10000)
@@ -4643,7 +4489,6 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 0
@@ -4661,7 +4506,6 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 0
@@ -4679,7 +4523,6 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 3
@@ -4697,21 +4540,6 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 4
-value = S21932,9 + (root,var(16) * 10000)
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 4
-value = S21932,9 + (root,var(16) * 10000)
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 4
-value = S21932,9 + (root,var(16) * 10000)
 
 [State 140003, end]
 type = DestroySelf
@@ -4818,58 +4646,6 @@ type = DestroySelf
 trigger1 = Win = 1
 trigger1 = MatchOver = 0
 trigger1 = time > 225
-
-;Hyper - All Out Attack (BG)
-[StateDef 140671]
-type = S
-movetype= A
-physics = S
-juggle  = 1
-velset = 0,0
-ctrl = 0
-anim = 671
-sprpriority = 29
-
-[State 0, PalFXWiz]
-type = PalFX
-trigger1 = parent, stateno = 180140
-time = 999
-add = 0,0,0
-mul = 256,256,256
-sinadd = 0,0,0,1
-invertall = 0
-color = 0
-
-[State 0, SprPriority]
-type = SprPriority
-trigger1 = animelem = 3
-value = 22
-
-[state turn]
-type = turn
-trigger1 = facing != 1
-
-[State 0, AngleAdd]
-type = AngleDraw
-trigger1 = 1
-value = .007*time
-
-[State 0, PosSet]
-type = PosSet
-trigger1 = 1
-x = 95
-y = 20
-
-[State 140003, end]
-type = DestroySelf
-trigger1 = Win = 1
-trigger1 = MatchOver = 0
-trigger1 = time > 145
-
-[State 140003, end]
-type = DestroySelf
-triggerall = root,win = 0
-trigger1 = time =145
 
 ;Hyper - All Out Attack (Not win)
 [StateDef 140006]
