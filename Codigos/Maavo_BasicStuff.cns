@@ -1915,6 +1915,11 @@ supermovetime = 99999
 ignorehitpause = 1
 persistent = 0
 
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = time = 0
+channel = 1
+
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = animelemtime(2) = 0
@@ -2057,6 +2062,11 @@ trigger1 = time < 18
 value = SCA
 time = 1
 
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = time = 0
+channel = 1
+
 [State 0, EnvShake]
 type = EnvShake
 trigger1 = animelemtime(2) = 0
@@ -2183,6 +2193,11 @@ triggerall = !time
 trigger1 = vel y > -3
 y = -3
 persistent = 0
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = time = 0
+channel = 1
 
 [State 0, NotHitBy]
 type = NotHitBy

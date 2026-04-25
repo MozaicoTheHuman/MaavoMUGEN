@@ -5362,6 +5362,7 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 sprpriority=-7
+ownpal = 1
 removeongethit = 1
 
 [State 19001, 1]
@@ -5379,6 +5380,7 @@ scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
+ownpal = 1
 removeongethit = 1
 
 [State 19001, 1]
@@ -5386,6 +5388,7 @@ type = Explod
 trigger1 = Time = 130
 id = 113021
 anim = 113021
+ownpal = 1
 pos = 0+ (var(17) * -60),0
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
@@ -5413,6 +5416,7 @@ scale = .48+ (var(17) * .1),.48+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
+ownpal = 1
 removeongethit = 1
 vel = -0.03,0
 [State 19001, 1]
@@ -5428,6 +5432,7 @@ removeongethit = 1
 removetime=158
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
+ownpal = 1
 sprpriority=-9
 removeongethit = 1
 [State 19001, 1]
@@ -5449,6 +5454,7 @@ scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 sprpriority=-6
 removeongethit = 1
+ownpal = 1
 [State 19001, 1]
 type = Explod
 trigger1 = enemy, name = "Wach" && EnemyNear,AuthorName = "Wach"
@@ -5463,6 +5469,7 @@ removetime=161
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 sprpriority=-6
+ownpal = 1
 removeongethit = 1
 [State 19001, 1]
 type = Explod
@@ -5481,6 +5488,7 @@ scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 sprpriority=-6
 removeongethit = 1
+ownpal = 1
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 270
@@ -5496,6 +5504,7 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 sprpriority=-5
+ownpal = 1
 removeongethit = 1
 [State 19001, 1]
 type = Explod
@@ -5512,6 +5521,7 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 sprpriority=-5
+ownpal = 1
 removeongethit = 1
 [State 19001, 1]
 type = Explod
@@ -5778,6 +5788,7 @@ removetime=76
 scale = .28+ (var(17) * .1),.28+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
+ownpal = 1
 pausemovetime = 99999
 sprpriority=-7
 removeongethit = 1
@@ -5792,6 +5803,7 @@ postype = back
 Facing = IfElse(facing = 1, 1, -1)
 sprpriority = 25
 removeongethit = 1
+ownpal = 1
 removetime=56
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
