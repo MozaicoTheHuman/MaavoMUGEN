@@ -100,7 +100,7 @@ type = Explod
 trigger1 = animelem = 3 
 anim = 201
 ID = 201
-pos = -5,22
+pos = 5,22
 postype = p1  ;p2,front,back,left,right
 facing = 1
 vfacing = 1
@@ -235,7 +235,7 @@ type = Explod
 trigger1 = animelem = 2
 anim = 201
 ID = 201
-pos = 5,-8
+pos = 9,-10
 postype = p1  ;p2,front,back,left,right
 facing = 1
 vfacing = 1
