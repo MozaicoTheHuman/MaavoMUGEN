@@ -1423,7 +1423,7 @@ triggerall = !aiLevel
 triggerall = command = "x"
 triggerall = command != "holddown"
 trigger1 = statetype != A
-trigger1 = ctrl || (stateno = [100,109]) || stateno = 1022
+trigger1 = ctrl || (stateno = [100,109]) || stateno = 200 && (time >= 6||movecontact) || stateno = 1022
 
 ;---------------------------------------------------------------------------
 ; Stand Medium Punch
@@ -1505,7 +1505,7 @@ triggerall = command = "x"
 triggerall = command = "holddown"
 trigger1 = statetype != A
 trigger1 = ctrl || (stateno = [100,109]) || stateno = 1022
-trigger2 = (stateno = 200 || stateno = 400) && (time >= 4)
+trigger2 = (stateno = 200 || stateno = 400) && (time >= 6||movecontact)
 
 ;---------------------------------------------------------------------------
 ; Crouching Medium Punch
@@ -1534,6 +1534,48 @@ trigger2 = (stateno = 200 || stateno = 400) && movecontact
 trigger3 = (stateno = 230 || stateno = 430) && movecontact
 trigger4 = (stateno = 210 || stateno = 410) && movecontact
 trigger5 = (stateno = 240 || stateno = 440) && movecontact
+
+;---------------------------------------------------------------------------
+; Crouching Light Kick
+[State -1, Crouching Light Kick]
+type = ChangeState
+value = 430
+triggerall = !aiLevel
+triggerall = command = "a"
+triggerall = command = "holddown"
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno = [100,109]) || stateno = 1022
+trigger2 = (stateno = 200 || stateno = 400 || stateno = 230)
+
+;---------------------------------------------------------------------------
+; Crouching Medium Kick
+[State -1, Crouching Medium Kick]
+type = ChangeState
+value = 440
+triggerall = !aiLevel
+triggerall = command = "b"
+triggerall = command = "holddown"
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno = [100,109]) || stateno = 1022
+trigger2 = (stateno = 200 || stateno = 400) && movecontact
+trigger3 = (stateno = 210 || stateno = 410) && movecontact
+trigger4 = (stateno = 230 || stateno = 430) && movecontact
+
+;---------------------------------------------------------------------------
+; Crouching Strong Kick
+[State -1, Crouching Strong Kick]
+type = ChangeState
+value = 450
+triggerall = command = "c"
+triggerall = command = "holddown"
+triggerall = !aiLevel
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno = [100,109]) || stateno = 1022
+trigger2 = (stateno = 200 || stateno = 400) && movecontact
+trigger3 = (stateno = 230 || stateno = 430) && movecontact
+trigger4 = (stateno = 210 || stateno = 410) && movecontact
+trigger5 = (stateno = 240 || stateno = 440) && movecontact
+trigger6 = (stateno = 220 || stateno = 420) && movecontact
 
 ;---------------------------------------------------------------------------
 ; Jump Light Punch

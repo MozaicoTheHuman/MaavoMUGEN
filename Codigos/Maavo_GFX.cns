@@ -77,6 +77,85 @@ type = DestroySelf
 trigger1 = animtime = 0
 
 ;---------------------------------------------------------------------------
+;Crouching Strong Kick - Motion Trail
+[StateDef 451]
+type = S
+movetype= A
+anim = 221
+poweradd = 0
+sprpriority = 3
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State a]
+type = BindtoRoot
+trigger1 = time < 13
+time = -1
+facing = 1
+pos = -15,-34
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -25
+scale = 1.4,1
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Crouching Strong Kick - Motion Trail 2
+[StateDef 452]
+type = S
+movetype= A
+anim = 221
+poweradd = 0
+sprpriority = -1
+
+[State xd]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State a]
+type = BindtoRoot
+trigger1 = time < 13
+time = -1
+facing = 1
+pos = 25,-34
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+alpha = 256,256
+ignorehitpause = 1
+persistent = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = -215
+scale = 1.4,1
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = DestroySelf
+trigger1 = animtime = 0
+;---------------------------------------------------------------------------
 ;Counter de Papel - Papel
 [StateDef 2001]
 type = S

@@ -1397,7 +1397,7 @@ value = 0
 ctrl = 1
 
 ;---------------------------------------------------------------------------
-;Air Juggle - K.O. Screen check
+;Hyper - Air Juggle - K.O. Screen check
 [Statedef 611]
 anim = 616
 
