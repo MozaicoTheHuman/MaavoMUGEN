@@ -1460,6 +1460,11 @@ type = ChangeState
 trigger1 = enemy, name = "Oliver Andersen" && EnemyNear,AuthorName = "Oliver As Latias"
 value = 1951
 
+[State 190, 0] ;V.S. Alex
+type = ChangeState
+trigger1 = enemy, name = "New_Alex" && EnemyNear,AuthorName = "ElAleUwU"
+value = 194
+
 [State 190, 4] ;Intro 1
 type = ChangeState
 trigger1 = time = 0
@@ -1554,6 +1559,124 @@ flag = Intro
 type = ChangeState
 trigger1 = AnimTime = 0
 value = 0
+
+;---------------------------------------------------------------------------
+;Intro (Special) - V.S. Alex
+[Statedef 194]
+type = S
+ctrl = 0
+anim = 616
+velset = 0,0
+
+[State 194, 1] ;Assert this until you want "round 1, fight" to begin
+type = AssertSpecial
+trigger1 = 2
+flag = Intro
+flag2 = nomusic
+
+[State 194, Helper]
+type = Helper
+trigger1 = time = 0
+helpertype = normal
+name = "Maavo Walk"
+ID = 1942
+stateno = 1942
+pos = 320,0
+postype = p1
+persistent = 0
+
+[State 194, ChangeAnim]
+type = ChangeAnim
+trigger1 = numhelper(1942) && helper(1942),stateno = 1942 && Abs(helper(1942),Pos X - Pos X) <= 6 && helper(1942),Time > 10
+value = 19012
+
+[State 194, PlaySnd]
+type = PlaySnd
+triggerall = anim = 19012
+trigger1 = Animelem = 1
+value = S1901,2
+[State 194, PlaySnd]
+type = PlaySnd
+triggerall = anim = 19012
+trigger1 = Animelem = 1
+value = S1901,2
+[State 194, PlaySnd]
+type = PlaySnd
+triggerall = anim = 19012
+trigger1 = Animelem = 6
+value = S1901,0
+[State 194, PlaySnd]
+type = PlaySnd
+triggerall = anim = 19012
+trigger1 = Animelem = 6
+value = S1901,0
+[State 194, PlaySnd]
+type = PlaySnd
+triggerall = anim = 19012
+trigger1 = Animelem = 12
+value = S1901,1
+[State 194, PlaySnd]
+type = PlaySnd
+triggerall = anim = 19012
+trigger1 = Animelem = 12
+value = S1901,1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = anim = 19012
+trigger1 = AnimElem = 3
+value = S191,1
+freqmul = 0.9+(random/7333.3)
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = anim = 19012
+trigger1 = AnimElem = 17
+value = S191,1
+freqmul = 0.9+(random/7333.3)
+
+[State 190, 4] ;Change to stand state
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+;---------------------------------------------------------------------------
+;Intro (Special) - V.S. Alex (Walking from Alex's side)
+[Statedef 1942]
+type = S
+ctrl = 0
+anim = 19011
+velset = 0,0
+sprpriority = 0
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State FootSteps]
+type = PlaySnd
+trigger1 = AnimElemtime(1) = 1
+value = S20,0+random%2
+freqmul = 0.9+(random/7333.3)
+
+[State FootSteps]
+type = PlaySnd
+trigger1 = AnimElem=4
+value = S21,0+random%2
+freqmul = 0.9+(random/7333.3)
+
+[State 1942, Walk]
+type = VelSet
+trigger1 = Time = 0
+x = ifelse(Pos X < Parent,Pos X, 2, -2)
+
+[State 1942, DestroySelf]
+type = DestroySelf
+trigger1 = Abs(Pos X - Parent,Pos X) <= 6
+
+[State 1942, DestroySelf]
+type = DestroySelf
+trigger1 = parent, life = 0
 
 ;---------------------------------------------------------------------------
 ;Intro (Special) - V.S. Oliver

@@ -22,7 +22,12 @@ TimeGap  = 1
 FrameGap = 4
 Trans = Add
 time = 14
-
+[State 0, PalFX]
+type = PalFX
+triggerall = parent, stateno = 17002
+trigger1 = 1
+time = 1
+mul = 0,0,0
 [State 0, VarSet]
 type = ParentVarSet
 triggerall = parent,var(12) = 0
@@ -307,6 +312,13 @@ trigger1 = time > 18
 x = 0
 ignorehitpause = 1
 
+[State 0, PalFX]
+type = PalFX
+triggerall = parent, stateno = 17002
+trigger1 = 1
+time = 1
+mul = 0,0,0
+
 [State 100, Run Effect 2]
 type = Explod
 trigger1 = time = 6
@@ -442,7 +454,12 @@ shadow = 0,0,0
 ownpal = 1
 removeongethit = 0
 ignorehitpause = 0
-
+[State 0, PalFX]
+type = PalFX
+triggerall = parent, stateno = 17002
+trigger1 = 1
+time = 1
+mul = 0,0,0
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,win = 0
@@ -502,7 +519,12 @@ trigger1 = Time = 0
 attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT,AA
 stateno = 8905
 time = -1
-
+[State 0, PalFX]
+type = PalFX
+triggerall = parent, stateno = 17002
+trigger1 = 1
+time = 1
+mul = 0,0,0
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = time = 0
@@ -701,7 +723,12 @@ type = PlaySnd
 trigger1 = AnimElem = 1
 value = S336,1
 channel = 11
-
+[State 0, PalFX]
+type = PalFX
+triggerall = parent, stateno = 17002
+trigger1 = 1
+time = 1
+mul = 0,0,0
 [State 0, EnvShake]
 type = EnvShake
 trigger1 = time = 0
@@ -767,7 +794,12 @@ type = VelAdd
 trigger1 = time = 0
 x = 6
 y = -18
-
+[State 0, PalFX]
+type = PalFX
+triggerall = parent, stateno = 17002
+trigger1 = 1
+time = 1
+mul = 0,0,0
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = time = 41
@@ -812,6 +844,13 @@ ctrl = 0
 anim = 84803
 poweradd = 0
 sprpriority = 2
+
+[State 0, PalFX]
+type = PalFX
+triggerall = parent, stateno = 17002
+trigger1 = 1
+time = 1
+mul = 0,0,0
 
 [State 1220, Afterimage Pink]
 type = AfterImage
@@ -917,6 +956,13 @@ ctrl = 0
 anim = 848041
 poweradd = 0
 sprpriority = 5
+
+[State 0, PalFX]
+type = PalFX
+triggerall = parent, stateno = 17002
+trigger1 = 1
+time = 1
+mul = 0,0,0
 
 [State 0, Movement Effect]
 type = Explod
