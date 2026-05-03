@@ -414,6 +414,7 @@ PauseMovetime = 9999
 scale = .3,.5
 bindtime = -1
 ownpal = 1
+ontop = 1
 removeongethit = 1
 
 [State Black BG]
@@ -1479,23 +1480,6 @@ flag = Intro
 type = ChangeState
 trigger1 = AnimTime = 0
 value = 0
-
-;Intro - Game Freeze
-[Statedef 190190]
-type = S
-ctrl = 0
-anim = 190190
-velset = 0,0
-
-[State 190, 2] ;Assert this until you want "round 1, fight" to begin
-type = AssertSpecial
-trigger1 = 1
-flag = Intro
-
-[State 0, ChangeAnim]
-type = ChangeAnim
-trigger1 = 1
-value = 190190
 
 ;---------------------------------------------------------------------------
 ;Intro 1

@@ -8049,3 +8049,12 @@ Loopstart
 2230,15, -25,30, 34, , AS138D256
 
 
+
+; Cinematic Bottom - In + hold
+[Begin Action 54535]
+1191,30, 0,0, 10
+
+; Cinematic Top - In + hold
+[Begin Action 54535]
+1191,30, 0,-719, 10
+
