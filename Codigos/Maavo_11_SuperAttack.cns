@@ -5261,6 +5261,14 @@ envshake.time = 15
 envshake.ampl = -4
 envshake.freq = 100
 
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1959,9
+persistent = 0
+ignorehitpause = 1
+
 [State 0, Hit Spark]
 type = Explod
 trigger1 = MoveHit
@@ -5328,7 +5336,7 @@ sprpriority = 2
 [State 0, Detect Special]
 type = VarSet
 trigger1 = NumHelper(9902) || NumHelper(84803)
-var(57) = 1
+var(44) = 1
 ignorehitpause = 1
 
 [State 0, TargetState]
@@ -5383,6 +5391,38 @@ value = 9311
 ID = 1210
 ignorehitpause = 1
 persistent = 0
+[State 0, Helper]
+type = Helper
+triggerall = Enemy, TeamMode = Simul || TeamMode = Simul
+trigger1 = time = 0
+helpertype = normal ;player
+name = "Stop the other players"
+ID = 12205
+stateno = 12205
+pos = 0,0
+postype = left
+facing = 1
+ownpal = 0
+size.xscale = 9
+size.yscale = 9
+PauseMoveTime = 9999
+SuperMoveTime = 9999
+[State 0, Helper]
+type = Helper
+triggerall = Enemy, TeamMode = Simul || TeamMode = Simul
+trigger1 = time = 1
+helpertype = normal ;player
+name = "Stop the other players"
+ID = 12205
+stateno = 12205
+pos = 0,0
+postype = left
+facing = 1
+ownpal = 0
+size.xscale = 9
+size.yscale = 9
+PauseMoveTime = 9999
+SuperMoveTime = 9999
 
 [State 195, 2]
 type = ChangeState
@@ -5765,7 +5805,7 @@ scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
-sprpriority=42
+sprpriority=43
 ownpal = 1
 removeongethit = 1
 
@@ -5776,7 +5816,7 @@ trigger1 = enemy, name != "Rudy" && EnemyNear,AuthorName != "jade_midori"
 trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "SogaCeleste HanzoSantiago"
 trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
 triggerall = var(50) = 0
-triggerall = var(57) = 0
+triggerall = var(44) = 0
 trigger1 = Time = 269
 id = 115020
 anim = 115020
@@ -5798,7 +5838,7 @@ trigger1 = enemy, name != "Rudy" && EnemyNear,AuthorName != "jade_midori"
 trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "SogaCeleste HanzoSantiago"
 trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
 triggerall = var(50) = 0
-triggerall = var(57) = 1
+triggerall = var(44) = 1
 trigger1 = Time = 269
 id = 115020
 anim = 115021
@@ -5849,18 +5889,26 @@ ignorehitpause = 1
 
 [State 3300, p2state NORMAL]
 type = TargetState
+trigger1 = enemy, name != "Dan" && EnemyNear,AuthorName != "Daniel9999999"
+trigger1 = enemy, name != "Rudy" && EnemyNear,AuthorName != "jade_midori"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "SogaCeleste HanzoSantiago"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
 triggerall = var(50) = 0
 triggerall = var(17) = 0
-triggerall = var(57) = 0
+triggerall = var(44) = 0
 trigger1 = Time = 269
 value = 93131
 persistent = 0
 ignorehitpause = 1
 [State 3300, p2state NORMAL]
 type = TargetState
+trigger1 = enemy, name != "Dan" && EnemyNear,AuthorName != "Daniel9999999"
+trigger1 = enemy, name != "Rudy" && EnemyNear,AuthorName != "jade_midori"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "SogaCeleste HanzoSantiago"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
 triggerall = var(50) = 0
 triggerall = var(17) = 1
-triggerall = var(57) = 0
+triggerall = var(44) = 0
 trigger1 = Time = 269
 value = 9313
 persistent = 0
@@ -6202,7 +6250,7 @@ sprpriority = 2
 [State 0, Reset Special]
 type = VarSet
 trigger1 = 1
-var(57) = 0
+var(44) = 0
 ignorehitpause = 1
 
 [State 19001,TargetLifeAdd]

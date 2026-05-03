@@ -1,0 +1,80 @@
+[Info]
+name = "Maavo"
+displayname = "Maavo"
+versiondate = 02/04/2026
+mugenversion = 1.1
+author = "Mozaico" ;MozaicoTheRobot
+;i ain't changing the authorname because this would break the clap anim compatibility
+
+
+;FULL CREDITS:
+;MozaicoTheRobot
+;Orbi
+;Soga Celeste
+;Wach
+;Chase2006
+;A_Creator
+;Oliver As Latias
+;PointyyESM
+;jade_midori
+;Poncho
+;Kakow0
+;Miki
+;Riusaki Fujioka
+
+pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+sprite = Maavo_Sprites.sff
+sound = Maavo_SFX.snd
+anim = Maavo_Animaciones.air
+cmd = Maavo_Comandos.cmd
+cns = Codigos/Maavo_Codigos.cns
+st = Codigos/Maavo_-2.cns
+st0 = Codigos/Maavo_BasicStuff.cns
+st1 = Codigos/Maavo_BasicAttack.cns
+st2 = Codigos/Maavo_SpecialAttack.cns
+st3 = Codigos/Maavo_11_SuperAttack.cns
+st4 = Codigos/Maavo_Assest.cns
+st5 = Codigos/Maavo_Enemy_IKEMEN.cns
+stcommon = Codigos/Maavo_Codigos_Comunes.cns
+st6 = Codigos/Maavo_GFX.cns
+st7 = Codigos/Maavo_11_KOScreen.cns
+st8 = Config.txt
+movelist = moveset.dat     ;Ikemen feature: Movelist
+
+[Palette Keymap]
+x = 1 ;Default
+y = 2 ;Undershirt
+z = 3 ;Marti­n MUGEN
+a = 4 ;Mozaico The Robot
+b = 5 ;Viernes Noche Webiando': Trifunka
+c = 6 ;Persona 5
+x2 = 7 ;Scott Pilgrim
+y2 = 8 ;No Straight Roads (2021 Palette Contest Winner: Rossiter)
+z2 = 9 ;Undertale (2021 Palette Contest Winner: Oraflame)
+a2 = 10 ;Jet Set Radio (2021 Palette Contest Winner: Lee425MGN)
+b2 = 11 ;Friday Night Funkin' (2021 Palette Contest Winner: Bacon1233TheArmy)
+c2 = 12 ;Abstract
+
+;THERE ARE WAY MORE PALETTES BUT YOU NEED TO PLAY IKEMEN GO NIGHTLY TO ACCESS THEM
+
+;13 - Skullgirls
+;14 - Pico School
+;15 - M.U.G.E.N. All-Stars
+;16 - FNAFHS
+;17 - FNAF 2
+;18 - Team Sonic
+;19 - Team Dark
+;20 - Old Anime
+;21 - Scooby-Doo
+;22 - Overwatch
+;23 - TF2
+;24 - Derker Bluer
+;25 - The Simpsons
+;26 - Danganronpa 2
+;27 - 2021 Demo
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=

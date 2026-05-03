@@ -1,0 +1,2550 @@
+;------------------
+; Groundbounce - shaking from the hit
+[Statedef 625]
+type    = U
+movetype= H
+physics = N
+velset = 0,0
+
+[State 0, PosFreeze]
+type = PosFreeze
+trigger1 = !hitshakeover
+value = 1
+ignorehitpause = 1
+
+[State 1215, Anim] ;Custom animation
+type = ChangeAnim
+trigger1 = 1
+value = ifelse(statetype=L,5170,5050)
+
+[State 1215, State]
+type = ChangeState
+trigger1 = HitShakeOver = 1
+value = 626
+
+;------------------
+; Groundbounce - falling down
+[Statedef 626]
+type    = A
+movetype= H
+physics = N
+
+[State 1216, Velocity]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+y = 1
+
+[State 1216, Gravity]
+type = VelAdd
+trigger1 = 1
+y = .6
+
+[State 1216, Hit ground]
+type = ChangeState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 627
+
+;------------------
+; Groundbounce - hit ground
+[Statedef 627]
+type    = A
+movetype= H
+physics = N
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = time = 0
+time=20
+freq=175
+ampl=-5
+ignorehitpause = 1
+
+[State 821, CameraBack]
+type = ScreenBound
+trigger1 = Time = 0
+value = 1
+
+[State 1217, Pos]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 1217, Stop moving]
+type = PosFreeze
+trigger1 = 1
+x = 1
+y = 1
+
+[State 1217, No scroll]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,1
+
+[State 1217, Spark]
+type = Explod
+trigger1 = Time = 0
+anim = F62
+pos = 0,0
+postype = p1
+sprpriority = 3
+
+[State 1217, Anim]
+type = ChangeAnim2
+trigger1 = Time = 0
+value = 1627
+
+[State 1217, Sound]
+type = PlaySnd
+trigger1 = Time = 0
+value = F7,2
+
+[State 1217, State]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 628
+
+;------------------
+; Groundbounce - bounce off ground
+[Statedef 628]
+type    = A
+movetype= H
+physics = N
+
+[State 1028, Vel Y]
+type = VelSet
+trigger1 = Time = 0
+x = -1.5
+y = -10
+
+[State 1028, Gravity]
+type = VelAdd
+trigger1 = 1
+y = .5
+
+[State 1028, Anim 1218]
+type = ChangeAnim
+triggerall = selfanimexist(5052)=0
+trigger1 = Time = 0
+value = 5050
+[State 1028, Anim 1218]
+type = ChangeAnim
+triggerall = selfanimexist(5052)=1
+trigger1 = Time = 0
+value = 5052
+[State 1028, Anim 1218]
+type = ChangeAnim
+trigger1 = anim = [5050,5059]
+trigger1 = Vel Y >= ifelse(anim = 5050, Const720p(4), Const720p(-8))
+trigger1 = SelfAnimExist(anim+10)
+value = anim+10
+persistent = 0
+
+[State 821, 2] ; Recover near ground (use ChangeState)
+type = SelfState
+triggerall = Vel Y > 0
+triggerall = Pos Y >= -20
+triggerall = alive
+triggerall = hitfall && gethitvar(fall.recover)
+trigger1 = Command = "recovery"
+value = 5200 ;HITFALL_RECOVER
+[State 821, 2] ; Recover near ground (use ChangeState)
+type = SelfState
+triggerall = Vel Y > 0
+triggerall = Pos Y < -20
+triggerall = alive
+triggerall = hitfall && gethitvar(fall.recover)
+trigger1 = Command = "recovery"
+value = 5210 ;HITFALL_RECOVER
+
+[State 1028, Hit ground]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 5110
+anim = ifelse(selfanimexist(5161),5161,5160)
+
+;------------------
+; Already Used A Groundbounce - shaking from the hit
+[Statedef 655]
+type    = U
+movetype= H
+physics = N
+velset = 0,0
+
+[State 0, PosFreeze]
+type = PosFreeze
+trigger1 = !hitshakeover
+value = 1
+ignorehitpause = 1
+
+[State 1215, Anim] ;Custom animation
+type = ChangeAnim
+trigger1 = 1
+value = ifelse(statetype=L,5170,5050)
+
+[State 1215, State]
+type = ChangeState
+trigger1 = HitShakeOver = 1
+value = 656
+
+;------------------
+; Already Used A Groundbounce - falling down
+[Statedef 656]
+type    = A
+movetype= H
+physics = N
+
+[State 1216, Velocity]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+y = 1
+
+[State 1216, Gravity]
+type = VelAdd
+trigger1 = 1
+y = .6
+
+[State 1216, Hit ground]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 5100
+
+
+;Throw Opponent (prelude)
+[Statedef 819]
+type = S
+movetype = H
+physics = N
+velset = 0,0
+
+[State 20, 1]
+type = ChangeAnim2
+trigger1 = Time = 0
+value = 819
+
+[State 819, Safety Release]
+type = SelfState
+trigger1 = Time > 300                 
+trigger2 = !PlayerIDExist(EnemyNear,ID)
+trigger3 = EnemyNear, StateNo != [800,880]
+trigger4 = EnemyNear, StateNo != 810
+value = 50
+ctrl = 1
+
+;Throw Opponent
+[Statedef 820]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+
+[State 820, NoCamera]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 1,0
+ignorehitpause = 1
+
+[State 20, 1]
+type = ChangeAnim2
+trigger1 = Time = 0
+value = 820
+
+[State 820, Safety Release]
+type = SelfState
+trigger1 = Time > 300                
+trigger2 = !PlayerIDExist(EnemyNear,ID)
+trigger3 = EnemyNear, StateNo != [800,880]
+trigger4 = EnemyNear, StateNo != 810
+value = 50
+ctrl = 1
+
+;------------------
+; Throw Groundbounce - hit ground
+[Statedef 827]
+type    = A
+movetype= H
+physics = N
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = time = 0
+time=20
+freq=175
+ampl=-5
+ignorehitpause = 1
+
+[State 821, CameraBack]
+type = ScreenBound
+trigger1 = Time = 0
+value = 1
+
+[State 1217, Pos]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 1217, Stop moving]
+type = PosFreeze
+trigger1 = 1
+x = 1
+y = 1
+
+[State 1217, No scroll]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,1
+
+[State 1217, Spark]
+type = Explod
+trigger1 = Time = 0
+anim = F62
+pos = 0,0
+postype = p1
+sprpriority = 3
+
+[State 1217, Anim]
+type = ChangeAnim2
+trigger1 = Time < 8
+value = 1627
+
+[State 1217, Sound]
+type = PlaySnd
+trigger1 = Time = 0
+value = F7,2
+
+[State 1217, State]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 828
+
+;------------------
+; Throw Groundbounce - bounce off ground
+[Statedef 828]
+type    = A
+movetype= H
+physics = N
+
+[State 1028, Vel Y]
+type = VelSet
+trigger1 = Time = 0
+x = -1.5
+y = -10
+
+[State 1028, Gravity]
+type = VelAdd
+trigger1 = 1
+y = .5
+
+[State 1028, Anim 1218]
+type = ChangeAnim
+triggerall = selfanimexist(5052)=0
+trigger1 = Time = 0
+value = 5050
+[State 1028, Anim 1218]
+type = ChangeAnim
+triggerall = selfanimexist(5052)=1
+trigger1 = Time = 0
+value = 5052
+[State 1028, Anim 1218]
+type = ChangeAnim
+trigger1 = anim = [5050,5059]
+trigger1 = Vel Y >= ifelse(anim = 5050, Const720p(4), Const720p(-8))
+trigger1 = SelfAnimExist(anim+10)
+value = anim+10
+persistent = 0
+
+[State 1028, Hit ground]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 5110
+anim = ifelse(selfanimexist(5161),5161,5160)
+
+;Throw Escape
+[Statedef 890]
+type = S
+movetype = H
+physics = S
+velset = 0,0
+sprpriority = 2
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 20, 1]
+type = ChangeAnim2
+triggerall = !time
+trigger1 = !selfanimexist(5940)
+value = 5945
+[State 20, 1]
+type = ChangeAnim
+triggerall = !time
+trigger1 = selfanimexist(5940)
+value = 5940
+
+[State 10, State End]
+type = SelfState
+trigger1 = time = 26
+value = 0
+ctrl = 1
+;------------------
+; Forced Hard Knockdown - Stun
+[Statedef 925]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+[State 0, PosFreeze]
+type = PosFreeze
+trigger1 = !hitshakeover
+value = 1
+ignorehitpause = 1
+
+[State 5000, 2] ;Anim for HIT_BACK
+type = ChangeAnim
+trigger1 = Time = 0
+value = 5030
+
+[State 5000, 3] ;Anim for HIT_UP/HIT_DIAGUP (only if it exists)
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = (GetHitVar(animtype) = [4,5]) && (SelfAnimExist(5047 + GetHitVar(animtype)))
+value = 5047 + GetHitVar(animtype) ;5051 - 4 + type
+
+[State 5000, 4] ;Freeze anim
+type = ChangeAnim
+trigger1 = Time > 0
+value = anim
+
+[State 1215, State]
+type = ChangeState
+trigger1 = HitShakeOver = 1
+value = 926
+
+;------------------
+; Forced Hard Knockdown - falling down
+[Statedef 926]
+type    = A
+movetype= H
+physics = N
+
+[State 5050, 1] ;Change anim when done with transition
+type = ChangeAnim
+trigger1 = AnimTime = 0
+trigger1 = Anim = 5035
+trigger2 = Time = 0     ;If no transition anim
+trigger2 = Anim != 5035
+trigger2 = (Anim != [5051, 5059]) && (Anim != [5061, 5069])
+trigger2 = Anim != 5090 ;Not if hit off ground anim
+value = 5050
+
+[State 5050, 2] ;Coming down anim
+type = ChangeAnim
+trigger1 = anim = [5050,5059]
+trigger1 = Vel Y >= ifelse(anim = 5050, Const720p(4), Const720p(-8))
+trigger1 = SelfAnimExist(anim+10)
+value = anim+10
+persistent = 0
+
+[State 1216, Velocity]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+y = 1
+
+[State 1216, Gravity]
+type = VelAdd
+trigger1 = 1
+y = gethitvar(yaccel)
+
+[State 1216, Hit ground]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 5100
+
+;---------------------------------------------------------------------------
+; Air Juggle - shaking from the hit
+[Statedef 19005]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+[State 0, HitFallSet]
+type = HitFallSet
+trigger1 = 1
+value = 1
+ignorehitpause = 1
+
+[State 5000, 1] ;Anim for HIT_LIGHT to HIT_HARD
+type = ChangeAnim
+trigger1 = Time = 0
+value = 5012
+
+[State 5000, 4] ;Freeze anim
+type = ChangeAnim
+trigger1 = !hitshakeover
+value = anim
+
+[State 5000, 6]
+type = SelfState
+trigger1 = HitOver
+value = 5050
+
+[State 5000, FFB Light]
+type = ForceFeedback
+trigger1 = anim = 5000
+trigger2 = anim = 5010
+persistent = 0
+time = 6
+waveform = square
+
+[State 5000, FFB Medium]
+type = ForceFeedback
+trigger1 = anim = 5001
+trigger2 = anim = 5011
+persistent = 0
+time = 8
+waveform = sinesquare
+ampl = 110,-1,-.3
+
+[State 5000, FFB Hard]
+type = ForceFeedback
+trigger1 = anim = 5012
+trigger2 = anim = 5002
+trigger3 = anim = 5030
+persistent = 0
+time = 15
+waveform = sinesquare
+ampl = 140
+
+;---------------------------------------------------------------------------
+; Air Juggle - shaking from the hit
+[Statedef 19006]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+[State 0, HitFallSet]
+type = HitFallSet
+trigger1 = 1
+value = 1
+ignorehitpause = 1
+
+[State 5000, 1] ;Anim for HIT_LIGHT to HIT_HARD
+type = ChangeAnim
+trigger1 = Time = 0
+value = 5002
+
+[State 5000, 4] ;Freeze anim
+type = ChangeAnim
+trigger1 = !hitshakeover
+value = anim
+
+[State 5000, 6]
+type = SelfState
+trigger1 = HitOver
+value = 5050
+
+[State 5000, FFB Light]
+type = ForceFeedback
+trigger1 = anim = 5000
+trigger2 = anim = 5010
+persistent = 0
+time = 6
+waveform = square
+
+[State 5000, FFB Medium]
+type = ForceFeedback
+trigger1 = anim = 5001
+trigger2 = anim = 5011
+persistent = 0
+time = 8
+waveform = sinesquare
+ampl = 110,-1,-.3
+
+[State 5000, FFB Hard]
+type = ForceFeedback
+trigger1 = anim = 5012
+trigger2 = anim = 5002
+trigger3 = anim = 5030
+persistent = 0
+time = 15
+waveform = sinesquare
+ampl = 140
+
+
+;---------------------------------------------------------------------------
+;Hyper - Gran Tornado! (Custom State 1)
+[Statedef 87877]
+type    = A
+movetype= H
+physics = N
+sprpriority = 3
+velset = 0,0
+ctrl = 0
+
+[State 1217, No scroll]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,1
+
+[State 5000, 1]
+type = ChangeAnim2
+trigger1 = Time = 0
+value = 87873
+
+;---------------------------------------------------------------------------
+;Hyper - All-Out Attack (Stop the other players - Custom State 1)
+[StateDef 4100022]
+type = S
+sprpriority = 0
+velset = 0,0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = 1
+value = anim
+elem = AnimElemNo(0)
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = time < 15
+time = 1
+mul = ceil(256*(1-time/10.0)),ceil(256*(1-time/10.0)),ceil(256*(1-time/10.0))
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = time >= 10
+time = 1
+mul = 0,0,0
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = 80
+value = 4100023
+
+;---------------------------------------------------------------------------
+;Hyper - All-Out Attack (Stop the other players - Custom State 2)
+[StateDef 4100023]
+type = S
+sprpriority = -999
+velset = 0,0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = 1
+value = anim
+elem = AnimElemNo(0)
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = time = 295
+value = 50
+
+
+;---------------------------------------------------------------------------
+;Hyper - All Out Attack (Custom State 1)
+[Statedef 1700101]
+type = S
+movetype = H
+physics = N
+ctrl = 0
+velset = 0,0
+sprpriority = 0
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = time > 20
+time = 145
+add = 0,0,0
+mul = 0,0,0
+sinadd = 0,0,0,10
+invertall = 0
+color = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+y = 0
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 66363636, ChangeAnim2]
+type = ChangeAnim2
+trigger1 = time = 0
+value = 13993
+
+;Hyper - All Out Attack (Custom State 2)
+[Statedef 1700102]
+type = S
+movetype = H
+physics = N
+ctrl = 0
+velset = 0,0
+sprpriority = 31
+
+[State 0, Offset]
+type = Offset
+trigger1 = time<2
+x = 7
+y = -2
+[State 0, Offset]
+type = Offset
+trigger1 = time>2&&time<4
+x = -7
+y = 2
+[State 0, Offset]
+type = Offset
+trigger1 = time>4&&time<8
+x = 4
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>10&&time<12
+x = -2
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>12&&time<14
+x = 4
+y = -2
+[State 0, Offset]
+type = Offset
+trigger1 = time>14&&time<16
+x = -7
+y = 2
+[State 0, Offset]
+type = Offset
+trigger1 = time>16&&time<18
+x = 4
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>20&&time<22
+x = -2
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>22&&time<24
+x = 4
+y = -2
+[State 0, Offset]
+type = Offset
+trigger1 = time>24&&time<26
+x = -7
+y = 2
+[State 0, Offset]
+type = Offset
+trigger1 = time>26&&time<28
+x = 4
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>30&&time<32
+x = -2
+y = 4
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = 0
+y = 0
+
+[State 0, Offset]
+type = Offset
+trigger1 = 1
+y = (-screenpos y) + floor(gameheight*.470)
+ignorehitpause = 1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = 1.3,1.3
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = (5 - 0.8*time/6.6),(5 - 0.8*time/6.6)
+
+[State 5201, 1]
+type = Turn
+trigger1 = Time = 0
+trigger1 = p2dist X < -1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = time = 0
+time = 145
+add = 0,0,0
+mul = 0,0,0
+sinadd = 0,0,0,10
+invertall = 0
+color = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 0
+trigger1 = SelfAnimExist(13984)
+value = 13984
+
+[State 0, 1]
+type = ChangeAnim2
+trigger1 = time = 0
+trigger1 = !SelfAnimExist(13984)
+value = 13994
+
+[State 66363636, State]
+type = ChangeState
+trigger1 = Time = 32
+value = 17001021
+
+;Hyper - All Out Attack (Custom State 2 - 2)
+[Statedef 17001021]
+type = S
+movetype = H
+physics = N
+ctrl = 0
+velset = 0,0
+sprpriority = 31
+
+[State 0, Offset]
+type = Offset
+trigger1 = time<2
+x = 3
+y = -7
+[State 0, Offset]
+type = Offset
+trigger1 = time>2&&time<4
+x = -3
+y = 7
+[State 0, Offset]
+type = Offset
+trigger1 = time>4&&time<8
+x = 3
+y = -6
+[State 0, Offset]
+type = Offset
+trigger1 = time>10&&time<12
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>12&&time<14
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>14&&time<16
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>16&&time<18
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>20&&time<22
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>22&&time<24
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>24&&time<26
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>26&&time<28
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>30&&time<32
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>32&&time<34
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>32&&time<34
+x = 3
+y = -4
+[State 0, Offset]
+type = Offset
+trigger1 = time>34&&time<38
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>40&&time<42
+x = -3
+y = 5
+[State 0, Offset]
+type = Offset
+trigger1 = time>42&&time<44
+x = 3
+y = -4
+[State 0, Offset]
+type = Offset
+trigger1 = time>44&&time<46
+x = -3
+y = 5
+[State 0, Offset]
+type = Offset
+trigger1 = time>46&&time<48
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>50&&time<52
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>52&&time<54
+x = 3
+y = -4
+[State 0, Offset]
+type = Offset
+trigger1 = time>54&&time<56
+x = -3
+y = 5
+[State 0, Offset]
+type = Offset
+trigger1 = time>56&&time<58
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>60&&time<62
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>62&&time<64
+x = 3
+y = -4
+[State 0, Offset]
+type = Offset
+trigger1 = time>64&&time<68
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>70&&time<72
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>72&&time<74
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>74&&time<76
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>76&&time<78
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>80&&time<82
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>82&&time<84
+x = 3
+y = -2
+[State 0, Offset]
+type = Offset
+trigger1 = time>84&&time<86
+x = -3
+y = 2
+[State 0, Offset]
+type = Offset
+trigger1 = time>86&&time<88
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>90&&time<92
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>92&&time<94
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>94&&time<96
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>96&&time<98
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>100&&time<102
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>102&&time<104
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>104&&time<106
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>106&&time<108
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>110&&time<112
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>112&&time<114
+x = 3
+y = -4
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = 0
+y = 0
+
+[State 0, Offset]
+type = Offset
+trigger1 = 1
+y = (-screenpos y) + floor(gameheight*.470)
+ignorehitpause = 1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = 1.3,1.3
+
+[State 5201, 1]
+type = Turn
+trigger1 = Time = 0
+trigger1 = p2dist X < -1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = Time = 115
+add = 0,0,0
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 256
+
+[State 66363636, State]
+type = changestate
+trigger1 = Time = 115
+value = 585044
+
+;Hyper - All Out Attack (Custom State 2 [4:3])
+[Statedef 170010243]
+type = S
+movetype = H
+physics = N
+ctrl = 0
+velset = 0,0
+sprpriority = 31
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = 0
+y = 0
+
+[State 0, Offset]
+type = Offset
+trigger1 = time<2
+x = 7
+y = -2
+[State 0, Offset]
+type = Offset
+trigger1 = time>2&&time<4
+x = -7
+y = 2
+[State 0, Offset]
+type = Offset
+trigger1 = time>4&&time<8
+x = 4
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>10&&time<12
+x = -2
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>12&&time<14
+x = 4
+y = -2
+[State 0, Offset]
+type = Offset
+trigger1 = time>14&&time<16
+x = -7
+y = 2
+[State 0, Offset]
+type = Offset
+trigger1 = time>16&&time<18
+x = 4
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>20&&time<22
+x = -2
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>22&&time<24
+x = 4
+y = -2
+[State 0, Offset]
+type = Offset
+trigger1 = time>24&&time<26
+x = -7
+y = 2
+[State 0, Offset]
+type = Offset
+trigger1 = time>26&&time<28
+x = 4
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>30&&time<32
+x = -2
+y = 4
+
+[State 0, Offset]
+type = Offset
+trigger1 = 1
+y = (-screenpos y) + floor(gameheight*.625)
+ignorehitpause = 1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = 1.3,1.3
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = (5 - 0.8*time/6.6),(5 - 0.8*time/6.6)
+
+[State 5201, 1] ;Turn if not facing opponent
+type = Turn
+trigger1 = Time = 0
+trigger1 = p2dist X < -1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = time = 0
+time = 145
+add = 0,0,0
+mul = 0,0,0
+sinadd = 0,0,0,10
+invertall = 0
+color = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 0
+trigger1 = SelfAnimExist(13984)
+value = 13984
+
+[State 0, 1]
+type = ChangeAnim2
+trigger1 = time = 0
+trigger1 = !SelfAnimExist(13984)
+value = 13994
+
+[State 66363636, State]
+type = ChangeState
+trigger1 = Time = 32
+value = 1700102143
+
+;Hyper - All Out Attack (Custom State 2 - 2 [4:3])
+[Statedef 1700102143]
+type = S
+movetype = H
+physics = N
+ctrl = 0
+velset = 0,0
+sprpriority = 31
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = 0
+y = 0
+
+[State 0, Offset]
+type = Offset
+trigger1 = time<2
+x = 3
+y = -7
+[State 0, Offset]
+type = Offset
+trigger1 = time>2&&time<4
+x = -3
+y = 7
+[State 0, Offset]
+type = Offset
+trigger1 = time>4&&time<8
+x = 3
+y = -6
+[State 0, Offset]
+type = Offset
+trigger1 = time>10&&time<12
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>12&&time<14
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>14&&time<16
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>16&&time<18
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>20&&time<22
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>22&&time<24
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>24&&time<26
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>26&&time<28
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>30&&time<32
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>32&&time<34
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>32&&time<34
+x = 3
+y = -4
+[State 0, Offset]
+type = Offset
+trigger1 = time>34&&time<38
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>40&&time<42
+x = -3
+y = 5
+[State 0, Offset]
+type = Offset
+trigger1 = time>42&&time<44
+x = 3
+y = -4
+[State 0, Offset]
+type = Offset
+trigger1 = time>44&&time<46
+x = -3
+y = 5
+[State 0, Offset]
+type = Offset
+trigger1 = time>46&&time<48
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>50&&time<52
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>52&&time<54
+x = 3
+y = -4
+[State 0, Offset]
+type = Offset
+trigger1 = time>54&&time<56
+x = -3
+y = 5
+[State 0, Offset]
+type = Offset
+trigger1 = time>56&&time<58
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>60&&time<62
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>62&&time<64
+x = 3
+y = -4
+[State 0, Offset]
+type = Offset
+trigger1 = time>64&&time<68
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>70&&time<72
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>72&&time<74
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>74&&time<76
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>76&&time<78
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>80&&time<82
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>82&&time<84
+x = 3
+y = -2
+[State 0, Offset]
+type = Offset
+trigger1 = time>84&&time<86
+x = -3
+y = 2
+[State 0, Offset]
+type = Offset
+trigger1 = time>86&&time<88
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>90&&time<92
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>92&&time<94
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>94&&time<96
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>96&&time<98
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>100&&time<102
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>102&&time<104
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>104&&time<106
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>106&&time<108
+x = 3
+y = -5
+[State 0, Offset]
+type = Offset
+trigger1 = time>110&&time<112
+x = -3
+y = 4
+[State 0, Offset]
+type = Offset
+trigger1 = time>112&&time<114
+x = 3
+y = -4
+
+[State 0, Offset]
+type = Offset
+trigger1 = 1
+y = (-screenpos y) + floor(gameheight*.625)
+ignorehitpause = 1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = 1.3,1.3
+
+[State 5201, 1] ;Turn if not facing opponent
+type = Turn
+trigger1 = Time = 0
+trigger1 = p2dist X < -1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = Time = 115
+add = 0,0,0
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 256
+
+[State 66363636, State]
+type = changestate
+trigger1 = Time = 115
+value = 585044
+
+;Hyper - All Out Attack (Custom State 3)
+[Statedef 1700103]
+type = S
+movetype = H
+physics = N
+ctrl = 0
+velset = 0,.02
+sprpriority = 23
+
+[state turn]
+type = turn
+trigger1 = facing != 1
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 1
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = .6,.6
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+
+[State 0, Offset]
+type = Offset
+trigger1 = time < 85
+x = -90
+y =(-screenpos y) + floor(gameheight* 1.740)
+ignorehitpause = 1
+
+[State 0, Offset]
+type = Offset
+trigger1 = time > 84 && time < 91
+x = -90
+y =(-screenpos y) + floor(gameheight*2.534 + -1*time/.1)
+ignorehitpause = 1
+
+[State 0, Offset]
+type = Offset
+trigger1 = time > 90 && time < 149
+x = -90
+y =(-screenpos y) + floor(gameheight*.677 + 1*time/33)
+ignorehitpause = 1
+
+[State 0, Offset]
+type = Offset
+trigger1 = time > 148
+x = -90
+y =(-screenpos y) + floor(gameheight*.750)
+ignorehitpause = 1
+
+[State 0, Offset]
+type = Offset
+trigger1 = time = 149
+x = -90
+y =(-screenpos y) + floor(gameheight*.750)
+ignorehitpause = 1
+
+[State 0, Offset]
+type = Offset
+trigger1 = time = 150
+x = -90
+y =(-screenpos y) + floor(gameheight*.750)
+ignorehitpause = 1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = time = 0
+time = 200
+add = 0,0,0
+mul = 0,0,0
+sinadd = 0,0,0,10
+invertall = 0
+color = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = SelfAnimExist(13996)
+trigger1 = time = 150
+value = 13996
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = !SelfAnimExist(13996)
+trigger1 = time = 150
+value = 13995
+
+[State 1100, 3]
+type = AngleDraw
+Trigger1 = 1
+value = .007*time
+
+[State 66363636, ChangeAnim2]
+type = ChangeAnim
+trigger1 = time = 0
+value = 5300
+
+;Hyper - All Out Attack (Dead)
+[Statedef 5150]
+type = S
+movetype = H
+physics = N
+ctrl = 0
+velset = 0,0
+sprpriority = -3
+
+[state turn]
+type = turn
+trigger1 = prevstateno = 1700103 || prevstateno = 515044
+trigger1 = facing != 1
+
+[State 5150, 1] ;Normal anim
+type = ChangeAnim
+triggerall = prevstateno != 1700103 && prevstateno != 515044
+triggerall = Time = 0
+triggerall = SelfAnimExist(5140)
+trigger1 = (anim != [5111,5119]) && (anim != [5171,5179])
+trigger2 = !SelfAnimExist(5140 + (anim % 10))
+value = 5140
+
+[State 5150, 3] ;Hit up type anim
+type = ChangeAnim
+triggerall = prevstateno != 1700103 && prevstateno != 515044
+trigger1 = Time = 0
+trigger1 = (anim = [5111,5119]) || (anim = [5171,5179])
+trigger1 = SelfAnimExist(5140 + (anim % 10))
+value = 5140 + (anim % 10)
+
+[State 5150, 4] ;Match over anim
+type = ChangeAnim
+persistent = 0
+triggerall = prevstateno != 1700103 && prevstateno != 515044
+;trigger1 = Time = 0
+trigger1 = MatchOver = 1
+trigger1 = Anim = [5140,5149]
+trigger1 = SelfAnimExist(anim+10)
+value = anim+10
+
+[State 5150, 5] ;Switch to 5110 if liedead anim does not exist
+type = ChangeAnim
+triggerall = prevstateno != 1700103 && prevstateno != 515044
+trigger1 = Time = 0
+trigger1 = Anim != [5140,5159]
+trigger1 = Anim != [5110,5119]
+value = 5110
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = prevstateno = 1700103 || prevstateno = 515044
+value = 1
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = prevstateno = 1700103 || prevstateno = 515044
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, PalFXWiz]
+type = PalFX
+triggerall = prevstateno = 1700103 || prevstateno = 515044
+trigger1 = 1
+time = 2
+add = 0,0,0
+mul = 0,0,0
+sinadd = 0,0,0,10
+invertall = 0
+color = 0
+
+[State 0, SprPriority]
+type = SprPriority
+trigger1 = prevstateno = 1700103 || prevstateno = 515044
+value = 25
+
+[State 1100, 3]
+type = AngleDraw
+triggerall = prevstateno = 1700103 || prevstateno = 515044
+Trigger1 = 1
+value = .007*time
+
+[State 0, AngleDraw]
+type = AngleDraw
+triggerall = prevstateno = 1700103 || prevstateno = 515044
+trigger1 = 1
+scale = .6,.6
+
+[State 0, ScreenBound]
+type = ScreenBound
+triggerall = prevstateno = 1700103 || prevstateno = 515044
+trigger1 = 1
+value = 0
+
+[State 0, Offset]
+type = Offset
+triggerall = prevstateno = 1700103
+trigger1 = 1
+x = -90
+y =(-screenpos y) + floor(gameheight*.870 + 1*time/80)
+ignorehitpause = 1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+triggerall = prevstateno = 1700103 || prevstateno = 515044
+trigger1 = time >= 114
+trigger1 = MatchOver = 0
+flag = invisible
+
+;Hyper - All Out Attack (Custom State NOT dead)
+[Statedef 515044]
+type = S
+movetype = H
+physics = N
+ctrl = 0
+velset = 0,.02
+sprpriority = 23
+
+[state turn]
+type = turn
+trigger1 = facing != 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time > 0
+y = .02
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 1
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = 1
+time = 150
+add = 0,0,0
+mul = 0,0,0
+sinadd = 0,0,0,10
+invertall = 0
+color = 0
+
+[State 0, SprPriority]
+type = SprPriority
+Trigger1 = 1
+value = 25
+
+[State 1100, 3]
+type = AngleDraw
+Trigger1 = 1
+value = .010*time
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = .6,.6
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+
+[State 0, Offset]
+type = Offset
+trigger1 = time > 0
+x = -90
+y =(-screenpos y) + floor(gameheight*.870 + 1*time/80)
+ignorehitpause = 1
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = time = 115
+time = 40
+add = 0,0,0
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 256
+
+[State 66363636, State]
+type = changestate
+trigger1 = Time = 114
+value = 585044
+
+;Hyper - All Out Attack (Custom State NOT dead)
+[Statedef 585044]
+type    = A
+movetype= H
+physics = N
+velset = -2.2,-7
+poweradd = 40
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = time %2 = 0
+time = 1
+add = 100,100,100
+mul = 256,256,256
+sinadd = 100,100,100,1
+
+[State 1215, Anim] ;Custom animation
+type = ChangeAnim
+trigger1 = 1
+value = ifelse(statetype=L,5170,5050)
+
+[State 821, 1] ;Gravity
+type = VelAdd
+Trigger1 = 1
+y = 0.4
+
+[State 821, 4] ;Hit ground
+type = SelfState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 5100 ;Hit ground
+;-------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 1)
+[Statedef 1310]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = 2
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = 1
+value = 112013
+
+[State 195, 2]
+type = SelfState
+trigger1 = time >= 40
+value = 5050
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 2)
+[Statedef 1311]
+type     = A
+movetype = H
+physics  = S
+velset = 0,0
+sprpriority = 30
+
+[State 0, Turn]
+type = Turn
+trigger1 = facing != -1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = ifelse(time < 6, -2 + (9.0 * time / 6.0), 7)
+scale = ifelse(time < 6,1.7 - (0.8 * time / 6.0), 1.1), ifelse(time < 6,1.7 - (0.8 * time / 6.0),1.1)
+ignorehitpause = 1
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 0
+value = 112015
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+x = 0
+y = -80
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time = 0
+x = 265
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time = 0
+x = -80
+
+[State 0, VelAdd]
+type = VelSet
+trigger1 = time = 6
+x = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 6
+value = 112016
+
+[State 0, Offset]
+type = Offset
+triggerall = Anim = 112016
+trigger1 = Time >= 0 && Time <= 18
+x = ceil(sin(time*pi/2))
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 42
+value = 112017
+
+[State 0, Offset]
+type = Offset
+triggerall = Anim = 112017
+trigger1 = AnimElemTime (1) >= 0 && AnimElemTime (1) <= 20
+y = ceil(sin(time*pi/2))
+
+[State 195, 2]
+type = ChangeState
+trigger1 = time = 76
+value = 1312
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 3)
+[Statedef 1312]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = 30
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = 0
+y = -43
+
+[state turn]
+type = turn
+trigger1 = facing != -1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = 0
+scale = 2.4,2.4
+ignorehitpause = 1
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 0
+value = 112018
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 55
+value = 616
+
+[State 0, SprPriority]
+type = SprPriority
+trigger1 = time > 56
+value = -4
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time > 57
+trigger1 = SelfAnimExist(92175)
+value = 92175
+
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 2 - 4:3)
+[Statedef 9311]
+type     = A
+movetype = H
+physics  = S
+velset = 0,0
+sprpriority = 30
+
+[State 0, Turn]
+type = Turn
+trigger1 = facing != -1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = ifelse(time < 6, -2 + (9.0 * time / 6.0), 7)
+scale = ifelse(time < 6,3.0 - (1.1 * time / 6.0),1.9),ifelse(time < 6,3.0 - (1.1 * time / 6.0),1.9)
+ignorehitpause = 1
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 0
+value = 112015
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+x = 0
+y = -80
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time = 0
+x = 265
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time = 0
+x = -80
+
+[State 0, VelAdd]
+type = VelSet
+trigger1 = time = 6
+x = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 6
+value = 112016
+
+[State 0, Offset]
+type = Offset
+triggerall = Anim = 112016
+trigger1 = Time >= 0 && Time <= 18
+x = ceil(sin(time*pi/2))
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 42
+value = 112017
+
+[State 0, Offset]
+type = Offset
+triggerall = Anim = 112017
+trigger1 = AnimElemTime (1) >= 0 && AnimElemTime (1) <= 20
+y = ceil(sin(time*pi/2))
+
+[State 195, 2]
+type = ChangeState
+trigger1 = time = 76
+value = 9312
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 3 - 4:3)
+[Statedef 9312]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = 30
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+x = 0
+y = -43
+
+[state turn]
+type = turn
+trigger1 = facing != -1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = 0
+scale = 3.2,3.2
+ignorehitpause = 1
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 0
+value = 112018
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 55
+value = 616
+
+[State 0, SprPriority]
+type = SprPriority
+trigger1 = time > 56
+value = -999
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time > 57
+trigger1 = SelfAnimExist(92175)
+value = 92175
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 4 - Mona Lisa 4:3)
+[Statedef 9313]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = 42
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = 1
+time = 1
+add = 0,0,0
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 0
+
+[State 3210, 9312]
+type = ChangeAnim2
+trigger1 = anim != 1044001
+value = 1044001
+
+[State 200, 1]
+type = posset
+triggerall = !IsHelper
+triggerall = anim = 1044001
+trigger1 =  1
+x = pos x - screenpos x + 252
+y = pos y - screenpos y + 89
+ignorehitpause=1
+[state ]
+type = Velset
+trigger1=!IsHelper
+trigger1=anim=1044001
+x = 1.0/const(size.xscale)
+y = 1.0/const(size.yscale)
+ignorehitpause = 1
+
+[state turn]
+type = turn
+trigger1 = facing != -1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = -5
+scale = 2.1/const(size.xscale),1.6/const(size.yscale)
+XAngle = 13
+YAngle = -44
+ignorehitpause = 1
+
+[State -2, Test]
+type = TransformSprite
+trigger1 = 1
+projection = perspective2
+focallength = 240
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 4 - Mona Lisa 16:9)
+[Statedef 93131]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = 42
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = 1
+time = 1
+add = 0,0,0
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 0
+
+[State 3210, 9312]
+type = ChangeAnim2
+trigger1 = anim != 1044001
+value = 1044001
+
+[State 200, 1]
+type = posset
+triggerall = !IsHelper
+triggerall = anim = 1044001
+trigger1 =  1
+x = pos x - screenpos x + 223
+y = pos y - screenpos y + 60
+ignorehitpause=1
+[state ]
+type = Velset
+trigger1=!IsHelper
+trigger1=anim=1044001
+x = 1.0/const(size.xscale)
+y = 1.0/const(size.yscale)
+ignorehitpause = 1
+
+[state turn]
+type = turn
+trigger1 = facing != -1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = -3
+scale = 1.52/const(size.xscale),1.26/const(size.yscale)
+XAngle = 13
+YAngle = -44
+ignorehitpause = 1
+
+[State -2, Test]
+type = TransformSprite
+trigger1 = 1
+projection = perspective2
+focallength = 240
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 4 - CUSTOM DRAWING)
+[Statedef 9314]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = -999
+
+[State 19001, Art]
+type = Explod
+trigger1 = Time = 0
+id = 92175
+anim = 92175
+pos = -68,0
+postype = back
+facing = IfElse(facing = 1, 1, -1)
+scale = .35,.35
+sprpriority = 41
+ownpal = 1
+removetime = 161
+[state turn]
+type = turn
+trigger1 = facing != -1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 4 - CUSTOM DRAWING)
+[Statedef 93141]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = -999
+
+[State 0, Explod]
+type = Explod
+trigger1 = 1
+ID = 92175
+anim = 92175
+pos = 0,0
+postype = back
+sprpriority = 41
+scale = .25,.25
+Facing = IfElse(facing = 1, 1, -1)
+ownpal = 1
+removetime = 161
+[state turn]
+type = turn
+trigger1 = facing != -1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 5)
+[Statedef 1313]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 92175
+ignorehitpause = 1
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 0
+value = 112018
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !Time
+x = -43
+y = -1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = 1
+y = .49
+
+[State 1026, No scroll]
+type = ScreenBound
+triggerall = vel y <= 0 || Vel y > 0 && Pos y < -15
+trigger1 = BackEdgeBodyDist < 65
+trigger2 = FrontEdgeBodyDist < 65
+value = 1
+movecamera = 0,1
+
+[State 1026, Hit wall]
+type = ChangeState
+triggerall = vel y <= 0 || Vel y > 0 && Pos y < -15
+trigger1 = BackEdgeBodyDist <= 20
+trigger2 = FrontEdgeBodyDist <= 20
+value = 527
+
+[State 1026, Hit ground]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 5100
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Stop the other players - Custom State)
+[StateDef 12206]
+type = S
+sprpriority = -999
+velset = 0,0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = 1
+value = anim
+elem = animelemno(0)
+ignorehitpause = 1
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = time = 435
+value = 50

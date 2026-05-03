@@ -2294,7 +2294,15 @@ type = AngleDraw
 trigger1 = 1
 value = 0
 scale = 1.8/const(size.xscale),2.0/const(size.yscale)
+;XAngle = 15
+;YAngle = -15
 ignorehitpause = 1
+
+;[State -2, Test]
+;type = TransformSprite
+;trigger1 = 1
+;projection = perspective
+;focallength = 150
 
 [State 0, ScreenBound]
 type = ScreenBound
@@ -2502,6 +2510,13 @@ value = 5100
 type = S
 sprpriority = -999
 velset = 0,0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = 1
+value = anim
+elem = animelemno(0)
+ignorehitpause = 1
 
 [State 0, PlayerPush]
 type = PlayerPush

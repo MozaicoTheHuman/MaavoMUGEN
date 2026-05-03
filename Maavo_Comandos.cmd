@@ -1539,7 +1539,7 @@ triggerall = !aiLevel
 triggerall = command = "x"
 triggerall = command != "holddown"
 trigger1 = statetype != A
-trigger1 = ctrl || (stateno = [100,109]) || stateno = 200 && (time >= 6||movecontact) || stateno = 1022
+trigger1 = ctrl || (stateno = [100,109]) || stateno = 1022
 
 ;---------------------------------------------------------------------------
 ; Stand Medium Punch
