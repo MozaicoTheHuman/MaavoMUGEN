@@ -39,11 +39,6 @@ trigger1 = var(31) = 1
 flag = nomusic
 ignorehitpause = 1
 
-[State -2, Reset Win Taunt Flag]
-type = VarSet
-trigger1 = RoundState != 3
-var(57) = 0
-
 [State -2, VarSet]
 type = VarSet
 trigger1 = var(17) = 2
@@ -100,7 +95,7 @@ ignorehitpause = 1
 [State -2, VarSet]
 type = VarSet
 trigger1 = 1
-var(33) = ifelse(stateno = 19000 || stateno = 190000 || stateno = 190001 || stateno = 190002 || stateno = 19001 || stateno = 3000 || stateno = 17000 || stateno = 17001 || stateno = 17002,1,0)
+var(33) = ifelse(stateno = 1210 || stateno = 1211 || stateno = 1212 || stateno = 1213 || stateno = 19000 || stateno = 190000 || stateno = 190001 || stateno = 190002 || stateno = 19001 || stateno = 3000 || stateno = 17000 || stateno = 17001 || stateno = 17002,1,0)
 ignorehitpause = 1
 [State -2, VarSet]
 type = VarSet
@@ -113,6 +108,10 @@ trigger1 = stateno != 3000
 trigger1 = stateno != 17000
 trigger1 = stateno != 17001
 trigger1 = stateno != 17002
+trigger1 = stateno != 1210
+trigger1 = stateno != 1211
+trigger1 = stateno != 1212
+trigger1 = stateno != 1213
 var(33) = 0
 ignorehitpause = 1
 [State -2, VarSet]
@@ -516,11 +515,18 @@ trigger1 = life <= (lifemax*.25)
 fvar(12) = 1.15
 ignorehitpause = 1
 
-[State 0, AppendToClipboard]
+;[State 0, AppendToClipboard]
+;type = DisplayToClipboard
+;trigger1 = 1
+;text = "scaling table = %d numhits = %d cooldown = %d\nproration = %f rage = %f gain = %f"
+;params = var(10),var(11), var(8), fvar(11), fvar(12), fvar(8)
+;ignorehitpause = 1
+
+[State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "scaling table = %d numhits = %d cooldown = %d\nproration = %f rage = %f gain = %f"
-params = var(10),var(11), var(8), fvar(11), fvar(12), fvar(8)
+text = "var57 = %d"
+params = var(57)
 ignorehitpause = 1
 
 [State 0, Cooldown]

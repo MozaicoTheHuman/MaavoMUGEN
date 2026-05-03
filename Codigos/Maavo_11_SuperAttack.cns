@@ -106,6 +106,18 @@ value = S1342,0
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = Animelem = 1
+value = S1959,5
+
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 20
+trigger1 = time = 0
+value = S1959,16
+
+[State 0, PlaySnd]
+type = PlaySnd
 triggerall = var(16) = 2
 trigger1 = Animelem = 4
 value = S1342,20000
@@ -2345,6 +2357,20 @@ anim = ifelse(var(22)=4,14022,14000)
 poweradd = 0
 sprpriority = 2
 ctrl = 0
+
+[State 19001, AfterImage]
+type = AfterImage
+trigger1 = time = 0            
+time = 4
+TimeGap  = 1
+FrameGap = 1
+length = 13
+palbright = 40,0,20
+palcontrast = 220,0,20
+palpostbright = 0,0,0
+trans = add
+paladd = 120,0,20
+palmul = .65,.65,.65
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -4972,12 +4998,81 @@ poweradd = 0
 sprpriority = 2
 ctrl = 0
 
+[State 911, Zoom Snap]
+type = VarSet
+trigger1 = time = 5
+fvar(0) = 0.6
+
+[State 911, Cam Snap]
+type = VarSet
+trigger1 = time = 5
+fvar(2) = 1
+
+[State 911, Zoom Drift]
+type = VarSet
+trigger1 = time = [6,28]
+fvar(0) = 0.6 * (1 - ((time-5) / 170.0))
+
+[State 911, Cam Drift]
+type = VarSet
+trigger1 = time = [6,28]
+fvar(2) = 1 - ((time-5) / 170.0)
+
+[State 911, Zoom EaseOut]
+type = VarSet
+trigger1 = time = [29,35]
+fvar(0) = 0.30 * (((35.0 - time) / 7.0) * ((35.0 - time) / 7.0) * ((35.0 - time) / 7.0))
+
+[State 911, Cam EaseOut]
+type = VarSet
+trigger1 = time = [29,35]
+fvar(2) = (((35.0 - time) / 7.0) * ((35.0 - time) / 7.0) * ((35.0 - time) / 7.0))
+
+[State 911, Zoom Reset]
+type = VarSet
+trigger1 = time > 35
+fvar(0) = 0
+
+[State 911, Zoom Controller]
+type = Zoom
+trigger1 = time = [5,35]
+scale = 1 + fvar(0)
+pos = (pos x*0.25) * fvar(2), (pos y-10) * fvar(2)
+bound = 0
+ignorehitpause = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = Animelem = 1
+value = S1959,5
+
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 20
+trigger1 = time = 0
+value = S1959,16
+
 [State 0, VarSet]
 type = VarSet
 triggerall = animelem = 2
 trigger1 = var(8) < 240
 var(8) = 240
 ignorehitpause = 1
+
+[State 19001, AfterImage]
+type = AfterImage
+trigger1 = time = 0            
+time = 58
+TimeGap  = 1
+FrameGap = 1
+length = 13
+palbright = 40,0,20
+palcontrast = 220,0,20
+palpostbright = 0,0,0
+trans = add
+paladd = 120,0,20
+palmul = .65,.65,.65
 
 [State 0, PlaySnd]
 type = PlaySnd
@@ -5230,6 +5325,12 @@ poweradd = 0
 physics = S
 sprpriority = 2
 
+[State 0, Detect Special]
+type = VarSet
+trigger1 = NumHelper(9902) || NumHelper(84803)
+var(57) = 1
+ignorehitpause = 1
+
 [State 0, TargetState]
 type = TargetState
 triggerall = var(17) = 0
@@ -5371,6 +5472,23 @@ supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
 
+[State 911, Impact Lines]
+type = Explod
+trigger1 = Time = 42
+id = 14446
+anim = 14446
+pos = 0+ (var(17) * -70),0
+postype = back
+sprpriority = 50
+removeongethit = 1
+removetime = 72
+scale = .5+(var(17) * .2),.5+ (var(17) * .2)
+bindtime = -1
+ownpal = 1
+removeongethit = 1
+supermovetime = 9999
+pausemovetime = 99999
+
 [State 19001, BG 2]
 type = Explod
 trigger1 = Time = 76
@@ -5397,7 +5515,7 @@ anim = 112021
 pos = 170,70
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
-sprpriority = -7
+sprpriority = 40
 removeongethit = 1
 removetime=55
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
@@ -5414,7 +5532,7 @@ anim = 112022
 pos = 5,0
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
-sprpriority = -7
+sprpriority = 40
 removeongethit = 1
 removetime=48
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
@@ -5635,7 +5753,7 @@ removeongethit = 1
 
 [State 19001, BG 4 Spotlight Shine]
 type = Explod
-trigger1 = Time = 270
+trigger1 = Time = 269
 id = 114021
 anim = 114021
 pos = 0+ (var(17) * -60),0
@@ -5651,16 +5769,17 @@ sprpriority=42
 ownpal = 1
 removeongethit = 1
 
-[State 19001, Art - Main 1]
+[State 19001, Art - Main]
 type = Explod
-trigger1 = enemy, name != "Wach" && EnemyNear,AuthorName != "Wach"
 trigger1 = enemy, name != "Dan" && EnemyNear,AuthorName != "Daniel9999999"
 trigger1 = enemy, name != "Rudy" && EnemyNear,AuthorName != "jade_midori"
 trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "SogaCeleste HanzoSantiago"
 trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
+triggerall = var(50) = 0
+triggerall = var(57) = 0
 trigger1 = Time = 269
 id = 115020
-anim = 115020+random%2
+anim = 115020
 pos = 0+ (var(17) * -60),0
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
@@ -5672,12 +5791,17 @@ sprpriority=41
 removeongethit = 1
 ownpal = 1
 
-[State 19001, Art - VS. Wach]
+[State 19001, Art - Special]
 type = Explod
-trigger1 = enemy, name = "Wach" && EnemyNear,AuthorName = "Wach"
+trigger1 = enemy, name != "Dan" && EnemyNear,AuthorName != "Daniel9999999"
+trigger1 = enemy, name != "Rudy" && EnemyNear,AuthorName != "jade_midori"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "SogaCeleste HanzoSantiago"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
+triggerall = var(50) = 0
+triggerall = var(57) = 1
 trigger1 = Time = 269
 id = 115020
-anim = 115121
+anim = 115021
 pos = 0+ (var(17) * -60),0
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
@@ -5686,13 +5810,14 @@ removetime=161
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 sprpriority=41
-ownpal = 1
 removeongethit = 1
+ownpal = 1
 
 [State 19001, Art - VS. Rudy]
 type = Explod
 trigger1 = enemy, name = "Dan" && EnemyNear,AuthorName = "Daniel9999999"
 trigger2 = enemy, name = "Rudy" && EnemyNear,AuthorName = "jade_midori"
+triggerall = var(50) = 0
 trigger1 = Time = 269
 trigger2 = Time = 269
 id = 115020
@@ -5707,6 +5832,56 @@ bindtime=-1
 sprpriority=41
 removeongethit = 1
 ownpal = 1
+
+[State 0, Detect Custom Art]
+type = VarSet
+trigger1 = NumEnemy
+trigger1 = EnemyNear, Anim = 92175
+var(50) = 1
+ignorehitpause = 1
+[State 0, Detect Custom Art]
+type = VarSet
+trigger1 = !var(50)
+trigger1 = NumEnemy
+trigger1 = EnemyNear, Anim = 92175
+var(50) = 1
+ignorehitpause = 1
+
+[State 3300, p2state NORMAL]
+type = TargetState
+triggerall = var(50) = 0
+triggerall = var(17) = 0
+triggerall = var(57) = 0
+trigger1 = Time = 269
+value = 93131
+persistent = 0
+ignorehitpause = 1
+[State 3300, p2state NORMAL]
+type = TargetState
+triggerall = var(50) = 0
+triggerall = var(17) = 1
+triggerall = var(57) = 0
+trigger1 = Time = 269
+value = 9313
+persistent = 0
+ignorehitpause = 1
+
+[State 3300, p2state CUSTOM]
+type = TargetState
+triggerall = var(50) = 1
+triggerall = var(17) = 0
+trigger1 = Time = 269
+value = 93141
+persistent = 0
+ignorehitpause = 1
+[State 3300, p2state CUSTOM]
+type = TargetState
+triggerall = var(50) = 1
+triggerall = var(17) = 1
+trigger1 = Time = 269
+value = 9314
+persistent = 0
+ignorehitpause = 1
 
 [State 0, PlaySnd]
 type = PlaySnd
@@ -6024,6 +6199,12 @@ movetype = I
 physics = S
 sprpriority = 2
 
+[State 0, Reset Special]
+type = VarSet
+trigger1 = 1
+var(57) = 0
+ignorehitpause = 1
+
 [State 19001,TargetLifeAdd]
 type = TargetLifeAdd
 trigger1 = time = 0
@@ -6035,12 +6216,6 @@ type = TargetPowerAdd
 trigger1 = time = 0
 value = ceil(ifelse(fvar(11)<=.45,(500*.45),(500*fvar(11)))*.015)
 ignorehitpause = 1
-
-;[State 0, TargetBind]
-;type = TargetBind
-;trigger1 = p2life <= 1
-;time = 1
-;pos = 50,0
 
 [State 0, White Flash AllPalFX]
 type = AllPalFX
@@ -6129,33 +6304,3 @@ numhits = 0
 [State 0, ChangeState]
 type = DestroySelf
 trigger1 = time = 30
-
-;---------------------------------------------------------------------------
-;Hyper - Obra Maestra (Stop the other players - Custom State)
-[StateDef 12206]
-type = S
-sprpriority = -999
-velset = 0,0
-
-[State 0, PlayerPush]
-type = PlayerPush
-trigger1 = 1
-value = 0
-ignorehitpause = 1
-
-[State 0, NotHitBy]
-type = NotHitBy
-trigger1 = 1
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-value2 = S,NA
-ignorehitpause = 1
-
-[State 0, ScreenBound]
-type = ScreenBound
-trigger1 = 1
-value = 0
-
-[State 0, SelfState]
-type = SelfState
-trigger1 = time = 455
-value = 50

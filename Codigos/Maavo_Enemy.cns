@@ -1982,8 +1982,8 @@ trigger1 = facing != -1
 [State 0, AngleDraw]
 type = AngleDraw
 trigger1 = 1
-value = 7
-scale = 1.1,1.1
+value = ifelse(time < 6, -2 + (9.0 * time / 6.0), 7)
+scale = ifelse(time < 6,1.7 - (0.8 * time / 6.0), 1.1), ifelse(time < 6,1.7 - (0.8 * time / 6.0),1.1)
 ignorehitpause = 1
 
 [State 0, ChangeAnim]
@@ -2007,12 +2007,12 @@ y = -80
 [State 0, PosAdd]
 type = PosAdd
 trigger1 = time = 0
-x = 185
+x = 265
 
 [State 0, VelAdd]
 type = VelAdd
 trigger1 = time = 0
-x = -60
+x = -80
 
 [State 0, VelAdd]
 type = VelSet
@@ -2099,6 +2099,13 @@ type = SprPriority
 trigger1 = time > 56
 value = -4
 
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time > 57
+trigger1 = SelfAnimExist(92175)
+value = 92175
+
+
 ;---------------------------------------------------------------------------
 ;Hyper - Obra Maestra (Custom State 2 - 4:3)
 [Statedef 9311]
@@ -2115,8 +2122,8 @@ trigger1 = facing != -1
 [State 0, AngleDraw]
 type = AngleDraw
 trigger1 = 1
-value = 7
-scale = 1.5,1.5
+value = ifelse(time < 6, -2 + (9.0 * time / 6.0), 7)
+scale = ifelse(time < 6,3.0 - (1.1 * time / 6.0),1.9),ifelse(time < 6,3.0 - (1.1 * time / 6.0),1.9)
 ignorehitpause = 1
 
 [State 0, ChangeAnim]
@@ -2140,12 +2147,12 @@ y = -80
 [State 0, PosAdd]
 type = PosAdd
 trigger1 = time = 0
-x = 185
+x = 265
 
 [State 0, VelAdd]
 type = VelAdd
 trigger1 = time = 0
-x = -60
+x = -80
 
 [State 0, VelAdd]
 type = VelSet
@@ -2230,17 +2237,228 @@ value = 616
 [State 0, SprPriority]
 type = SprPriority
 trigger1 = time > 56
-value = -4
+value = -999
 
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time > 57
+trigger1 = SelfAnimExist(92175)
+value = 92175
 
 ;---------------------------------------------------------------------------
-;Hyper - Obra Maestra (Custom State 4)
+;Hyper - Obra Maestra (Custom State 4 - Mona Lisa 4:3)
+[Statedef 9313]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = 42
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = 1
+time = 1
+add = 0,0,0
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 0
+
+[State 3210, 9312]
+type = ChangeAnim2
+trigger1 = anim != 1044001
+value = 1044001
+
+[State 200, 1]
+type = posset
+triggerall = !IsHelper
+triggerall = anim = 1044001
+trigger1 =  1
+x = pos x - screenpos x + 255
+y = pos y - screenpos y + 83
+ignorehitpause=1
+[state ]
+type = Velset
+trigger1=!IsHelper
+trigger1=anim=1044001
+x = 1.0/const(size.xscale)
+y = 1.0/const(size.yscale)
+ignorehitpause = 1
+
+[state turn]
+type = turn
+trigger1 = facing != -1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = 0
+scale = 1.8/const(size.xscale),2.0/const(size.yscale)
+ignorehitpause = 1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 4 - Mona Lisa 16:9)
+[Statedef 93131]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = 42
+
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = 1
+time = 1
+add = 0,0,0
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 0
+
+[State 3210, 9312]
+type = ChangeAnim2
+trigger1 = anim != 1044001
+value = 1044001
+
+[State 200, 1]
+type = posset
+triggerall = !IsHelper
+triggerall = anim = 1044001
+trigger1 =  1
+x = pos x - screenpos x + 225
+y = pos y - screenpos y + 53
+ignorehitpause=1
+[state ]
+type = Velset
+trigger1=!IsHelper
+trigger1=anim=1044001
+x = 1.0/const(size.xscale)
+y = 1.0/const(size.yscale)
+ignorehitpause = 1
+
+[state turn]
+type = turn
+trigger1 = facing != -1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = 0
+scale = 1.46/const(size.xscale),1.72/const(size.yscale)
+ignorehitpause = 1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 4 - CUSTOM DRAWING)
+[Statedef 9314]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = -999
+
+[State 19001, Art]
+type = Explod
+trigger1 = Time = 0
+id = 92175
+anim = 92175
+pos = -68,0
+postype = back
+facing = IfElse(facing = 1, 1, -1)
+scale = .35,.35
+sprpriority = 41
+ownpal = 1
+removetime = 161
+[state turn]
+type = turn
+trigger1 = facing != -1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 4 - CUSTOM DRAWING)
+[Statedef 93141]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = -999
+
+[State 0, Explod]
+type = Explod
+trigger1 = 1
+ID = 92175
+anim = 92175
+pos = 0,0
+postype = back
+sprpriority = 41
+scale = .25,.25
+Facing = IfElse(facing = 1, 1, -1)
+ownpal = 1
+removetime = 161
+[state turn]
+type = turn
+trigger1 = facing != -1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+ignorehitpause = 1
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Custom State 5)
 [Statedef 1313]
 type    = A
 movetype= H
 physics = N
 velset = 0,0
 sprpriority = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 92175
+ignorehitpause = 1
 
 [State 0, ChangeAnim]
 type = ChangeAnim2
@@ -2277,3 +2495,33 @@ value = 527
 type = SelfState
 trigger1 = (Vel y > 0) && (Pos y >= 0)
 value = 5100
+
+;---------------------------------------------------------------------------
+;Hyper - Obra Maestra (Stop the other players - Custom State)
+[StateDef 12206]
+type = S
+sprpriority = -999
+velset = 0,0
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+value2 = S,NA
+ignorehitpause = 1
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = time = 455
+value = 50

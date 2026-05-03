@@ -5129,18 +5129,44 @@ movetype = A
 physics = S
 ctrl = 0
 velset = 0,0
-anim = 13992
+anim = 14444
 facep2=1
 poweradd = 0
 sprpriority = 2
 ctrl = 0
 
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 19
+trigger1 = Animelem = 1
+value = S1959,5
+
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 20
+trigger1 = time = 0
+value = S1959,16
+
 [State 0, VarSet]
 type = VarSet
-triggerall = animelem = 4
+triggerall = animelem = 2
 trigger1 = var(8) < 240
 var(8) = 240
 ignorehitpause = 1
+
+[State 19001, AfterImage]
+type = AfterImage
+trigger1 = time = 0            
+time = 58
+TimeGap  = 1
+FrameGap = 1
+length = 13
+palbright = 40,0,20
+palcontrast = 220,0,20
+palpostbright = 0,0,0
+trans = add
+paladd = 120,0,20
+palmul = .65,.65,.65
 
 [State 0, PlaySnd]
 type = PlaySnd
@@ -5169,25 +5195,25 @@ ignorehitpause = 1
 
 [State 19001, 1]
 type = Explod
-trigger1 = animelem = 4
-id = 3232
+trigger1 = animelem = 2
+id = 713
 anim = 712
 pos = 0,0
 postype = back
 sprpriority = -6
 removeongethit = 1
 removetime=80
-scale = .5,.7
-supermovetime=80
+scale = .9,.5+ (var(17) * .2)
+supermovetime=110
 bindtime=-1
-supermovetime = 9999
 pausemovetime = 99999
 sprpriority=-7
 removeongethit = 1
+ownpal = 1
 
 [State 0, Helper]
 type = Helper
-trigger1 = animelem = 4
+trigger1 = animelem = 3
 trigger1 = facing = 1
 name = "Hyper Portrait"
 ID = 11000
@@ -5222,7 +5248,7 @@ size.yscale = .30
 
 [State 0, Helper]
 type = Helper
-trigger1 = animelem = 4
+trigger1 = animelem = 3
 trigger1 = facing = 1
 name = "Hyper Portrait"
 ID = 11001
@@ -5241,7 +5267,7 @@ size.yscale = .30
 
 [State 0, Helper]
 type = Helper
-trigger1 = animelem = 4
+trigger1 = animelem = 3
 trigger1 = facing = -1
 name = "Hyper Portrait"
 ID = 11000
@@ -5258,7 +5284,7 @@ size.yscale = .30
 
 [State 0, Helper]
 type = Helper
-trigger1 = animelem = 4
+trigger1 = animelem = 3
 trigger1 = facing = -1
 name = "Hyper Portrait"
 ID = 11001
@@ -5272,11 +5298,12 @@ supermovetime = 999
 pausemovetime = 999
 size.xscale = .30
 size.yscale = .30
+
 [State 3003, SuperPause]
 type = SuperPause
-trigger1 = animelem = 4
-time = 40
-movetime = 40
+trigger1 = animelem = 2
+time = 31
+movetime = 31
 anim = -1
 sound = -1
 movetime = 0
@@ -5298,8 +5325,19 @@ movetype= A
 physics = S
 velset = 0,0
 ctrl = 0
-anim = 1211
+anim = 14445
 sprpriority = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = AnimElem = 2
+x = 21
+ignorehitpause = 1
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = AnimElem = 6
+x = -21
+ignorehitpause = 1
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -5310,9 +5348,44 @@ ignorehitpause = 1
 
 [State 0, VelAdd]
 type = VelAdd
-trigger1 = time = 0
+trigger1 = time = 4
 x = 15
 y = 0
+[State 100, Dash Sound]
+type = PlaySnd
+trigger1 = time = 4
+value = S21931,13
+freqmul = 0.9+(random/7333.3)
+[State 100, Run Effect 1]
+type = Explod
+trigger1 = time = 4
+anim = 3233
+scale = 0.5,0.5
+postype = p1
+pos = 10,5
+sprpriority = 3
+ownpal = 1
+removeongethit = 1
+pausemovetime = 99999
+supermovetime = 99999
+ignorehitpause = 1
+persistent = 1
+
+[State 0, Movement Effect]
+type = Explod
+trigger1 = time = 5
+anim = 1092
+ID = 1092
+pos = 26, 0
+postype = p1 ;left
+bindtime = -1
+ownpal = 1
+sprpriority = 1
+removeongethit = 1
+removetime = 11
+scale = .7,.7
+pausemovetime = 99999
+supermovetime = 99999
 
 [State 210, 1]
 type = HitDef
@@ -5326,7 +5399,7 @@ givepower = ceil(ifelse(fvar(11)<=.45,(60*.45),(60*fvar(11)))*.015),ceil(60*.15)
 animtype = Heavy
 fall.animtype = up
 guardflag = M
-hitflag = MAF
+hitflag = MAFD
 priority = 7, Hit
 pausetime = 16, 16
 guard.pausetime = 12,12
@@ -5359,7 +5432,7 @@ type = Explod
 trigger1 = MoveHit
 anim = 3000
 ID = 3000
-pos = 40,-70
+pos = 87,-50
 postype = p1  ;p2,front,back,left,right
 facing = 1
 vfacing = 1
@@ -5374,7 +5447,7 @@ ontop = 1
 ignorehitpause = 1
 pausemovetime = 99999
 supermovetime = 99999
-
+ownpal = 1
 [State 0, TargetState]
 type = TargetState
 triggerall = NumTarget(1210) = 1
@@ -5418,10 +5491,26 @@ poweradd = 0
 physics = S
 sprpriority = 2
 
+[State 0, Detect Special]
+type = VarSet
+trigger1 = NumHelper(9902) || NumHelper(84803)
+var(57) = 1
+ignorehitpause = 1
+
 [State 0, TargetState]
 type = TargetState
+triggerall = var(17) = 0
 triggerall = NumTarget(1210)
 trigger1 = target(1210), stateno != 1310
+value = 1310
+ID = 1210
+ignorehitpause = 1
+
+[State 0, TargetState]
+type = TargetState
+triggerall = var(17) = 1
+triggerall = NumTarget(1210)
+trigger1 = target(1210), stateno != 9310
 value = 1310
 ID = 1210
 ignorehitpause = 1
@@ -5429,7 +5518,7 @@ ignorehitpause = 1
 [State 0, ChangeAnim]
 type = ChangeAnim
 trigger1 = 1
-value = 1211
+value = 14445
 elem = animelemno(0)
 ignorehitpause = 1
 
@@ -5442,6 +5531,7 @@ ignorehitpause = 1
 
 [State 0, TargetState]
 type = TargetState
+triggerall = var(17) = 0
 triggerall = NumTarget(1210)
 triggerall = time
 trigger1 = target(1210), stateno != 1311
@@ -5449,6 +5539,17 @@ value = 1311
 ID = 1210
 ignorehitpause = 1
 persistent = 0
+[State 0, TargetState]
+type = TargetState
+triggerall = var(17) = 1
+triggerall = NumTarget(1210)
+triggerall = time
+trigger1 = target(1210), stateno != 9311
+value = 9311
+ID = 1210
+ignorehitpause = 1
+persistent = 0
+
 [State 195, 2]
 type = ChangeState
 trigger1 = time
@@ -5468,6 +5569,7 @@ sprpriority = 2
 
 [State 0, TargetState]
 type = TargetState
+triggerall = var(17) = 0
 triggerall = time < 10
 triggerall = NumTarget(1210)
 trigger1 = target(1210), stateno != 1311
@@ -5475,7 +5577,16 @@ value = 1311
 ID = 1210
 ignorehitpause = 1
 persistent = 0
-
+[State 0, TargetState]
+type = TargetState
+triggerall = var(17) = 1
+triggerall = time < 10
+triggerall = NumTarget(1210)
+trigger1 = target(1210), stateno != 9311
+value = 9311
+ID = 1210
+ignorehitpause = 1
+persistent = 0
 [state turn]
 type = turn
 trigger1 = facing != 1
@@ -5492,35 +5603,25 @@ trigger1 = time = 0
 id = 112014
 ignorehitpause = 1 
 
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 41
-value = S12020,2
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 42
-value = S12020,3
-
-[State 19001, 1]
+[State 19001, BG 1]
 type = Explod
-trigger1 = Time = 130
-id = 112028
-anim = 112028
-pos = 0+ (var(17) * -60),0
+trigger1 = Time = 0
+id = 112019
+anim = 112019
+pos = -30+ (var(17) * -60),-10
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
-sprpriority = 50
+sprpriority = 27
 removeongethit = 1
-removetime=80
-scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+removetime=76
+scale = .28+ (var(17) * .1),.28+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
+ownpal = 1
 pausemovetime = 99999
-sprpriority=-7
 removeongethit = 1
 
-[State 19001, 1]
+[State 19001, Maavo Main Anim]
 type = Explod
 trigger1 = Time = 20
 id = 11201
@@ -5528,22 +5629,51 @@ anim = 11201
 pos = 0+ (var(17) * -60),0
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
-sprpriority = 40
+sprpriority = 45
 removeongethit = 1
 removetime=-1
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
-sprpriority=-7
 removeongethit = 1
 
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 76
-value = S12021,2
+[State 911, Impact Lines]
+type = Explod
+trigger1 = Time = 42
+id = 14446
+anim = 14446
+pos = 0+ (var(17) * -70),0
+postype = back
+sprpriority = 50
+removeongethit = 1
+removetime = 72
+scale = .5+(var(17) * .2),.5+ (var(17) * .2)
+bindtime = -1
+ownpal = 1
+removeongethit = 1
+supermovetime = 9999
+pausemovetime = 99999
 
-[State 19001, 1]
+[State 19001, BG 2]
+type = Explod
+trigger1 = Time = 76
+id = 112020
+anim = 112020
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = -7
+removeongethit = 1
+ownpal = 1
+removetime=56
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+
+[State 19001, Pencil Stroke]
 type = Explod
 trigger1 = Time = 76
 id = 112021
@@ -5558,20 +5688,9 @@ scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
-sprpriority=-7
 removeongethit = 1
 
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 76
-value = S12021,0+random%2
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 76
-value = S1400,0+random%4
-
-[State 19001, 1]
+[State 19001, Pencil Stroke]
 type = Explod
 trigger1 = Time = 83
 id = 112022
@@ -5586,30 +5705,9 @@ scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
-sprpriority=-7
 removeongethit = 1
 
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 83
-value = S12021,0+random%4
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 83
-value = S1400,0+random%4
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 90
-value = S12021,2+random%2
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 90
-value = S1400,0+random%4
-
-[State 19001, 1]
+[State 19001, Pencil Stroke]
 type = Explod
 trigger1 = Time = 90
 id = 112023
@@ -5626,17 +5724,7 @@ supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
 
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 97
-value = S12021,0+random%2
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 97
-value = S1400,0+random%4
-
-[State 19001, 1]
+[State 19001, Pencil Stroke]
 type = Explod
 trigger1 = Time = 97
 id = 112024
@@ -5653,20 +5741,10 @@ supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
 
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 104
-value = S12021,2+random%2
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 104
-value = S1400,0+random%4
-
-[State 19001, 1]
+[State 19001, Pencil Stroke]
 type = Explod
 trigger1 = Time = 104
-id = 112029
+id = 112025
 anim = 112025
 pos = 270,0
 postype = back
@@ -5680,17 +5758,7 @@ supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
 
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 111
-value = S12021,0+random%2
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 111
-value = S1400,0+random%4
-
-[State 19001, 1]
+[State 19001, Pencil Stroke]
 type = Explod
 trigger1 = Time = 111
 id = 112026
@@ -5707,17 +5775,7 @@ supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
 
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 118
-value = S12021,2+random%2
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 118
-value = S1400,0+random%4
-
-[State 19001, 1]
+[State 19001, Pencil Stroke]
 type = Explod
 trigger1 = Time = 118
 id = 112022
@@ -5733,15 +5791,8 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 125
-value = S12021,0
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 125
-value = S1400,0+random%4
-[State 19001, 1]
+
+[State 19001, Pencil Stroke]
 type = Explod
 trigger1 = Time = 125
 id = 112027
@@ -5758,42 +5809,342 @@ supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
 
-[State 19001, 1]
+[State 19001, Top Pencil Strokes]
 type = Explod
-trigger1 = Time = 0
-id = 112019
-anim = 112019
+trigger1 = Time = 130
+id = 112028
+anim = 112028
 pos = 0+ (var(17) * -60),0
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
-sprpriority = 27
+sprpriority = 50
 removeongethit = 1
-removetime=76
+removetime=80
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
-sprpriority=-7
+ownpal = 1
 removeongethit = 1
 
-[State 19001, 1]
+[State 19001, BG 3]
 type = Explod
-trigger1 = Time = 0
-id = 112020
-anim = 112020
+trigger1 = Time = 130
+id = 113020
+anim = 113020
 pos = 0+ (var(17) * -60),0
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
-sprpriority = 25
+sprpriority = 41
 removeongethit = 1
-removetime=-1
+removetime=80
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
-sprpriority=-7
+ownpal = 1
 removeongethit = 1
 
+[State 19001, BG 3 Clouds 1]
+type = Explod
+trigger1 = Time = 130
+id = 113021
+anim = 113021
+ownpal = 1
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 42
+removeongethit = 1
+removetime=80
+scale = .55+ (var(17) * .1),.55+ (var(17) * .1)
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+vel = 0.09,0
+
+[State 19001, BG 3 Clouds 2]
+type = Explod
+trigger1 = Time = 130
+id = 113022
+anim = 113022
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 42
+removeongethit = 1
+removetime=80
+scale = .48+ (var(17) * .1),.48+ (var(17) * .1)
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+ownpal = 1
+removeongethit = 1
+vel = -0.05,0
+
+[State 19001, BG 4 (3D)]
+type = Explod
+trigger1 = Time = 193
+id = 114020
+anim = 114020
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+sprpriority = 40
+removeongethit = 1
+removetime=158
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+ownpal = 1
+removeongethit = 1
+
+[State 19001, BG 4 Spec]
+type = Explod
+trigger1 = Time = 270
+id = 114022
+anim = 114022
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+removeongethit = 1
+removetime=161
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+sprpriority=43
+ownpal = 1
+removeongethit = 1
+
+[State 19001, BG 4 Spotlight Shine]
+type = Explod
+trigger1 = Time = 269
+id = 114021
+anim = 114021
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+removeongethit = 1
+removetime=181
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+supermovetime = 9999
+pausemovetime = 99999
+sprpriority=42
+ownpal = 1
+removeongethit = 1
+
+[State 19001, Art - Main]
+type = Explod
+trigger1 = enemy, name != "Wach" && EnemyNear,AuthorName != "Wach"
+trigger1 = enemy, name != "Dan" && EnemyNear,AuthorName != "Daniel9999999"
+trigger1 = enemy, name != "Rudy" && EnemyNear,AuthorName != "jade_midori"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "SogaCeleste HanzoSantiago"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
+triggerall = var(50) = 0
+triggerall = var(57) = 0
+trigger1 = Time = 269
+id = 115020
+anim = 115020
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+removeongethit = 1
+removetime=161
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+sprpriority=41
+removeongethit = 1
+ownpal = 1
+
+[State 19001, Art - Special]
+type = Explod
+trigger1 = enemy, name != "Wach" && EnemyNear,AuthorName != "Wach"
+trigger1 = enemy, name != "Dan" && EnemyNear,AuthorName != "Daniel9999999"
+trigger1 = enemy, name != "Rudy" && EnemyNear,AuthorName != "jade_midori"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "SogaCeleste HanzoSantiago"
+trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
+triggerall = var(50) = 0
+triggerall = var(57) = 1
+trigger1 = Time = 269
+id = 115020
+anim = 115021
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+removeongethit = 1
+removetime=161
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+sprpriority=41
+removeongethit = 1
+ownpal = 1
+
+[State 19001, Art - VS. Wach]
+type = Explod
+trigger1 = enemy, name = "Wach" && EnemyNear,AuthorName = "Wach"
+trigger1 = Time = 269
+triggerall = var(50) = 0
+id = 115020
+anim = 115121
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+removeongethit = 1
+removetime=161
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+sprpriority=41
+ownpal = 1
+removeongethit = 1
+
+[State 19001, Art - VS. Rudy]
+type = Explod
+trigger1 = enemy, name = "Dan" && EnemyNear,AuthorName = "Daniel9999999"
+trigger2 = enemy, name = "Rudy" && EnemyNear,AuthorName = "jade_midori"
+triggerall = var(50) = 0
+trigger1 = Time = 269
+trigger2 = Time = 269
+id = 115020
+anim = 115120
+pos = 0+ (var(17) * -60),0
+postype = back
+Facing = IfElse(facing = 1, 1, -1)
+removeongethit = 1
+removetime=161
+scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
+bindtime=-1
+sprpriority=41
+removeongethit = 1
+ownpal = 1
+
+[State 0, Detect Custom Art]
+type = VarSet
+trigger1 = NumEnemy
+trigger1 = EnemyNear, Anim = 92175
+var(50) = 1
+ignorehitpause = 1
+[State 0, Detect Custom Art]
+type = VarSet
+trigger1 = !var(50)
+trigger1 = NumEnemy
+trigger1 = EnemyNear, Anim = 92175
+var(50) = 1
+ignorehitpause = 1
+
+[State 3300, p2state NORMAL]
+type = TargetState
+triggerall = var(50) = 0
+triggerall = var(17) = 0
+triggerall = var(57) = 0
+trigger1 = Time = 269
+value = 93131
+persistent = 0
+ignorehitpause = 1
+[State 3300, p2state NORMAL]
+type = TargetState
+triggerall = var(50) = 0
+triggerall = var(17) = 1
+triggerall = var(57) = 0
+trigger1 = Time = 269
+value = 9313
+persistent = 0
+ignorehitpause = 1
+
+[State 3300, p2state CUSTOM]
+type = TargetState
+triggerall = var(50) = 1
+triggerall = var(17) = 0
+trigger1 = Time = 269
+value = 93141
+persistent = 0
+ignorehitpause = 1
+[State 3300, p2state CUSTOM]
+type = TargetState
+triggerall = var(50) = 1
+triggerall = var(17) = 1
+trigger1 = Time = 269
+value = 9314
+persistent = 0
+ignorehitpause = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 41
+value = S12020,2
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 42
+value = S12020,3
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 76
+value = S12021,2
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 76
+value = S12021,0+random%2
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 76
+value = S1400,0+random%4
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 83
+value = S12021,0+random%4
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 83
+value = S1400,0+random%4
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 90
+value = S12021,2+random%2
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 90
+value = S1400,0+random%4
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 97
+value = S12021,0+random%2
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 97
+value = S1400,0+random%4
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 104
+value = S12021,2+random%2
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 104
+value = S1400,0+random%4
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 111
+value = S12021,0+random%2
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 111
+value = S1400,0+random%4
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 118
+value = S12021,2+random%2
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 118
+value = S1400,0+random%4
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 125
+value = S12021,0
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 125
+value = S1400,0+random%4
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = time = 133
@@ -5884,6 +6235,22 @@ trigger1 = time = 181
 value = S1400,0+random%4
 volumescale = 150
 freqmul = 0.9+(random/7333.3)
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 193
+value = 12020,6
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 270
+value = 12020,5
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 266
+value = S12020,4
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 266
+value = S12020,4
 
 [State 0, EnvShake]
 type = EnvShake
@@ -5981,18 +6348,6 @@ loop = 1
 channel = 3
 volumescale = 150
 
-[State 19001,TargetLifeAdd]
-type = TargetLifeAdd
-trigger1 = time = 268
-value = -ceil(ifelse(fvar(11)<=.45,(500*.45),(500*fvar(11))))
-absolute = 1
-kill = 1
-[State 0, TargetPowerAdd]
-type = TargetPowerAdd
-trigger1 = time = 268
-value = ceil(ifelse(fvar(11)<=.45,(500*.45),(500*fvar(11)))*.015)
-ignorehitpause = 1
-
 [State 0, StopSnd]
 type = StopSnd
 trigger1 = time = 205
@@ -6024,28 +6379,50 @@ value = 1214
 ;Hyper - Obra Maestra (Ending)
 [Statedef 1214]
 type = S
-anim = 2000
+anim = 195
 velset = 0,0
 movetype = I
 physics = S
 sprpriority = 2
 
-[State 0, TargetBind]
-type = TargetBind
-trigger1 = p2life <= 1
-time = 1
-pos = 50,0
-
-[State 3300, p2state]
-type=targetstate
-trigger1 = p2life <= 1
-value = 5150
-persistent = 0
+[State 0, Reset Special]
+type = VarSet
+trigger1 = 1
+var(57) = 0
 ignorehitpause = 1
+
+[State 19001,TargetLifeAdd]
+type = TargetLifeAdd
+trigger1 = time = 0
+value = -ceil(ifelse(fvar(11)<=.45,(500*.45),(500*fvar(11))))
+absolute = 1
+kill = 1
+[State 0, TargetPowerAdd]
+type = TargetPowerAdd
+trigger1 = time = 0
+value = ceil(ifelse(fvar(11)<=.45,(500*.45),(500*fvar(11)))*.015)
+ignorehitpause = 1
+
+[State 0, White Flash AllPalFX]
+type = AllPalFX
+trigger1 = time = [0,9]
+time = 1
+add = ceil(255*(1 - (time/10.0))), ceil(255*(1 - (time/10.0))), ceil(255*(1 - (time/10.0)))
+mul = 256,256,256
+color = 256
+invertall = 0
+ignorehitpause = 1
+;
+;[State 3300, p2state]
+;type=targetstate
+;trigger1 = p2life <= 1
+;value = 5150
+;persistent = 0
+;ignorehitpause = 1
 
 [State 0, TargetState]
 type = TargetState
-trigger1 = p2life >= 1
+trigger1 = time = 0
 value = 1313
 persistent = 0
 ignorehitpause = 1
@@ -6065,7 +6442,21 @@ type = RemoveExplod
 trigger1 = 1
 id = 11201
 ignorehitpause = 1
-
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 114021
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 115020
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 114022
+ignorehitpause = 1
 [State 195, end]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -6099,33 +6490,3 @@ numhits = 0
 [State 0, ChangeState]
 type = DestroySelf
 trigger1 = time = 30
-
-;---------------------------------------------------------------------------
-;Hyper - Obra Maestra (Stop the other players - Custom State)
-[StateDef 12206]
-type = S
-sprpriority = -999
-velset = 0,0
-
-[State 0, PlayerPush]
-type = PlayerPush
-trigger1 = 1
-value = 0
-ignorehitpause = 1
-
-[State 0, NotHitBy]
-type = NotHitBy
-trigger1 = 1
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-value2 = S,NA
-ignorehitpause = 1
-
-[State 0, ScreenBound]
-type = ScreenBound
-trigger1 = 1
-value = 0
-
-[State 0, SelfState]
-type = SelfState
-trigger1 = time = 455
-value = 50
