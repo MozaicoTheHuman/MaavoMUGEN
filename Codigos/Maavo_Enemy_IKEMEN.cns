@@ -937,44 +937,37 @@ value = 0
 
 [State 0, Offset]
 type = Offset
-trigger1 = time < 85
+trigger1 = time < 84
 x = -90
-y =(-screenpos y) + floor(gameheight* 1.740)
+y = (-screenpos y) + floor(gameheight * 1.740)
 ignorehitpause = 1
 
 [State 0, Offset]
 type = Offset
-trigger1 = time > 84 && time < 91
+trigger1 = time >= 84 && time < 91
 x = -90
-y =(-screenpos y) + floor(gameheight*2.534 + -1*time/.1)
+y = (-screenpos y) + floor(418 - 253*2*(time-84)/7 + 253*(time-84)*(time-84)/49)
 ignorehitpause = 1
 
 [State 0, Offset]
 type = Offset
-trigger1 = time > 90 && time < 149
+trigger1 = time >= 91 && time < 151
 x = -90
-y =(-screenpos y) + floor(gameheight*.677 + 1*time/33)
+y = (-screenpos y) + floor(gameheight*.677 + 1*time/33)
 ignorehitpause = 1
 
 [State 0, Offset]
 type = Offset
-trigger1 = time > 148
+trigger1 = time >= 151 && time < 155
 x = -90
-y =(-screenpos y) + floor(gameheight*.750)
+y = (-screenpos y) + floor(167 + 41*(time-151)/4)
 ignorehitpause = 1
 
 [State 0, Offset]
 type = Offset
-trigger1 = time = 149
+trigger1 = time >= 155
 x = -90
-y =(-screenpos y) + floor(gameheight*.750)
-ignorehitpause = 1
-
-[State 0, Offset]
-type = Offset
-trigger1 = time = 150
-x = -90
-y =(-screenpos y) + floor(gameheight*.750)
+y = (-screenpos y) + floor(gameheight * .870)
 ignorehitpause = 1
 
 [State 0, PalFXWiz]
@@ -1091,7 +1084,7 @@ value = 25
 type = AngleDraw
 triggerall = prevstateno = 1700103 || prevstateno = 515044
 Trigger1 = 1
-value = .007*time
+value = .016*time
 
 [State 0, AngleDraw]
 type = AngleDraw
@@ -1110,7 +1103,7 @@ type = Offset
 triggerall = prevstateno = 1700103
 trigger1 = 1
 x = -90
-y =(-screenpos y) + floor(gameheight*.870 + 1*time/80)
+y = (-screenpos y) + floor(gameheight * .870 + time/150)
 ignorehitpause = 1
 
 [State 0, AssertSpecial]
@@ -1169,7 +1162,7 @@ value = 25
 [State 1100, 3]
 type = AngleDraw
 Trigger1 = 1
-value = .010*time
+value = .016*time
 
 [State 0, AngleDraw]
 type = AngleDraw
@@ -1183,9 +1176,9 @@ value = 0
 
 [State 0, Offset]
 type = Offset
-trigger1 = time > 0
+trigger1 = 1
 x = -90
-y =(-screenpos y) + floor(gameheight*.870 + 1*time/80)
+y = (-screenpos y) + floor(gameheight * .870 + time/150)
 ignorehitpause = 1
 
 [State 0, PalFXWiz]
