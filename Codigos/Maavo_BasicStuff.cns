@@ -1557,6 +1557,42 @@ type = AssertSpecial
 trigger1 = 2
 flag = Intro
 flag2 = nomusic
+flag3 = nobardisplay
+
+;[State 0, Bottom Cinematic Bar]
+;type = Explod
+;trigger1 = Time = 0
+;id = 54535
+;anim = 54535
+;pos = 0,158+ (var(17) * 29)
+;postype = back
+;sprpriority = -5
+;removeongethit = 1
+;removetime = 732
+;scale = 15,.25
+;bindtime = -1
+;ownpal = 1
+;ontop = 1
+;removeongethit = 1
+;supermovetime = 9999
+;pausemovetime = 99999
+;[State 0, Top Cinematic Bar]
+;type = Explod
+;trigger1 = Time = 0
+;id = 54536
+;anim = 54536
+;pos = 0,22
+;postype = back
+;sprpriority = -5
+;removeongethit = 1
+;removetime = 732
+;scale = 15,.25
+;bindtime = -1
+;ownpal = 1
+;ontop = 1
+;removeongethit = 1
+;supermovetime = 9999
+;pausemovetime = 99999
 
 [State 194, Helper]
 type = Helper
@@ -1652,7 +1688,7 @@ freqmul = 0.9+(random/7333.3)
 [State 1942, Walk]
 type = VelSet
 trigger1 = Time = 0
-x = ifelse(Pos X < Parent,Pos X, 2, -2)
+x = -2
 
 [State 1942, DestroySelf]
 type = DestroySelf
