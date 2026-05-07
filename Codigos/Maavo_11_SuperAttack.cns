@@ -3318,15 +3318,8 @@ volumescale = 200
 
 [State 3300, p2state]
 type=targetstate
-triggerall = var(17) = 0
 trigger1= time = 118
 value = 1700102
-
-[State 3300, p2state]
-type=targetstate
-triggerall = var(17) = 1
-trigger1= time = 118
-value = 170010243
 
 [State 0, ChangeState]
 type = ChangeState
