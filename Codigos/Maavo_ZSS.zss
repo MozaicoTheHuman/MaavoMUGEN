@@ -1,0 +1,486 @@
+#===============================================================================
+# This ZSS file contains everything that's exclusive for IKEMEN GO
+#===============================================================================
+
+#===============================================================================
+# MI PENE
+#===============================================================================
+
+[StateDef 7313; type: A; movetype: H; physics: N; velset: 0,0; sprpriority: 42;]
+
+palFX{time: 1; add: 0,0,0; mul: 256,256,256; sinadd: 0,0,0,1; invertall: 0; color: 0}
+
+if anim != 1044001 {
+    changeAnim2{value: 1044001}
+}
+
+ignoreHitPause if !isHelper && anim = 1044001 {
+    posSet{x: pos x - screenpos x + 252; y: pos y - screenpos y + 89}
+    velSet{x: 1.0/const(size.xscale); y: 1.0/const(size.yscale)}
+}
+
+if facing != -1 {
+    turn{}
+}
+
+ignoreHitPause {
+    angleDraw{value: -5; scale: 2.1/const(size.xscale),1.6/const(size.yscale); xAngle: 13; yAngle: -44}
+    screenBound{value: 0; movecamera: 0,0}
+}
+
+transformSprite{projection: perspective2; focallength: 240}
+
+assertSpecial{flag: noshadow}
+
+#===============================================================================
+
+[StateDef 73131; type: A; movetype: H; physics: N; velset: 0,0; sprpriority: 42;]
+
+palFX{time: 1; add: 0,0,0; mul: 256,256,256; sinadd: 0,0,0,1; invertall: 0; color: 0}
+
+if anim != 1044001 {
+    changeAnim2{value: 1044001}
+}
+
+ignoreHitPause if !isHelper && anim = 1044001 {
+    posSet{x: pos x - screenpos x + 223; y: pos y - screenpos y + 60}
+    velSet{x: 1.0/const(size.xscale); y: 1.0/const(size.yscale)}
+}
+
+if facing != -1 {
+    turn{}
+}
+
+ignoreHitPause {
+    angleDraw{value: -3; scale: 1.52/const(size.xscale),1.26/const(size.yscale); xAngle: 13; yAngle: -44}
+    screenBound{value: 0; movecamera: 0,0}
+}
+
+transformSprite{projection: perspective2; focallength: 240}
+
+assertSpecial{flag: noshadow}
+
+
+#===============================================================================
+# PARTNER DETECTOR (4:3)
+#===============================================================================
+[StateDef 1829; type: S; anim: 616; physics: S; sprpriority: 0;]
+for i = 0; numpartner-1; 1 {
+    if partner($i),stateno != 1823 && partner($i),stateno != 1824 && partner($i),stateno != 1825 {
+        selfState{value: 1823 + $i; continue: 1; readplayerid: id; redirectid: partner($i),id;}
+    }
+}
+#===============================================================================
+# PARTNER WIN STATES
+#===============================================================================
+[StateDef 1823; type: S; ctrl: 0; velset: 0,0; movetype: I; sprpriority: 28;]
+if facing = 1 {
+    turn{}
+}
+if time = 32 {
+    changeAnim{value: 181}
+    if numpartner = 1 {
+        posSet{x: pos x + (180 - screenpos x); y: pos y + (179 - screenpos y)}
+    } else if numpartner = 2 {
+        posSet{x: pos x + (150 - screenpos x); y: pos y + (179 - screenpos y)}
+    } else {
+        posSet{x: pos x + (105 - screenpos x); y: pos y + (174 - screenpos y)}
+    }
+}
+if time >= 32 {
+    if numpartner = 1 {
+        angleDraw{scale: 0.9,0.9}
+    } else if numpartner = 2 {
+        angleDraw{scale: 0.9,0.9}
+    } else {
+        angleDraw{scale: 0.84,0.84}
+    }
+}
+
+screenBound{value: 0}
+
+[StateDef 1824; type: S; ctrl: 0; velset: 0,0; movetype: I; sprpriority: 29;]
+if facing = 1 && numpartner = 3 {
+    turn{}
+}
+if time = 32 {
+    changeAnim{value: 181}
+    if numpartner = 2 {
+        posSet{x: pos x + (260 - screenpos x); y: pos y + (179 - screenpos y)}
+    } else {
+         posSet{x: pos x + (150 - screenpos x); y: pos y + (182 - screenpos y)}
+    }
+}
+if time >= 32 {
+    if numpartner = 1 {
+        angleDraw{scale: 1.3,1.3}
+    } else if numpartner = 2 {
+        angleDraw{scale: 0.92,0.92}
+    } else {
+        angleDraw{scale: 0.92,0.92}
+    }
+}
+
+screenBound{value: 0}
+
+[StateDef 1825; type: S; ctrl: 0; velset: 0,0; movetype: I; sprpriority: 27;]
+if time = 32 {
+    changeAnim{value: 181}
+    posSet{x: pos x + (260 - screenpos x); y: pos y + (182 - screenpos y)}
+}
+if time >= 32 {
+    angleDraw{scale: 0.92,0.92}
+}
+
+screenBound{value: 0}
+#===============================================================================
+# PARTNER DETECTOR (16:9)
+#===============================================================================
+[StateDef 1839; type: S; anim: 616; physics: S; sprpriority: 0;]
+for i = 0; numpartner-1; 1 {
+    if partner($i),stateno != 1833 && partner($i),stateno != 1834 && partner($i),stateno != 1835 {
+        selfState{value: 1833 + $i; continue: 1; readplayerid: id; redirectid: partner($i),id;}
+    }
+}
+#===============================================================================
+# PARTNER WIN STATES
+#===============================================================================
+[StateDef 1833; type: S; ctrl: 0; velset: 0,0; movetype: I; sprpriority: 28;]
+if facing = 1 {
+    turn{}
+}
+if time = 32 {
+    changeAnim{value: 181}
+    if numpartner = 1 {
+        posSet{x: pos x + (140 - screenpos x); y: pos y + (129 - screenpos y)}
+    } else if numpartner = 2 {
+        posSet{x: pos x + (120 - screenpos x); y: pos y + (129 - screenpos y)}
+    } else {
+        posSet{x: pos x + (115 - screenpos x); y: pos y + (124 - screenpos y)}
+    }
+}
+if time >= 32 {
+    if numpartner = 1 {
+        angleDraw{scale: 0.9,0.9}
+    } else if numpartner = 2 {
+        angleDraw{scale: 0.9,0.9}
+    } else {
+        angleDraw{scale: 0.86,0.86}
+    }
+}
+
+[StateDef 1834; type: S; ctrl: 0; velset: 0,0; movetype: I; sprpriority: 29;]
+if facing = 1 && numpartner = 3 {
+    turn{}
+}
+if time = 32 {
+    changeAnim{value: 181}
+    if numpartner = 2 {
+        posSet{x: pos x + (260 - screenpos x); y: pos y + (129 - screenpos y)}
+    } else {
+         posSet{x: pos x + (150 - screenpos x); y: pos y + (132 - screenpos y)}
+    }
+}
+if time >= 32 {
+    if numpartner = 1 {
+        angleDraw{scale: 1.3,1.3}
+    } else if numpartner = 2 {
+        angleDraw{scale: 0.92,0.92}
+    } else {
+        angleDraw{scale: 0.92,0.92}
+    }
+}
+
+[StateDef 1835; type: S; ctrl: 0; velset: 0,0; movetype: I; sprpriority: 27;]
+if time = 32 {
+    changeAnim{value: 181}
+    posSet{x: pos x + (260 - screenpos x); y: pos y + (129 - screenpos y)}
+}
+if time >= 32 {
+    angleDraw{scale: 0.88,0.88}
+}
+
+#===============================================================================
+# VICTORY SIMUL
+#===============================================================================
+[StateDef 1820; type: S; ctrl: 0; anim: 180; velset: 0,0;]
+
+if time = 0 {
+    helper{helpertype: normal; name: "SIMUL PARTNER DETECTOR"; id: ifelse(root,var(17) = 1, 1829, 1839); stateno: ifelse(root,var(17) = 1, 1829, 1839); pos: 0,0; postype: front; facing: 1; keyctrl: 0; ownpal: 0; supermovetime: 9999; pausemovetime: 9999}
+    stopSnd{channel: -1}
+    helper{id: 1821; stateno: 1821; pos: -50,-190; postype: back; ownpal: 1; supermovetime: 9999; pausemovetime: 9999}
+}
+
+ignoreHitPause if var(52) != 0 {
+    assertSpecial{flag: nomusic}
+}
+
+if facing != 1 {
+    turn{}
+}
+
+if root,var(52) = 22 && time = 30 {
+    playSnd{value: 888,0+random%2; loop: 1}
+}
+
+posSet{x: 0; y: 0}
+
+if time = 1 {
+    explod{id: 11911; anim: 11911; pos: -25,0; postype: back; sprpriority: 30; removeongethit: 1; removetime: 25; supermovetime: 9999; pausemovetime: 9999; scale: .3,.5; bindtime: -1; ownpal: 1; ontop: 1}
+    playSnd{value: S50505,0}
+}
+
+if time = 16 {
+    explod{id: 11821; anim: 11821; pos: -25,-25; postype: back; sprpriority: -7; removeongethit: 1; removetime: -1; scale: 99,99; supermovetime: -1; pausemovetime: -1; bindtime: -1; ontop: 0}
+    explod{id: 11917; anim: 11917; pos: -25,-25; postype: back; facing: ifelse(facing=1,1,-1); sprpriority: 37; removeongethit: 1; removetime: 38; scale: 99,99; supermovetime: -1; pausemovetime: -1; bindtime: -1; ontop: 0}
+    explod{anim: 18190; id: 18190; scale: .35+(root,var(17)*.1),.35+(root,var(17)*.1); pos: -(screenpos x),-30-(screenpos y)+(root,var(17)*7); postype: p1; bindtime: -1; removetime: -1; ownpal: 1; sprpriority: 25}
+}
+
+if time = 24 {
+    helper{id: 1822; stateno: 1822; pos: 0,0; postype: p1; ownpal: 1}
+}
+
+if time = 168 {
+    pause{time: 80; movetime: 80}
+    explod{anim: 7967; id: 7967; pos: 12,130+(root,var(17)*55); postype: back; facing: ifelse(facing=-1,-1,1); bindtime: -1; removetime: -1; scale: .17,.17; ownpal: 1; sprpriority: 99; supermovetime: -1; pausemovetime: -1}
+    explod{id: 18191; anim: 18191; pos: 0+(root,var(17)*-70),0; postype: back; sprpriority: 26; removeongethit: 1; removetime: 120; scale: .5+(root,var(17)*.2),.5+(root,var(17)*.2); supermovetime: 9999; pausemovetime: 99999; bindtime: -1}
+}
+
+ignoreHitPause if time = 245 {
+    explod{anim: 184; id: 184; pos: 0,0; postype: back; facing: ifelse(facing=-1,-1,1); bindtime: -1; removetime: -1; scale: .25,.25; ontop: 1; ownpal: 1; pausemovetime: -1}
+    if root,ailevel = 0 {
+        explod{anim: ifelse(teamside=1,185,186); id: 185; pos: 0,0; postype: back; facing: ifelse(facing=-1,-1,1); bindtime: -1; removetime: -1; scale: .25,.25; ontop: 1; ownpal: 1; pausemovetime: -1}
+    }
+    if root,ailevel >= 1 && root,ailevel <= 8 {
+        explod{anim: 187; id: 187; pos: 0,0; postype: back; facing: ifelse(facing=-1,-1,1); bindtime: -1; removetime: -1; scale: .25,.25; ontop: 1; ownpal: 1; pausemovetime: -1}
+    }
+}
+
+if root,var(52) = 2 {
+    if time = 53 {
+        playSnd{value: S50505,17; channel: 10}
+        playSnd{value: S50505,17; channel: 9}
+    }
+    if time = 168 {
+        playSnd{value: S50505,8; loop: 1; channel: 10}
+        playSnd{value: S50505,8; loop: 1; channel: 9}
+    }
+}
+if root,var(52) = 3 && time = 25 {
+    playSnd{value: S50505,10; loop: 1; channel: 9}
+    playSnd{value: S50505,10; loop: 1; channel: 10}
+}
+if root,var(52) = 4 && time = 25 {
+    playSnd{value: S50505,7; loop: 1; channel: 9}
+}
+if root,var(52) = 5 {
+    if time = 25 {
+        playSnd{value: S50505,9; channel: 9}
+    }
+    if time = 33 {
+        playSnd{value: S50505,5; loop: 1; channel: 9}
+        playSnd{value: S50505,5; loop: 1}
+    }
+}
+if root,var(52) = 1 {
+    if time = 25 {
+        playSnd{value: S50505,14; channel: 8}
+    }
+    if time = 530 {
+        playSnd{value: S50505,15; channel: 9}
+    }
+    if time = 540 {
+        playSnd{value: S50505,16; loop: 1; channel: 9}
+    }
+}
+
+if palno = 6 {
+    stopSnd{channel: 9}
+}
+if animElem = 2 {
+    playSnd{value: S50505,1}
+}
+
+posSet{x: 0; y: -10}
+
+ignoreHitPause if root,life != lifemax {
+    stopSnd{channel: 2}
+}
+
+if root,life != lifemax && time = 30 {
+    playSnd{value: S50505,2+(root,var(16)*10000)}
+    if root,var(16) = 2 {
+        playSnd{value: S50505,10002}
+        playSnd{value: S50505,10002}
+    }
+    if root,var(16) = 1 {
+        playSnd{value: S50505,10002}
+        playSnd{value: S50505,10002}
+    }
+    playSnd{value: S50505,2+(root,var(16)*10000)}
+    if root,var(16) = 20 {
+        playSnd{value: S1208,1}
+        playSnd{value: S1208,1}
+    }
+}
+if root,life != lifemax && time = 100 {
+    if root,var(16) = 2 {
+        playSnd{value: S50505,20003}
+        playSnd{value: S50505,20003}
+    }
+    if root,var(16) = 1 {
+        playSnd{value: S50505,10003}
+        playSnd{value: S50505,10003}
+    }
+}
+if root,life != lifemax && root,var(16) = 0 && time = 186 {
+    playSnd{value: S50505,3}
+    playSnd{value: S50505,3}
+}
+if root,life != lifemax && root,var(16) = 20 && time = 137 {
+    playSnd{value: S1208,2}
+    playSnd{value: S1208,2}
+}
+
+if root,life = lifemax && time = 30 {
+    if root,var(16) != 20 {
+        playSnd{value: S50505,69+(root,var(16)*10000)}
+        playSnd{value: S50505,69+(root,var(16)*10000)}
+    }
+    if root,var(16) = 2 {
+        playSnd{value: S50505,10069; volumescale: 255}
+    }
+    if root,var(16) = 20 {
+        playSnd{value: S1208,3}
+        playSnd{value: S1208,3}
+    }
+}
+
+if root,var(16) != 20 && time = 168 {
+    playSnd{value: S50505,4}
+}
+if root,var(16) = 20 && time = 120 {
+    playSnd{value: S520,1}
+    playSnd{value: S520,1}
+    playSnd{value: S1208,0}
+    playSnd{value: S1208,0}
+}
+
+assertSpecial{flag: nobardisplay}
+
+if random <= 1 && time = 0 {
+    changeState{value: 888}
+}
+
+if time >= 16 {
+    assertSpecial{flag: noBG; flag2: noFG}
+}
+
+if root,ailevel = 0 || time < 500 {
+    assertSpecial{flag: roundnotover}
+}
+if root,ailevel = 1 {
+    assertSpecial{flag: roundnotover}
+}
+
+if var(52) != 0 && time = 0 {
+    stopSnd{channel: -1}
+}
+
+notHitBy{value: SCA; time: 1}
+
+#===============================================================================
+[StateDef 1822; type: S; anim: 182; velset: 0,0; movetype: I; sprpriority: 30;]
+
+ignoreHitPause if animElem = 5 {
+    explod{anim: 32849; scale: 0.3,0.3; postype: p1; pos: 0,5; sprpriority: 31; ownpal: 1; removeongethit: 1}
+}
+
+# 4:3
+if root,var(17) = 1 && time = 16 {
+    if numpartner = 1 {
+        posSet{x: pos x + (230 - screenpos x); y: pos y + (187 - screenpos y)}
+    } else if numpartner = 2 {
+        posSet{x: pos x + (205 - screenpos x); y: pos y + (187 - screenpos y)}
+    } else if numpartner = 3 {
+        posSet{x: pos x + (200 - screenpos x); y: pos y + (190 - screenpos y)}
+    }
+}
+if root,var(17) = 0 {
+    if numpartner <= 2 {
+        angleDraw{scale: 1.0,1.0}
+    } else {
+        angleDraw{scale: 1.1,1.1}
+    }
+}
+
+# 16:9
+if root,var(17) = 0 && time = 16 {
+    if numpartner = 1 {
+        posSet{x: pos x + (210 - screenpos x); y: pos y + (137 - screenpos y)}
+    } else if numpartner = 2 {
+        posSet{x: pos x + (185 - screenpos x); y: pos y + (137 - screenpos y)}
+    } else if numpartner = 3 {
+        posSet{x: pos x + (200 - screenpos x); y: pos y + (137 - screenpos y)}
+    }
+}
+if root,var(17) = 1 {
+    if numpartner <= 2 {
+        angleDraw{scale: 1.0,1.0}
+    } else {
+        angleDraw{scale: 1.1,1.1}
+    }
+}
+
+# Sonidos
+if time = 1 {
+    playSnd{value: S191,2; freqmul: 0.9+(random/7333.3)}
+}
+if animElem = 2 {
+    playSnd{value: S191,0; freqmul: 0.9+(random/7333.3)}
+}
+if animElem = 5 {
+    playSnd{value: S191,3; freqmul: 0.9+(random/7333.3)}
+}
+if animElem = 11 {
+    playSnd{value: S191,1; freqmul: 0.9+(random/7333.3)}
+}
+
+#===============================================================================
+# SIMUL CAMERA
+#===============================================================================
+[StateDef 1821; type: S; anim: 616; sprpriority: 25;]
+
+if time >= 16 && time <= 120 {
+    fvar(0) := 1.0 + 0.1 * (1.0 - ((time-16)/104.0)) * (1.0 - ((time-16)/104.0));
+    fvar(1) := -60.0 * (1.0 - ((time-16)/104.0)) * (1.0 - ((time-16)/104.0));
+}
+
+if time >= 121 && time <= 154 {
+    fvar(0) := 1.0;
+}
+
+if time >= 155 && time <= 167 {
+    fvar(0) := 1.0 + 0.3 * ((time-155)/12.0)*((time-155)/12.0)*((time-155)/12.0);
+    fvar(1) := -35.0 * ((time-155)/12.0)*((time-155)/12.0)*((time-155)/12.0);
+}
+
+if time >= 168 {
+    fvar(0) := 1.3;
+    fvar(1) := -35.0;
+}
+
+ignoreHitPause if time >= 16 && time <= 247 {
+    zoom{scale: fvar(0); pos: 0, fvar(1);}
+}
+
+ignoreHitPause if time >= 248 {
+    zoom{scale: fvar(0); pos: cos(time*0.15)*0.6 + 0, sin(time*0.1)*0.4 + fvar(1);}
+}
+
+#===============================================================================
+# States that are always executed (use StateDef -2)
+#===============================================================================
+[StateDef -2]
+
+var(46) := 1;

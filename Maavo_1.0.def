@@ -34,13 +34,14 @@ st = Codigos/Maavo_-2.cns
 st0 = Codigos/Maavo_BasicStuff.cns
 st1 = Codigos/Maavo_BasicAttack.cns
 st2 = Codigos/Maavo_SpecialAttack.cns
-st3 = Codigos/Maavo_10_SuperAttack.cns
-st4 = Codigos/Maavo_Assest.cns
-st5 = Codigos/Maavo_Enemy.cns
+st3 = Codigos/Maavo_Univ_SuperAttack.cns
+st4 = Codigos/Maavo_10_SuperAttack.cns
+st5 = Codigos/Maavo_Assest.cns
+st6 = Codigos/Maavo_Enemy.cns
 stcommon = Codigos/Maavo_Codigos_Comunes.cns
-st6 = Codigos/Maavo_GFX.cns
-st7 = Codigos/Maavo_10_KOScreen.cns
-st8 = Config.txt
+st7 = Codigos/Maavo_GFX.cns
+st8 = Codigos/Maavo_10_KOScreen.cns
+st9 = Config.txt
 ;movelist = moveset.dat     ;Ikemen feature: Movelist
 
 [Palette Keymap]

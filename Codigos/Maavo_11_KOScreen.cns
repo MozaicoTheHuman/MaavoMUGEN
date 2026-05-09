@@ -1,3 +1,8 @@
+;///////////////////////////////////////////////////////////////////////////
+; This CNS stores the 1.1 version of the KO Screen
+;///////////////////////////////////////////////////////////////////////////
+
+
 [Statedef 911]
 anim = 616
 
@@ -122,45 +127,4 @@ value = S50505,1
 [State 123456789, DestroySelf]
 type = null;DestroySelf
 trigger1 = time = 70
-ignorehitpause = 1
-
-
-;simul camera,
-[Statedef 1821]
-type = S
-anim = 616
-sprpriority = 25
-
-[State 0, VarSet]
-type = VarSet
-trigger1 = time = [16,120]
-fvar(0) = 1.0 + 0.1 * (1.0 - ((time-16)/104.0)) * (1.0 - ((time-16)/104.0))
-
-[State 0, VarSet]
-type = VarSet
-trigger1 = time = [16,120]
-fvar(1) = -60.0 * (1.0 - ((time-16)/104.0)) * (1.0 - ((time-16)/104.0))
-
-[State 0, Zoom]
-type = Zoom
-trigger1 = time = [16,154]
-scale = fvar(0)
-pos = 0, fvar(1)
-bound = 0
-ignorehitpause = 1
-
-[State 0, Zoom]
-type = Zoom
-trigger1 = time = [155,167]
-scale = fvar(0)
-pos = 0, 0
-bound = 0
-ignorehitpause = 1
-
-[State 0, Zoom]
-type = Zoom
-trigger1 = time >= 168
-scale = 1
-pos = cos(time*0.25)*0.8, sin(time*0.2)*0.5
-bound = 0
 ignorehitpause = 1

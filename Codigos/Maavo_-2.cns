@@ -1,6 +1,8 @@
-;States that are always executed.
-;Like Maavo in enemy state, the value still update.
-;---------------------------------------------------------------------------
+;///////////////////////////////////////////////////////////////////////////
+; States that are always executed.
+; Like Maavo in enemy state, the value still update.
+;///////////////////////////////////////////////////////////////////////////
+
 [Statedef -2]
 
 [State 0, VarSet]

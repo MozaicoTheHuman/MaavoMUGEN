@@ -1,5 +1,7 @@
-;The Helper that based as Maavo's Assest.
-;---------------------------------------------------------------------------
+;///////////////////////////////////////////////////////////////////////////
+; This state is for Ivette and Maritza's states
+;///////////////////////////////////////////////////////////////////////////
+
 ;Ve, Ivette! - Ivette Cayendo
 [Statedef 9902]
 type    = S
@@ -1025,12 +1027,18 @@ type = PlaySnd
 trigger1 = time = 0
 value = S8983,1
 
+[State 0, Attack]
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = animelem = 3
+value = S28986,0+random%2
+volume = 255
 [State 0, Laugh]
 type = PlaySnd
 triggerall = root,var(34) = 0
 trigger1 = animelem = 15
 value = S18986,0+random%5
-
+volume = 255
 [State 0, Legacy Voice]
 type = PlaySnd
 triggerall = root,var(34) = 1

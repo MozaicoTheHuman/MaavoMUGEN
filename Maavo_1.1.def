@@ -13,8 +13,6 @@ author = "Mozaico" ;MozaicoTheRobot
 ;Soga Celeste
 ;Wach
 ;Chase2006
-;Flanmy
-;L1llian_V1sual
 ;A_Creator
 ;Oliver As Latias
 ;PointyyESM
@@ -23,8 +21,6 @@ author = "Mozaico" ;MozaicoTheRobot
 ;Kakow0
 ;Miki
 ;Riusaki Fujioka
-
-;un saludo a la lucy y a la karla q me compraron comida en el inacap cuando me estaba muriendo de hambre
 
 pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
 
@@ -38,13 +34,14 @@ st = Codigos/Maavo_-2.cns
 st0 = Codigos/Maavo_BasicStuff.cns
 st1 = Codigos/Maavo_BasicAttack.cns
 st2 = Codigos/Maavo_SpecialAttack.cns
-st3 = Codigos/Maavo_11_SuperAttack.cns
-st4 = Codigos/Maavo_Assest.cns
-st5 = Codigos/Maavo_Enemy.cns
+st3 = Codigos/Maavo_Univ_SuperAttack.cns
+st4 = Codigos/Maavo_11_SuperAttack.cns
+st5 = Codigos/Maavo_Assest.cns
+st6 = Codigos/Maavo_Enemy.cns
 stcommon = Codigos/Maavo_Codigos_Comunes.cns
-st6 = Codigos/Maavo_GFX.cns
-st7 = Codigos/Maavo_11_KOScreen.cns
-st8 = Config.txt
+st7 = Codigos/Maavo_GFX.cns
+st8 = Codigos/Maavo_11_KOScreen.cns
+st9 = Config.txt
 movelist = moveset.dat     ;Ikemen feature: Movelist
 
 [Palette Keymap]

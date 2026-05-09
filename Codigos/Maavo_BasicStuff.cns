@@ -1,3 +1,7 @@
+;///////////////////////////////////////////////////////////////////////////
+; Basic states related to victory screens, intros, taunts and parrys
+;///////////////////////////////////////////////////////////////////////////
+
 ;---------------------------------------------------------------------------
 ; Lose by Time Over
 [Statedef 170]
@@ -82,6 +86,57 @@ sprpriority = 34
 scale = .235,.235
 
 ;---------------------------------------------------------------------------
+;Win
+[Statedef 181]
+type = S
+ctrl = 0
+anim = 181
+
+[State 180, Ganar por el Finisher]
+type=changestate
+trigger1=prevstateno=140005
+value=180140
+
+[State 0, Helper]
+type = Helper
+triggerall = MatchOver = 1
+triggerall = numpartner = 0
+trigger1 = Win
+trigger1 = time = 0
+helpertype = normal
+name = "Win Screen"
+ID = 1810
+stateno = 1810
+pos = 0,0
+postype = p1
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 9999
+pausemovetime = 9999
+persistent = 0
+
+; Simul
+[State 0, Helper]
+type = Helper
+triggerall = MatchOver = 1
+triggerall = numpartner > 0
+trigger1 = Win
+trigger1 = time = 0
+helpertype = normal
+name = "Win Screen SIMUL"
+ID = 1820
+stateno = ifelse(var(46) = 1, 1820, 1810)
+pos = 0,0
+postype = front
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 9999
+pausemovetime = 9999
+persistent = 0
+
+;---------------------------------------------------------------------------
 ; Win state decider
 [Statedef 180]
 type = S
@@ -129,43 +184,6 @@ ctrl = 0
 type = ChangeState
 trigger1 = Time = 1
 value = 181
-
-;---------------------------------------------------------------------------
-;Win
-[Statedef 181]
-type = S
-ctrl = 0
-anim = ifelse(Matchover = 1, anim, 181)
-
-[State 0, ChangeAnim]
-type = ChangeAnim
-trigger1 = MatchOver = 1
-value = anim
-elem = animelemno(0)
-ignorehitpause = 1
-
-[State 180, Ganar por el Finisher]
-type=changestate
-trigger1=prevstateno=140005
-value=180140
-
-[State 0, Helper]
-type = Helper
-triggerall = MatchOver = 1
-trigger1 = Win
-trigger1 = time = 0
-helpertype = normal ;player
-name = "Win Screen"
-ID = 1810
-stateno = 1810
-pos = 0,0
-postype = p1    ;p2,front,back,left,right
-facing = 1
-keyctrl = 0
-ownpal = 0
-supermovetime = 9999
-pausemovetime = 9999
-persistent = 0
 
 ;---------------------------------------------------------------------------
 ; Win pose 1
@@ -1155,6 +1173,7 @@ type = NotHitBy
 trigger1 = 1
 value = SCA
 time = 1
+
 
 ;---------------------------------------------------------------------------
 ;Win (All-Out Attack)
