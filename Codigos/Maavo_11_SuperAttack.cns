@@ -4266,17 +4266,37 @@ sprpriority = 100
 type = turn
 trigger1 = facing != 1
 
+[State 0, 2026 Voice]
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,3 + (root,var(16) * 10000)
+[State 0, 2026 Voice]
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,3 + (root,var(16) * 10000)
+[State 0, 2026 Voice]
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,3 + (root,var(16) * 10000)
+[State 0, 2026 Voice]
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,3 + (root,var(16) * 10000)
 [State 0, Legacy Voice]
 type = PlaySnd
 triggerall = root,var(34) = 1
 trigger1 = time = 4
 value = S21932,8 + (root,var(16) * 10000)
-[State 0, PlaySnd]
+[State 0, Legacy Voice]
 type = PlaySnd
 triggerall = root,var(34) = 1
 trigger1 = time = 4
 value = S21932,8 + (root,var(16) * 10000)
-[State 0, PlaySnd]
+[State 0, Legacy Voice]
 type = PlaySnd
 triggerall = root,var(34) = 1
 trigger1 = time = 4
@@ -4389,6 +4409,26 @@ sprpriority = 100
 type = turn
 trigger1 = facing != 1
 
+[State 0, 2026 Voice]
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,4 + (root,var(16) * 10000)
+[State 0, 2026 Voice]
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,4 + (root,var(16) * 10000)
+[State 0, 2026 Voice]
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,4 + (root,var(16) * 10000)
+[State 0, 2026 Voice]
+type = PlaySnd
+triggerall = root,var(34) = 0
+trigger1 = time = 4
+value = S21932,4 + (root,var(16) * 10000)
 [State 0, Legacy Voice]
 type = PlaySnd
 triggerall = root,var(34) = 1

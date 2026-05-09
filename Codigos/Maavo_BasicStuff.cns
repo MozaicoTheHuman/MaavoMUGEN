@@ -135,7 +135,14 @@ value = 181
 [Statedef 181]
 type = S
 ctrl = 0
-anim = 181
+anim = ifelse(Matchover = 1, anim, 181)
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = MatchOver = 1
+value = anim
+elem = animelemno(0)
+ignorehitpause = 1
 
 [State 180, Ganar por el Finisher]
 type=changestate
