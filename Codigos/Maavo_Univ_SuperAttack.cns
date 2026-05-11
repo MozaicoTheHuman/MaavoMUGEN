@@ -2753,6 +2753,11 @@ type = RemoveExplod
 trigger1 = 1
 id = 678
 
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 679
+
 [State 0, ChangeState]
 type = changestate
 trigger1 = time = 1
@@ -2784,6 +2789,11 @@ ignorehitpause = 1
 type = RemoveExplod
 trigger1 = 1
 id = 625
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 679
 
 [State 0, RemoveExplod]  
 type = RemoveExplod
