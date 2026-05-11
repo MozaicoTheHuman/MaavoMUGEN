@@ -909,7 +909,7 @@ movetype = H
 physics = N
 ctrl = 0
 velset = 0,.02
-sprpriority = 23
+sprpriority = 24
 
 [state turn]
 type = turn
