@@ -535,7 +535,7 @@ ignorehitpause = 1
 type = VarSet
 trigger1 = aiLevel
 v = 59
-value = ifelse(enemyNear,aiLevel > 0, 165, ifelse(aiLevel=1, 3, ifelse(aiLevel=2, 10, ifelse(aiLevel=3, 20, ifelse(aiLevel=4, 35, ifelse(aiLevel=5, 55, ifelse(aiLevel=6, 85, ifelse(aiLevel=7, 110, ifelse(aiLevel=8, 160, 0)))))))))
+value = ifelse(enemyNear,aiLevel > 0, 175, ifelse(aiLevel=1, 3, ifelse(aiLevel=2, 10, ifelse(aiLevel=3, 20, ifelse(aiLevel=4, 35, ifelse(aiLevel=5, 55, ifelse(aiLevel=6, 85, ifelse(aiLevel=7, 110, ifelse(aiLevel=8, 160, 0)))))))))
 ;Guard
 [State -1, AI Guard]
 type = ChangeState
