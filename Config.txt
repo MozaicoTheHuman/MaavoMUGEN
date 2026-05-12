@@ -58,7 +58,7 @@ ignorehitpause = 0
 [State 0, Text Language?]
 type = VarSet
 trigger1 = 1
-var(20) = 0
+var(20) = 1
 ;0 - Spanish
 ;1 - English
 ;2 - Japanese
@@ -79,7 +79,7 @@ ignorehitpause = 1
 ; Certain opponents will force a specific theme to play when fought.
 type = VarSet
 trigger1 = 1
-var(52) = 6
+var(52) = 2
 ;0: N/A
 ;1: Victory! (Old) by Rossiter (Short) > Results Screen - Super Smash Brothers for 3DS and Wii U
 ;2: Victory! (Showtime) by Kakow0 (this is the default song)

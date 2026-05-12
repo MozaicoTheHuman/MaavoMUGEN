@@ -916,10 +916,9 @@ triggerall = random < var(59)*ifelse(life < (lifemax*.5)||BackEdgeBodyDist<10,2,
 trigger1 = 1
 trigger2 = EnemyNear,movetype = A && !inguarddist && random < 500 
 trigger3 = var(1) && !numhelper(9902)
-;Punch1
 [State -1, AI PencilJab]
 type = ChangeState
-value = ifelse(power >= 500&&random<500+ifelse(life < (lifemax*.5),200,0),2212,2210)
+value = ifelse(var(19) = 1, ifelse(power >= 500&&random<500+ifelse(life < (lifemax*.5),200,0),2212,2210), 2210)
 triggerall = aiLevel && roundstate=2 && var(58) && alive && numenemy 
 triggerall = ctrl||stateno = 0||(stateno = [20,22])|| (stateno = [100,109]) || stateno = 1022||(stateno = [116,117])
 triggerall = enemynear(!enemynear,alive), statetype != L
@@ -927,12 +926,11 @@ triggerall = (p2bodydist x - (enemynear,vel x * 9)) = [70,80]
 triggerall = (p2bodydist y - (enemynear,vel y * 9))  = [-38,0]
 triggerall = statetype != A 
 triggerall = pos y = 0 
-triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500 
-trigger1 =  1 ;&& random < 500 
-;Punch1
+triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1)
+trigger1 =  1
 [State -1, AI Dash Attack]
 type = ChangeState
-value = ifelse(power >= 500&&random<500+ifelse(life < (lifemax*.5),200,0),520,500)
+value = ifelse(var(19) = 1, ifelse(power >= 500&&random<500+ifelse(life < (lifemax*.5),200,0),520,500), 500)
 triggerall = aiLevel && roundstate=2 && var(58) && alive && numenemy 
 triggerall = enemynear(!enemynear,alive), statetype != L
 triggerall = statetype != A 
@@ -940,14 +938,13 @@ trigger1 = (stateno = [100,109]) ||(stateno = 116)
 trigger1 = p2bodydist y = [-70,0]
 trigger1 = (((enemynear,pos x + enemynear,vel x * 11) - (pos x + vel x * 11)) = [80, 100]) 
 trigger1 = random < var(59)*ifelse(life < (lifemax*.5),21,15)
-; AI Rising Pencil
 [State -1, AI Rising Pencil]
 type = ChangeState
-value = ifelse(power >= 500 && random < 580, 920, ifelse(random < 520, 910, 900))
+value = ifelse(var(19) = 1, ifelse(power >= 500 && random < 580, 920, ifelse(random < 520, 910, 900)), 900)
 triggerall = AILevel > 1 && RoundState = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
 triggerall = enemynear,statetype != L && enemynear,statetype != A
-triggerall = p2bodydist x = [20,65]       
+triggerall = p2bodydist x = [0,35]     
 triggerall = enemynear,movetype != A
 triggerall = life >= lifemax * 0.20 
 triggerall = enemynear, stateno != [120,155] 
@@ -1034,9 +1031,9 @@ triggerall = enemynear, stateno != 5120
 triggerall = enemynear, pos y = 0
 trigger1 = enemynear, statetype != L
 trigger1 = (enemynear,pos y + (enemynear,vel y * 7)) = [-38, 0]
-trigger1 = random < var(59)*ifelse(life < (lifemax*.5), 2, 1)
+trigger1 = random < var(59)*ifelse(life < (lifemax*.5), 0.5, 1)
 trigger2 = enemynear, statetype = L
-trigger2 = random < var(59)*ifelse(life < (lifemax*.5), 3, 2)
+trigger2 = random < var(59)*ifelse(life < (lifemax*.5), 2, 1)
 [State -1, AI ALP]
 type = ChangeState
 value = 600
@@ -1083,7 +1080,7 @@ trigger2 = stateno = 440 && movecontact
 trigger2 = enemynear, pos y = 0
 trigger2 = var(54):= ifelse(random<700, 450, 220) || 1
 trigger3 = stateno = 450 && animelemtime(9) >= 0 && movehit
-trigger3 = var(54):= ifelse(power >= 500 && random<500+ifelse(life<(lifemax*.5),200,0), 2212, 2210) || 1
+trigger3 = var(54):= ifelse(var(19) = 1, ifelse(power >= 500 && random<500+ifelse(life<(lifemax*.5),200,0), 2212, 2210), 2210) || 1
 trigger4 = stateno = 440 && movehit
 trigger4 = enemynear, stateno != 5120 
 trigger4 = enemynear, statetype = L && enemynear, pos y = 0
@@ -1105,7 +1102,7 @@ trigger3 = var(54):= 240 || 1
 trigger4 = stateno = 240 && movecontact 
 trigger4 = var(54):= 220 || 1
 trigger5 = stateno = 220 && movehit
-trigger5 = var(54):= ifelse(random<300,ifelse(power >= 500&&random<500+ifelse(life < (lifemax*.5),200,0),2212,2210),ifelse(random<500,41,920)) || 1
+trigger5 = var(54):= ifelse(random<300, ifelse(var(19) = 1 && power >= 500&&random<500+ifelse(life < (lifemax*.5),200,0),2212,2210), ifelse(random<500,41,ifelse(var(19) = 1,920,900))) || 1
 ;===========================================================================
 ; AI Kick to Air Combo 
 [State -1, AI kick to air combo]

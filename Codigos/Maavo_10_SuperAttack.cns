@@ -446,6 +446,20 @@ anim = 190005
 poweradd = 0
 sprpriority = 2
 
+[State 19001, AfterImage]
+type = AfterImage
+trigger1 = time = 0            
+time = 181
+TimeGap  = 1
+FrameGap = 2
+length = 10
+palbright = 40,0,20
+palcontrast = 220,0,20
+palpostbright = 0,0,0
+trans = add
+paladd = 120,0,20
+palmul = .65,.65,.65
+
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1 = time = 10
@@ -667,11 +681,6 @@ trigger1 = Target(19000),stateno != [19005,19006]
 value = 19005+var(29)
 ID = 19000
 ignorehitpause = 1
-[State 0]
-type = Pause
-trigger1 = Name != "Maavo"
-trigger2 = Authorname != "MaavoTheHuman"
-time = 999
 [State 0, TargetState]
 type = TargetState
 triggerall = NumTarget(19001) = 1
@@ -1531,11 +1540,11 @@ helpertype = normal
 name = "BG"
 ID = 140671
 stateno = 140671
-pos = 30,20
+pos = 30,0
 ownpal = 0
 postype = back   ;p2,front,back,left,right
-size.xscale = .25+ (root,var(17) * .03)
-size.yscale = .25+ (root,var(17) * .03)
+size.xscale = .25+ (root,var(17) * .05)
+size.yscale = .25+ (root,var(17) * .05)
 [State 0, Helper]
 type = Helper
 trigger1 = Time = 0
@@ -1949,7 +1958,7 @@ value = .007*time
 type = PosSet
 trigger1 = 1
 x = 95
-y = 20
+y = 0
 
 [State 140003, end]
 type = DestroySelf
