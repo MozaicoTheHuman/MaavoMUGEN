@@ -661,22 +661,14 @@ id = 110
 ignorehitpause = 1
 persistent = 0
 
-;Clap Animation [1280x720]
-[State 0, ChangeState]
+;Clap Animation
+[State -2, ChangeState]
 type = ChangeState
-triggerall = teammode != simul && enemy, teammode != simul
+triggerall = teammode != simul
+triggerall = Enemy, AuthorName = "Mozaico"
 trigger1 = enemy, stateno = 180180
-trigger1 = Enemy, AuthorName = "Mozaico"
+trigger2 = enemy, stateno = 180181
 value = 1701801
-ctrl = 0
-
-;Clap Animation [640x480]
-[State 0, ChangeState]
-type = ChangeState
-triggerall = teammode != simul && enemy, teammode != simul
-trigger1 = enemy, stateno = 180181
-trigger1 = Enemy, AuthorName = "Mozaico"
-value = 1701802
 ctrl = 0
 
 [State -2 , 1]

@@ -22,68 +22,69 @@ value = SCA
 time = 1
 
 ;---------------------------------------------------------------------------
-;Clap Animation [1280x720]
+;Clap Animation
 [Statedef 1701801]
 physics=N
-velset=0,0
 
-[State 119904 , 1]
+[State 1, Explod Top Layer]
 type = Explod
 trigger1 = Time = 1
 anim = 17583581
-pos = 40, 194
+pos = 40, ifelse(gamewidth / gameheight >= 1.7, 194, 252)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
 sprpriority = 35
-scale = .235,.235
+scale = .235, .235
 
-[State 119904 , 1]
+[State 1, Explod Bottom Layer]
 type = Explod
 trigger1 = Time = 1
 anim = 17583582
-pos = 40, 194
+pos = 40, ifelse(gamewidth / gameheight >= 1.7, 194, 252)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
 sprpriority = 34
-scale = .235,.235
+scale = .235, .235
 
 ;---------------------------------------------------------------------------
-;Clap Animation [640x480]
-[Statedef 1701802]
-physics=N
-velset=0,0
+;Clap Animation resoultion check (16:9)
+[Statedef 180180]
+type = S
+ctrl = 0
 
-[State 119904 , 1]
-type = Explod
-trigger1 = Time = 1
-anim = 17583581
-pos = 40, 252
-postype = left
-removetime=-1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 35
-scale = .235,.235
+[State 0, All Out Attack]
+type = ChangeState
+trigger1 = var(45) = 1
+value = 180140
+ctrl = 0
 
-[State 119904 , 1]
-type = Explod
+[State 180180, 1]
+type = ChangeState
 trigger1 = Time = 1
-anim = 17583582
-pos = 40, 252
-postype = left
-removetime=-1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 34
-scale = .235,.235
+value = 181
+
+;---------------------------------------------------------------------------
+;Clap Animation resoultion check (4:3)
+[Statedef 180181]
+type = S
+ctrl = 0
+
+[State 0, All Out Attack]
+type = ChangeState
+trigger1 = var(45) = 1
+value = 180140
+ctrl = 0
+
+[State 180180, 1]
+type = ChangeState
+trigger1 = Time = 1
+value = 181
 
 ;---------------------------------------------------------------------------
 ;Win
@@ -151,39 +152,6 @@ type = ChangeState
 trigger1 = MatchOver = 1
 trigger1 = Win
 value = 180180+ (var(17) * 1)
-;---------------------------------------------------------------------------
-;Smash Bros. Win Screen confirm [1280x720] (This is for the characters that has the clap animation)
-[Statedef 180180]
-type = S
-ctrl = 0
-
-[State 0, All Out Attack]
-type = ChangeState
-trigger1 = var(45) = 1
-value = 180140
-ctrl = 0
-
-[State 180180, 1]
-type = ChangeState
-trigger1 = Time = 1
-value = 181
-
-;---------------------------------------------------------------------------
-;Smash Bros. Win Screen confirm [640x480] (This is for the characters that has the clap animation)
-[Statedef 180181]
-type = S
-ctrl = 0
-
-[State 0, All Out Attack]
-type = ChangeState
-trigger1 = var(45) = 1
-value = 180140
-ctrl = 0
-
-[State 180180, 1]
-type = ChangeState
-trigger1 = Time = 1
-value = 181
 
 ;---------------------------------------------------------------------------
 ; Win pose 1
@@ -215,213 +183,109 @@ value = 888,0+random%2
 loop = 1
 
 ;==========================================
-;THIS IS STUFF FOR THE CLAP ANIMATION THINGY UUUH I DONT WANNA DOCUMENT ALL DAT
-[State 119904 , 1]
+;THIS IS STUFF FOR THE CLAP ANIMATION THINGY
+[State 119904, Explod Clap Base]
 type = Explod
 trigger1 = enemy, stateno = 1701801
 anim = 17424342
-pos = 0, 177
+pos = 0, ifelse(var(17) = 0, 234, 177)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
 sprpriority = 38
-scale = .5,.5
+scale = .5, .5
 persistent = 0
 
-[State 119904 , 1]
-type = Explod
-trigger1 = enemy, stateno = 1701802
-anim = 17424342
-pos = 0, 234
-postype = left
-removetime=-1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 38
-scale = .5,.5
-persistent = 0
-
-[State 119904 , 1]
+[State 119904, Explod Human Anim]
 type = Explod
 triggerall = enemy,ailevel = 0
 trigger1 = enemy, stateno = 1701801
-anim = ifelse(teamside=1,17323234,1732323)
-pos = 0, 177
+anim = ifelse(teamside=1, 17323234, 1732323)
+pos = 0, ifelse(var(17) = 0, 234, 177)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
-sprpriority = 34
-scale = .5,.5
+sprpriority = 33
+scale = .5, .5
 persistent = 0
 
-[State 119904 , 1]
+[State 119904, Explod AI Anim]
 type = Explod
-triggerall = enemy,ailevel = 0
-trigger1 = enemy, stateno = 1701802
-anim = ifelse(teamside=1,17323234,1732323)
-pos = 0, 234
-postype = left
-removetime=-1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 34
-scale = .5,.5
-persistent = 0
-
-[State 119904 , 1]
-type = Explod
-triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
+triggerall = enemy,ailevel >= 1
 trigger1 = enemy, stateno = 1701801
 anim = 16323234
-pos = 0, 177
+pos = 0, ifelse(var(17) = 0, 234, 177)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
-sprpriority = 34
-scale = .5,.5
+sprpriority = 33
+scale = .5, .5
 persistent = 0
 
-[State 119904 , 1]
-type = Explod
-triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
-trigger1 = enemy, stateno = 1701802
-anim = 16323234
-pos = 0, 234
-postype = left
-removetime=-1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 34
-scale = .5,.5
-persistent = 0
-
-[State 119904 , 1]
+[State 119904, Explod Human Layer2]
 type = Explod
 triggerall = enemy,ailevel = 0
 trigger1 = enemy, stateno = 1701801
-anim = ifelse(teamside=1,17323235,17323236)
-pos = 0, 177
+anim = ifelse(teamside=1, 17323235, 17323236)
+pos = 0, ifelse(var(17) = 0, 234, 177)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
 sprpriority = 38
-scale = .5,.5
+scale = .5, .5
 persistent = 0
 
-[State 119904 , 1]
+[State 119904, Explod AI Layer2]
 type = Explod
-triggerall = enemy,ailevel = 0
-trigger1 = enemy, stateno = 1701802
-anim = ifelse(teamside=1,17323235,17323236)
-pos = 0, 234
-postype = left
-removetime=-1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 38
-scale = .5,.5
-persistent = 0
-
-[State 119904 , 1]
-type = Explod
-triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
+triggerall = enemy,ailevel >= 1
 trigger1 = enemy, stateno = 1701801
 anim = 16323236
-pos = 0, 177
+pos = 0, ifelse(var(17) = 0, 234, 177)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
 sprpriority = 38
-scale = .5,.5
+scale = .5, .5
 persistent = 0
 
-[State 119904 , 1]
-type = Explod
-triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
-trigger1 = enemy, stateno = 1701802
-anim = 16323236
-pos = 0, 234
-postype = left
-removetime=-1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 38
-scale = .5,.5
-persistent = 0
-
-[State 119904 , 1]
+[State 119904, Explod Human Layer3]
 type = Explod
 triggerall = enemy,ailevel = 0
 trigger1 = enemy, stateno = 1701801
-anim = ifelse(teamside=1,17323237,17323238)
-pos = 0, 177
+anim = ifelse(teamside=1, 17323237, 17323238)
+pos = 0, ifelse(var(17) = 0, 234, 177)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
 sprpriority = 37
-scale = .5,.5
+scale = .5, .5
 persistent = 0
 
-[State 119904 , 1]
+[State 119904, Explod AI Layer3]
 type = Explod
-triggerall = enemy,ailevel = 0
-trigger1 = enemy, stateno = 1701802
-anim = ifelse(teamside=1,17323237,17323238)
-pos = 0, 234
-postype = left
-removetime=-1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 37
-scale = .5,.5
-persistent = 0
-
-[State 119904 , 1]
-type = Explod
-triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
+triggerall = enemy,ailevel >= 1
 trigger1 = enemy, stateno = 1701801
 anim = 16323238
-pos = 0, 177
+pos = 0, ifelse(var(17) = 0, 234, 177)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
 sprpriority = 37
-scale = .5,.5
-persistent = 0
-
-[State 119904 , 1]
-type = Explod
-triggerall = enemy,ailevel = 1 || enemy,ailevel = 2 || enemy,ailevel = 3 || enemy,ailevel = 4 || enemy,ailevel = 5 || enemy,ailevel = 6 || enemy,ailevel = 7 || enemy,ailevel = 8
-trigger1 = enemy, stateno = 1701802
-anim = 16323238
-pos = 0, 234
-postype = left
-removetime=-1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 37
-scale = .5,.5
+scale = .5, .5
 persistent = 0
 ;==========================================
 [State Victory Transition]
