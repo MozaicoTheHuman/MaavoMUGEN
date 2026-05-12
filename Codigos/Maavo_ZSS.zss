@@ -237,13 +237,20 @@ if time = 16 {
 }
 
 if time = 24 {
-    helper{id: 1822; stateno: 1822; pos: 0,0; postype: p1; ownpal: 1}
+    helper{id: 1822; stateno: 1822; pos: 0,0; postype: p1; ownpal: 0}
 }
 
 if time = 168 {
     pause{time: 80; movetime: 80}
     explod{anim: 7967; id: 7967; pos: 12,130+(root,var(17)*55); postype: back; facing: ifelse(facing=-1,-1,1); bindtime: -1; removetime: -1; scale: .17,.17; ownpal: 1; sprpriority: 99; supermovetime: -1; pausemovetime: -1}
-    explod{id: 18191; anim: 18191; pos: 0+(root,var(17)*-70),0; postype: back; sprpriority: 26; removeongethit: 1; removetime: 120; scale: .5+(root,var(17)*.2),.5+(root,var(17)*.2); supermovetime: 9999; pausemovetime: 99999; bindtime: -1}
+}
+
+if time = 168 {
+    if teamside = 1 {
+        explod{id: 18191; anim: 18191; pos: 0+(root,var(17)*-70),0; postype: back; sprpriority: 26; removeongethit: 1; removetime: 120; scale: .5+(root,var(17)*.2),.5+(root,var(17)*.2); supermovetime: 9999; pausemovetime: 99999; bindtime: -1; ownpal: 1}
+    } else if teamside = 2 {
+        explod{id: 18191; anim: 18191; pos: 0+(root,var(17)*-70),0; postype: back; sprpriority: 26; removeongethit: 1; removetime: 120; scale: .5+(root,var(17)*.2),.5+(root,var(17)*.2); supermovetime: 9999; pausemovetime: 99999; bindtime: -1; ownpal: 1; palfx.time: -1; palfx.color: 0; palfx.mul: 256,256,256; palfx.add: 0,34,167; palfx.sinadd: 0,0,0,1}
+    }
 }
 
 ignoreHitPause if time = 245 {

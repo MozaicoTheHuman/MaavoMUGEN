@@ -125,8 +125,8 @@ trigger1 = Win
 trigger1 = time = 0
 helpertype = normal
 name = "Win Screen SIMUL"
-ID = 1820
-stateno = ifelse(var(46) = 1, 1820, 1810)
+ID = 1820 
+stateno =  ifelse(var(55) = 1, 1810, ifelse(var(46) = 1, 1820, 1810))   
 pos = 0,0
 postype = front
 facing = 1

@@ -1482,7 +1482,7 @@ name = "Final Touch Shadow"
 ID = 146731
 stateno = 146731
 pos = 0,0
-ownpal = 0
+ownpal = 1
 postype = back   ;p2,front,back,left,right
 size.xscale = .25+ (root,var(17) * .04)
 size.yscale = .25+ (root,var(17) * .04)
@@ -1834,15 +1834,11 @@ physics = S
 anim = 673
 sprpriority = 29
 
-[State 0, PalFXWiz]
+[State 0, PalFX]
 type = PalFX
-trigger1 = time > 0
-time = 145
-add = 0,0,0
+trigger1 = 1
+time = 2
 mul = 0,0,0
-sinadd = 0,0,0,10
-invertall = 0
-color = 0
 
 [state turn]
 type = turn

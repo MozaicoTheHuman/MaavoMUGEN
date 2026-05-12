@@ -1850,19 +1850,17 @@ type = Explod
 trigger1 = Time = 80
 id = 674
 anim = 674
-pos = 0+ (var(17) * -34),0+ (var(17) * 24)
+pos = 0+ (var(17) * -60),-30
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
 sprpriority = 26
 removeongethit = 1
 removetime=98
 ownpal = 0
-scale = .5+ (var(17) * .1),.5+ (var(17) * .1)
+scale = .5+ (var(17) * .18),.5+ (var(17) * .18)
 OnTop = 0
 supermovetime=98
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 ownpal = 1
 [State 19001, Maavo]
@@ -1870,18 +1868,16 @@ type = Explod
 trigger1 = Time = 80
 id = 6744
 anim = 6744
-pos = 0+ (var(17) * -34),0+ (var(17) * 24)
+pos = 0+ (var(17) * -60),-30
 postype = back
 Facing = IfElse(facing = 1, 1, -1)
 sprpriority = 26
 removeongethit = 1
 removetime=89
-scale = .5+ (var(17) * .1),.5+ (var(17) * .1)
+scale = .5+ (var(17) * .18),.5+ (var(17) * .18)
 OnTop = 0
 supermovetime=89
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 ownpal = 1
 removeongethit = 1
 [State 0, Helper]
@@ -1957,13 +1953,13 @@ value = S21931,4
 
 [State 0, HitAdd]
 type = HitAdd
-trigger1 = time = 150
+trigger1 = time = 158
 value = 1
 ignorehitpause = 1
 
 [State 19001,TargetLifeAdd]
 type = TargetLifeAdd
-trigger1 = time = 150
+trigger1 = time = 159
 value = -9999
 kill = 1
 
@@ -1975,13 +1971,13 @@ value = 1700103
 [State 3300, p2state]
 type = targetstate
 trigger1 = enemy, alive = 0
-trigger1 = time = 155
+trigger1 = time = 160
 value = 5150
 
 [State 3300, p2state]
 type = targetstate
 trigger1 = enemy, alive = 1
-trigger1 = time = 155
+trigger1 = time = 160
 value = 515044
 
 [State 0, ChangeState]
