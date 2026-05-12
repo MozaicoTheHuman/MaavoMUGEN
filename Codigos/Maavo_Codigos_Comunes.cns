@@ -3327,7 +3327,7 @@ var(40) = 0
 ignorehitpause = 1
 [State 0, Astral Bullshit]
 type = VarSet
-trigger1 = ((root,stateno = 180140 || root,stateno = 181) || root,stateno = 140002 || (root,stateno = 141002 || roundstate>2 && root, prevstateno = 141002) || root,stateno = 1410025 || root,numhelper(911)) && root,movetype != H
+trigger1 = ((root,stateno = 180140 || root,stateno = 181) || root,stateno = 140002 || (root,stateno = 141002 || roundstate>2 && root, prevstateno = 141002) || root,stateno = 1410025 || root,stateno = 1213 || root,numhelper(911)) && root,movetype != H
 trigger2 = enemy, name = "Oliver Andersen"
 trigger2 = enemy, stateno = [4301,4399]
 trigger3 = enemy, name = "Nick (Mega Man)"
