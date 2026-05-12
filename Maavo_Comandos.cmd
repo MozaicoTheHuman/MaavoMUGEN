@@ -535,7 +535,7 @@ ignorehitpause = 1
 type = VarSet
 trigger1 = aiLevel
 v = 59
-value = ifelse(aiLevel=1, 3, ifelse(aiLevel=2, 10, ifelse(aiLevel=3, 20, ifelse(aiLevel=4, 35, ifelse(aiLevel=5, 55, ifelse(aiLevel=6, 85, ifelse(aiLevel=7, 110, ifelse(aiLevel=8, 160,0))))))))
+value = ifelse(enemyNear,aiLevel > 0, 165, ifelse(aiLevel=1, 3, ifelse(aiLevel=2, 10, ifelse(aiLevel=3, 20, ifelse(aiLevel=4, 35, ifelse(aiLevel=5, 55, ifelse(aiLevel=6, 85, ifelse(aiLevel=7, 110, ifelse(aiLevel=8, 160, 0)))))))))
 ;Guard
 [State -1, AI Guard]
 type = ChangeState
@@ -604,7 +604,7 @@ trigger2 = random < 600
 type = ChangeState
 value = 700
 triggerall = AILevel >= 7 && roundstate = 2 && alive && numenemy
-triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 777)
+triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, ifelse(life < lifemax*0.25, 880, 750))
 triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
 triggerall = statetype != A && pos y = 0
 triggerall = stateno != 700
@@ -617,7 +617,7 @@ trigger2 = ctrl
 type = ChangeState
 value = 720
 triggerall = AILevel >= 7 && roundstate = 2 && alive && numenemy
-triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, 777)
+triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, ifelse(life < lifemax*0.25, 880, 750))
 triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
 triggerall = statetype = A
 triggerall = stateno != 720
@@ -637,7 +637,7 @@ trigger2 = enemynear,stateno = 528|| enemynear,stateno = 628 || enemynear,staten
 
 [State -1, AI Low Life]
 type = ChangeState
-value = ifelse(enemynear,life < lifemax*0.04, 420, 400)
+value = 420
 triggerall = AILevel && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
 triggerall = power < powermax
@@ -645,8 +645,8 @@ triggerall = enemynear, movetype != A
 triggerall = !InGuardDist
 triggerall = ctrl || stateno = 0 || (stateno = [20,22]) || (stateno = [100,109])
 triggerall = enemynear, statetype != L
-trigger1 = life < lifemax*0.25 || enemynear,life < lifemax*0.04
-trigger1 = random < var(59)*ifelse(life < lifemax*0.5, 13, 9)
+trigger1 = enemynear,life < lifemax*0.04
+trigger1 = random < var(59)*9
 
 [State -1, AI Power Charge]
 type = ChangeState
@@ -1034,9 +1034,9 @@ triggerall = enemynear, stateno != 5120
 triggerall = enemynear, pos y = 0
 trigger1 = enemynear, statetype != L
 trigger1 = (enemynear,pos y + (enemynear,vel y * 7)) = [-38, 0]
-trigger1 = random < var(59)*ifelse(life < (lifemax*.5), 3, 2)
+trigger1 = random < var(59)*ifelse(life < (lifemax*.5), 2, 1)
 trigger2 = enemynear, statetype = L
-trigger2 = random < var(59)*ifelse(life < (lifemax*.5), 4, 2)
+trigger2 = random < var(59)*ifelse(life < (lifemax*.5), 3, 2)
 [State -1, AI ALP]
 type = ChangeState
 value = 600
