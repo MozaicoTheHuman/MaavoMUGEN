@@ -26,6 +26,22 @@ ignorehitpause = 1
 type = RemoveExplod
 trigger1 = stateno != 450
 id = 451
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 3000
+id = 8789
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 3000
+id = 87892
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 19000
+id = 190011
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 17000
+id = 139921
 
 [State -2, Match Win]
 type = VarSet
