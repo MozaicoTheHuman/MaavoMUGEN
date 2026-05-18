@@ -604,7 +604,7 @@ trigger2 = random < 600
 type = ChangeState
 value = 700
 triggerall = AILevel >= 7 && roundstate = 2 && alive && numenemy
-triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, ifelse(life < lifemax*0.25, 880, 750))
+triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, ifelse(life < lifemax*0.25, 960, 750))
 triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
 triggerall = statetype != A && pos y = 0
 triggerall = stateno != 700
@@ -617,7 +617,7 @@ trigger2 = ctrl
 type = ChangeState
 value = 720
 triggerall = AILevel >= 7 && roundstate = 2 && alive && numenemy
-triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, ifelse(life < lifemax*0.25, 880, 750))
+triggerall = random < ifelse(enemynear,ailevel = 0, var(59)*0.5, ifelse(life < lifemax*0.25, 960, 750))
 triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
 triggerall = statetype = A
 triggerall = stateno != 720
@@ -684,6 +684,18 @@ triggerall = statetype != A
 triggerall = pos y = 0 
 trigger1 = ctrl||stateno = 0 
 trigger1 = p2bodydist x = [0,100]
+
+[State -1, AI Back Dash]
+type = ChangeState
+value = 105
+triggerall = aiLevel && roundstate=2 && var(58) && alive && numenemy
+triggerall = statetype != A && pos y = 0
+triggerall = life < lifemax * 0.5
+triggerall = enemynear, statetype = L
+triggerall = !inguarddist
+triggerall = BackEdgeDist > 40
+trigger1 = ctrl || stateno = 0 || (stateno = [20,22])
+trigger1 = random < var(59) * 3
 
 [State -1, AI Walk Cancel]
 type = ChangeState
@@ -916,6 +928,7 @@ triggerall = random < var(59)*ifelse(life < (lifemax*.5)||BackEdgeBodyDist<10,2,
 trigger1 = 1
 trigger2 = EnemyNear,movetype = A && !inguarddist && random < 500 
 trigger3 = var(1) && !numhelper(9902)
+;Punch1
 [State -1, AI PencilJab]
 type = ChangeState
 value = ifelse(var(19) = 1, ifelse(power >= 500&&random<500+ifelse(life < (lifemax*.5),200,0),2212,2210), 2210)
@@ -926,8 +939,9 @@ triggerall = (p2bodydist x - (enemynear,vel x * 9)) = [70,80]
 triggerall = (p2bodydist y - (enemynear,vel y * 9))  = [-38,0]
 triggerall = statetype != A 
 triggerall = pos y = 0 
-triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1)
-trigger1 =  1
+triggerall =  random < var(59)*ifelse(life < (lifemax*.5),2,1) ;&& random < 500 
+trigger1 =  1 ;&& random < 500 
+;Punch1
 [State -1, AI Dash Attack]
 type = ChangeState
 value = ifelse(var(19) = 1, ifelse(power >= 500&&random<500+ifelse(life < (lifemax*.5),200,0),520,500), 500)
@@ -938,13 +952,14 @@ trigger1 = (stateno = [100,109]) ||(stateno = 116)
 trigger1 = p2bodydist y = [-70,0]
 trigger1 = (((enemynear,pos x + enemynear,vel x * 11) - (pos x + vel x * 11)) = [80, 100]) 
 trigger1 = random < var(59)*ifelse(life < (lifemax*.5),21,15)
+; AI Rising Pencil
 [State -1, AI Rising Pencil]
 type = ChangeState
 value = ifelse(var(19) = 1, ifelse(power >= 500 && random < 580, 920, ifelse(random < 520, 910, 900)), 900)
 triggerall = AILevel > 1 && RoundState = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
 triggerall = enemynear,statetype != L && enemynear,statetype != A
-triggerall = p2bodydist x = [0,35]     
+triggerall = p2bodydist x = [20,65]       
 triggerall = enemynear,movetype != A
 triggerall = life >= lifemax * 0.20 
 triggerall = enemynear, stateno != [120,155] 
@@ -1029,11 +1044,28 @@ triggerall = statetype != A
 triggerall = pos y = 0
 triggerall = enemynear, stateno != 5120
 triggerall = enemynear, pos y = 0
+triggerall = life > lifemax * 0.9  
 trigger1 = enemynear, statetype != L
 trigger1 = (enemynear,pos y + (enemynear,vel y * 7)) = [-38, 0]
-trigger1 = random < var(59)*ifelse(life < (lifemax*.5), 0.5, 1)
+trigger1 = random < var(59)*ifelse(life < (lifemax*.5), 2, 1)
 trigger2 = enemynear, statetype = L
-trigger2 = random < var(59)*ifelse(life < (lifemax*.5), 2, 1)
+trigger2 = random < var(59)*ifelse(life < (lifemax*.5), 3, 2)
+[State -1, AI CHK to Slide]
+type = ChangeState
+value = 420
+triggerall = aiLevel && roundstate=2 && var(58) && alive && numenemy
+triggerall = ctrl||stateno = 0||(stateno = [20,22])|| (stateno = [100,109]) || stateno = 1022||(stateno = [116,117])
+triggerall = (p2bodydist x - (enemynear,vel x * 7)) = [30, 50]
+triggerall = statetype != A
+triggerall = pos y = 0
+triggerall = enemynear, stateno != 5120
+triggerall = enemynear, pos y = 0
+triggerall = life <= lifemax * 0.9
+trigger1 = enemynear, statetype != L
+trigger1 = (enemynear,pos y + (enemynear,vel y * 7)) = [-38, 0]
+trigger1 = random < var(59) * 0.4  
+trigger2 = enemynear, statetype = L
+trigger2 = random < var(59) * 0.4
 [State -1, AI ALP]
 type = ChangeState
 value = 600
@@ -1084,7 +1116,7 @@ trigger3 = var(54):= ifelse(var(19) = 1, ifelse(power >= 500 && random<500+ifels
 trigger4 = stateno = 440 && movehit
 trigger4 = enemynear, stateno != 5120 
 trigger4 = enemynear, statetype = L && enemynear, pos y = 0
-trigger4 = var(54):= 450 || 1
+trigger4 = var(54):= ifelse(life > lifemax * 0.9, 450, 420) || 1
 ;===========================================================================
 ; AI Combo from LightPunch
 [State -1, AI Combo from LightPunch]
