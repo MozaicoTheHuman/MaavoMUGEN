@@ -359,7 +359,7 @@ sysvar(1) = 1
 [State 41, Velset]
 type = VelSet
 trigger1 = AnimTime = 0
-x = ifelse(sysvar(1)=0, const(velocity.jump.neu.x), ifelse(sysvar(1)=1, ifelse(prevstateno=101,const(velocity.runjump.fwd.x),const(velocity.jump.fwd.x)), const(velocity.jump.back.x)))
+x = ifelse(sysvar(1)=0, const(velocity.jump.fwd.x), ifelse(sysvar(1)=1, ifelse(prevstateno=101,const(velocity.runjump.fwd.x),const(velocity.jump.fwd.x)), const(velocity.jump.back.x)))
 y = ifelse(p2bodydist y < -30,const(velocity.jump.y),const(velocity.jump.y)/1.5) ;Shorthop code
 
 [State 41, ChangeState]

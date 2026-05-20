@@ -182,6 +182,13 @@ trigger1 = time = 30
 value = 888,0+random%2
 loop = 1
 
+[State -2, RemapPal]
+type = RemapPal
+triggerall = palno = 29
+trigger1 = time > 20
+source = 1,1
+dest = 1,1
+
 ;==========================================
 ;THIS IS STUFF FOR THE CLAP ANIMATION THINGY
 [State 119904, Explod Clap Base]
@@ -339,6 +346,7 @@ removetime=38
 scale = 99,99
 supermovetime=-1
 OnTop = 0
+ownpal = 1
 bindtime=-1
 supermovetime = -1
 pausemovetime = -1
@@ -347,7 +355,7 @@ removeongethit = 1
 
 [State MaavoLineart]
 type = Explod
-triggerall = palno != 3 && palno != 5 && palno != 9 && palno != 10 && palno != 11 && palno != 13 && palno != 14 && palno != 15 && palno != 16 && palno != 17 && palno != 21 && palno != 24 && palno != 25 && palno != 26
+triggerall = palno != 3 && palno != 5 && palno != 9 && palno != 10 && palno != 11 && palno != 13 && palno != 14 && palno != 15 && palno != 16 && palno != 17 && palno != 21 && palno != 24 && palno != 25 && palno != 26 && palno != 27 && palno != 28
 trigger1 = Time = 168
 id = 1803
 anim = 1803
@@ -367,7 +375,7 @@ pausemovetime = -1
 removeongethit = 1
 [State MaavoLineart]
 type = Explod
-triggerall = palno != 3 && palno != 5 && palno != 9 && palno != 10 && palno != 11 && palno != 13 && palno != 14 && palno != 15 && palno != 16 && palno != 17 && palno != 21 && palno != 24 && palno != 25 && palno != 26
+triggerall = palno != 3 && palno != 5 && palno != 9 && palno != 10 && palno != 11 && palno != 13 && palno != 14 && palno != 15 && palno != 16 && palno != 17 && palno != 21 && palno != 24 && palno != 25 && palno != 26 && palno != 27 && palno != 28
 trigger1 = Time = 168
 id = 1803
 anim = 1803
@@ -387,7 +395,7 @@ pausemovetime = -1
 removeongethit = 1
 [State MaavoLineart Gloveless]
 type = Explod
-triggerall = palno = 3 || palno = 5 || palno = 9 || palno = 10 || palno = 11 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 21 || palno = 24 || palno = 25 || palno = 26
+triggerall = palno = 3 || palno = 5 || palno = 9 || palno = 10 || palno = 11 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 21 || palno = 24 || palno = 25 || palno = 26 || palno = 27 || palno = 28
 trigger1 = Time = 168
 id = 1804
 anim = 18904
@@ -405,7 +413,7 @@ supermovetime = -1
 pausemovetime = -1
 [State MaavoLineart Gloveless]
 type = Explod
-triggerall = palno = 3 || palno = 5 || palno = 9 || palno = 10 || palno = 11 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 21 || palno = 24 || palno = 25 || palno = 26
+triggerall = palno = 3 || palno = 5 || palno = 9 || palno = 10 || palno = 11 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 21 || palno = 24 || palno = 25 || palno = 26 || palno = 27 || palno = 28
 trigger1 = Time = 168
 id = 1804
 anim = 18904
@@ -423,7 +431,7 @@ supermovetime = -1
 pausemovetime = -1
 [State MaavoLineart Gloveless]
 type = Explod
-triggerall = palno = 3 || palno = 5 || palno = 9 || palno = 10 || palno = 11 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 21 || palno = 24 || palno = 25 || palno = 26
+triggerall = palno = 3 || palno = 5 || palno = 9 || palno = 10 || palno = 11 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 21 || palno = 24 || palno = 25 || palno = 26 || palno = 27 || palno = 28
 trigger1 = Time = 168
 id = 1805
 anim = 18905
@@ -454,7 +462,7 @@ scale = .25+(root,var(17) * .1),.25+ (root,var(17) * .1)
 OnTop = 0
 supermovetime=999
 bindtime=-1
-ownpal = 0
+ownpal = ifelse(palno = 29, 1, 0)
 supermovetime = -1
 pausemovetime = -1
 removeongethit = 1

@@ -2275,6 +2275,7 @@ removetime=130
 scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
+ownpal = 1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
@@ -2293,6 +2294,7 @@ removetime=130
 scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
+ownpal = 1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
@@ -2313,6 +2315,7 @@ supermovetime=-1
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
+ownpal = 1
 removeongethit = 1
 
 [State 140003, end]
@@ -2407,6 +2410,7 @@ scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
+ownpal = 1
 pausemovetime = 99999
 removeongethit = 1
 
@@ -2423,6 +2427,7 @@ removeongethit = 1
 removetime=130
 scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
+ownpal = 1
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
@@ -2439,6 +2444,7 @@ facing = IfElse(facing = 1, 1, -1)
 sprpriority = 39
 removeongethit = 1
 removetime=127
+ownpal = 1
 scale = .19+(root,var(17) * .07),.2+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
@@ -2544,6 +2550,7 @@ pos = 325,20+(root,var(17) * 5)
 postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 40
+ownpal = 1
 removeongethit = 1
 removetime=130
 scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
@@ -2562,6 +2569,7 @@ postype = back
 facing = IfElse(facing = 1, 1, -1)
 sprpriority = 38
 removeongethit = 1
+ownpal = 1
 removetime=130
 scale = .17+(root,var(17) * .07),.19+(root,var(17) * .07)
 supermovetime=-1
@@ -2692,6 +2700,7 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
+ownpal = 1
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 0
@@ -2709,6 +2718,7 @@ bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
+ownpal = 1
 [State 19001, 1]
 type = Explod
 trigger1 = Time = 3
@@ -2724,6 +2734,7 @@ scale = .19+(root,var(17) * .07),.2+(root,var(17) * .07)
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
+ownpal = 1
 pausemovetime = 99999
 removeongethit = 1
 
@@ -4290,8 +4301,16 @@ ignorehitpause = 1
 
 [State 0, TargetState]
 type = TargetState
+triggerall = var(46) = 0
 trigger1 = time = 0
 value = 1313
+persistent = 0
+ignorehitpause = 1
+[State 0, TargetState]
+type = TargetState
+triggerall = var(46) = 1
+trigger1 = time = 0
+value = 13137
 persistent = 0
 ignorehitpause = 1
 
