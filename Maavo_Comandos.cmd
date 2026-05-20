@@ -1204,9 +1204,9 @@ triggerall = (p2bodydist x - (var(48) * 7)) = [30,50]
 triggerall = statetype != A && pos y = 0
 triggerall = enemynear,stateno != 5120 && enemynear,pos y = 0 && life > lifemax * 0.85
 trigger1 = enemynear,statetype != L && (enemynear,pos y + (enemynear,vel y * 7)) = [-38,0]
-trigger1 = random < var(59) * ifelse(life < lifemax*0.5 || enemynear,ailevel > 0, 3, 1.5)
+trigger1 = random < var(59) * ifelse(life < lifemax*0.5 || enemynear,ailevel > 0, 1, 0.5)
 trigger2 = enemynear,statetype = L
-trigger2 = random < var(59) * ifelse(life < lifemax*0.5 || enemynear,ailevel > 0, 4, 2.5)
+trigger2 = random < var(59) * ifelse(life < lifemax*0.5 || enemynear,ailevel > 0, 2, 1.5)
 
 [State -1, AI CHK to Slide]
 type = ChangeState
