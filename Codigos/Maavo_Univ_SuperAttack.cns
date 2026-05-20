@@ -1698,46 +1698,46 @@ value = S21931,var(41)
 channel = 6
 loop = 1
 
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = enemy,life >= 1
+trigger1 = time = 254
+value = S28931,var(41)
+channel = 5
+volumescale = 200
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = enemy,life <= 1
+trigger1 = time = 254
+value = S24931,var(41)
+channel = 5
+volumescale = 200
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = enemy,life >= 1
+trigger1 = time = 254
+value = S28931,var(41)
+channel = 6
+volumescale = 200
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = enemy,life <= 1
+trigger1 = time = 254
+value = S24931,var(41)
+channel = 6
+volumescale = 200
+
 [State 19001,TargetLifeAdd]
 type = TargetLifeAdd
-trigger1 = time = 262
+trigger1 = time = 253
 value = -ceil(ifelse(fvar(11)<=.45,(480*.35),(480*fvar(11))))
 absolute = 1
 kill = 0
 [State 0, TargetPowerAdd]
 type = TargetPowerAdd
-trigger1 = time = 262
+trigger1 = time = 253
 value = ceil(ifelse(fvar(11)<=.45,(480*.45),(480*fvar(11)))*.015)
 ignorehitpause = 1
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = enemy,life >= 1
-trigger1 = time = 254
-value = S28931,var(41)
-channel = 5
-volumescale = 200
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = enemy,life <= 1
-trigger1 = time = 254
-value = S24931,var(41)
-channel = 5
-volumescale = 200
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = enemy,life >= 1
-trigger1 = time = 254
-value = S28931,var(41)
-channel = 6
-volumescale = 200
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = enemy,life <= 1
-trigger1 = time = 254
-value = S24931,var(41)
-channel = 6
-volumescale = 200
 
 [State 3300, p2state]
 type=targetstate
@@ -3507,9 +3507,7 @@ removeongethit = 1
 removetime=76
 scale = .28+ (var(17) * .1),.28+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
 ownpal = 1
-pausemovetime = 99999
 removeongethit = 1
 
 [State 19001, Maavo Main Anim]
@@ -3525,8 +3523,6 @@ removeongethit = 1
 removetime=-1
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 
 [State 911, Impact Lines]
@@ -3543,8 +3539,6 @@ scale = .5+(var(17) * .2),.5+ (var(17) * .2)
 bindtime = -1
 ownpal = 1
 removeongethit = 1
-supermovetime = 9999
-pausemovetime = 99999
 
 [State 19001, BG 2]
 type = Explod
@@ -3560,8 +3554,6 @@ ownpal = 1
 removetime=56
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 
 [State 19001, Pencil Stroke]
@@ -3577,8 +3569,6 @@ removeongethit = 1
 removetime=55
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 
 [State 19001, Pencil Stroke]
@@ -3594,8 +3584,6 @@ removeongethit = 1
 removetime=48
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 
 [State 19001, Pencil Stroke]
@@ -3611,8 +3599,6 @@ removeongethit = 1
 removetime=40
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 
 [State 19001, Pencil Stroke]
@@ -3628,8 +3614,6 @@ removeongethit = 1
 removetime=34
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 
 [State 19001, Pencil Stroke]
@@ -3645,8 +3629,6 @@ removeongethit = 1
 removetime=27
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 
 [State 19001, Pencil Stroke]
@@ -3662,8 +3644,6 @@ removeongethit = 1
 removetime=19
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 
 [State 19001, Pencil Stroke]
@@ -3679,8 +3659,6 @@ removeongethit = 1
 removetime=11
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 
 [State 19001, Pencil Stroke]
@@ -3696,8 +3674,6 @@ removeongethit = 1
 removetime=6
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 
 [State 19001, Top Pencil Strokes]
@@ -3713,8 +3689,6 @@ removeongethit = 1
 removetime=80
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 ownpal = 1
 removeongethit = 1
 
@@ -3731,8 +3705,6 @@ removeongethit = 1
 removetime=80
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 ownpal = 1
 removeongethit = 1
 
@@ -3750,8 +3722,6 @@ removeongethit = 1
 removetime=80
 scale = .55+ (var(17) * .1),.55+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 removeongethit = 1
 vel = 0.09,0
 
@@ -3768,8 +3738,6 @@ removeongethit = 1
 removetime=80
 scale = .48+ (var(17) * .1),.48+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 ownpal = 1
 removeongethit = 1
 vel = -0.05,0
@@ -3802,8 +3770,6 @@ removeongethit = 1
 removetime=161
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 sprpriority=43
 ownpal = 1
 removeongethit = 1
@@ -3820,8 +3786,6 @@ removeongethit = 1
 removetime=181
 scale = .25+ (var(17) * .1),.25+ (var(17) * .1)
 bindtime=-1
-supermovetime = 9999
-pausemovetime = 99999
 sprpriority=43
 ownpal = 1
 removeongethit = 1
@@ -4368,7 +4332,7 @@ affectteam = B
 pausetime = 0, 0
 p2stateno = 12206
 sparkno = s616
-hitsound = S1274895236443768943798179, 2
+hitsound = -1
 sparkxy = -5, -65
 p2facing = 1
 priority = 1,Miss
