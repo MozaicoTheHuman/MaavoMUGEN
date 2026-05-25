@@ -696,117 +696,6 @@ pausemovetime = 99999
 sprpriority=70
 removeongethit = 1
 
-[State 0, Transition Sound]
-type = PlaySnd
-trigger1 = time = 1
-value = S50505,0
-
-;This code was maded by Orbi
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 2
-trigger1 = time = 53
-value = S50505,17
-channel = 10
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 2
-trigger1 = time = 53
-value = S50505,17
-channel = 9
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 2
-trigger1 = time = 168
-value = S50505,8
-loop = 1
-channel = 10
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 2
-trigger1 = time = 168
-value = S50505,8
-loop = 1
-channel = 9
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 3
-trigger1 = time = 25
-value = S50505,10
-loop = 1
-channel = 9
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 3
-trigger1 = time = 25
-value = S50505,10
-loop = 1
-channel = 10
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 4
-trigger1 = time = 25
-value = S50505,7
-loop = 1
-channel = 9
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 5
-trigger1 = time = 25
-value = S50505,9
-channel = 9
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 5
-trigger1 = time = 33
-value = S50505,5
-loop = 1
-channel = 9
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 5
-trigger1 = time = 33
-value = S50505,5
-loop = 1
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 1
-trigger1 = time = 25
-value = S50505,14
-channel = 8
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 1
-trigger1 = time = 530
-value = S50505,15
-channel = 9
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(52) = 1
-trigger1 = time = 540
-value = S50505,16
-loop = 1
-channel = 9
-;This code was maded by Orbi
-
-[State 0, StopSnd]
-type = StopSnd
-trigger1 = palno = 6
-channel = 9
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = animelem = 2
-value = S50505,1
-
 [State 0, PosSet]
 type = PosSet
 trigger1 = 1
@@ -819,6 +708,193 @@ trigger1 = root,life != lifemax
 channel = 2
 ignorehitpause = 1
 
+[State 0, SuperPause]
+type = Pause
+trigger1 = time = 0
+time = 245
+movetime = 245
+ignorehitpause = 1
+
+[State RoundNotOverYet]
+type = AssertSpecial
+trigger1 = root,ailevel = 0
+trigger2 = time < 500
+flag = Roundnotover
+
+[State dou]
+type = StopSnd
+triggerall = var(52) != 0
+trigger1 = Time = 0
+channel = -1
+persistent = 0
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+
+[State 180180, 1]
+type = ChangeState
+triggerall = random <=1
+trigger1 = time = 0
+value = 888
+
+[State 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = time >= 16
+flag= noBG
+flag2= noFG
+
+[State RoundNotOverYet]
+type = AssertSpecial
+trigger1 = root,ailevel = 1
+trigger1 = 1
+flag = Roundnotover
+
+[State dou]
+type = StopSnd
+triggerall = var(52) != 0
+trigger1 = Time = 0
+channel = -1
+persistent = 0
+
+[State 181, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+
+;===========SOUNDS==============
+[State 0, Transition Sound]
+type = PlaySnd
+trigger1 = time = 1
+value = S50505,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 2
+value = S50505,1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = [2,6]
+triggerall = root,var(52) != 3
+trigger1 = time = 25
+value = S50505,cond(root,var(52)=2,18,cond(root,var(52)=4,10,cond(root,var(52)=5,7,9)))
+loop = (root,var(52)=[4,5])
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = [2,6]
+triggerall = root,var(52) != 3
+trigger1 = time = 25
+value = S50505,cond(root,var(52)=2,18,cond(root,var(52)=4,10,cond(root,var(52)=5,7,9)))
+loop = (root,var(52)=[4,5])
+channel = 10
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 4
+trigger1 = time = 25
+value = S50505,10
+loop = 1
+channel = 10
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 3
+trigger1 = time = 25
+value = S50505,14
+channel = 8
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 6
+trigger1 = time = 33
+value = S50505,5
+loop = 1
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 6
+trigger1 = time = 33
+value = S50505,5
+loop = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 1
+trigger1 = time = 53
+value = S50505,17
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 1
+trigger1 = time = 53
+value = S50505,17
+channel = 10
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 1
+trigger1 = time = 168
+value = S50505,8
+loop = 1
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 1
+trigger1 = time = 168
+value = S50505,8
+loop = 1
+channel = 10
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 2
+trigger1 = time = 317
+value = S50505,19
+loop = 1
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 2
+trigger1 = time = 317
+value = S50505,19
+loop = 1
+channel = 10
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 3
+trigger1 = time = 530
+value = S50505,15
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(52) = 3
+trigger1 = time = 540
+value = S50505,16
+loop = 1
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 57
+value = S50,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 85
+value = S50,1
+
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
@@ -828,36 +904,22 @@ value = S50505,2 + (root,var(16) * 10000)
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
-triggerall = root, var(16) = 2
-trigger1 = time = 30
-value = S50505,10002
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,life != lifemax
-triggerall = root, var(16) = 2
-trigger1 = time = 30
-value = S50505,10002
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,life != lifemax
-triggerall = root, var(16) = 1
-trigger1 = time = 30
-value = S50505,10002
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,life != lifemax
-triggerall = root, var(16) = 2
-trigger1 = time = 30
-value = S50505,10002
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,life != lifemax
 trigger1 = time = 30
 value = S50505,2 + (root,var(16) * 10000)
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root,var(16) = 2
+trigger1 = time = 30
+value = S50505,10002
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life != lifemax
+triggerall = root,var(16) = 2
+trigger1 = time = 30
+value = S50505,10002
 
 [State 0, PlaySnd]
 type = PlaySnd
@@ -879,24 +941,50 @@ triggerall = root,life != lifemax
 triggerall = root,var(16) = 1
 trigger1 = time = 100
 value = S50505,10003
+
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
 triggerall = root,var(16) = 1
 trigger1 = time = 100
 value = S50505,10003
+
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = root,var(16) != 20
-triggerall = root,life = lifemax
-trigger1 = time = 30
-value = S50505,69 + (root,var(16) * 10000)
+triggerall = root,life != lifemax
+triggerall = root,var(16) = 0
+trigger1 = time = 186
+value = S50505,3
+
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = root,var(16) != 20
+triggerall = root,life != lifemax
+triggerall = root,var(16) = 0
+trigger1 = time = 186
+value = S50505,3
+
+[State 0, PlaySnd]
+type = PlaySnd
 triggerall = root,life = lifemax
+triggerall = root,var(16) != 20
 trigger1 = time = 30
 value = S50505,69 + (root,var(16) * 10000)
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life = lifemax
+triggerall = root,var(16) != 20
+trigger1 = time = 30
+value = S50505,69 + (root,var(16) * 10000)
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,life = lifemax
+triggerall = root,var(16) = 2
+trigger1 = time = 30
+value = S50505,10069
+volumescale = 255
+
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) != 20
@@ -906,6 +994,34 @@ value = S50505,4
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) = 20
+triggerall = root,life = lifemax
+trigger1 = time = 30
+value = S1208,3
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 20
+triggerall = root,life = lifemax
+trigger1 = time = 30
+value = S1208,3
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 20
+triggerall = root,life != lifemax
+trigger1 = time = 30
+value = S1208,1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 20
+triggerall = root,life != lifemax
+trigger1 = time = 30
+value = S1208,1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = root,var(16) = 20
 trigger1 = time = 120
 value = S520,1
 
@@ -916,79 +1032,16 @@ trigger1 = time = 120
 value = S520,1
 
 [State 0, PlaySnd]
+type = PlaySnd
 triggerall = root,var(16) = 20
-type = PlaySnd
-trigger1 = time = 120
-value = S1208,0
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(16) = 2
-triggerall = root,life = lifemax
-trigger1 = time = 30
-value = S50505,10069
-volumescale = 255
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,life != lifemax
-triggerall = root,var(16) = 0
-trigger1 = time = 186
-value = S50505,3
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,life != lifemax
-triggerall = root,var(16) = 0
-trigger1 = time = 186
-value = S50505,3
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 57
-value = S50,0
-
-[State 0, PlaySnd]
-triggerall = root,var(16) = 20
-type = PlaySnd
 trigger1 = time = 120
 value = S1208,0
 
 [State 0, PlaySnd]
 type = PlaySnd
-trigger1 = time = 85
-value = S50,1
-
-[State 0, SuperPause]
-type = Pause
-trigger1 = time = 0
-time = 245
-movetime = 245
-ignorehitpause = 1
-[State 0, PlaySnd]
-type = PlaySnd
 triggerall = root,var(16) = 20
-triggerall = root,life = lifemax
-trigger1 = time = 30
-value = S1208,3
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(16) = 20
-triggerall = root,life = lifemax
-trigger1 = time = 30
-value = S1208,3
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,life != lifemax
-triggerall = root,var(16) = 20
-trigger1 = time = 30
-value = S1208,1
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = root,var(16) = 20
-triggerall = root,life != lifemax
-trigger1 = time = 30
-value = S1208,1
+trigger1 = time = 120
+value = S1208,0
 
 [State 0, PlaySnd]
 type = PlaySnd
@@ -1003,49 +1056,6 @@ triggerall = root,var(16) = 20
 triggerall = root,life != lifemax
 trigger1 = time = 137
 value = S1208,2
-
-[State RoundNotOverYet]
-type = AssertSpecial
-trigger1 = root,ailevel = 0
-trigger2 = time < 500
-flag = Roundnotover
-[State dou]
-type = StopSnd
-triggerall = var(52) != 0
-trigger1 = Time = 0
-channel = -1
-persistent = 0
-[State 181, AssertSpecial]
-type = AssertSpecial
-trigger1 = 1
-flag = nobardisplay
-[State 180180, 1]
-type = ChangeState
-triggerall = random <=1
-trigger1 = time = 0
-value = 888
-[State 181, AssertSpecial]
-type = AssertSpecial
-trigger1 = time >= 16
-flag= noBG
-flag2= noFG
-[State RoundNotOverYet]
-type = AssertSpecial
-trigger1 = root,ailevel = 1
-trigger1 = 1
-flag = Roundnotover
-[State dou]
-type = StopSnd
-triggerall = var(52) != 0
-trigger1 = Time = 0
-channel = -1
-persistent = 0
-[State 181, 1]
-type = NotHitBy
-trigger1 = 1
-value = SCA
-time = 1
-
 
 ;---------------------------------------------------------------------------
 ;Win (All-Out Attack)

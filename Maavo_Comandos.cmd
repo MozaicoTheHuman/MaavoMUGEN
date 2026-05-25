@@ -654,9 +654,11 @@ trigger3 = var(54) := ifelse(power >= 1000 && power <= 2350 && random < 400, 300
 trigger4 = p2bodydist x = [60,200] 
 trigger4 = var(6) > 0
 trigger4 = var(54) := 1100 || 1
-trigger5 = p2bodydist x = [0,65] && enemynear,animtime <= -8 && power >= 3000
+trigger5 = p2bodydist x = [0,65] 
+trigger5 = enemynear,animtime <= -8 && power >= 3000
 trigger5 = var(54) := 17000 || 1
-trigger6 = p2bodydist x = [0,65] && enemynear,animtime <= -8 && power >= 1000 && power <= 2350
+trigger6 = p2bodydist x = [0,65]
+trigger6 = enemynear,animtime <= -8 && power >= 1000 && power <= 2350
 trigger6 = var(54) := 3000 || 1
 
 [State -1, AI React after blocking]

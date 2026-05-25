@@ -50,6 +50,12 @@ trigger1 = RoundState = 4
 trigger1 = Win
 var(31) = 1
 
+[State -2, asjdkgldas]
+type = VarSet
+trigger1 = partner,Name = "Martin"
+trigger1 = partner,AuthorName = "Jeff Swag"
+var(52) = 22
+
 [State 119911991, 1]
 type = AssertSpecial
 triggerall = var(52) != 0
@@ -203,7 +209,7 @@ ignorehitpause = 0
 
 [State -2, Random Victory BGM]
 type = VarSet
-trigger1 = var(52) = 6
+trigger1 = var(52) = 7
 var(52) = (Random % 5) + 1
 ignorehitpause = 1
 
@@ -740,7 +746,7 @@ trigger6 = enemy, name = "Aigis" || enemy, name = "Aegis" || enemy, name = "Meti
 trigger7 = enemy, name = "Ken Amada" || enemy, name = "Koromaru"; if anyone makes a kuromaru joke I swear
 trigger8 = enemy, name = "Shinjiro Aragaki"; mister "not going to be made a mugen character 'cause I'm dead"
 trigger9 = enemy, name = "Elizabeth" || enemy, name = "Theodore"
-var(52) = 3
+var(52) = 4
 ignorehitpause = 1
 
 [State 0, Victory Music Override: P4 Edition]
@@ -756,7 +762,7 @@ trigger7 = enemy, name = "Rise Kujikawa"; don't ask why she's on here but fuuka 
 trigger8 = enemy, name = "Naoto Shirogane"
 trigger9 = enemy, name = "Margaret" || enemy, name = "Marie"
 trigger10 = enemy, name = "Adachi" || enemy, name = "Tohru Adachi"
-var(52) = 4
+var(52) = 5
 ignorehitpause = 1
 
 [State 0, Victory Music Override: P5 Edition]; watch as literally nobody else besides joker gets made for mugen
@@ -771,7 +777,7 @@ trigger6 = enemy, name = "Makoto Nijima"
 trigger7 = enemy, name = "Haru Okumura"
 trigger8 = enemy, name = "Goro Akechi"
 trigger9 = enemy, name = "Caroline" || enemy, name = "Justine"
-var(52) = 5
+var(52) = 6
 ignorehitpause = 1
 
 [State 0, Victory Music Override: P5 Bonus Pack]; aka the "literally never going to get made for mugen" squad, alongside shinji up there
@@ -782,14 +788,14 @@ trigger2 = enemy, name = "Black Mask"
 trigger3 = enemy, name = "Kasumi Yoshizawa" || enemy, name = "Sumire Yoshizawa"
 trigger4 = enemy, name = "Sophia"
 trigger5 = enemy, name = "Zenkichi Hasegawa"
-var(52) = 5
+var(52) = 6
 ignorehitpause = 1
 
 [State 0, Victory Music Override: MAAVO JOKER]; MAAVO JOKER
 type = VarSet
 triggerall = var(52) != 0
 trigger1 = palno = 6
-var(52) = 5
+var(52) = 6
 ignorehitpause = 1
 [State 0, AssertSpecial]
 type = AssertSpecial

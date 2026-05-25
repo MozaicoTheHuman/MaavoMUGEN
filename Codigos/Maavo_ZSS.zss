@@ -298,36 +298,39 @@ ignoreHitPause if time = 245 {
     }
 }
 
-if root,var(52) = 2 {
+if root,var(52) != 3 && time = 25 {
+    if root,var(52) = [2,6] {
+        playSnd{value: S50505,cond(root,var(52)=2,18,cond(root,var(52)=4,10,cond(root,var(52)=5,7,9))); loop: (root,var(52)=[4,5]); channel: 9}
+        playSnd{value: S50505,cond(root,var(52)=2,18,cond(root,var(52)=4,10,cond(root,var(52)=5,7,9))); loop: (root,var(52)=[4,5]); channel: 10}
+    }
+}
+
+if root,var(52) = 3 && time = 25 {
+    playSnd{value: S50505,14; channel: 8}
+}
+
+if root,var(52) = 6 && time = 33 {
+    playSnd{value: S50505,5; loop: 1; channel: 9}
+    playSnd{value: S50505,5; loop: 1}
+}
+
+if root,var(52) = 1 {
     if time = 53 {
-        playSnd{value: S50505,17; channel: 10}
         playSnd{value: S50505,17; channel: 9}
+        playSnd{value: S50505,17; channel: 10}
     }
     if time = 168 {
-        playSnd{value: S50505,8; loop: 1; channel: 10}
         playSnd{value: S50505,8; loop: 1; channel: 9}
+        playSnd{value: S50505,8; loop: 1; channel: 10}
     }
 }
-if root,var(52) = 3 && time = 25 {
-    playSnd{value: S50505,10; loop: 1; channel: 9}
-    playSnd{value: S50505,10; loop: 1; channel: 10}
+
+if root,var(52) = 2 && time = 317 {
+    playSnd{value: S50505,19; loop: 1; channel: 9}
+    playSnd{value: S50505,19; loop: 1; channel: 10}
 }
-if root,var(52) = 4 && time = 25 {
-    playSnd{value: S50505,7; loop: 1; channel: 9}
-}
-if root,var(52) = 5 {
-    if time = 25 {
-        playSnd{value: S50505,9; channel: 9}
-    }
-    if time = 33 {
-        playSnd{value: S50505,5; loop: 1; channel: 9}
-        playSnd{value: S50505,5; loop: 1}
-    }
-}
-if root,var(52) = 1 {
-    if time = 25 {
-        playSnd{value: S50505,14; channel: 8}
-    }
+
+if root,var(52) = 3 {
     if time = 530 {
         playSnd{value: S50505,15; channel: 9}
     }

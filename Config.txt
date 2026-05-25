@@ -79,14 +79,15 @@ ignorehitpause = 1
 ; Certain opponents will force a specific theme to play when fought.
 type = VarSet
 trigger1 = 1
-var(52) = 6
+var(52) = 1
 ;0: N/A
-;1: Victory! (Old) by Rossiter (Short) > Results Screen - Super Smash Brothers for 3DS and Wii U
-;2: Victory! (Showtime) by Kakow0 (this is the default song)
-;3: After the Battle - Persona 3
-;4: Period - Persona 4
-;5: Triumph - Persona 5
-;6: Random
+;1: Victory! (Showtime) by Kakow0 (this is the default song)
+;2: Victory! (Old) by Rossiter (Short)
+;3: Victory! (Old) by Rossiter (Short) > Results Screen - Super Smash Brothers for 3DS and Wii U
+;4: After the Battle - Persona 3
+;5: Period - Persona 4
+;6: Triumph - Persona 5
+;7: Random
 ignorehitpause = 1
 
 [State 0, Scrapped Moves?]
