@@ -2072,15 +2072,15 @@ value = S4433,1
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = root,var(16) = 0 || root,var(16) = 1 || root,var(16) = 2 || root,var(16) = 3
+triggerall = root,var(16) != 20
 trigger1 = time = 0
-value = S21935,2
+value = S21935,root, var(41)+(root, var(16) * 100)
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = root,var(16) = 0 || root,var(16) = 1 || root,var(16) = 2 || root,var(16) = 3
+triggerall = root,var(16) != 20
 trigger1 = time = 0
-value = S21935,2
+value = S21935,root, var(41)+(root, var(16) * 100)
 
 ;Hyper - All Out Attack (Victory Screen)
 [Statedef 14100251]

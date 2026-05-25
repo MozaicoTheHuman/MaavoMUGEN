@@ -1464,10 +1464,14 @@ removeongethit = 1
 ownpal = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = var(16) = 0 || var(16) = 1 || var(16) = 2 || var(16) = 3
+triggerall = var(16) != 20
 trigger1 = Animelem = 6
-value = S21939,5
-
+value = S21939,5+ (var(16) * 100)
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(16) != 20
+trigger1 = Animelem = 6
+value = S21939,5+ (var(16) * 100)
 [State 19001, 1]
 type = Explod
 trigger1 = animelem = 4

@@ -50,7 +50,7 @@ ignorehitpause = 1
 [State 0, Voice Language?]
 type = VarSet
 trigger1 = 1
-var(16) = 0
+var(16) = 1
 ;0 - Spanish
 ;1 - English
 ignorehitpause = 0
