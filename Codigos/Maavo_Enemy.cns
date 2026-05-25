@@ -694,7 +694,7 @@ value = 0
 
 [State 0, SelfState]
 type = SelfState
-trigger1 = time = 295
+trigger1 = time = 308
 value = 50
 
 ;---------------------------------------------------------------------------

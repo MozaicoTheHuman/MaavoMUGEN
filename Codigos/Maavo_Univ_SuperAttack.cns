@@ -931,7 +931,7 @@ trigger1 = Target(17000),stateno != 1700101
 value = 1700101
 ID = 17000
 ignorehitpause = 1
-persistent = 0
+;persistent = 0
 [State 0, ChangeState]
 type = ChangeState
 triggerall = NumTarget(17000) = 1
@@ -1750,18 +1750,19 @@ type = TargetLifeAdd
 trigger1 = time = 253
 value = -ceil(ifelse(fvar(11)<=.45,(480*.35),(480*fvar(11))))
 absolute = 1
+ID = 17000
 kill = 0
 [State 0, TargetPowerAdd]
 type = TargetPowerAdd
 trigger1 = time = 253
 value = ceil(ifelse(fvar(11)<=.45,(480*.45),(480*fvar(11)))*.015)
 ignorehitpause = 1
-
+ID = 17000
 [State 3300, p2state]
 type=targetstate
 trigger1= time = 118
 value = 1700102
-
+ID = 17000
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = time = 263
