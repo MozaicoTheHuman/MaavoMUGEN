@@ -46,18 +46,18 @@ st10 = Config.txt
 movelist = moveset.dat     ;Ikemen feature: Movelist
 
 [Palette Keymap]
-x = 1 ;Default
-y = 2 ;Undershirt
-z = 3 ;Marti­n MUGEN
-a = 4 ;Mozaico The Robot
-b = 5 ;Viernes Noche Webiando': Trifunka
-c = 6 ;Persona 5
-x2 = 7 ;Scott Pilgrim
-y2 = 8 ;No Straight Roads (2021 Palette Contest Winner: Rossiter)
-z2 = 9 ;Undertale (2021 Palette Contest Winner: Oraflame)
-a2 = 10 ;Jet Set Radio (2021 Palette Contest Winner: Lee425MGN)
-b2 = 11 ;Friday Night Funkin' (2021 Palette Contest Winner: Bacon1233TheArmy)
-c2 = 12 ;Abstract
+a = 1
+b = 2
+c = 3
+x = 1
+y = 2
+z = 3
+a2 = 4
+b2 = 5
+c2 = 6
+x2 = 4
+y2 = 5
+z2 = 6
 
 ;THERE ARE WAY MORE PALETTES BUT YOU NEED TO PLAY IKEMEN GO NIGHTLY TO ACCESS THEM
 

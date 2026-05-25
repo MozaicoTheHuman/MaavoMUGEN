@@ -1279,7 +1279,7 @@ sprpriority = -1
 
 [State 119911990, HitDef]
 type = HitDef
-trigger1 = time = 0
+trigger1 = 1
 attr = S,HT, HA
 hitflag = MAFDP
 affectteam = B
@@ -1294,7 +1294,7 @@ numhits = 0
 
 [State 0, ChangeState]
 type = DestroySelf
-trigger1 = time = 30
+trigger1 = time = 150
 
 ;---------------------------------------------------------------------------
 ;Hyper - All Out Attack (Attack)
@@ -1697,6 +1697,24 @@ trigger1 = time = 150
 value = S21931,var(41)
 channel = 6
 loop = 1
+
+[State 0, Helper]
+type = Helper
+triggerall = Enemy, TeamMode = Simul || TeamMode = Simul
+trigger1 = time = 254 
+trigger1 = enemy,life <= 1
+helpertype = normal ;player
+name = "Stop the other players"
+ID = 4100020
+stateno = 4100020
+pos = 0,0
+postype = left
+facing = 1
+ownpal = 0
+size.xscale = 9
+size.yscale = 9
+PauseMoveTime = 9999
+SuperMoveTime = 9999
 
 [State 0, PlaySnd]
 type = PlaySnd
@@ -3798,6 +3816,7 @@ trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "SogaCeleste HanzoS
 trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
 triggerall = var(50) = 0
 triggerall = var(44) = 0
+triggerall = var(26) = 0
 trigger1 = Time = 269
 id = 115020
 anim = 115020
@@ -3819,7 +3838,7 @@ trigger1 = enemy, name != "Rudy" && EnemyNear,AuthorName != "jade_midori"
 trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "SogaCeleste HanzoSantiago"
 trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
 triggerall = var(50) = 0
-triggerall = var(44) = 1
+triggerall = var(44) = 1 || var(26) = 1
 trigger1 = Time = 269
 id = 115020
 anim = 115021
@@ -3877,6 +3896,7 @@ trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
 triggerall = var(50) = 0
 triggerall = var(17) = 0
 triggerall = var(44) = 0
+triggerall = var(26) = 0
 trigger1 = Time = 269
 value = ifelse(var(46) = 1, 73131, 93131)
 persistent = 0
@@ -3890,6 +3910,7 @@ trigger1 = enemy, name != "Hanzo" && EnemyNear,AuthorName != "Hanzo Santiago"
 triggerall = var(50) = 0
 triggerall = var(17) = 1
 triggerall = var(44) = 0
+triggerall = var(26) = 0
 trigger1 = Time = 269
 value = ifelse(var(46) = 1, 7313, 9313)
 persistent = 0

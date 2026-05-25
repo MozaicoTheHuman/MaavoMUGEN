@@ -1190,26 +1190,22 @@ ownpal = 1
 removeongethit = 1
 persistent = 0
 
-[State 0, Hit Spark]
-type = Explod
+[State 0, Helper]
+type = Helper
 trigger1 = MoveHit
-anim = 3000
+helpertype = normal
+name = "Hit Spark"
 ID = 3000
-pos = 60,0
-postype = p1  ;p2,front,back,left,right
-facing = 1
-vfacing = 1
-bindtime = 1
-vel = 0,0
-accel = 0,0
-removetime = 16
-scale = .9,.9
-persistent = 0
-sprpriority = -2
-ignorehitpause = 1
-pausemovetime = 99999
+stateno = 4000+random%3
+pos = 73,-10
+postype = p1
+keyctrl = 0
 ownpal = 1
-supermovetime = 99999
+size.xscale = .90
+size.yscale = .90
+persistent = 0
+ignorehitpause = 1
+
 [State 0, StateTypeSet]
 type = StateTypeSet
 trigger1 = movecontact || movereversed
@@ -3137,7 +3133,7 @@ p2facing = 1
 
 [State 0, TargetState]
 type = TargetState
-triggerall = NumTarget(620) = 1
+triggerall = NumTarget(620)>= 1
 triggerall = movehit = 1
 trigger1 = Target(620),ishelper=0
 trigger1 = Target(620),stateno != [625,628]
@@ -3149,7 +3145,7 @@ persistent = 0
 [State 0, Explod]
 type = Explod
 triggerall = numexplod(620625) = 0
-triggerall = NumTarget(620) = 1
+triggerall = NumTarget(620)>= 1
 triggerall = movehit = 1
 trigger1 = Target(620),ishelper=0
 anim = 616
@@ -3634,7 +3630,7 @@ p2facing = 1
 
 [State 0, TargetState]
 type = TargetState
-triggerall = NumTarget(620) = 1
+triggerall = NumTarget(620) >= 1
 triggerall = movehit = 1
 trigger1 = Target(620),ishelper=0
 trigger1 = Target(620),stateno != [625,628]
@@ -3646,7 +3642,7 @@ persistent = 0
 [State 0, Explod]
 type = Explod
 triggerall = numexplod(650625) = 0
-triggerall = NumTarget(620) = 1
+triggerall = NumTarget(620) >= 1
 triggerall = movehit = 1
 trigger1 = Target(620),ishelper=0
 anim = 616

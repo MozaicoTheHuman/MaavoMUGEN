@@ -79,7 +79,7 @@ ignorehitpause = 1
 ; Certain opponents will force a specific theme to play when fought.
 type = VarSet
 trigger1 = 1
-var(52) = 2
+var(52) = 6
 ;0: N/A
 ;1: Victory! (Old) by Rossiter (Short) > Results Screen - Super Smash Brothers for 3DS and Wii U
 ;2: Victory! (Showtime) by Kakow0 (this is the default song)

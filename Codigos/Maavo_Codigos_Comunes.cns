@@ -916,7 +916,7 @@ value = S100,9
 
 [State 0, VelAdd]
 type = Velset
-triggerall = prevstateno = 106
+triggerall = prevstateno = 106 || prevstateno = 117
 trigger1 = animelem = 2
 x = -3
 
@@ -1239,6 +1239,14 @@ value = 1022
 type = ChangeState
 trigger1 = power >= 3000
 value = 1022
+[State 100, Stop Running]
+type = ChangeState
+trigger1 = ailevel && enemynear,statetype != L
+value = 1022
+[State 100, Stop Running]
+type = ChangeState
+trigger1 = ailevel && enemynear,stateno = 5120
+value = 1022
 ;---------------------------------------------------------------------------
 ; AI DASH DANCE LEFT
 [Statedef 117]
@@ -1333,7 +1341,14 @@ x = 0.5
 type = ChangeState
 trigger1 = time >= fvar(23)
 value = 116
-
+[State 105, Stop Running]
+type = ChangeState
+trigger1 = ailevel && enemynear,statetype != L
+value = 103
+[State 105, Stop Running]
+type = ChangeState
+trigger1 = ailevel && enemynear,stateno = 5120
+value = 103
 ;---------------------------------------------------------------------------
 ; RUN_UP
 [Statedef 110]

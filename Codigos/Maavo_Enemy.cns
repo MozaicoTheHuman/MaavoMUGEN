@@ -697,7 +697,6 @@ type = SelfState
 trigger1 = time = 295
 value = 50
 
-
 ;---------------------------------------------------------------------------
 ;Hyper - All Out Attack (Custom State 1)
 [Statedef 1700101]
