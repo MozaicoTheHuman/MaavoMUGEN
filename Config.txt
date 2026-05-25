@@ -91,6 +91,7 @@ var(52) = 1
 ignorehitpause = 1
 
 [State 0, Scrapped Moves?]
+;This will enable 2 scrapped special moves
 type = VarSet
 trigger1 = 1
 var(39) = 0
