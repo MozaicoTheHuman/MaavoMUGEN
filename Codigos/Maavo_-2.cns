@@ -968,7 +968,6 @@ triggerall = var(16) = 1
 trigger1 = Enemy, Name = "New_Alex" || Enemy, AuthorName = "ElAleUwU"
 value = 69 + random%3
 
-
 ;=================================
 ;FNF ICON COMPATIBLITY
 ;[State 0, Movement Effect]

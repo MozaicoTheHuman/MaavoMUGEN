@@ -1073,8 +1073,8 @@ persistent = 0
 [State 0, Pause]
 type = Pause
 trigger1 = time > 1
-time = 999
-movetime = 999
+time = 9999
+movetime = 9999
 [State 181, 2]
 type = PlaySnd
 triggerall = var(52) = 22
@@ -1209,132 +1209,114 @@ bindtime=-1
 supermovetime = -1
 pausemovetime = -1
 
-[State 0, Victory Old Intro]
+[State 0, PlaySnd]
 type = PlaySnd
-triggerall = var(52) = 1
+triggerall = var(52) = [2,6]
+triggerall = var(52) != 3
+trigger1 = time = 25
+value = S50505,cond(var(52)=2,18,cond(var(52)=4,10,cond(var(52)=5,7,9)))
+loop = (var(52)=[4,5])
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(52) = [2,6]
+triggerall = var(52) != 3
+trigger1 = time = 25
+value = S50505,cond(var(52)=2,18,cond(var(52)=4,10,cond(var(52)=5,7,9)))
+loop = (var(52)=[4,5])
+channel = 10
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(52) = 4
+trigger1 = time = 25
+value = S50505,10
+loop = 1
+channel = 10
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(52) = 3
 trigger1 = time = 25
 value = S50505,14
 channel = 8
-[State 0, Victory Old Intro]
+
+[State 0, PlaySnd]
 type = PlaySnd
-triggerall = var(52) = 1
-trigger1 = time = 25
-value = S50505,14
-channel = 9
-[State 0, Victory Old Mid]
-type = PlaySnd
-triggerall = var(52) = 1
-trigger1 = time = 530
-value = S50505,15
-channel = 9
-[State 0, Victory Old Mid]
-type = PlaySnd
-triggerall = var(52) = 1
-trigger1 = time = 530
-value = S50505,15
-channel = 10
-[State 0, Victory Old Loop]
-type = PlaySnd
-triggerall = var(52) = 1
-trigger1 = time = 540
-value = S50505,16
+triggerall = var(52) = 6
+trigger1 = time = 33
+value = S50505,5
 loop = 1
 channel = 9
-[State 0, Victory Old Loop]
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(52) = 6
+trigger1 = time = 33
+value = S50505,5
+loop = 1
+
+[State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(52) = 1
-trigger1 = time = 540
-value = S50505,16
-loop = 1
+trigger1 = time = 53
+value = S50505,17
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(52) = 1
+trigger1 = time = 53
+value = S50505,17
 channel = 10
 
-[State 0, Showtime Intro]
+[State 0, PlaySnd]
 type = PlaySnd
-triggerall = var(52) = 2
-trigger1 = time = 55
-value = S50505,17
-channel = 9
-[State 0, Showtime Intro]
-type = PlaySnd
-triggerall = var(52) = 2
-trigger1 = time = 55
-value = S50505,17
-channel = 10
-[State 0, Showtime Loop]
-type = PlaySnd
-triggerall = var(52) = 2
+triggerall = var(52) = 1
 trigger1 = time = 168
 value = S50505,8
 loop = 1
 channel = 9
-[State 0, Showtime Loop]
+
+[State 0, PlaySnd]
 type = PlaySnd
-triggerall = var(52) = 2
+triggerall = var(52) = 1
 trigger1 = time = 168
 value = S50505,8
 loop = 1
 channel = 10
 
-[State 0, Persona 3]
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(52) = 2
+trigger1 = time = 317
+value = S50505,19
+loop = 1
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(52) = 2
+trigger1 = time = 317
+value = S50505,19
+loop = 1
+channel = 10
+
+[State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(52) = 3
-trigger1 = time = 55
-value = S50505,10
-loop = 1
+trigger1 = time = 530
+value = S50505,15
 channel = 9
-persistent = 0
-[State 0, Persona 3]
+
+[State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(52) = 3
-trigger1 = time = 55
-value = S50505,10
-loop = 1
-channel = 10
-persistent = 0
-
-[State 0, Persona 4]
-type = PlaySnd
-triggerall = var(52) = 4
-trigger1 = time = 55
-value = S50505,7
+trigger1 = time = 540
+value = S50505,16
 loop = 1
 channel = 9
-persistent = 0
-[State 0, Persona 4]
-type = PlaySnd
-triggerall = var(52) = 4
-trigger1 = time = 55
-value = S50505,7
-loop = 1
-channel = 10
-persistent = 0
-
-[State 0, Persona 5 Intro]
-type = PlaySnd
-triggerall = var(52) = 5
-trigger1 = time = 55
-value = S50505,9
-channel = 9
-[State 0, Persona 5 Intro]
-type = PlaySnd
-triggerall = var(52) = 5
-trigger1 = time = 55
-value = S50505,9
-channel = 10
-[State 0, Persona 5 Loop]
-type = PlaySnd
-triggerall = var(52) = 5
-trigger1 = time = 65
-value = S50505,5
-loop = 1
-channel = 9
-[State 0, Persona 5 Loop]
-type = PlaySnd
-triggerall = var(52) = 5
-trigger1 = time = 65
-value = S50505,5
-loop = 1
-channel = 10
 
 [State 0, PlaySnd]
 type = PlaySnd

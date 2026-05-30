@@ -43,8 +43,11 @@ st7 = Codigos/Maavo_GFX.cns
 st8 = Codigos/Maavo_11_KOScreen.cns
 st9 = Codigos/Maavo_ZSS.zss
 st10 = Config.txt
-movelist = moveset.dat     ;Ikemen feature: Movelist
-
+;===============================
+movelist = moveset.dat
+movelist1 = moveset_alt.dat
+movelist2 = moveset_scrapped.dat
+movelist3 = moveset_alt_scrapped.dat
 [Palette Keymap]
 a = 1
 b = 2

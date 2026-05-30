@@ -1,0 +1,42 @@
+<#ff0000>:Assists:</>
+Go, <#6b00ff>Ivette!</>						_AIROK_QDB^LP 
+Go, <#ff0099>Maritza!</>					_AIROK_QDB^MP 
+
+<#ff0000>:Throws:</>
+Throw										
+_!Forward Throw								[_F]_+^MP
+_!Back Throw								[_B]_+^MP
+
+<#ff0000>:Specials:</>
+Dash Attack								
+_!Light										_F_F^LP 
+_!Medium									_F_F^MP 
+_!EX <#bebebe>(500)</>						_F_F^LP_+^MP 
+Upstroke									
+_!Light										_DSF^LP
+_!Medium									_DSF^MP 
+_!EX <#bebebe>(500)</>						_DSF^LP_+^MP 
+Flash Stab									
+_!Light										_QDF^LP 
+_!Medium									_QDF^MP 
+_!EX <#bebebe>(500)</>						_QDF^LP_+^MP 
+
+<#ff0000>:Supers:</>
+Encore Rush <#bebebe>(1000)</>		
+_!Short Range								_AIROK_QDF_QDF^LP
+_!Long Range								_AIROK_QDF_QDF^MP
+Gran Tornado <#bebebe>(1000)</>
+_!Short Range								_QDB_QDB^LP
+_!Long Range								_QDB_QDB^MP
+Masterpiece <#bebebe>(3000)</>				_QDB_QDF^LK/^MK
+All-Out Attack <#bebebe>(3000)</>			_QDB_QDF^LP/^MP
+
+<#a2a2a2>:Scrapped Moves:</>
+Escudo Trazado								_QDF^HK
+Boomerang									
+_!Light										_QDB^LK
+_!Medium									_QDB^MK
+Media Luna									
+_!Light										_QDF^LK
+_!Medium									_QDF^MK
+

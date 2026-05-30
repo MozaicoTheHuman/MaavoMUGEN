@@ -529,3 +529,16 @@ ignoreHitPause if time >= 248 {
 [StateDef -2]
 
 var(46) := 1;
+
+
+if var(19) = 1 && var(39) = 0 {
+    changeMovelist{value: 1}
+}
+
+if var(19) = 0 && var(39) = 1 {
+    changeMovelist{value: 2}
+}
+
+if var(19) = 1 && var(39) = 1 {
+    changeMovelist{value: 3}
+}
