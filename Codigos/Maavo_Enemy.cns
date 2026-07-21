@@ -18,7 +18,7 @@ ignorehitpause = 1
 [State 1215, Anim] ;Custom animation
 type = ChangeAnim
 trigger1 = 1
-value = ifelse(statetype=L,5170,5050)
+value = cond(statetype=L,5170,5050)
 
 [State 1215, State]
 type = ChangeState
@@ -139,7 +139,7 @@ value = 5052
 [State 1028, Anim 1218]
 type = ChangeAnim
 trigger1 = anim = [5050,5059]
-trigger1 = Vel Y >= ifelse(anim = 5050, Const720p(4), Const720p(-8))
+trigger1 = Vel Y >= cond(anim = 5050, Const720p(4), Const720p(-8))
 trigger1 = SelfAnimExist(anim+10)
 value = anim+10
 persistent = 0
@@ -165,7 +165,7 @@ value = 5210 ;HITFALL_RECOVER
 type = SelfState
 trigger1 = (Vel y > 0) && (Pos y >= 0)
 value = 5110
-anim = ifelse(selfanimexist(5161),5161,5160)
+anim = cond(selfanimexist(5161),5161,5160)
 
 ;------------------
 ; Already Used A Groundbounce - shaking from the hit
@@ -184,7 +184,7 @@ ignorehitpause = 1
 [State 1215, Anim] ;Custom animation
 type = ChangeAnim
 trigger1 = 1
-value = ifelse(statetype=L,5170,5050)
+value = cond(statetype=L,5170,5050)
 
 [State 1215, State]
 type = ChangeState
@@ -355,7 +355,7 @@ value = 5052
 [State 1028, Anim 1218]
 type = ChangeAnim
 trigger1 = anim = [5050,5059]
-trigger1 = Vel Y >= ifelse(anim = 5050, Const720p(4), Const720p(-8))
+trigger1 = Vel Y >= cond(anim = 5050, Const720p(4), Const720p(-8))
 trigger1 = SelfAnimExist(anim+10)
 value = anim+10
 persistent = 0
@@ -364,7 +364,7 @@ persistent = 0
 type = SelfState
 trigger1 = (Vel y > 0) && (Pos y >= 0)
 value = 5110
-anim = ifelse(selfanimexist(5161),5161,5160)
+anim = cond(selfanimexist(5161),5161,5160)
 
 ;Throw Escape
 [Statedef 890]
@@ -458,7 +458,7 @@ value = 5050
 [State 5050, 2] ;Coming down anim
 type = ChangeAnim
 trigger1 = anim = [5050,5059]
-trigger1 = Vel Y >= ifelse(anim = 5050, Const720p(4), Const720p(-8))
+trigger1 = Vel Y >= cond(anim = 5050, Const720p(4), Const720p(-8))
 trigger1 = SelfAnimExist(anim+10)
 value = anim+10
 persistent = 0
@@ -635,8 +635,7 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-value2 = S,NA
+value = SCA
 ignorehitpause = 1
 
 [State 0, PalFX]
@@ -683,8 +682,7 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-value2 = S,NA
+value = SCA
 ignorehitpause = 1
 
 [State 0, ScreenBound]
@@ -700,26 +698,22 @@ value = 50
 ;---------------------------------------------------------------------------
 ;Hyper - All Out Attack (Custom State 1)
 [Statedef 1700101]
-type = S
-movetype = H
+type    = A
+movetype= H
 physics = N
 ctrl = 0
 velset = 0,0
 sprpriority = 0
-
 [State 0, PlayerPush]
 type = PlayerPush
 trigger1 = 1
 value = 0
 ignorehitpause = 1
-
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-value2 = S,NA
+value = SCA
 ignorehitpause = 1
-
 [State 0, PalFXWiz]
 type = PalFX
 trigger1 = time > 20
@@ -729,19 +723,16 @@ mul = 0,0,0
 sinadd = 0,0,0,10
 invertall = 0
 color = 0
-
 [State 0, PosSet]
 type = PosSet
 trigger1 = 1
 y = 0
-
 [State 0, ScreenBound]
 type = ScreenBound
 trigger1 = 1
 value = 0
 movecamera = 0,0
 ignorehitpause = 1
-
 [State 66363636, ChangeAnim2]
 type = ChangeAnim2
 trigger1 = time = 0
@@ -749,13 +740,17 @@ value = 13993
 
 ;Hyper - All Out Attack (Custom State 2)
 [Statedef 1700102]
-type = S
-movetype = H
+type    = A
+movetype= H
 physics = N
 ctrl = 0
 velset = 0,0
 sprpriority = 31
 
+[State 0, HitFallSet]
+type = HitFallSet
+trigger1 = 1
+value = 0
 [State 0, Offset]
 type = Offset
 trigger1 = time < 32
@@ -771,8 +766,7 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-value2 = S,NA
+value = SCA
 ignorehitpause = 1
 
 [State 0, PosSet]
@@ -838,12 +832,17 @@ value = 17001021
 
 ;Hyper - All Out Attack (Custom State 2 - 2)
 [Statedef 17001021]
-type = S
-movetype = H
+type    = A
+movetype= H
 physics = N
 ctrl = 0
 velset = 0,0
 sprpriority = 31
+
+[State 0, HitFallSet]
+type = HitFallSet
+trigger1 = 1
+value = 0
 
 [State 0, Offset]
 type = Offset
@@ -860,8 +859,7 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-value2 = S,NA
+value = SCA
 ignorehitpause = 1
 
 [State 0, PosSet]
@@ -903,8 +901,8 @@ value = 585044
 
 ;Hyper - All Out Attack (Custom State 3)
 [Statedef 1700103]
-type = S
-movetype = H
+type    = A
+movetype= H
 physics = N
 ctrl = 0
 velset = 0,.02
@@ -923,8 +921,7 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-value2 = S,NA
+value = SCA
 ignorehitpause = 1
 
 [State 0, AngleDraw]
@@ -1062,8 +1059,7 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = prevstateno = 1700103 || prevstateno = 515044
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-value2 = S,NA
+value = SCA
 ignorehitpause = 1
 
 [State 0, PalFXWiz]
@@ -1117,8 +1113,8 @@ flag = invisible
 
 ;Hyper - All Out Attack (Custom State NOT dead)
 [Statedef 515044]
-type = S
-movetype = H
+type    = A
+movetype= H
 physics = N
 ctrl = 0
 velset = 0,.02
@@ -1142,8 +1138,7 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-value2 = S,NA
+value = SCA
 ignorehitpause = 1
 
 [State 0, PalFXWiz]
@@ -1203,7 +1198,7 @@ value = 585044
 type    = A
 movetype= H
 physics = N
-velset = -2.2,-7
+velset = -3.2,-10
 poweradd = 40
 
 [State 0, PalFXWiz]
@@ -1217,12 +1212,17 @@ sinadd = 100,100,100,1
 [State 1215, Anim] ;Custom animation
 type = ChangeAnim
 trigger1 = 1
-value = ifelse(statetype=L,5170,5050)
+value = cond(statetype=L,5170,5050)
 
 [State 821, 1] ;Gravity
 type = VelAdd
-Trigger1 = 1
-y = 0.4
+Trigger1 = time < 5
+y = 0.3
+
+[State 821, 1] ;Gravity
+type = VelAdd
+Trigger1 = time > 5
+y = 0.7
 
 [State 821, 4] ;Hit ground
 type = SelfState
@@ -1271,8 +1271,8 @@ trigger1 = facing != -1
 [State 0, AngleDraw]
 type = AngleDraw
 trigger1 = 1
-value = ifelse(time < 6, -2 + (9.0 * time / 6.0), 7)
-scale = ifelse(time < 6,1.7 - (0.8 * time / 6.0), 1.1), ifelse(time < 6,1.7 - (0.8 * time / 6.0),1.1)
+value = cond(time < 6, -2 + (9.0 * time / 6.0), 7)
+scale = cond(time < 6,1.7 - (0.8 * time / 6.0), 1.1), cond(time < 6,1.7 - (0.8 * time / 6.0),1.1)
 ignorehitpause = 1
 
 [State 0, ChangeAnim]
@@ -1411,8 +1411,8 @@ trigger1 = facing != -1
 [State 0, AngleDraw]
 type = AngleDraw
 trigger1 = 1
-value = ifelse(time < 6, -2 + (9.0 * time / 6.0), 7)
-scale = ifelse(time < 6,3.0 - (1.1 * time / 6.0),1.9),ifelse(time < 6,3.0 - (1.1 * time / 6.0),1.9)
+value = cond(time < 6, -2 + (9.0 * time / 6.0), 7)
+scale = cond(time < 6,3.0 - (1.1 * time / 6.0),1.9),cond(time < 6,3.0 - (1.1 * time / 6.0),1.9)
 ignorehitpause = 1
 
 [State 0, ChangeAnim]
@@ -1684,7 +1684,7 @@ id = 92175
 anim = 92175
 pos = -68,0
 postype = back
-facing = IfElse(facing = 1, 1, -1)
+facing = cond(facing = 1, 1, -1)
 scale = .35,.35
 sprpriority = 41
 ownpal = 1
@@ -1723,7 +1723,7 @@ pos = 0,0
 postype = back
 sprpriority = 41
 scale = .25,.25
-Facing = IfElse(facing = 1, 1, -1)
+Facing = cond(facing = 1, 1, -1)
 ownpal = 1
 removetime = 161
 [state turn]
@@ -1816,8 +1816,7 @@ ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-value2 = S,NA
+value = SCA
 ignorehitpause = 1
 
 [State 0, ScreenBound]

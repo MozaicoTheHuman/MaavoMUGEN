@@ -5,6 +5,15 @@
 
 [Statedef -2]
 
+;Clap Animation
+[State -2, ChangeState]
+type = ChangeState
+triggerall = teammode != simul
+triggerall = Enemy, AuthorName = "Mozaico" && Enemy, Name = "Maavo"
+trigger1 = enemy, stateno = 180180
+value = 1701801
+ctrl = 0
+
 [State 0, VarSet]
 type = VarSet
 trigger1 = stateno != 2002
@@ -17,32 +26,6 @@ trigger2 = movecontact || movereversed
 var(22) = 0
 ignorehitpause = 1
 
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = stateno != 19001
-id = 611
-ignorehitpause = 1
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = stateno != 450
-id = 451
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = stateno != 3000
-id = 8789
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = stateno != 3000
-id = 87892
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = stateno != 19000
-id = 190011
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = stateno != 17000
-id = 139921
-
 [State -2, Match Win]
 type = VarSet
 trigger1 = MatchOver = 1
@@ -50,30 +33,14 @@ trigger1 = RoundState = 4
 trigger1 = Win
 var(31) = 1
 
-[State -2, asjdkgldas]
-type = VarSet
-trigger1 = partner,Name = "Martin"
-trigger1 = partner,AuthorName = "Jeff Swag"
-var(52) = 22
-
-[State 119911991, 1]
-type = AssertSpecial
-triggerall = var(52) != 0
-trigger1 = var(31) = 1
-flag = nomusic
-ignorehitpause = 1
-
-[State -2, VarSet]
-type = VarSet
+[State -2, Aspect Ratio detector]
+type = null
 trigger1 = var(17) = 2
-trigger1 = (GameWidth / GameHeight) >= 1.7
-var(17) = 0
-ignorehitpause = 1
-[State -2, VarSet]
-type = VarSet
-trigger1 = var(17) = 2
-trigger1 = (GameWidth / GameHeight) < 1.7
-var(17) = 1
+trigger1 = (GameWidth/GameHeight) >= 1.7
+trigger1 = 0&&(var(17):=0)
+trigger2 = var(17) = 2
+trigger2 = (GameWidth/GameHeight) < 1.7
+trigger2 = 0&&(var(17):=1)
 ignorehitpause = 1
 
 ;VUELTA AL RUEDO
@@ -116,58 +83,32 @@ ignorehitpause = 1
 ;VUELTA AL RUEDO
 
 ;SUPER SONIC & SUPER SHADOW
-[State -2, VarSet]
-type = VarSet
+[State -2, Null]
+type = Null
 trigger1 = 1
-var(33) = ifelse(stateno = 1210 || stateno = 1211 || stateno = 1212 || stateno = 1213 || stateno = 19000 || stateno = 190000 || stateno = 190001 || stateno = 190002 || stateno = 19001 || stateno = 3000 || stateno = 17000 || stateno = 17001 || stateno = 17002,1,0)
-ignorehitpause = 1
-[State -2, VarSet]
-type = VarSet
-trigger1 = stateno != 19000
-trigger1 = stateno != 190000
-trigger1 = stateno != 190001
-trigger1 = stateno != 190002
-trigger1 = stateno != 19001
-trigger1 = stateno != 3000
-trigger1 = stateno != 17000
-trigger1 = stateno != 17001
-trigger1 = stateno != 17002
-trigger1 = stateno != 1210
-trigger1 = stateno != 1211
-trigger1 = stateno != 1212
-trigger1 = stateno != 1213
-var(33) = 0
-ignorehitpause = 1
-[State -2, VarSet]
-type = VarSet
-trigger1 = var(33) != var(35)
-var(36) = 1
-ignorehitpause = 1
-[State -2, VarSet]
-type = VarSet
-trigger1 = var(33) = var(35)
-var(36) = 0
-ignorehitpause = 1
-[State -2, VarSet]
-type = VarSet
-trigger1 = 1
-var(35) = var(33)
+trigger1 = 0&&(var(33):=cond(stateno = 1210 || stateno = 1211 || stateno = 1212 || stateno = 1213 || stateno = 19000 || stateno = 190000 || stateno = 190001 || stateno = 190002 || stateno = 19001 || stateno = 3000 || stateno = 17000 || stateno = 17001 || stateno = 17002,1,0))
+trigger2 = var(33) != var(35)
+trigger2 = 0&&(var(36):=1)
+trigger3 = var(33) = var(35)
+trigger3 = 0&&(var(36):=0)
+trigger4 = 1
+trigger4 = 0&&(var(35):=var(33))
 ignorehitpause = 1
 [State -2, RemapPal]
 type = RemapPal
-trigger1 = var(33) = 1 && (palno = 18 || palno = 19 || palno = 20 || palno = 21)
+trigger1 = var(33) = 1 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
 source = 1,1
 dest = 2,palno
 ignorehitpause = 1
 [State -2, RemapPal]
 type = RemapPal
-trigger1 = var(33) = 0 && (palno = 18 || palno = 19 || palno = 20 || palno = 21)
+trigger1 = var(33) = 0 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
 source = 1,1
 dest = 1,palno
 ignorehitpause = 1
 [State -2, PalFX]
 type = PalFX
-trigger1 = var(36) = 1 && (palno = 18 || palno = 19 || palno = 20 || palno = 21)
+trigger1 = var(36) = 1 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
 time = 20
 add = 255,255,255
 mul = 256,256,256
@@ -178,7 +119,7 @@ ignorehitpause = 1
 ;AY ESCUBI
 [State -2, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = palno = 12
 trigger1 = (Anim = 100 || Anim = 102 || Anim = 105 || Anim = 107) && !(var(25) = 100 || var(25) = 102 || var(25) = 105 || var(25) = 107)
 value = S1959,0
 channel = 10
@@ -187,7 +128,7 @@ volumescale = 100
 ignorehitpause = 1
 [State -2, StopSnd]
 type = StopSnd
-triggerall = palno = 21
+triggerall = palno = 12
 trigger1 = Anim != 100 && Anim != 102 && Anim != 105 && Anim != 107
 channel = 10
 ignorehitpause = 1
@@ -207,42 +148,43 @@ var(16) = 20
 ignorehitpause = 0
 ;ora del shou 2016
 
-[State -2, Random Victory BGM]
-type = VarSet
-trigger1 = var(52) = 7
-var(52) = (Random % 5) + 1
-ignorehitpause = 1
-
 [State -2]
 type = VelAdd
 triggerall = vel y >= 1 && pos Y <= -20
+triggerall = movetype != H
+triggerall = stateno != 132
+triggerall = !var(15)
 trigger1 = command = "holddown"
 y = .55
-
-[State -2, VarSet]
-type = VarSet
-trigger1 = 1
-var(30) = var(32) 
-
-[State -2, VarSet]
-type = VarSet
-trigger1 = 1
-var(32) = (vel y >= 1 && pos Y <= -20 && command = "holddown")
+[State -2, Null]
+type = Null
+trigger1 = statetype != A
+trigger1 = 0&&(var(15):=0)
+trigger2 = movetype = H
+trigger2 = 0&&(var(32):=0)
+trigger3 = movetype != H
+trigger3 = stateno != 155
+trigger3 = 0&&(var(30):=var(32))
+trigger4 = movetype != H
+trigger4 = stateno != 132
+trigger4 = 0&&(var(32):=(vel y >= 1 && pos Y <= -20 && command = "holddown" && !var(15)))
+trigger5 = var(32) && !var(30)
+trigger5 = 0&&(var(15):=1)
 
 [State -2, PalFX]
 type = PalFX
-trigger1 = var(32) && !var(30)  
+trigger1 = var(32) && !var(30) && movetype != H
 time = 2
-add = 190,190,190     
+add = 190,190,190
 mul = 256,256,256
 
-[State 0, Movement Effect]
+[State 0, FF Flash]
 type = Explod
-trigger1 = var(32) && !var(30) 
+trigger1 = var(32) && !var(30) && movetype != H
 anim = 48
 ID = 48
 pos = 35,-70
-postype = p1  ;p2,front,back,left,right
+postype = p1
 facing = 1
 vfacing = 1
 bindtime = 1
@@ -257,23 +199,14 @@ removeongethit = 0
 pausemovetime = 99999
 supermovetime = 99999
 
-[State 0, No Astral Bullshit]
-type = VarSet
-trigger1 = 1
-var(40) = 0
-ignorehitpause = 1
 [State 0, Astral Bullshit]
-type = VarSet
-trigger1 = ((stateno = 180140 || stateno = 181) || stateno = 140002 || (stateno = 141002 || roundstate>2 && prevstateno = 141002) || stateno = 1410025 || numhelper(911)) && movetype != H
-trigger2 = enemy, name = "Oliver Andersen"
-trigger2 = enemy, stateno = [4301,4399]
-trigger3 = enemy, name = "Nick (Mega Man)"
-trigger3 = enemy, stateno = [4002,4099]
-trigger4 = enemy, name = "Greninja_GBVS" || enemy, name = "NoNerfs_GBVS"
-trigger4 = (enemy, stateno = [3010,3019]) && enemy,movetype != H || (matchover && enemy,teammode != simul && (enemy,fvar(2)||enemy,stateno=[180,189])); I know it's called a Super Skybound Art and not an Astral Heat, but shut up
-trigger5 = enemy, name = "Maavo"
-trigger5 = ((enemy,stateno = 180140 || enemy,stateno = 181) || enemy,stateno = 140002 || (enemy,stateno = 141002 || roundstate>2 && enemy, prevstateno = 141002) || enemy,stateno = 1410025 || enemy,numhelper(911)) && enemy,movetype != H
-var(40) = 1
+type = Null
+;No Astral Bullshit: resets every tick to check again
+trigger1 = 1
+trigger1 = 0&&(var(40):=0)
+;Astral Bullshit: sets it back to 1 if any of the 5 conditions hold 									                                                                                                         ;I know it's called a Super Skybound Art and not an Astral Heat, but shut up
+trigger2 = (((stateno = 180140 || stateno = 181) || stateno = 140002 || (stateno = 141002 || roundstate>2 && prevstateno = 141002) || stateno = 1410025 || numhelper(911)) && movetype != H)||(enemy,name = "Oliver Andersen" && enemy,stateno = [4301,4399])||((enemy,name = "Greninja_GBVS" || enemy,name = "NoNerfs_GBVS") && ((enemy,stateno = [3010,3019]) && enemy,movetype != H || (matchover && enemy,teammode != simul && (enemy,fvar(2)||enemy,stateno=[180,189]))))||(enemy,name = "Maavo" && ((enemy,stateno = 180140 || enemy,stateno = 181) || enemy,stateno = 140002 || (enemy,stateno = 141002 || roundstate>2 && enemy,prevstateno = 141002) || enemy,stateno = 1410025 || enemy,numhelper(911)) && enemy,movetype != H)																	
+trigger2 = 0&&(var(40):=1)
 ignorehitpause = 1
 
 [State 0, Helper]
@@ -292,71 +225,25 @@ supermovetime = 999999999999999999
 pausemovetime = 999999999999999999
 ignorehitpause = 1
 
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = stateno != [19000,199999]
-trigger1 = stateno != [17000,17002]
-trigger1 = stateno != [1210,1212]
-id = 3232
-
 [State -2, Give 'em some Movehitoner]
 type = VarSet
 trigger1 = 1
-var(21) = ifelse((movehit=1||projhit=1),var(21)+1,0)
+var(21) = cond((movehit=1||projhit=1),var(21)+1,0)
 ignorehitpause = 1
 
-[State -2, Throws Disallowed]; Resets condition every tick to check again
-type=varset
-trigger1= 1
-var(38)= 0
-
 [State -2, Throws Disallowed]
-type=varset
-trigger1= (enemynear,stateno=[150,155])
-trigger2= (enemynear,movetype=H && enemynear,statetype!=A)
-trigger3= (enemynear,stateno=[5020,5040]) && !(enemynear,hitfall)
-trigger4= ((enemynear,stateno=0) || (enemynear,stateno=52)) && (enemynear,prevstateno=[5000,5040]) && ((enemynear,time<=0) || !(enemynear,ctrl))
-trigger5= (enemynear,stateno=0) && (enemynear,prevstateno=52) && ((enemynear,time<=0) || !(enemynear,ctrl))
-trigger6= (enemynear,stateno=40) && (enemynear,time>=1 || enemynear,prevstateno=0 || enemynear,prevstateno=52)
-var(38)= 1
+type = Null
+;Resets condition every tick to check again
+trigger1 = 1
+trigger1 = 0&&(var(38):=0)
+trigger2 = (enemynear,stateno=[150,155])||(enemynear,movetype=H && enemynear,statetype!=A)||((enemynear,stateno=[5020,5040]) && !(enemynear,hitfall))||(((enemynear,stateno=0)||(enemynear,stateno=52)) && (enemynear,prevstateno=[5000,5040]) && ((enemynear,time<=0)||!(enemynear,ctrl)))||((enemynear,stateno=0) && (enemynear,prevstateno=52) && ((enemynear,time<=0)||!(enemynear,ctrl)))||((enemynear,stateno=40) && (enemynear,time>=1||enemynear,prevstateno=0||enemynear,prevstateno=52))
+trigger2 = 0&&(var(38):=1)
+ignorehitpause = 1
 
 ;-----------------------------------------------------------------------------------------------
 ; Counterhit detection
 ;-----------------------------------------------------------------------------------------------
-[State -2, VarSet];Checks if opponent is in attack state
-type = VarSet
-triggerall = numenemy
-triggerall = !enemynear,movereversed
-trigger1 = enemy, movetype = A
-var(42) = 1
-ignorehitpause = 1
-
-[State -2, VarSet];This resets the condition if counter not succesful and succesful
-type = VarSet
-triggerall = numenemy
-trigger1 = enemy, movetype = I || var(43) >= 1  ;Enemy is Idle | Counter was Succesful
-trigger2 = var(43) > 10 && enemy, movetype = H  ;10 ticks passed & enemy is on gethit state
-trigger3 = (time<=1) && (stateno!=[5000,5199]) && (movetype!=H)
-var(42) = 0
-ignorehitpause = 1
-
-[State -2, VarSet];Checks if opponent is in attack state
-type = VarSet
-triggerall = numenemy
-trigger1 = var(22)
-var(42) = 1
-ignorehitpause = 1
-
-[State -2, VarSet];Counter Hit Succesful
-type = VarSet
-triggerall = !enemynear,movereversed
-trigger1 = var(42) = 1 && movehit ;Counter Check Ok, Move Hit Succesfully.
-trigger1 = stateno != [190,199] ;Does not activate during intros.
-trigger1 = stateno != [800,899] ;Does not activate during throws.
-var(43) = 1
-ignorehitpause = 1
-
-[State 0, Explod]
+[State 0, PlaySnd]
 type = PlaySnd
 triggerall = numenemy
 triggerall = roundstate = 2
@@ -371,240 +258,145 @@ channel = 12
 ignorehitpause = 1
 persistent = 0
 
-[State -2, VarAdd];Counter Hit Timer
-type = VarAdd
-trigger1 = var(43) >= 1 ;Counter was succesful
-var(43) = 1
+[State -2, Null];Counter Hit state machine
+type = Null
+;Checks if opponent is in attack state
+trigger1 = numenemy
+trigger1 = !enemynear,movereversed
+trigger1 = enemy,movetype = A
+trigger1 = 0&&(var(42):=1)
+;Resets the condition if counter not succesful and succesful
+trigger2 = numenemy
+trigger2 = (enemy,movetype = I||var(43) >= 1)||(var(43) > 10 && enemy,movetype = H)||((time<=1) && (stateno!=[5000,5199]) && (movetype!=H))
+trigger2 = 0&&(var(42):=0)
+trigger3 = numenemy
+trigger3 = var(22)
+trigger3 = 0&&(var(42):=1)
+;Counter Hit Succesful
+trigger4 = !enemynear,movereversed
+trigger4 = var(42) = 1 && movehit
+trigger4 = stateno != [190,199]
+trigger4 = stateno != [800,899]
+trigger4 = 0&&(var(43):=1)
+;Counter Hit Timer
+trigger5 = var(43) >= 1 ;Counter was succesful
+trigger5 = 0&&(var(43):=var(43)+1)
+;Counter Hit Reset
+trigger6 = var(43) >= 22 && movehit ;Reset if 22 ticks passed and move hit
+trigger6 = 0&&(var(43):=0)
+trigger7 = p2movetype != H ;Reset if P2 is no longer in gethit state
+trigger7 = 0&&(var(43):=0)
+trigger8 = movetype = H ;Reset if P1 is getting hit
+trigger8 = 0&&(var(43):=0)
 ignorehitpause = 1
 
-[State -2, VarSet];Counter Hit Reset
-type = VarSet
-trigger1 = var(43) >= 22 && movehit ;Reset if 22 ticks passed and move hit
-trigger2 = p2movetype != H ;Reset if P2 is no longer in gethit state
-trigger3 = movetype = H ;Reset if P1 is getting hit
-var(43) = 0
-ignorehitpause = 1
 ;-----------------------------------------------------------------------------------------------
 
 ;-----------------------------------------------------------------------------------------------
 
-[State 0, Hitcount Reset]
-type = VarSet
-trigger1 = numenemy
-trigger1 = enemy, movetype != H
-trigger2 = numenemy
-trigger2 = enemy, stateno = [5120,5150]
-trigger3 = !numenemy
-var(10) = 0
-ignorehitpause = 1
-[State 0, Scaling Table Reset]
-type = VarSet
-trigger1 = numenemy
-trigger1 = enemy, movetype != H
-trigger2 = numenemy
-trigger2 = enemy, stateno = [5120,5150]
-trigger3 = !numenemy
-var(11) = 0
-ignorehitpause = 1
-[State 0, Initial Proration Reset]
-type = VarSet
-trigger1 = numenemy
-trigger1 = enemy, movetype != H
-trigger2 = numenemy
-trigger2 = enemy, stateno = [5120,5150]
-trigger3 = !numenemy
-var(12) = 0
-ignorehitpause = 1
-[State 0, Proration]
-type = VarSet
-trigger1 = var(11) < 1
-fvar(11) = 1*fvar(12)
-ignorehitpause = 1
-[State 0, Proration]
-type = VarSet
-trigger1 = var(11) = 1
-fvar(11) = .9*fvar(12)
-ignorehitpause = 1
-[State 0, Proration]
-type = VarSet
-trigger1 = var(11) = 2
-fvar(11) = .8*fvar(12)
-ignorehitpause = 1
-[State 0, Proration]
-type = VarSet
-trigger1 = var(11) = 3
-fvar(11) = .7*fvar(12)
-ignorehitpause = 1
-[State 0, Proration]
-type = VarSet
-trigger1 = var(11) = 4
-fvar(11) = .6*fvar(12)
-ignorehitpause = 1
-[State 0, Proration]
-type = VarSet
-trigger1 = var(11) = 5
-fvar(11) = .5*fvar(12)
-ignorehitpause = 1
-[State 0, Proration]
-type = VarSet
-trigger1 = var(11) = 6
-fvar(11) = .4*fvar(12)
-ignorehitpause = 1
-[State 0, Proration]
-type = VarSet
-trigger1 = var(10) = 1 && var(11) = [7,10]
-trigger2 = var(10) = 2 && var(11) = 7
-trigger3 = var(10) = 3 && var(11) = 7
-fvar(11) = .3*fvar(12)
-ignorehitpause = 1
-[State 0, Proration]
-type = VarSet
-trigger1 = var(10) = 1 && var(11) = [11,13]
-fvar(11) = .25*fvar(12)
-ignorehitpause = 1
-[State 0, Proration]
-type = VarSet
-trigger1 = var(10) = 1 && var(11) = [14,16]
-trigger2 = var(10) = 2 && var(11) = [8,11]
-trigger3 = var(10) = 3 && var(11) = 8
-fvar(11) = .2*fvar(12)
-ignorehitpause = 1
-[State 0, Proration]
-type = VarSet
-trigger1 = var(10) = 1 && var(11) > 16
-trigger2 = var(10) = 2 && var(11) = [12,15]
-;trigger3 = var(10) = 3 && var(11) = 8
-fvar(11) = .15*fvar(12)
-ignorehitpause = 1
-[State 0, Damage Scaling]
-type = VarSet
-trigger1 = var(10) = 2 && var(11) > 15
-trigger2 = var(10) = 3 && var(11) > 8
-fvar(11) = .1*fvar(12)
-ignorehitpause = 1
-[State 0, Damage Scaling]
-type = VarSet
-triggerall = fvar(11) < .25
-trigger1 = stateno = 19001
-trigger2 = stateno = 190001
-trigger3 = stateno = 3000
-fvar(11) = .20
-ignorehitpause = 1
-;[State 0, Damage Scaling]
-;type = VarSet
-;triggerall = fvar(11) < .35
-;trigger1 = stateno = [17000,17002]
-;trigger2 = stateno = 140002
-;fvar(11) = .35
-;ignorehitpause = 1
-																																																		value = 19
-[State 0, Rage]
-type = VarSet
-trigger1 = life > (lifemax*.77)
-fvar(12) = 1
-ignorehitpause = 1
-[State 0, Rage]
-type = VarSet
-trigger1 = life <= (lifemax*.77)
-trigger1 = life > (lifemax*.6504)
-fvar(12) = 1.025
-ignorehitpause = 1
-[State 0, Rage]
-type = VarSet
-trigger1 = life <= (lifemax*.6504)
-trigger1 = life > (lifemax*.5308)
-fvar(12) = 1.05
-ignorehitpause = 1
-[State 0, Rage]
-type = VarSet
-trigger1 = life <= (lifemax*.5308)
-trigger1 = life > (lifemax*.4112)
-fvar(12) = 1.075
-ignorehitpause = 1
-[State 0, Rage]
-type = VarSet
-trigger1 = life <= (lifemax*.4112)
-trigger1 = life > (lifemax*.2916)
-fvar(12) = 1.01
-ignorehitpause = 1
-[State 0, Rage]
-type = VarSet
-trigger1 = life <= (lifemax*.2916)
-trigger1 = life > (lifemax*.25)
-fvar(12) = 1.0125
-ignorehitpause = 1
-[State 0, Rage]
-type = VarSet
-trigger1 = life <= (lifemax*.25)
-fvar(12) = 1.15
+[State 0, Null]
+type = Null
+;Hitcount Reset, Scaling Table Reset, Initial Proration Reset
+trigger1 = (numenemy&&(enemy,movetype!=H||enemy,stateno=[5120,5150]))||!numenemy
+trigger1 = 0&&(var(10):=0)&&(var(11):=0)&&(var(12):=0)
+;Proration
+trigger2 = var(11) < 1
+trigger2 = 0&&(fvar(11):=1*fvar(12))
+trigger3 = var(11) = 1
+trigger3 = 0&&(fvar(11):=.9*fvar(12))
+trigger4 = var(11) = 2
+trigger4 = 0&&(fvar(11):=.8*fvar(12))
+trigger5 = var(11) = 3
+trigger5 = 0&&(fvar(11):=.7*fvar(12))
+trigger6 = var(11) = 4
+trigger6 = 0&&(fvar(11):=.6*fvar(12))
+trigger7 = var(11) = 5
+trigger7 = 0&&(fvar(11):=.5*fvar(12))
+trigger8 = var(11) = 6
+trigger8 = 0&&(fvar(11):=.4*fvar(12))
+trigger9 = (var(10) = 1 && var(11) = [7,10])||(var(10) = 2 && var(11) = 7)||(var(10) = 3 && var(11) = 7)
+trigger9 = 0&&(fvar(11):=.3*fvar(12))
+trigger10 = var(10) = 1 && var(11) = [11,13]
+trigger10 = 0&&(fvar(11):=.25*fvar(12))
+trigger11 = (var(10) = 1 && var(11) = [14,16])||(var(10) = 2 && var(11) = [8,11])||(var(10) = 3 && var(11) = 8)
+trigger11 = 0&&(fvar(11):=.2*fvar(12))
+trigger12 = (var(10) = 1 && var(11) > 16)||(var(10) = 2 && var(11) = [12,15])
+trigger12 = 0&&(fvar(11):=.15*fvar(12))
+;Damage Scaling
+trigger13 = (var(10) = 2 && var(11) > 15)||(var(10) = 3 && var(11) > 8)
+trigger13 = 0&&(fvar(11):=.1*fvar(12))
+trigger14 = fvar(11) < .25 && (stateno = 19001||stateno = 190001||stateno = 3000)
+trigger14 = 0&&(fvar(11):=.20)
+;Rage
+trigger15 = life > (lifemax*.77)
+trigger15 = 0&&(fvar(12):=1)
+trigger16 = life <= (lifemax*.77)
+trigger16 = life > (lifemax*.6504)
+trigger16 = 0&&(fvar(12):=1.025)
+trigger17 = life <= (lifemax*.6504)
+trigger17 = life > (lifemax*.5308)
+trigger17 = 0&&(fvar(12):=1.05)
+trigger18 = life <= (lifemax*.5308)
+trigger18 = life > (lifemax*.4112)
+trigger18 = 0&&(fvar(12):=1.075)
+trigger19 = life <= (lifemax*.4112)
+trigger19 = life > (lifemax*.2916)
+trigger19 = 0&&(fvar(12):=1.01)
+trigger20 = life <= (lifemax*.2916)
+trigger20 = life > (lifemax*.25)
+trigger20 = 0&&(fvar(12):=1.0125)
+trigger21 = life <= (lifemax*.25)
+trigger21 = 0&&(fvar(12):=1.15)
 ignorehitpause = 1
 
 [State 0, AppendToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "scaling table = %d numhits = %d cooldown = %d\nproration = %f rage = %f gain = %f"
+text = "scaling table = %d || numhits = %d || cooldown = %d\nproration = %f || rage = %f ||D gain = %f"
 params = var(10),var(11), var(8), fvar(11), fvar(12), fvar(8)
 ignorehitpause = 1
 [State -2, AppendToClipboard]
 type = appendtoclipboard
 trigger1 = 1
-text = "\nChar by MozaicoTheRobot"
+text = "\nChar by MozaicoTheRobot and the Maavo MUGEN team"
+ignorehitpause = 1
+[State -2, AppendToClipboard]
+type = appendtoclipboard
+trigger1 = 1
+text = "\nun saludo al geox lml"
 ignorehitpause = 1
 
-[State 0, Cooldown]
-type = VarSet
-triggerall = var(5) = 120
-triggerall = stateno != 1301 && stateno != 1321
-triggerall = numhelper(9902) = 0
-trigger1 = numenemy
-trigger1 = enemy, movetype != H
-trigger2 = numenemy
-trigger2 = enemy, stateno = [5120,5150]
-trigger3 = !numenemy
-var(5) = 119
-ignorehitpause = 1
-[State 0, Cooldown]
-type = VarSet
-triggerall = var(6) = 120
-triggerall = stateno != 8805 && stateno != 8825
-triggerall = numhelper(84803) = 0
-trigger1 = numenemy
-trigger1 = enemy, movetype != H
-trigger2 = numenemy
-trigger2 = enemy, stateno = [5120,5150]
-trigger3 = !numenemy
-var(6) = 119
-ignorehitpause = 1
-
-[State 0, VarSet]
-type = VarAdd
-triggerall = var(5) > 0 && var(5) < 120
+[State 0, Null]
+type = Null
+trigger1 = var(5) = 120
 trigger1 = stateno != 1301 && stateno != 1321
 trigger1 = numhelper(9902) = 0
-var(5) = -1
-[State 0, VarSet]
-type = VarAdd
-triggerall = var(6) > 0 && var(6) < 120
-trigger1 = stateno != 8805 && stateno != 8825
-trigger1 = numhelper(84803) = 0
-var(6) = -1
-
-[State 0, Metergain]
-type = VarAdd
-triggerall = var(8) > 1 || var(8) = 1 && (!numenemy || numenemy && (enemy, movetype != H || enemy, stateno = [5120,5150]))
-trigger1 = (stateno != 19000 && stateno != 190000) || ((stateno = 19000 || stateno = 190000) && (animelemtime(3) < 0 || animelemtime(3) > 26))
-trigger1 = (stateno != 3000) || ((stateno = 3000) && (animelemtime(3) < 0 || animelemtime(9) >= 0))
-trigger1 = (stateno != 17000) || (stateno = 17000 && (animelemtime(3) < 0 || animelemtime(3) > 26))
-trigger1 = (stateno != 17002 && stateno != 140002 && stateno != 141002)
-var(8) = -1
-[State 0, Metergain]
-type = VarSet
-trigger1 = var(8) <= 0
-fvar(8) = 1
-[State 0, Metergain]
-type = VarSet
-trigger1 = var(8) > 0
-fvar(8) = .15
+trigger1 = (numenemy && enemy,movetype != H)||(numenemy && enemy,stateno = [5120,5150])||!numenemy
+trigger1 = 0&&(var(5):=119)
+trigger2 = var(6) = 120
+trigger2 = stateno != 8805 && stateno != 8825
+trigger2 = numhelper(84803) = 0
+trigger2 = (numenemy && enemy,movetype != H)||(numenemy && enemy,stateno = [5120,5150])||!numenemy
+trigger2 = 0&&(var(6):=119)
+trigger3 = var(5) > 0 && var(5) < 120
+trigger3 = stateno != 1301 && stateno != 1321
+trigger3 = numhelper(9902) = 0
+trigger3 = 0&&(var(5):=var(5)-1)
+trigger4 = var(6) > 0 && var(6) < 120
+trigger4 = stateno != 8805 && stateno != 8825
+trigger4 = numhelper(84803) = 0
+trigger4 = 0&&(var(6):=var(6)-1)
+trigger5 = var(8) > 1 || var(8) = 1 && (!numenemy || numenemy && (enemy,movetype != H || enemy,stateno = [5120,5150]))
+trigger5 = (stateno != 19000 && stateno != 190000) || ((stateno = 19000 || stateno = 190000) && (animelemtime(3) < 0 || animelemtime(3) > 26))
+trigger5 = (stateno != 3000) || ((stateno = 3000) && (animelemtime(3) < 0 || animelemtime(9) >= 0))
+trigger5 = (stateno != 17000) || (stateno = 17000 && (animelemtime(3) < 0 || animelemtime(3) > 26))
+trigger5 = (stateno != 17002 && stateno != 140002 && stateno != 141002)
+trigger5 = 0&&(var(8):=var(8)-1)
+trigger6 = var(8) <= 0
+trigger6 = 0&&(fvar(8):=1)
+trigger7 = var(8) > 0
+trigger7 = 0&&(fvar(8):=.15)
+ignorehitpause = 1
 
 [State Reset Ground Bounces]
 type = removeexplod
@@ -683,22 +475,11 @@ id = 110
 ignorehitpause = 1
 persistent = 0
 
-;Clap Animation
-[State -2, ChangeState]
-type = ChangeState
-triggerall = teammode != simul
-triggerall = Enemy, AuthorName = "Mozaico"
-trigger1 = enemy, stateno = 180180
-trigger2 = enemy, stateno = 180181
-value = 1701801
-ctrl = 0
-
 [State -2 , 1]
 type = PlaySnd
 triggerall = anim = 5300
 trigger1 = time = 1
 value = 5300,0
-
 [State -2 , 1]
 type = PlaySnd
 triggerall = anim = 100 || anim = 107 || anim = 102 || anim = 105
@@ -706,19 +487,16 @@ trigger1 = time = 1
 value = 1959,0
 channel = 11
 loop = 1
-
 [State 0, StopSnd]
 type = StopSnd
 trigger1 = anim != 100 || anim != 107 || anim != 102 || anim != 105
 channel = 11
-
 [State -2 , 1]
 type = PlaySnd
 triggerall = anim = 5300
 trigger1 = time = 1
 value = 5300,1
 channel = 6
-
 [State 0, StopSnd]
 type = StopSnd
 trigger1 = StateNo = 0
@@ -733,79 +511,80 @@ flag2 = noFG
 flag3 = nobg
 ignorehitpause=1
 
+[State -2, Random Victory BGM]
+type = VarSet
+trigger1 = var(52) = 7
+var(52) = (Random % 5) + 1
+ignorehitpause = 1
+
 ;This codes were maded by Orbi, thanks bro
-[State 0, Victory Music Override: P3 Edition]
-type = VarSet
-triggerall = var(52) != 0
-trigger1 = enemy, name = "p3hero" 
-trigger2 = enemy, name = "Junpei" || enemy, name = "Junpei Iori"
-trigger3 = enemy, name = "Yukari Takeba"
-trigger4 = enemy, name = "Akihiko Sanada"
-trigger5 = enemy, name = "Mitsuru Kirijo"
-trigger6 = enemy, name = "Aigis" || enemy, name = "Aegis" || enemy, name = "Metis"
-trigger7 = enemy, name = "Ken Amada" || enemy, name = "Koromaru"; if anyone makes a kuromaru joke I swear
-trigger8 = enemy, name = "Shinjiro Aragaki"; mister "not going to be made a mugen character 'cause I'm dead"
-trigger9 = enemy, name = "Elizabeth" || enemy, name = "Theodore"
-var(52) = 4
+;THIS CODE WAS ORIGINALLY OPTIMIZED BY p0008874 but it wasn't present anymore since the new version isn't using his AI or his optimizations, so this optimization was re-done by Mozaico
+
+;this was my process of learning how the fuck do null works
+[State 0, Victory Music Override]
+type = null
+triggerall = var(52)
+;Victory Music Override: P3 Edition
+                                                                                                                                                                                                                                     ;if anyone makes a kuromaru joke I swear              ;mister "not going to be made a mugen character 'cause I'm dead"
+trigger1 = (enemy,name="p3hero"||enemy,name="Junpei"||enemy,name="Junpei Iori"||enemy,name="Yukari Takeba"||enemy,name="Akihiko Sanada"||enemy,name="Mitsuru Kirijo"||enemy,name="Aigis"||enemy,name="Aegis"||enemy,name="Metis"||enemy,name="Ken Amada"||enemy,name="Koromaru"||enemy,name="Shinjiro Aragaki"                                                ||enemy,name="Elizabeth"||enemy,name="Theodore")
+trigger1 = 0&&(var(52):=4)
+;Victory Music Override: P4 Edition
+                                                                                                                                                                                                                                                 ;don't ask why she's on here but fuuka and futaba aren't
+trigger2 = (enemy,name="Yu Narukami"||enemy,name="Nyarukami Nyuu"||enemy,name="P4hero"||enemy,name="Yosuke Hanamura"||enemy,name="Chie Satonaka"||enemy,name="Yukiko Amagi"||enemy,name="Kanji Tatsumi"||enemy,name="Teddie"||enemy,name="Kuma"||enemy,name="Rise Kujikawa"                              ||enemy,name="Naoto Shirogane"||enemy,name="Margaret"||enemy,name="Marie"||enemy,name="Adachi"||enemy,name="Tohru Adachi")
+trigger2 = 0&&(var(52):=5)
+;Victory Music Override: P5 Edition + P5 Bonus Pack + MAAVO JOKER
+;watch as literally nobody else besides joker gets made for mugen                                                                                                                                                                                                                                                                                                                                                                                ;aka the "literally never going to get made for mugen" squad, alongside shinji up there                                                                            ;MAAVO JOKER
+trigger3 = (enemy,name="Ren Amamiya"||enemy,name="Akira Kurusu"||enemy,name="Joker"||enemy,name="p5hero"||enemy,name="Trickster"||enemy,name="trickster"||enemy,name="Morgana"||enemy,name="Mona"||enemy,name="Ryuji Sakamoto"||enemy,name="Ann Takamaki"||enemy,name="Anne Takamaki"||enemy,name="Yusuke Kitagawa"||enemy,name="Makoto Nijima"||enemy,name="Haru Okumura"||enemy,name="Goro Akechi"||enemy,name="Caroline"||enemy,name="Justine"||enemy,name="Lavenza"||enemy,name="Black Mask"||enemy,name="Kasumi Yoshizawa"||enemy,name="Sumire Yoshizawa"||enemy,name="Sophia"||enemy,name="Zenkichi Hasegawa"||palno=6)
+trigger3 = 0&&(var(52):=6)
+;Victory Music Override: MAAVO YU (EXCLUSIVE FOR IKEMEN GO)
+trigger4 = palno=34
+trigger4 = 0&&(var(52):=5)
+;Victory Music Override: MAAVO DOOR (EXCLUSIVE FOR IKEMEN GO)
+trigger5 = palno=33
+trigger5 = 0&&(var(52):=4)
+;Victory Music Override: Random Persona song, velvet room palette (EXCLUSIVE FOR IKEMEN GO)
+trigger6 = palno=35
+trigger6 = 0&&(var(52):=4+random%3)
+;Victory Music Override: DEMO 2021, rossiter's original song (EXCLUSIVE FOR IKEMEN GO)
+trigger7 = palno=40
+trigger7 = 0&&(var(52):=2)
 ignorehitpause = 1
 
-[State 0, Victory Music Override: P4 Edition]
+[State 0, Legacy Mariri and Ivy voices override]; specifically for the 2021 demo palette (EXCLUSIVE FOR IKEMEN GO)
 type = VarSet
-triggerall = var(52) != 0
-trigger1 = enemy, name = "Yu Narukami" || enemy, name = "Nyarukami Nyuu" || enemy, name = "P4hero"
-trigger2 = enemy, name = "Yosuke Hanamura"
-trigger3 = enemy, name = "Chie Satonaka"
-trigger4 = enemy, name = "Yukiko Amagi"
-trigger5 = enemy, name = "Kanji Tatsumi"
-trigger6 = enemy, name = "Teddie" || enemy, name = "Kuma"
-trigger7 = enemy, name = "Rise Kujikawa"; don't ask why she's on here but fuuka and futaba aren't
-trigger8 = enemy, name = "Naoto Shirogane"
-trigger9 = enemy, name = "Margaret" || enemy, name = "Marie"
-trigger10 = enemy, name = "Adachi" || enemy, name = "Tohru Adachi"
-var(52) = 5
+trigger1 = palno = 40
+var(34) = 1
 ignorehitpause = 1
 
-[State 0, Victory Music Override: P5 Edition]; watch as literally nobody else besides joker gets made for mugen
+[State -2, Martin Simul/Tag team Music Override]
 type = VarSet
-triggerall = var(52) != 0
-trigger1 = enemy, name = "Ren Amamiya" || enemy, name = "Akira Kurusu" || enemy, name = "Joker" || enemy, name = "p5hero" || enemy, name = "Trickster" || enemy, name = "trickster"
-trigger2 = enemy, name = "Morgana" || enemy, name = "Mona"
-trigger3 = enemy, name = "Ryuji Sakamoto"
-trigger4 = enemy, name = "Ann Takamaki" || enemy, name = "Anne Takamaki"
-trigger5 = enemy, name = "Yusuke Kitagawa"
-trigger6 = enemy, name = "Makoto Nijima"
-trigger7 = enemy, name = "Haru Okumura"
-trigger8 = enemy, name = "Goro Akechi"
-trigger9 = enemy, name = "Caroline" || enemy, name = "Justine"
-var(52) = 6
-ignorehitpause = 1
+triggerall = numpartner
+trigger1 = partner,Name = "Martin"
+trigger1 = partner,AuthorName = "Jeff Swag"
+var(52) = 22
 
-[State 0, Victory Music Override: P5 Bonus Pack]; aka the "literally never going to get made for mugen" squad, alongside shinji up there
-type = VarSet
+[State 119911991, 1]
+type = AssertSpecial
 triggerall = var(52) != 0
-trigger1 = enemy, name = "Lavenza"
-trigger2 = enemy, name = "Black Mask"
-trigger3 = enemy, name = "Kasumi Yoshizawa" || enemy, name = "Sumire Yoshizawa"
-trigger4 = enemy, name = "Sophia"
-trigger5 = enemy, name = "Zenkichi Hasegawa"
-var(52) = 6
-ignorehitpause = 1
-
-[State 0, Victory Music Override: MAAVO JOKER]; MAAVO JOKER
-type = VarSet
-triggerall = var(52) != 0
-trigger1 = palno = 6
-var(52) = 6
+trigger1 = var(31) = 1
+flag = nomusic
 ignorehitpause = 1
 [State 0, AssertSpecial]
 type = AssertSpecial
 trigger1 = movetype != H
 flag = nokoslow
 ignorehitpause = 1
+[State 0, AssertSpecial]
+type = AssertSpecial
+triggerall = teammode != simul
+trigger1 = movetype != H
+flag = nokoslow
+ignorehitpause = 1
+
 [State 0, Helper]
 type = Helper
 triggerall = numhelper(911) = 0
-triggerall = teammode != simul
+triggerall = numpartner = 0
 triggerall = stateno != 141002 && prevstateno != 141002
 trigger1 = var(55) = 0
 Trigger1 = WinKO
@@ -820,12 +599,26 @@ IgnoreHitPause = 1
 Persistent = 0
 PauseMoveTime = 9999
 SuperMoveTime = 9999
-[State 0, AssertSpecial]
-type = AssertSpecial
-triggerall = teammode != simul
-trigger1 = movetype != H
-flag = nokoslow
-ignorehitpause = 1
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(911) = 0
+triggerall = numpartner > 0
+triggerall = stateno != 141002 && prevstateno != 141002
+triggerall = id < partner, id
+trigger1 = var(55) = 0
+Trigger1 = WinKO
+Trigger1 = RoundState=3
+Name = "K.O. Screen"
+StateNo = 911
+ID = 911
+Pos = 0,0
+PosType = Back
+OwnPal = 1
+IgnoreHitPause = 1
+Persistent = 0
+PauseMoveTime = 9999
+SuperMoveTime = 9999
+
 [State 0, Helper]
 type = Helper
 triggerall = var(52) != 0
@@ -842,194 +635,179 @@ Persistent = 0
 PauseMoveTime = 9999
 SuperMoveTime = 9999
 
-;Victory Quotes [Spanish]
-[State -2, Normal]
-Type = VictoryQuote
-trigger1 = var(16) = 0
-Value = 1 + random%7
+[State 0, Null]
+type = Null
+;Ivy victory check
+trigger1 = roundno >= 2
+trigger1 = numhelper(9902) = 1
+trigger1 = helper(9902),movehit
+trigger1 = win
+trigger1 = 0&&(var(56):=2)
+;Mariri victory check
+trigger2 = roundno >= 2
+trigger2 = numhelper(1100) = 1
+trigger2 = helper(1100),movehit
+trigger2 = win
+trigger2 = 0&&(var(56):=1)
+ignorehitpause = 1
 
+;Victory Quotes
 [State -2, Maritza KO]
 type = VictoryQuote
-triggerall = var(16) = 0
 trigger1 = var(56) = 1
-value = 8 + random%3
+value = cond(var(20) = 0, 8, 52) + random%3
 
 [State -2, Ivette KO]
 type = VictoryQuote
-triggerall = var(16) = 0
 trigger1 = var(56) = 2
-value = 11 + random%3
+value = cond(var(20) = 0, 11, 55) + random%3
 
-[State -2, Rudy]
-type = VictoryQuote
-triggerall = var(16) = 0
-trigger1 = Enemy, Name = "Rudy" || Enemy, AuthorName = "jade_midori"
-value = 17 + random%4
-
-[State -2, Maavo]
-type = VictoryQuote
-triggerall = var(16) = 0
-trigger1 = Enemy, Name = "Maavo"
-value = 14 + random%3
-
-[State -2, Oliver]
-type = VictoryQuote
-triggerall = var(16) = 0
-trigger1 = Enemy, Name = "Oliver Andersen" || Enemy, AuthorName = "Oliver As Latias"
-value = 21
-
-[State -2, Martin]
-type = VictoryQuote
-triggerall = var(16) = 0
-trigger1 = enemy, name = "Martin" && enemy, authorname = "Jeff Swag"
-trigger2 = enemy, name ="NewMartin" && enemy, authorname = "Jeff Swag"
-trigger3 = enemy, name = "Martin Bravo" && enemy, authorname = "Maavo!, AustinAnims" 
-value = 22
-
-[State -2, Chase]
-type = VictoryQuote
-triggerall = var(16) = 0
-trigger1 = Enemy, Name = "CHASEVV1.1" || Enemy, AuthorName = "Chase2006" 
-value = 23 + random% 5
-
-[State -2, Hanzo]
-type = VictoryQuote
-triggerall = var(16) = 0
-trigger1 = Enemy, Name = "Hanzo" || Enemy, AuthorName = "Hanzo Santiago"
-trigger2 = enemy, name ="Hanzo" && enemy, authorname = "Soga Celeste Hanzo Santiago"
-value = 28 + random%5
-
-[State -2, Alex]
-type = VictoryQuote
-triggerall = var(16) = 0
-trigger1 = Enemy, Name = "New_Alex" || Enemy, AuthorName = "ElAleUwU"
-value = 33 + random%3
-
-;Victory Quotes [English]
 [State -2, Normal]
 Type = VictoryQuote
-trigger1 = var(16) = 1
-Value = 36 + random%7
-
-[State -2, Maritza KO]
-type = VictoryQuote
-triggerall = var(16) = 1
-trigger1 = var(56) = 1
-value = 44 + random%3
-
-[State -2, Ivette KO]
-type = VictoryQuote
-triggerall = var(16) = 1
-trigger1 = var(56) = 2
-value = 47 + random%3
-
-[State -2, Rudy]
-type = VictoryQuote
-triggerall = var(16) = 1
-trigger1 = Enemy, Name = "Rudy" || Enemy, AuthorName = "jade_midori"
-value = 53 + random%4
+trigger1 = var(56) = 0
+Value = cond(var(20) = 0, 0, 44) + random%8
 
 [State -2, Maavo]
 type = VictoryQuote
-triggerall = var(16) = 1
 trigger1 = Enemy, Name = "Maavo"
-value = 50 + random%3
+value = cond(var(20) = 0, 14, 58) + random%3
+
+[State -2, Rudy]
+type = VictoryQuote
+trigger1 = Enemy, Name = "Rudy" || Enemy, AuthorName = "jade_midori"
+value = cond(var(20) = 0, 17, 61) + random%4
 
 [State -2, Oliver]
 type = VictoryQuote
-triggerall = var(16) = 1
 trigger1 = Enemy, Name = "Oliver Andersen" || Enemy, AuthorName = "Oliver As Latias"
-value = 57
+value = cond(var(20) = 0, 21, 65)
 
 [State -2, Martin]
 type = VictoryQuote
-triggerall = var(16) = 1
 trigger1 = enemy, name = "Martin" && enemy, authorname = "Jeff Swag"
-trigger2 = enemy, name ="NewMartin" && enemy, authorname = "Jeff Swag"
-trigger3 = enemy, name = "Martin Bravo" && enemy, authorname = "Maavo!, AustinAnims" 
-value = 58
+trigger2 = enemy, name = "NewMartin" && enemy, authorname = "Jeff Swag"
+trigger3 = enemy, name = "Martin Bravo" && enemy, authorname = "Maavo!, AustinAnims"
+value = cond(var(20) = 0, 22, 66)
 
 [State -2, Chase]
 type = VictoryQuote
-triggerall = var(16) = 1
-trigger1 = Enemy, Name = "CHASEVV1.1" || Enemy, AuthorName = "Chase2006" 
-value = 59 + random% 5
+trigger1 = Enemy, Name = "CHASEVV1.1" || Enemy, AuthorName = "Chase2006"
+value = cond(var(20) = 0, 23, 67) + random%5
 
 [State -2, Hanzo]
 type = VictoryQuote
-triggerall = var(16) = 1
 trigger1 = Enemy, Name = "Hanzo" || Enemy, AuthorName = "Hanzo Santiago"
-trigger2 = enemy, name ="Hanzo" && enemy, authorname = "Soga Celeste Hanzo Santiago"
-value = 64 + random%5
+trigger2 = Enemy, Name = "Hanzo" && Enemy, AuthorName = "Soga Celeste Hanzo Santiago"
+value = cond(var(20) = 0, 28, 72) + random%3
 
 [State -2, Alex]
 type = VictoryQuote
-triggerall = var(16) = 1
 trigger1 = Enemy, Name = "New_Alex" || Enemy, AuthorName = "ElAleUwU"
-value = 69 + random%3
+value = cond(var(20) = 0, 31, 75) + random%3
 
-;=================================
-;FNF ICON COMPATIBLITY
-;[State 0, Movement Effect]
-;type = Explod
-;triggerall = enemy, name = "y el pico? yiaaaaa" && enemy, authorname = "Mozaico"
-;triggerall = life > (lifemax * 0.30)
-;trigger1 = !NumExplod(41021)
-;trigger1 = enemy, stateno = 8000
-;anim = 49101
-;ID = 41021
-;pos = 920,600+(root,var(17)*250)
-;postype = left
-;bindtime = -1
-;ownpal = 1
-;sprpriority = 102
-;removeongethit = 1
-;removetime = 16
-;scale = .4,.4
-;persistent = 1
-;
-;[State 0, icon DYING]
-;type = Explod
-;triggerall = enemy, name = "y el pico? yiaaaaa" && enemy, authorname = "Mozaico"
-;triggerall = life <= (lifemax * 0.30)
-;trigger1 = !NumExplod(41022)
-;trigger1 = enemy, stateno = 8000
-;anim = 49102
-;ID = 41022
-;postype = left
-;scale = 1,1
-;pos = 920,600+(root,var(17)*250)
-;removetime = -1
-;sprpriority = 101
-;persistent = 1
-;
-;[State 0, icon ALIVE Mod]
-;type = ModifyExplod
-;trigger1 = NumExplod(41021)
-;ID = 41021
-;persistent = 1
-;pos = 1030-((life * 700.7) / lifemax), 650+(root,var(17)*250)
-;postype = left
-;removetime = ifelse(life > (lifemax * 0.30), -1, 0)
-;
-;[State 0, icon DYING Mod]
-;type = ModifyExplod
-;trigger1 = NumExplod(41022)
-;ID = 41022
-;persistent = 1
-;pos = 1030-((life * 700.7) / lifemax), 650+(root,var(17)*250)
-;postype = left
-;removetime = ifelse(life <= (lifemax * 0.30), -1, 0)
+[State -2, Capitan 2]
+type = VictoryQuote
+trigger1 = Enemy, Name = "Capitan_2" || Enemy, AuthorName = "Mario643D"
+value = cond(var(20) = 0, 34, 78) + random%2
+
+[State -2, Nick Hopper]
+type = VictoryQuote
+trigger1 = Enemy, Name = "Nick_Hooper" || Enemy, AuthorName = "DarkDonald1"
+value = cond(var(20) = 0, 36, 80) + random%2
+
+[State -2, Ulikander]
+type = VictoryQuote
+trigger1 = Enemy, AuthorName = "Ulikander4001"
+value = cond(var(20) = 0, 38, 82) + random%2
+
+[State -2, Wach]
+type = VictoryQuote
+trigger1 = Enemy, Name = "Wach" || Enemy, AuthorName = "Wach"
+value = cond(var(20) = 0, 40, 84) + random%2
+
+[State -2, Matias]
+type = VictoryQuote
+trigger1 = Enemy, Name = "Matias Ariel Zurita" || Enemy, AuthorName = "Matydel42008"
+value = cond(var(20) = 0, 42, 86)
+
+[State -2, Matt/Shaggy/Boyfriend]
+type = VictoryQuote
+trigger1 = Enemy, Name = "Wii Sports Matt" || Enemy, AuthorName = "Alexander Cooper 19"
+trigger2 = Enemy, Name = "bf-mugen"
+trigger3 = Enemy, Name = "Shaggy Rogers"
+trigger4 = Enemy, Name = "Norville Rogers"
+trigger5 = Enemy, Name = "BoyfriendFNF"
+trigger6 = Enemy, Name = "Boyfriend"
+value = cond(var(20) = 0, 43, 87)
+
+;-----------------------------------------------------------------------------------------------
+; RemoveExplods
+;-----------------------------------------------------------------------------------------------
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != [19000,199999]
+trigger1 = stateno != [17000,17002]
+trigger1 = stateno != [1210,1212]
+id = 3232
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 19001
+id = 611
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 19001
+id = 54535
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 19001
+id = 54536
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 19001
+id = 55535
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 19001
+id = 55536
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 450
+id = 451
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 3000
+id = 8789
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 3000
+id = 87892
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 19000
+id = 190011
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 17000
+id = 139921
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 620
+id = 622
 
 ;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 [Statedef -3]
 
 ;This is for the special Pal 16 thingy
-[State -3, VarSet]
-type = VarSet
-triggerall = palno = 16
+[State -3, Null]
+type = Null
+trigger1 = palno = 16
 trigger1 = command = "start"
-var(20) = !var(20)
+trigger1 = 0&&(var(20):=!var(20))&&(var(21):=20)
 ignorehitpause = 1
 [State -3, PlaySnd]
 type = PlaySnd
@@ -1038,12 +816,6 @@ trigger1 = command = "start"
 value = S1958,0
 channel = 7
 volumescale = 100
-ignorehitpause = 1
-[State -3, VarSet]
-type = VarSet
-triggerall = palno = 16
-trigger1 = command = "start"
-var(21) = 20
 ignorehitpause = 1
 
 ;This controller plays a sound everytime the player lands from a jump, or
@@ -1067,17 +839,14 @@ type = StopSnd
 trigger1 = StateNo = 0
 trigger2 = StateNo = 5000 || StateNo = 5001 || StateNo = 5010 ||  StateNo = 5011 || StateNo = 5070 || StateNo = 5100 || StateNo = 5050 || StateNo = 1900101
 channel = 6
-
 [State 0, StopSnd]
 type = StopSnd
 trigger1 = roundstate = 2
 channel = 18
-
 [State 0, StopSnd]
 type = StopSnd
 trigger1 = alive = 0
 channel = 1
-
 [State -3, Pain Sound]
 type = playsnd
 triggerall = var(16) = 0 || var(16) = 1 || var(16) = 2 || var(16) = 3
@@ -1086,12 +855,6 @@ trigger1 = alive = 1 && time = 0
 trigger1 = StateNo = 5000 || StateNo = 5010 || StateNo = 5020 || StateNo = 5070
 channel = 1
 value = S5000, 1+random%4
-
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = stateno != 620
-id = 622
-
 [State -3]
 type = playsnd
 triggerall = var(16) = 20
@@ -1099,8 +862,3 @@ triggerall = movetype = H && random < 500
 trigger1 = alive = 1 && time = 0
 trigger1 = StateNo = 5000 || StateNo = 5010 || StateNo = 5020 || StateNo = 5070
 value = S5302, 0+random%4
-
-[State -3, Reset Helper KO Quote Var]
-type = VarSet
-trigger1 = RoundState = 0
-var(56) = 0

@@ -183,15 +183,20 @@ trigger1 = !time
 value = 40
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno != 18 && palno != 19
+triggerall = palno != 18 && palno != 9 && palno != 37
 trigger1 = Animelem = 1
 value = S50,0
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 19
+triggerall = palno = 18 || palno = 9
 trigger1 = Animelem = 1
 value = S1959,2
+[State 0]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = Animelem = 1
+value = S1959, 21
 
 [State 40, 2]
 type = VarSet
@@ -216,7 +221,7 @@ sysvar(1) = 0
 [State 41, 4]
 type = VelSet
 trigger1 = AnimTime = 0
-x = ifelse(sysvar(1)=0, const(velocity.jump.neu.x), ifelse(sysvar(1)=1, const(velocity.jump.fwd.x), const(velocity.jump.back.x)))
+x = cond(sysvar(1)=0, const(velocity.jump.neu.x), cond(sysvar(1)=1, const(velocity.jump.fwd.x), const(velocity.jump.back.x)))
 
 [State 40, 1]
 type = VarSet
@@ -235,7 +240,7 @@ type = VarSet
 triggerall = AnimTime = 0
 trigger1 = Command = "holdup"
 v = 4
-value = ifelse(var(4)>=10,10,0)
+value = cond(var(4)>=10,10,0)
 
 [State 40, 4]
 type = VarSet
@@ -250,7 +255,7 @@ triggerall = sysvar(1) != 0
 trigger1 = AnimTime = 0
 trigger1 = Command != "holdup"
 v = 4
-value = ifelse(var(4)>=10,11,1)
+value = cond(var(4)>=10,11,1)
 
 [State 40, 4]
 type = VelSet
@@ -335,12 +340,12 @@ trigger1 = Animelem = 1
 value = S50,0
 [State 41, PlaySnd]
 type = PlaySnd
-triggerall = palno != 18 && palno != 19
+triggerall = palno != 18 && palno != 9
 trigger1 = Animelem = 1
 value = S50,0
 [State 41, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 19
+triggerall = palno = 18 || palno = 9
 trigger1 = Animelem = 1
 value = S1959,2
 [State 41, Jump Normal]
@@ -359,8 +364,8 @@ sysvar(1) = 1
 [State 41, Velset]
 type = VelSet
 trigger1 = AnimTime = 0
-x = ifelse(sysvar(1)=0, const(velocity.jump.fwd.x), ifelse(sysvar(1)=1, ifelse(prevstateno=101,const(velocity.runjump.fwd.x),const(velocity.jump.fwd.x)), const(velocity.jump.back.x)))
-y = ifelse(p2bodydist y < -30,const(velocity.jump.y),const(velocity.jump.y)/1.5) ;Shorthop code
+x = cond(sysvar(1)=0, const(velocity.jump.fwd.x), cond(sysvar(1)=1, cond(prevstateno=101,const(velocity.runjump.fwd.x),const(velocity.jump.fwd.x)), const(velocity.jump.back.x)))
+y = cond(p2bodydist y < -30,const(velocity.jump.y),const(velocity.jump.y)/1.5) ;Shorthop code
 
 [State 41, ChangeState]
 type = ChangeState
@@ -421,7 +426,7 @@ sysvar(1) = -1
 [State 45, 6]
 type = VelSet
 trigger1 = Time = 2
-x = ifelse(sysvar(1)=0, const(velocity.airjump.neu.x), ifelse(sysvar(1)=1, const(velocity.airjump.fwd.x), const(velocity.airjump.back.x)))
+x = cond(sysvar(1)=0, const(velocity.airjump.neu.x), cond(sysvar(1)=1, const(velocity.airjump.fwd.x), const(velocity.airjump.back.x)))
 y = const(velocity.airjump.y)
 
 [State 45, 7]
@@ -467,7 +472,7 @@ value = 1
 [State 50, 2]
 type = ChangeAnim
 trigger1 = Time = 0
-value = ifelse((vel x)=0||(var(4)=1||var(4)=11), 41, ifelse((vel x)>0, 42, 43))
+value = cond((vel x)=0||(var(4)=1||var(4)=11), 41, cond((vel x)>0, 42, 43))
 
 [State 50, 3]
 type = ChangeAnim
@@ -496,14 +501,18 @@ anim = 47
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno != 18 && palno != 19
+triggerall = palno != 18 && palno != 9 && palno != 37
 trigger1 = time = 0
 value = S50,1
 freqmul = 0.9+(random/5333.3)
-
+[State 0]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = time = 0
+value = S1959, 22
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 19
+triggerall = palno = 18 || palno = 9
 trigger1 = time = 0
 value = S1959,1
 freqmul = 0.9+(random/5333.3)
@@ -574,16 +583,25 @@ persistent = 1
 
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 19
+triggerall = palno != 18 && palno != 9
 trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 19
+triggerall = palno = 18 || palno = 9
 trigger1 = Animelem = 3
 value = S1959,3
-
+[State 0]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = Animelem = 3
+value = S1959, 20
+[State 0]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = Animelem = 3
+value = S1959, 29+floor(3*random/1000.0)
 
 [State 100, 0]
 type = AssertSpecial
@@ -688,6 +706,12 @@ type = PlaySnd
 trigger1 = AnimElem=6
 value = S21,2+random%2
 freqmul = 0.9+(random/7333.3)
+[State THIRTY MILES!]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = Time = 100
+value = S1959,28
+
 [State 100, 0]
 type = AssertSpecial
 trigger1 = 1
@@ -856,13 +880,13 @@ ignorehitpause = 1
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno != 18 && palno != 19
+triggerall = palno != 18 && palno != 9
 trigger1 = animelem = 1
 value = S100,9
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 19
+triggerall = palno = 18 || palno = 9
 trigger1 = Animelem = 1
 value = S1959,4
 
@@ -906,7 +930,7 @@ ignorehitpause = 1
 persistent = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 19
+triggerall = palno = 18 || palno = 9
 trigger1 = Animelem = 2
 value = S1959,4
 [State 0, PlaySnd]
@@ -982,15 +1006,25 @@ persistent = 0
 
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 19
+triggerall = palno != 18 && palno != 9
 trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 19
+triggerall = palno = 18 || palno = 9
 trigger1 = Animelem = 3
 value = S1959,3
+[State 0]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = Animelem = 3
+value = S1959, 20
+[State 0]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = Animelem = 3
+value = S1959, 29+floor(3*random/1000.0)
 
 [State 20, 2]
 type = ChangeState
@@ -1103,6 +1137,12 @@ type = PlaySnd
 trigger1 = AnimElem=6
 value = S21,2+random%2
 freqmul = 0.9+(random/7333.3)
+[State THIRTY MILES!]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = Time = 100
+value = S1959,28
+
 [State 105, 0]
 type = AssertSpecial
 trigger1 = 1
@@ -1155,15 +1195,25 @@ trigger1 = time = 1
 value = ceil(23*fvar(8))
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 19
-trigger1 = time = 1
+triggerall = palno != 18 && palno != 9
+trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 19
-trigger1 = time = 1
+triggerall = palno = 18 || palno = 9
+trigger1 = Animelem = 3
 value = S1959,3
+[State 0]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = Animelem = 3
+value = S1959, 20
+[State 0]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = Animelem = 3
+value = S1959, 29+floor(3*random/1000.0)
 [State 100, Run Effect 2]
 type = Explod
 trigger1 = AnimElem = 1
@@ -1269,15 +1319,25 @@ value = ceil(23*fvar(8))
 
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 19
-trigger1 = time = 1
+triggerall = palno != 18 && palno != 9
+trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 19
-trigger1 = time = 1
+triggerall = palno = 18 || palno = 9
+trigger1 = Animelem = 3
 value = S1959,3
+[State 0]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = Animelem = 3
+value = S1959, 20
+[State 0]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = Animelem = 3
+value = S1959, 29+floor(3*random/1000.0)
 [State 100, Run Effect 2]
 type = Explod
 trigger1 = AnimElem = 1
@@ -1516,7 +1576,7 @@ value = 130 + (statetype = C) + (statetype = A)*2
 type = ChangeState
 triggerall = ailevel
 trigger1 = AnimTime = 0
-value = ifelse((enemy,statetype=C),131,130)
+value = cond((enemy,statetype=C),131,130)
 [State 120, Stop Guarding]
 type = ChangeState
 triggerall = !ailevel
@@ -1809,7 +1869,7 @@ ctrl = 1
 type = ChangeState
 trigger1 = ailevel
 trigger1 = HitOver
-value = ifelse((enemy,statetype=C),131,130)
+value = cond((enemy,statetype=C),131,130)
 ;---------------------------------------------------------------------------
 ; CGUARDHIT (shaking)
 [Statedef 152]
@@ -1897,7 +1957,7 @@ ctrl = 1
 type = ChangeState
 trigger1 = ailevel
 trigger1 = HitOver
-value = ifelse((enemy,statetype=C),131,130)
+value = cond((enemy,statetype=C),131,130)
 ;---------------------------------------------------------------------------
 ; AGUARDHIT (shaking)
 [Statedef 154]
@@ -2056,7 +2116,7 @@ velset = 0,0
 type = ChangeAnim
 trigger1 = Time = 0
 trigger1 = GetHitVar(animtype) != [3,5]
-value = ifelse((GetHitVar(groundtype) = 1),5000,5010) + GetHitVar(animtype)
+value = cond((GetHitVar(groundtype) = 1),5000,5010) + GetHitVar(animtype)
 
 [State 0, StopSnd]
 type = StopSnd
@@ -2293,7 +2353,7 @@ velset = 0,0
 type = ChangeAnim
 trigger1 = Time = 0
 trigger1 = GetHitVar(animtype) != [3,5]
-value = ifelse((GetHitVar(airtype) = 1),5000,5010) + GetHitVar(animtype)
+value = cond((GetHitVar(airtype) = 1),5000,5010) + GetHitVar(animtype)
 
 [State 5020, 2] ;Anim for HIT_BACK
 type = ChangeAnim
@@ -2495,7 +2555,7 @@ value = 5050
 [State 5050, 2] ;Coming down anim
 type = ChangeAnim
 trigger1 = anim = [5050,5059]
-trigger1 = Vel Y >= ifelse(anim = 5050, 1, -2)
+trigger1 = Vel Y >= cond(anim = 5050, 1, -2)
 trigger1 = SelfAnimExist(anim+10)
 value = anim+10
 persistent = 0
@@ -2531,7 +2591,7 @@ value = 5210 ;HITFALL_AIRRECOVER
 [State 5050, 6]
 type = ChangeState
 trigger1 = Vel Y > 0
-trigger1 = Pos Y >= ifelse((anim = [5051,5059]) || (anim = [5061,5069]), 0, 25)
+trigger1 = Pos Y >= cond((anim = [5051,5059]) || (anim = [5061,5069]), 0, 25)
 value = 5100 ;HIT_BOUNCE
 
 ;---------------------------------------------------------------------------
@@ -2594,7 +2654,7 @@ velset = 0,0
 [State 5080, 1] ;Set default anim
 type = VarSet
 trigger1 = time = 0
-sysvar(2) = ifelse (GetHitVar(yvel) = 0, 5080, 5090)
+sysvar(2) = cond (GetHitVar(yvel) = 0, 5080, 5090)
 
 [State 5080, 2]
 type = VarAdd
@@ -3284,16 +3344,6 @@ ctrl = 0
 anim = 5500
 velset = 0,0
 
-[State 5500, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S5500, 0
-
-[State 5500, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S5500, 0
-
 [State 5500, 1]
 type = ChangeAnim
 trigger1 = time = 0
@@ -3342,6 +3392,7 @@ var(40) = 0
 ignorehitpause = 1
 [State 0, Astral Bullshit]
 type = VarSet
+triggerall = numenemy 
 trigger1 = ((root,stateno = 180140 || root,stateno = 181) || root,stateno = 140002 || (root,stateno = 141002 || roundstate>2 && root, prevstateno = 141002) || root,stateno = 1410025 || root,stateno = 1213 || root,numhelper(911)) && root,movetype != H
 trigger2 = enemy, name = "Oliver Andersen"
 trigger2 = enemy, stateno = [4301,4399]
@@ -3446,7 +3497,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 1
 anim = 15550
 ID = 15500
-pos = var(13)+ifelse(fvar(10),25,0),var(14)
+pos = var(13)+cond(fvar(10),25,0),var(14)
 postype = back
 facing = 1
 vfacing = 1
@@ -3468,9 +3519,9 @@ ignorehitpause = 1
 type = Explod
 triggerall = var(40) = 0
 trigger1 = root,teamside = 1
-anim = 15500+ifelse((var(5)>0&&var(5)<120),floor(fvar(5)),ifelse(var(5)>0,22,0))
+anim = 15500+cond((var(5)>0&&var(5)<120),floor(fvar(5)),cond(var(5)>0,22,0))
 ID = 15500
-pos = var(13)+ifelse(fvar(10),25,0),var(14)
+pos = var(13)+cond(fvar(10),25,0),var(14)
 postype = back
 facing = 1
 vfacing = 1
@@ -3494,7 +3545,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 1
 anim = 15650
 ID = 15600
-pos = var(13)+ifelse(fvar(10),25,0),var(14)+26
+pos = var(13)+cond(fvar(10),25,0),var(14)+26
 postype = back
 facing = 1
 vfacing = 1
@@ -3516,9 +3567,9 @@ ignorehitpause = 1
 type = Explod
 triggerall = var(40) = 0
 trigger1 = root,teamside = 1
-anim = 15600+ifelse((var(6)>0&&var(6)<120),floor(fvar(6)),ifelse(var(6)>0,22,0))
+anim = 15600+cond((var(6)>0&&var(6)<120),floor(fvar(6)),cond(var(6)>0,22,0))
 ID = 15600
-pos = var(13)+ifelse(fvar(10),25,0),var(14)+26
+pos = var(13)+cond(fvar(10),25,0),var(14)+26
 postype = back
 facing = 1
 vfacing = 1
@@ -3542,7 +3593,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 2
 anim = 15550
 ID = 15500
-pos = 320-(var(13)+ifelse(fvar(10),25,0)),var(14)
+pos = 320-(var(13)+cond(fvar(10),25,0)),var(14)
 postype = back
 facing = -1
 vfacing = 1
@@ -3564,9 +3615,9 @@ ignorehitpause = 1
 type = Explod
 triggerall = var(40) = 0
 trigger1 = root,teamside = 2
-anim = 15500+ifelse((var(5)>0&&var(5)<120),floor(fvar(5)),ifelse(var(5)>0,22,0))
+anim = 15500+cond((var(5)>0&&var(5)<120),floor(fvar(5)),cond(var(5)>0,22,0))
 ID = 15500
-pos = 320-(var(13)+ifelse(fvar(10),25,0)),var(14)
+pos = 320-(var(13)+cond(fvar(10),25,0)),var(14)
 postype = back
 facing = -1
 vfacing = 1
@@ -3590,7 +3641,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 2
 anim = 15650
 ID = 15600
-pos = 320-(var(13)+ifelse(fvar(10),25,0)),var(14)+26
+pos = 320-(var(13)+cond(fvar(10),25,0)),var(14)+26
 postype = back
 facing = -1
 vfacing = 1
@@ -3612,9 +3663,9 @@ ignorehitpause = 1
 type = Explod
 triggerall = var(40) = 0
 trigger1 = root,teamside = 2
-anim = 15600+ifelse((var(6)>0&&var(6)<120),floor(fvar(6)),ifelse(var(6)>0,22,0))
+anim = 15600+cond((var(6)>0&&var(6)<120),floor(fvar(6)),cond(var(6)>0,22,0))
 ID = 15600
-pos = 320-(var(13)+ifelse(fvar(10),25,0)),var(14)+26
+pos = 320-(var(13)+cond(fvar(10),25,0)),var(14)+26
 postype = back
 facing = -1
 vfacing = 1

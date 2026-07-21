@@ -50,7 +50,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, NA                     ;Attribute: Standing, Normal Attack
-damage = ceil((25*fvar(11))*ifelse(var(42),1.1,1)), 0                 ;Damage that move inflicts, guard damage
+damage = ceil((25*fvar(11))*cond(var(42),1.1,1)), 0                 ;Damage that move inflicts, guard damage
 getpower = ceil((40*fvar(8))*(1+var(42))),ceil(40*.5)
 givepower = ceil(25*.5),ceil(25*.15)
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -187,7 +187,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, NA
-damage = ceil((42*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((42*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((65*fvar(8))*(1+var(42))),ceil(65*.5)
 givepower = ceil(42*.5),ceil(42*.15)
 animtype = Medium
@@ -350,7 +350,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, NA
-damage = ceil((55*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((55*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((90*fvar(8))*(1+var(42))),ceil(90*.5)
 givepower = ceil(55*.5),ceil(55*.15)
 animtype = Hard
@@ -513,7 +513,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, NA                     ;Attribute: Standing, Normal Attack
-damage = ceil((28*fvar(11))*ifelse(var(42),1.1,1)), 0                   ;Damage that move inflicts, guard damage
+damage = ceil((28*fvar(11))*cond(var(42),1.1,1)), 0                   ;Damage that move inflicts, guard damage
 getpower = ceil((40*fvar(8))*(1+var(42))),ceil(40*.5)
 givepower = ceil(28*.5),ceil(28*.15)
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -653,7 +653,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, NA
-damage = ceil((36*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((36*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((65*fvar(8))*(1+var(42))),ceil(65*.5)
 givepower = ceil(36*.5),ceil(36*.15)
 animtype = Medium
@@ -762,7 +762,7 @@ trigger1 = AnimElem = 3
 value =S200,3+random%8
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = palno = 12
 trigger1 = movehit
 value = S1959,6
 persistent = 0
@@ -772,7 +772,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S,NA
-damage = ceil((64*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((64*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((90*fvar(8))*(1+var(42))),ceil(90*.5)
 givepower = ceil(64*.5),ceil(64*.15)
 animtype = hard
@@ -806,7 +806,7 @@ value = S2790,1+random%5
 channel = 0
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = palno = 12
 trigger1 = movehit
 value = S1959,6
 persistent = 0
@@ -875,7 +875,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = C,NA
-damage = ceil((18*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((18*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((40*fvar(8))*(1+var(42))),ceil(40*.5)
 givepower = ceil(18*.5),ceil(18*.15)
 animtype = Light
@@ -1008,7 +1008,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = C,NA
-damage = ceil((32*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((32*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((65*fvar(8))*(1+var(42))),ceil(65*.5)
 givepower = ceil(32*.5),ceil(32*.15)
 animtype = Medium
@@ -1125,7 +1125,7 @@ trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, NA
 id = 420
-damage = ceil((46*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((46*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((90*fvar(8))*(1+var(42))),ceil(90*.5)
 givepower = ceil(46*.5),ceil(46*.15)
 animtype = Hard
@@ -1310,7 +1310,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = C, NA                     ;Attribute: Standing, Normal Attack
-damage = ceil((28*fvar(11))*ifelse(var(42),1.1,1)), 0                   ;Damage that move inflicts, guard damage
+damage = ceil((28*fvar(11))*cond(var(42),1.1,1)), 0                   ;Damage that move inflicts, guard damage
 getpower = ceil((40*fvar(8))*(1+var(42))),ceil(40*.5)
 givepower = ceil(28*.5),ceil(28*.15)
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -1426,7 +1426,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, NA
-damage = ceil((36*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((36*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((65*fvar(8))*(1+var(42))),ceil(65*.5)
 givepower = ceil(36*.5),ceil(36*.15)
 animtype = Medium
@@ -1619,7 +1619,7 @@ triggerall = !movecontact
 triggerall = !movereversed
 trigger1 = animelemtime(9) < 0
 attr = C, NA                     ;Attribute: Standing, Normal Attack
-damage = ceil((20*fvar(11))*ifelse(var(42),1.1,1)), 0                   ;Damage that move inflicts, guard damage
+damage = ceil((20*fvar(11))*cond(var(42),1.1,1)), 0                   ;Damage that move inflicts, guard damage
 getpower = ceil((40*fvar(8))*(1+var(42))),ceil(40*.5)
 givepower = ceil(20*.5),ceil(20*.15)
 guardflag = L
@@ -1648,7 +1648,7 @@ triggerall = !movereversed
 trigger1 = animelemtime(9) >= 0
 attr = C, NA                     ;Attribute: Standing, Normal Attack
 id = 450
-damage = ceil((36*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((36*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((65*fvar(8))*(1+var(42))),ceil(65*.5)
 givepower = ceil(36*.5),ceil(36*.15)
 guardflag = L
@@ -1878,7 +1878,7 @@ trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, SA
 id = 500
-damage = ceil((50*fvar(11))*ifelse(var(42),1.1,1)),ceil(50*.1)
+damage = ceil((50*fvar(11))*cond(var(42),1.1,1)),ceil(50*.1)
 getpower = ceil((120*fvar(8))*(1+var(42))),ceil(120*.5)
 givepower = ceil(50*.5),ceil(50*.15)
 animtype = Diagup
@@ -2127,7 +2127,7 @@ trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, SA
 id = 500
-damage = ceil((56*fvar(11))*ifelse(var(42),1.1,1)),ceil(56*.1)
+damage = ceil((56*fvar(11))*cond(var(42),1.1,1)),ceil(56*.1)
 getpower = ceil((120*fvar(8))*(1+var(42))),ceil(120*.5)
 givepower = ceil(56*.5),ceil(56*.15)
 animtype = Diagup
@@ -2394,7 +2394,7 @@ trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, SA
 id = 500
-damage = ceil((72*fvar(11))*ifelse(var(42),1.1,1)),ceil(72*.1)
+damage = ceil((72*fvar(11))*cond(var(42),1.1,1)),ceil(72*.1)
 getpower = 0,0
 givepower = ceil(72*.5),ceil(72*.15)
 animtype = Back
@@ -2427,7 +2427,7 @@ triggerall = movehit = 1
 trigger1 = Target(500),ishelper=0
 trigger1 = Target(500),stateno != [525,528]
 trigger1 = Target(500),stateno != [925,928]
-value = ifelse(numexplod(520525),925,525)
+value = cond(numexplod(520525),925,525)
 ID = 500
 ignorehitpause = 1
 persistent = 0
@@ -2789,7 +2789,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = A, NA
-damage = ceil((24*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((24*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((40*fvar(8))*(1+var(42))),ceil(40*.5)
 givepower = ceil(24*.5),ceil(24*.15)
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -2909,7 +2909,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = A, NA
-damage = ceil((32*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((32*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((65*fvar(8))*(1+var(42))),ceil(65*.5)
 givepower = ceil(32*.5),ceil(32*.15)
 guardflag = HA
@@ -3073,7 +3073,7 @@ value = S200,2
 type = HitDef
 trigger1 = Animelem = 4 | Animelem = 6
 attr = A, NA
-damage = ceil((25*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((25*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((30*fvar(8))*(1+var(42))),ceil(30*.5)
 givepower = ceil(25*.5),ceil(25*.15)
 animtype = Hard
@@ -3094,7 +3094,12 @@ airguard.hittime = 12
 ground.velocity = 0
 air.type = High
 air.velocity = -1,1.5
-
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = movehit && animelemtime(7) >= 0
+value = S7676,0
+persistent = 0
+ignorehitpause = 1
 [State 901, HitDef]
 type = HitDef
 trigger1 = Animelem = 8
@@ -3103,12 +3108,12 @@ id = 620
 guardflag = HA
 priority = 4, Hit
 animtype = Hard   ;light,medium,hard,back,up,diagup
-damage = ceil((25*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((25*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((30*fvar(8))*(1+var(42))),ceil(30*.5)
 givepower = ceil(25*.5),ceil(25*.15)
 pausetime = 18,18
 guard.pausetime = 8,8
-hitsound = s240,22
+hitsound = s240,15
 guardsound = 6,0
 sparkno = S3000
 sparkxy = 0,0
@@ -3138,7 +3143,7 @@ triggerall = movehit = 1
 trigger1 = Target(620),ishelper=0
 trigger1 = Target(620),stateno != [625,628]
 trigger1 = Target(620),stateno != [655,658]
-value = ifelse(numexplod(620625),655,625)
+value = cond(numexplod(620625),655,625)
 ID = 620
 ignorehitpause = 1
 persistent = 0
@@ -3380,7 +3385,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = A, NA
-damage = ceil((28*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((28*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((40*fvar(8))*(1+var(42))),ceil(40*.5)
 givepower = ceil(28*.5),ceil(28*.15)
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -3486,7 +3491,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = A, NA
-damage = ceil((32*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((32*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((65*fvar(8))*(1+var(42))),ceil(65*.5)
 givepower = ceil(32*.5),ceil(32*.15)
 guardflag = HA
@@ -3581,12 +3586,6 @@ value = S240,5
 
 [State 0, PlaySnd]
 type = PlaySnd
-trigger1 = animelem != 4
-trigger1 = movehit = 1
-value = S7676,0
-
-[State 0, PlaySnd]
-type = PlaySnd
 triggerall = var(16) = 0 || var(16) = 1 || var(16) = 2 || var(16) = 3
 trigger1 = AnimElem = 4
 value = S200,3+random%8
@@ -3600,12 +3599,12 @@ id = 620
 priority = 4, Hit
 guardflag = HA
 animtype = Hard   ;light,medium,hard,back,up,diagup
-damage = ceil((72*fvar(11))*ifelse(var(42),1.1,1)), 0
+damage = ceil((72*fvar(11))*cond(var(42),1.1,1)), 0
 getpower = ceil((90*fvar(8))*(1+var(42))),ceil(90*.5)
 givepower = ceil(72*.5),ceil(72*.15)
 pausetime = 18,18
 guard.pausetime = 10,10
-hitsound = s240,19
+hitsound = s240,8
 guardsound = 6,0
 sparkno = S32141412
 sparkxy = 0,0
@@ -3627,7 +3626,12 @@ envshake.time = 5
 envshake.ampl = -4
 envshake.freq = 100
 p2facing = 1
-
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = movehit
+value = S7676,0
+persistent = 0
+ignorehitpause = 1
 [State 0, TargetState]
 type = TargetState
 triggerall = NumTarget(620) >= 1
@@ -3635,7 +3639,7 @@ triggerall = movehit = 1
 trigger1 = Target(620),ishelper=0
 trigger1 = Target(620),stateno != [625,628]
 trigger1 = Target(620),stateno != [655,658]
-value = ifelse(numexplod(650625),655,625)
+value = cond(numexplod(650625),655,625)
 ID = 620
 ignorehitpause = 1
 persistent = 0
@@ -3730,9 +3734,9 @@ var(7) = 0
 type = HitDef
 trigger1 = Time = 0
 trigger1= var(38)=0; opponent is not in an unthrowable situation
-attr = S, NT
 id = 800
-hitflag = M;AF
+attr = S, NT          ;Attributes: Standing, Normal Throw
+hitflag = M-          ;Affect only ground people who are not being hit
 priority = 1, Miss
 sparkno = -1
 p1sprpriority = 1
@@ -3823,7 +3827,7 @@ trigger1 = var(3) != 1
 [State 0, ChangeAnim]
 type = ChangeAnim
 trigger1 = anim = 809 && animtime = 0
-value = 810;ifelse(var(3),810,830)
+value = 810;cond(var(3),810,830)
 [State 0, TargetState]
 type = TargetState
 triggerall = NumTarget(800)

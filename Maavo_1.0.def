@@ -1,7 +1,7 @@
 [Info]
 name = "Maavo"
 displayname = "Maavo"
-versiondate = 02/04/2026
+versiondate = 21/07/2026
 mugenversion = 1.0
 author = "Mozaico"
 
@@ -28,7 +28,7 @@ pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
 sprite = Maavo_Sprites.sff
 sound = Maavo_SFX.snd
 anim = Maavo_Animaciones.air
-cmd = Maavo_Comandos.cmd
+cmd = Maavo_Comandos.cma
 cns = Codigos/Maavo_Codigos.cns
 st = Codigos/Maavo_-2.cns
 st0 = Codigos/Maavo_BasicStuff.cns
@@ -42,21 +42,50 @@ stcommon = Codigos/Maavo_Codigos_Comunes.cns
 st7 = Codigos/Maavo_GFX.cns
 st8 = Codigos/Maavo_10_KOScreen.cns
 st9 = Config.txt
-;movelist = moveset.dat     ;Ikemen feature: Movelist
 
 [Palette Keymap]
-x = 1 ;Default
-y = 2 ;Undershirt
-z = 3 ;Martín MUGEN
-a = 4 ;Mozaico The Robot
-b = 5 ;Viernes Noche Webiando': Trifunka
-c = 6 ;Persona 5
-x2 = 7 ;Scott Pilgrim
-y2 = 8 ;No Straight Roads (2021 Palette Contest Winner: Rossiter)
-z2 = 9 ;Undertale (2021 Palette Contest Winner: Oraflame)
-a2 = 10 ;Jet Set Radio (2021 Palette Contest Winner: Lee425MGN)
-b2 = 11 ;Friday Night Funkin' (2021 Palette Contest Winner: Bacon1233TheArmy)
-c2 = 12 ;Abstracto
+x = 1 ;1 - Default
+y = 2 ;2 - Undershirt
+z = 3 ;3 - Marti­n MUGEN
+a = 4 ;4 - Mozaico The Robot
+b = 5 ;5 - Viernes Noche Webiando': Trifunka
+c = 6 ;6 - Persona 5
+x2 = 7 ;7 - Scott Pilgrim
+y2 = 8 ;8 - Old Anime
+z2 = 9 ;9 - Team Dark
+a2 = 10 ;10 - Jet Set Radio (2021 Palette Contest Winner: Lee425MGN)
+b2 = 11 ;11 - Friday Night Funkin' (2021 Palette Contest Winner: Bacon1233TheArmy)
+c2 = 12 ;12 - Scooby-Doo
+
+;THERE ARE WAY MORE PALETTES BUT YOU NEED TO PLAY IKEMEN GO NIGHTLY TO ACCESS THEM
+;13 - Skullgirls
+;14 - Pico School
+;15 - M.U.G.E.N. All-Stars
+;16 - FNAFHS
+;17 - FNAF 2
+;18 - Team Sonic
+;19 - Undertale (2021 Palette Contest Winner: Oraflame)
+;20 - No Straight Roads (2021 Palette Contest Winner: Rossiter)
+;21 - Random colors
+;22 - Overwatch
+;23 - TF2
+;24 - Derker Bluer
+;25 - The Simpsons
+;26 - Danganronpa 2
+;27 - Pastel colors
+;28 - Dark Purple colors
+;29 - Main solid colors
+;30 - Deltarune (Chapter 5)
+;31 - Ace Attorney
+;32 - Michael Jackson
+;33 - Persona 3
+;34 - Persona 4
+;35 - Velvet Room
+;36 - Splatoon
+;37 - Oliver as Latias
+;38 - SAMSONITE
+;39 - Rudy MTortilla
+;40 - 2021 Demo
 
 [Arcade]
 intro.storyboard=

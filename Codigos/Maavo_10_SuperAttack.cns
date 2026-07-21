@@ -37,31 +37,59 @@ ignorehitpause = 1
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = var(16) = 0 || var(16) = 1
+triggerall = palno != 30
 trigger1 = Animelem = 4
-value = S1342,0 + (var(16) * 10000)
+value = S1342,0
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = var(16) = 1 || var(16) = 0
+triggerall = palno != 30
 trigger1 = Animelem = 4
-value = S1342,0 + (var(16) * 10000)
+value = S1342,0
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = var(16) = 2
+triggerall = palno = 30
 trigger1 = Animelem = 4
-value = S1342,20000
+value = S1959,19
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 30
+trigger1 = Animelem = 4
+value = S1959,19
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = var(16) = 2
-trigger1 = Animelem = 4
-value = S1342,20000
+triggerall = palno = 18 || palno = 9
+trigger1 = Animelem = 1
+value = S1959,5
+
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 8
+trigger1 = time = 0
+value = S1959,16
 
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(16) = 20
+triggerall = palno != 30
 trigger1 = Animelem = 4
 value = S3440,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 9
+trigger1 = Animelem = 1
+value = S1959,5
+
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 8
+trigger1 = time = 0
+value = S1959,16
 
 [State 19001, 1]
 type = Explod
@@ -94,6 +122,7 @@ sprpriority = -8
 removeongethit = 1
 removetime=-1
 scale = .5,2
+ownpal = 1
 supermovetime=-1
 bindtime=-1
 supermovetime = 9999
@@ -255,8 +284,47 @@ ignorehitpause = 1
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = var(16) = 0 || var(16) = 1
+triggerall = palno != 30
 trigger1 = Animelem = 4
-value = S1342,0 + (var(16) * 10000)
+value = S1342,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(16) = 1 || var(16) = 0
+triggerall = palno != 30
+trigger1 = Animelem = 4
+value = S1342,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 30
+trigger1 = Animelem = 4
+value = S1959,19
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 30
+trigger1 = Animelem = 4
+value = S1959,19
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(16) = 20
+triggerall = palno != 30
+trigger1 = Animelem = 4
+value = S3440,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 18 || palno = 9
+trigger1 = Animelem = 1
+value = S1959,5
+
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 8
+trigger1 = time = 0
+value = S1959,16
 
 [State 19001, 1]
 type = Explod
@@ -465,6 +533,111 @@ type = RemoveExplod
 trigger1 = time = 10
 id = 3232
 
+[State 0, Bottom Cinematic Bar]
+type = Explod
+trigger1 = Time = 0
+id = 54535
+anim = 54535
+pos = 0,158+ (var(17) * 50)
+postype = back
+sprpriority = -5
+removeongethit = 1
+removetime = 732
+scale = 15+(root,var(17) * .1),.25+(root,var(17) * .1)
+bindtime = -1
+ownpal = 1
+ontop = 1
+removeongethit = 1
+supermovetime = 9999
+pausemovetime = 99999
+[State 0, Top Cinematic Bar]
+type = Explod
+trigger1 = Time = 0
+id = 54536
+anim = 54536
+pos = 0,22
+postype = back
+sprpriority = -5
+removeongethit = 1
+removetime = 732
+scale = 15,.25
+bindtime = -1
+ownpal = 1
+ontop = 1
+removeongethit = 1
+supermovetime = 9999
+pausemovetime = 99999
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = animelem = 29
+id = 54535
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = animelem = 29
+id = 54536
+[State 0, Bottom Cinematic Bar]
+type = Explod
+trigger1 = animelem = 29
+id = 55535
+anim = 55535
+pos = 0,158+ (var(17) * 50)
+postype = back
+sprpriority = -5
+removeongethit = 1
+removetime = 17
+scale = 15,.25
+bindtime = -1
+ownpal = 1
+ontop = 1
+removeongethit = 1
+supermovetime = 9999
+pausemovetime = 99999
+[State 0, Top Cinematic Bar]
+type = Explod
+trigger1 = animelem = 29
+id = 55536
+anim = 55536
+pos = 0,22
+postype = back
+sprpriority = -5
+removeongethit = 1
+removetime = 17
+scale = 15,.25
+bindtime = -1
+ownpal = 1
+ontop = 1
+removeongethit = 1
+supermovetime = 9999
+pausemovetime = 99999
+
+[State 19001, RemapPal In]
+type = RemapPal
+trigger1 = time = 0
+source = 1,1
+dest = 3,0
+
+[State 19001, RemapPal Out]
+type = RemapPal
+trigger1 = AnimElem = 29
+source = 1,1
+dest = 1,palno
+ignorehitpause = 1
+
+[State 0, BGPalFX Black In]
+type = BGPalFX
+trigger1 = time = 0
+time = 181
+mul = 0,0,0
+add = 0,0,0
+
+[State 0, BGPalFX Restore]
+type = BGPalFX
+trigger1 = AnimElem = 29
+time = 1
+mul = 256,256,256
+add = 0,0,0
+ignorehitpause = 1
+
 [State 0, PosSet]
 type = PosSet
 triggerall = NumTarget(19000)
@@ -499,17 +672,18 @@ type = Explod
 trigger1 = Time = 0
 id = 611
 anim = 611
-pos = 0+ (var(17) * -110),0+ (var(17) * -25)
+pos = -100+ (var(17) * -180),0+ (var(17) * -25)
 postype = back
 sprpriority = -6
 removeongethit = 1
 removetime=99999
-scale = .5+(var(17) * .3),.5+ (var(17) * .4)
+scale = .4+(var(17) * .3),.5+ (var(17) * .3)
 bindtime=-1
 supermovetime = 99999
 pausemovetime = 99999
 removeongethit = 1
 ignorehitpause = 1
+ownpal = 1
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1 = Animelem = 29
@@ -520,17 +694,18 @@ type = Explod
 trigger1 = Animelem = 29
 id = 6111
 anim = 6111
-pos = 0+ (var(17) * -110),0+ (var(17) * -25)
+pos = -100+ (var(17) * -180),0+ (var(17) * -25)
 postype = back
 sprpriority = -6
 removeongethit = 1
 removetime=20
-scale = .5+(var(17) * .3),.5+ (var(17) * .4)
+scale = .4+(var(17) * .3),.5+ (var(17) * .3)
 bindtime=-1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
 ignorehitpause = 1
+ownpal = 1
 
 [State 19001, Helper]
 type = Helper
@@ -610,6 +785,9 @@ forcestand = 1
 snap = 55,0
 kill = 0
 guard.kill = 0
+palfx.time = 50
+palfx.mul = 0,0,0
+palfx.color = 0
 [State 210, 1]
 type = HitDef
 trigger1 = AnimElem =  6 || AnimElem = 12
@@ -644,6 +822,9 @@ forcestand = 1
 snap = 55,0
 kill = 0
 guard.kill = 0
+palfx.time = 50
+palfx.mul = 0,0,0
+palfx.color = 0
 [State 210, 1]
 type = HitDef
 trigger1 = AnimElem = 29
@@ -672,6 +853,9 @@ yaccel = .5
 p2facing = 1
 fall = 1
 fall.recover = 0
+palfx.time = 1
+palfx.mul = 0,0,0
+palfx.color = 0
 [State 0, TargetState]
 type = TargetState
 triggerall = NumTarget(19000) = 1
@@ -708,6 +892,31 @@ ownpal = 1
 removeongethit = 0
 ignorehitpause = 1
 persistent = 0
+
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 12
+trigger1 = AnimElem = 29
+value = S1959,7
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 8
+trigger1 = AnimElem = 29
+value = S1959,12
+persistent = 0
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 8
+trigger1 = AnimElem = 29
+value = S1959,12
+persistent = 0
+ignorehitpause = 1
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 12
+trigger1 = AnimElem = 29
+value = S1959,7
 
 [State 19001, PlaySnd]
 type = PlaySnd
@@ -1047,13 +1256,69 @@ size.yscale = .73
 
 [State 0, PlaySnd]
 type = PlaySnd
-trigger1 = animelem = 5
-value = S24500,0+ (var(16) * 10000)
+triggerall = palno = 18 || palno = 9
+trigger1 = Animelem = 1
+value = S1959,5
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = palno = 12
+trigger1 = Animelem = 7
+value = S1959,8
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(16) != 20
+triggerall = palno != 30
+trigger1 = animelem = 5
+value = S24500,0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(16) != 20
+triggerall = palno != 30
 trigger1 = animelem = 10
-value = S24500, 1+ (var(16) * 10000)
+value = S24500, 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(16) != 20
+triggerall = palno != 30
+trigger1 = animelem = 5
+value = S24500,0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = var(16) != 20
+triggerall = palno != 30
+trigger1 = animelem = 10
+value = S24500, 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 30
+trigger1 = animelem = 3
+value = S1959, 18
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 30
+trigger1 = animelem = 3
+value = S1959, 18
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 30
+trigger1 = animelem = 3
+value = S1959, 18
+
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 8
+trigger1 = time = 0
+value = S1959,15
+channel = 8
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 8
+trigger1 = animelem = 10
+value = S1959,14
+channel = 8
 
 [State 0, PlaySnd]
 type = PlaySnd
@@ -1091,12 +1356,12 @@ type = Explod
 trigger1 = animelem = 3
 id = 713
 anim = 712
-pos = 0,0
+pos = 0,-16
 postype = back
 sprpriority = -6
 removeongethit = 1
 removetime=110
-scale = .9,.5+ (var(17) * .2)
+scale = .9,.55+ (var(17) * .2)
 supermovetime=110
 bindtime=-1
 pausemovetime = 99999
@@ -1281,12 +1546,12 @@ type = Explod
 trigger1 = animelem = 4
 id = 713
 anim = 712
-pos = 0,0
+pos = 0,-16
 postype = back
 sprpriority = -6
 removeongethit = 1
 removetime=80
-scale = .9,.5+ (var(17) * .2)
+scale = .9,.55+ (var(17) * .2)
 supermovetime=80
 bindtime=-1
 pausemovetime = 99999
@@ -1990,15 +2255,21 @@ poweradd = 0
 sprpriority = 2
 ctrl = 0
 
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time = 0
+x = -10
+y = 0
+
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 19
+triggerall = palno = 18 || palno = 9
 trigger1 = Animelem = 1
 value = S1959,5
 
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 20
+triggerall = palno = 8
 trigger1 = time = 0
 value = S1959,16
 
@@ -2053,12 +2324,12 @@ type = Explod
 trigger1 = animelem = 2
 id = 713
 anim = 712
-pos = 0,0
+pos = 0,-16
 postype = back
 sprpriority = -6
 removeongethit = 1
 removetime=80
-scale = .9,.5+ (var(17) * .2)
+scale = .9,.55+ (var(17) * .2)
 supermovetime=110
 bindtime=-1
 pausemovetime = 99999

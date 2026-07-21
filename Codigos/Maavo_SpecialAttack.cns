@@ -54,7 +54,7 @@ trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, SA
 id = 900
-damage = ceil((60*fvar(11))*ifelse(var(42),1.1,1)),ceil(60*.1)
+damage = ceil((60*fvar(11))*cond(var(42),1.1,1)),ceil(60*.1)
 getpower = ceil((120*fvar(8))*(1+var(42))),ceil(120*.5)
 givepower = ceil(60*.5),ceil(60*.15)
 animtype = Heavy
@@ -94,7 +94,7 @@ triggerall = animelemtime(4) >= 0
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, SA
-damage = ceil((50*fvar(11))*ifelse(var(42),1.1,1)),ceil(50*.1)
+damage = ceil((50*fvar(11))*cond(var(42),1.1,1)),ceil(50*.1)
 getpower = ceil((120*fvar(8))*(1+var(42))),ceil(120*.5)
 givepower = ceil(50*.5),ceil(50*.15)
 animtype = Medium
@@ -476,7 +476,7 @@ trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, SA
 id = 900
-damage = ceil((60*fvar(11))*ifelse(var(42),1.1,1)),ceil(60*.1)
+damage = ceil((60*fvar(11))*cond(var(42),1.1,1)),ceil(60*.1)
 getpower = ceil((120*fvar(8))*(1+var(42))),ceil(120*.5)
 givepower = ceil(60*.5),ceil(60*.15)
 animtype = Heavy
@@ -516,7 +516,7 @@ triggerall = animelemtime(4) >= 0
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, SA
-damage = ceil((56*fvar(11))*ifelse(var(42),1.1,1)),ceil(56*.1)
+damage = ceil((56*fvar(11))*cond(var(42),1.1,1)),ceil(56*.1)
 getpower = ceil((120*fvar(8))*(1+var(42))),ceil(120*.5)
 givepower = ceil(56*.5),ceil(56*.15)
 animtype = Medium
@@ -830,7 +830,7 @@ trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, SA
 id = 900
-damage = ceil((70*fvar(11))*ifelse(var(42),1.1,1)),ceil(70*.1)
+damage = ceil((70*fvar(11))*cond(var(42),1.1,1)),ceil(70*.1)
 getpower = 0,0
 givepower = ceil(70*.5),ceil(70*.15)
 animtype = Heavy
@@ -872,7 +872,7 @@ trigger1 = !movecontact
 trigger1 = !movereversed
 id = 920
 attr = S, SA
-damage = ceil((72*fvar(11))*ifelse(var(42),1.1,1)),ceil(72*.1)
+damage = ceil((72*fvar(11))*cond(var(42),1.1,1)),ceil(72*.1)
 getpower = 0,0
 givepower = ceil(72*.5),ceil(72*.15)
 animtype = Medium
@@ -1135,7 +1135,11 @@ size.yscale = .48
 type = PlaySnd
 trigger1 = AnimElem = 3
 value = S2000,1
-
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 6 || palno = 33 || palno = 34 || palno = 35
+trigger1 = AnimElem = 3
+value = S1958,0
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = AnimElem = 9
@@ -1231,8 +1235,8 @@ type = VarSet
 triggerall = AILevel > 2 && RoundState = 2 && alive && numenemy && power >= 1000
 triggerall = enemynear,ailevel > 0
 triggerall = anim = 20032 && animelemtime(2) >= 0 && animelemtime(8) < 0
-trigger1 = random < ifelse(life < (lifemax*.5), 850, 50)
-var(22) = ifelse(power >= 3000 && random < 400, 5, ifelse(random < 500, 2, 3))
+trigger1 = random < cond(life < (lifemax*.5), 850, 50)
+var(22) = cond(power >= 3000, 5, cond(power >= 1000 && power < 1350, cond(random < 500, 2, 3), 1))
 ignorehitpause = 1
 [State 0, VarSet A]
 type = VarSet
@@ -1358,6 +1362,13 @@ triggerall = anim = 20032
 trigger1 = animelem = 2
 value = S2020,7
 
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 12
+trigger1= movehit
+value = S1959,9
+persistent = 0
+ignorehitpause = 1
 [State 0, Movement Effect]
 type = Explod
 triggerall = anim != 2009
@@ -1506,7 +1517,7 @@ trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, SA
 id = 2000
-damage = ceil((82*fvar(11))*ifelse(var(42),1.1,1)),ceil(82*.1)
+damage = ceil((82*fvar(11))*cond(var(42),1.1,1)),ceil(82*.1)
 getpower = ceil((120*fvar(8))*(1+var(42))),ceil(120*.5)
 givepower = ceil(82*.5),ceil(82*.15)
 animtype = Heavy
@@ -1526,8 +1537,8 @@ air.hittime = ceil(22*1+(var(42)!=0))
 fall.recovertime = ceil(22*1+(var(42)!=0))
 guard.hittime = 16
 airguard.hittime = 16
-ground.velocity = -ifelse(var(42),9.5,3),-6
-air.velocity = -ifelse(var(42),9.5,3),-6
+ground.velocity = -cond(var(42),9.5,3),-6
+air.velocity = -cond(var(42),9.5,3),-6
 fall = 1
 [State 0, TargetState]
 type = TargetState
@@ -1568,8 +1579,22 @@ value = 2009
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = palno != 18 && palno != 9 && palno != 37
 trigger1 = anim = 2009
 value = S50,1
+persistent = 0
+[State megama]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = time = 0
+value = S1959, 22
+persistent = 0
+[State 0, sonsi]
+type = PlaySnd
+triggerall = palno = 18 || palno = 9
+trigger1 = time = 0
+value = S1959,1
+freqmul = 0.9+(random/5333.3)
 persistent = 0
 
 [State 100, Land Effect]
@@ -1630,7 +1655,7 @@ trigger1 = Animelem = 1
 helpertype = normal ;player
 name = "Ivette"
 ID = 9902
-stateno = ifelse(var(19)=20,8902,9902)
+stateno = cond(var(19)=20,8902,9902)
 pos = 0,-300
 size.xscale = .365
 size.yscale = .365
@@ -1695,7 +1720,7 @@ trigger1 = time = 0
 helpertype = normal ;player
 name = "Ivette"
 ID = 9902
-stateno = ifelse(var(19)=20,8902,9902)
+stateno = cond(var(19)=20,8902,9902)
 pos = 0,-125
 postype = p1
 size.xscale = .365
@@ -2080,7 +2105,7 @@ type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, SP
-damage = ceil((32*root,fvar(11))*ifelse(root,var(42),1.1,1)),ceil(32*.1)
+damage = ceil((32*root,fvar(11))*cond(root,var(42),1.1,1)),ceil(32*.1)
 getpower = ceil((120*root,fvar(4))*(1+root,var(42))),ceil(120*.5)
 givepower = ceil(32*.5),ceil(32*.15)
 animtype = Light
@@ -2107,7 +2132,7 @@ ground.cornerpush.veloff = 0
 [State -2, Give 'em some Movehitoner]
 type = VarSet
 trigger1 = 1
-var(21) = ifelse((movehit=1||projhit=1),var(21)+1,0)
+var(21) = cond((movehit=1||projhit=1),var(21)+1,0)
 ignorehitpause = 1
 
 [State 0, Helper]
@@ -2599,7 +2624,7 @@ SuperMoveTime = 9999
 type = HitDef
 trigger1 = AnimElem = 3
 attr = S, SA
-damage = ceil((35*fvar(11))*ifelse(var(42),1.1,1)),ceil(35*.1)
+damage = ceil((35*fvar(11))*cond(var(42),1.1,1)),ceil(35*.1)
 getpower = ceil(((40*fvar(8))*fvar(8))*(1+var(42))),ceil((40*.5)*fvar(8))
 givepower = ceil(50*.5),ceil(50*.15)
 animtype = Medium
@@ -2627,7 +2652,7 @@ guard.kill = 0
 type = HitDef
 trigger1 = AnimElem = 7
 attr = S, SA
-damage = ceil((35*fvar(11))*ifelse(var(42),1.1,1)),ceil(35*.1)
+damage = ceil((35*fvar(11))*cond(var(42),1.1,1)),ceil(35*.1)
 getpower = ceil(((40*fvar(8))*fvar(8))*(1+var(42))),ceil((40*.5)*fvar(8))
 givepower = ceil(50*.5),ceil(50*.15)
 animtype = Medium
@@ -2655,7 +2680,7 @@ guard.kill = 0
 type = HitDef
 trigger1 = AnimElem = 11
 attr = S, SA
-damage = ceil((35*fvar(11))*ifelse(var(42),1.1,1)),ceil(35*.1)
+damage = ceil((35*fvar(11))*cond(var(42),1.1,1)),ceil(35*.1)
 getpower = ceil(((40*fvar(8))*fvar(8))*(1+var(42))),ceil((40*.5)*fvar(8))
 givepower = ceil(50*.5),ceil(50*.15)
 animtype = Heavy
@@ -2865,7 +2890,7 @@ type = HitDef
 trigger1 = AnimElem = 3
 trigger2 = AnimElem = 11
 attr = S, SA
-damage = ceil((35*fvar(11))*ifelse(var(42),1.1,1)),ceil(35*.1)
+damage = ceil((35*fvar(11))*cond(var(42),1.1,1)),ceil(35*.1)
 getpower = ceil(((30*fvar(8))*fvar(8))*(1+var(42))),ceil((30*.5)*fvar(8))
 givepower = ceil(50*.5),ceil(50*.15)
 animtype = Medium
@@ -2893,7 +2918,7 @@ guard.kill = 0
 type = HitDef
 trigger1 = AnimElem = 7
 attr = S, SA
-damage = ceil((35*fvar(11))*ifelse(var(42),1.1,1)),ceil(35*.1)
+damage = ceil((35*fvar(11))*cond(var(42),1.1,1)),ceil(35*.1)
 getpower = ceil(((30*fvar(8))*fvar(8))*(1+var(42))),ceil((30*.5)*fvar(8))
 givepower = ceil(50*.5),ceil(50*.15)
 animtype = Medium
@@ -2921,7 +2946,7 @@ guard.kill = 0
 type = HitDef
 trigger1 = AnimElem = 15
 attr = S, SA
-damage = ceil((35*fvar(11))*ifelse(var(42),1.1,1)),ceil(35*.1)
+damage = ceil((35*fvar(11))*cond(var(42),1.1,1)),ceil(35*.1)
 getpower = ceil(((30*fvar(8))*fvar(8))*(1+var(42))),ceil((30*.5)*fvar(8))
 givepower = ceil(50*.5),ceil(50*.15)
 animtype = Heavy
@@ -3192,7 +3217,7 @@ type = HitDef
 trigger1 = AnimElem = 3
 trigger2 = AnimElem = 11
 attr = S, SA
-damage = ceil((35*fvar(11))*ifelse(var(42),1.1,1)),ceil(35*.1)
+damage = ceil((35*fvar(11))*cond(var(42),1.1,1)),ceil(35*.1)
 getpower = 0,0
 givepower = ceil(50*.5),ceil(50*.15)
 animtype = Medium
@@ -3221,7 +3246,7 @@ type = HitDef
 trigger1 = AnimElem = 7
 trigger2 = AnimElem = 15
 attr = S, SA
-damage = ceil((35*fvar(11))*ifelse(var(42),1.1,1)),ceil(35*.1)
+damage = ceil((35*fvar(11))*cond(var(42),1.1,1)),ceil(35*.1)
 getpower = 0,0
 givepower = ceil(50*.5),ceil(50*.15)
 animtype = Medium
@@ -3250,7 +3275,7 @@ type = HitDef
 trigger1 = AnimElem = 19
 attr = S, SA
 ID = 2200
-damage = ceil((45*fvar(11))*ifelse(var(42),1.1,1)),ceil(45*.1)
+damage = ceil((45*fvar(11))*cond(var(42),1.1,1)),ceil(45*.1)
 getpower = 0,0
 givepower = ceil(50*.5),ceil(50*.15)
 animtype = Heavy
@@ -3660,7 +3685,7 @@ triggerall = vel x > 2.5
 trigger1 = !movecontact
 trigger1 = !movereversed
 attr = S, SP
-damage = ceil((55*root,fvar(11))*ifelse(root,var(42),1.1,1)),ceil(55*.1)
+damage = ceil((55*root,fvar(11))*cond(root,var(42),1.1,1)),ceil(55*.1)
 getpower = ceil((60*root,fvar(4))*(1+root,var(42))),ceil(60*.5)
 givepower = ceil(55*.5),ceil(55*.15)
 animtype = Medium
@@ -3680,8 +3705,8 @@ fall.recovertime = ceil(25*1+(root,var(42)!=0))
 air.fall = 1
 guard.hittime = 25
 airguard.hittime = 25 
-ground.velocity = -ifelse(ishelper(2102),9.5,7.5)
-air.velocity = -ifelse(ishelper(2102),3.5,2.5),-5
+ground.velocity = -cond(ishelper(2102),9.5,7.5)
+air.velocity = -cond(ishelper(2102),3.5,2.5),-5
 ground.cornerpush.veloff = 0
 [State 0, VarAdd]
 type = VarSet
@@ -3706,7 +3731,7 @@ type = HitDef
 triggerall = vel x <= 2.5
 trigger1 = var(1)=0 && var(2)<2
 attr = S, SP
-damage = ceil((55*root,fvar(11))*ifelse(root,var(42),1.1,1)),ceil(55*.1)
+damage = ceil((55*root,fvar(11))*cond(root,var(42),1.1,1)),ceil(55*.1)
 getpower = ceil((60*root,fvar(4))*(1+root,var(42))),ceil(60*.5)
 givepower = ceil(55*.5),ceil(55*.15)
 animtype = Heavy
@@ -3726,14 +3751,14 @@ fall.recovertime = ceil(22*1+(root,var(42)!=0))
 fall = 1
 guard.hittime = 16
 airguard.hittime = 16 
-ground.velocity = ifelse(ishelper(2102),5.5,4),-6
-air.velocity = ifelse(ishelper(2102),5.5,4),-5
+ground.velocity = cond(ishelper(2102),5.5,4),-6
+air.velocity = cond(ishelper(2102),5.5,4),-5
 ground.cornerpush.veloff = 0
 
 [State -2, Give 'em some Movehitoner]
 type = VarSet
 trigger1 = 1
-var(21) = ifelse((movehit=1||projhit=1),var(21)+1,0)
+var(21) = cond((movehit=1||projhit=1),var(21)+1,0)
 ignorehitpause = 1
 
 [State 0, ChangeState]

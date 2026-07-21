@@ -1,6 +1,60 @@
 #=====================================================================================================================================================================================================================================================
 # This ZSS file contains everything that's exclusive for IKEMEN GO
 #=====================================================================================================================================================================================================================================================
+[Function modF(n, d) rv]
+    let rv = $n-$d*floor($n/$d);
+[Function huetint(h,channel) v]
+    let hmp = 360.0;
+    let h = float(clamp($h,0,1)*$hmp);
+    let vr = call modF(float($h/180),2);
+    let vb = call modF(float(($h+120)/180),2);
+    let vg = call modF(float(($h-120)/180),2);
+    let r = float(clamp(3.0*abs($vr-1)-1,0,1));
+    let g = float(clamp(3.0*abs($vg-1)-1,0,1));
+    let b = float(clamp(3.0*abs($vb-1)-1,0,1));
+    switch $channel {
+        case 0:
+            let v = $r*256;
+        case 1:
+            let v = $g*256;
+        case 2:
+            let v = $b*256;            
+        default:
+            let v = 256;
+    }
+[Function afterimage(rtime)]
+        let hue = randomrange(0,360)/360.0;
+        let time = $rtime;
+        let r = call huetint($hue,0);
+        let g = call huetint($hue,1);
+        let b = call huetint($hue,2);
+        Explod{
+            anim: anim;
+            animelem: animelemno(0);
+            animfreeze: 1;
+            id: 8888;
+            pos: offset x,offset y;
+            facing: facing;
+            vfacing: 1;
+            bindtime: 1;
+            bindid: id;
+            vel: 0,0;
+            removetime: $time;
+            scale: 0.43, 0.43;
+            sprpriority: -1;
+            ownpal: 1;
+            angle: angle;
+            trans: add;
+            alpha: 259,128;
+            palfx.time: 99999;
+            palfx.mul: $r,$g,$b;
+            palfx.color: 0;            
+            #palfx.hue: randomrange(-256,256);
+            interpolation.time: $time;
+            interpolation.alpha: 0,256;
+	  pausemovetime: 99999;
+	  supermovetime: 99999;
+        }
 
 #=====================================================================================================================================================================================================================================================
 # MI PENE
@@ -342,6 +396,7 @@ if root,var(52) = 3 {
 if palno = 6 {
     stopSnd{channel: 9}
 }
+
 if animElem = 2 {
     playSnd{value: S50505,1}
 }
@@ -352,70 +407,67 @@ ignoreHitPause if root,life != lifemax {
     stopSnd{channel: 2}
 }
 
-if root,life != lifemax && time = 30 {
-    playSnd{value: S50505,2+(root,var(16)*10000)}
-    if root,var(16) = 2 {
-        playSnd{value: S50505,10002}
-        playSnd{value: S50505,10002}
-    }
-    if root,var(16) = 1 {
-        playSnd{value: S50505,10002}
-        playSnd{value: S50505,10002}
-    }
-    playSnd{value: S50505,2+(root,var(16)*10000)}
-    if root,var(16) = 20 {
-        playSnd{value: S1208,1}
-        playSnd{value: S1208,1}
-    }
-}
-if root,life != lifemax && time = 100 {
-    if root,var(16) = 2 {
-        playSnd{value: S50505,20003}
-        playSnd{value: S50505,20003}
-    }
-    if root,var(16) = 1 {
-        playSnd{value: S50505,10003}
-        playSnd{value: S50505,10003}
-    }
-}
-if root,life != lifemax && root,var(16) = 0 && time = 186 {
-    playSnd{value: S50505,3}
-    playSnd{value: S50505,3}
-}
-if root,life != lifemax && root,var(16) = 20 && time = 137 {
-    playSnd{value: S1208,2}
-    playSnd{value: S1208,2}
+if root,life != lifemax && root,var(16) != 20 && time = 30 {
+    playSnd{value: S50505,2+(root,var(20)*10000)}
+    playSnd{value: S50505,2+(root,var(20)*10000)}
 }
 
-if root,life = lifemax && time = 30 {
-    if root,var(16) != 20 {
-        playSnd{value: S50505,69+(root,var(16)*10000)}
-        playSnd{value: S50505,69+(root,var(16)*10000)}
-    }
-    if root,var(16) = 2 {
-        playSnd{value: S50505,10069; volumescale: 255}
-    }
-    if root,var(16) = 20 {
-        playSnd{value: S1208,3}
-        playSnd{value: S1208,3}
-    }
+if root,life != lifemax && root,var(16) != 20 && root,var(20) = 2 && time = 30 {
+    playSnd{value: S50505,10002}
+    playSnd{value: S50505,10002}
+}
+
+if root,life != lifemax && root,var(16) != 20 && root,var(20) = 2 && time = 100 {
+    playSnd{value: S50505,20003}
+    playSnd{value: S50505,20003}
+}
+
+if root,life != lifemax && root,var(16) != 20 && root,var(20) = 1 && time = 100 {
+    playSnd{value: S50505,10003}
+    playSnd{value: S50505,10003}
+}
+
+if root,life != lifemax && root,var(16) != 20 && root,var(20) = 0 && time = 186 {
+    playSnd{value: S50505,3}
+    playSnd{value: S50505,3}
+}
+
+if root,life = lifemax && root,var(16) != 20 && time = 30 {
+    playSnd{value: S50505,69+(root,var(20)*10000)}
+    playSnd{value: S50505,69+(root,var(20)*10000)}
+}
+
+if root,life = lifemax && root,var(20) = 2 && time = 30 {
+    playSnd{value: S50505,10069; volumescale: 255}
 }
 
 if root,var(16) != 20 && time = 168 {
     playSnd{value: S50505,4}
 }
-if root,var(16) = 20 && time = 120 {
+
+if root,var(16) = 20 && root,life = lifemax && time = 30 {
+    playSnd{value: S1208,3}
+    playSnd{value: S1208,3}
+}
+
+if root,var(16) = 20 && root,life != lifemax && time = 30 {
+    playSnd{value: S1208,1}
+    playSnd{value: S1208,1}
+}
+
+if root,var(16) = 20 && time = 168 {
     playSnd{value: S520,1}
     playSnd{value: S520,1}
     playSnd{value: S1208,0}
     playSnd{value: S1208,0}
+}
+
+if root,var(16) = 20 && root,life != lifemax && time = 186 {
+    playSnd{value: S1208,2}
+    playSnd{value: S1208,2}
 }
 
 assertSpecial{flag: nobardisplay}
-
-if random <= 1 && time = 0 {
-    changeState{value: 888}
-}
 
 if time >= 16 {
     assertSpecial{flag: noBG; flag2: noFG}
@@ -424,6 +476,7 @@ if time >= 16 {
 if root,ailevel = 0 || time < 500 {
     assertSpecial{flag: roundnotover}
 }
+
 if root,ailevel = 1 {
     assertSpecial{flag: roundnotover}
 }
@@ -541,4 +594,16 @@ if var(19) = 0 && var(39) = 1 {
 
 if var(19) = 1 && var(39) = 1 {
     changeMovelist{value: 3}
+}
+
+
+if time%3 = 0 && palno = 30 && (
+    (stateno >= 100 && stateno <= 117) ||
+    (stateno >= 191 && stateno <= 196) ||
+    (stateno >= 700 && stateno <= 740) ||
+    (stateno = 3000) ||
+    (stateno = 2002) ||
+    (stateno = 190002) 
+) {
+    call afterimage(30);
 }

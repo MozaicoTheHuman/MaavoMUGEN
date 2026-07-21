@@ -569,7 +569,9 @@ triggerall = pos y >=0
 [State 9902, 4]
 type = DestroySelf
 Trigger1 = pos y >=0  ;40
-
+[State 0, DestroySelf when hit]
+type = DestroySelf
+trigger1 = parent, stateno = 3748
 ;---------------------------------------------------------------------------
 ;Ve, Ivette! - Ivette Cayendo (FX 2)
 [Statedef 99023]
@@ -649,7 +651,9 @@ triggerall = pos y >=0
 [State 9902, 4]
 type = DestroySelf
 Trigger1 = pos y >=0  ;40
-
+[State 0, DestroySelf when hit]
+type = DestroySelf
+trigger1 = parent, stateno = 3748
 ;---------------------------------------------------------------------------
 ;Ve Ivette! - Land Effect
 [StateDef 990116]
@@ -1339,8 +1343,39 @@ y = 0
 
 [State 0, PlaySnd]
 type = PlaySnd
-trigger1 = time = 0
+triggerall = palno != 37 || palno != 39
+trigger1 = !time
 value = S979,0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = !time
+value = S1959,27
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = !time
+value = S1959,27
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = !time
+value = S1959,27
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = !time
+value = S1959,32
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = !time
+value = S1959,32
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = !time
+value = S1959,32
 
 [State 11000, AssertSpecial]
 type = AssertSpecial
@@ -1461,8 +1496,39 @@ y = 0
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = palno != 37 || palno != 39
 trigger1 = !time
 value = S979,0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = !time
+value = S1959,27
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = !time
+value = S1959,27
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 37
+trigger1 = !time
+value = S1959,27
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = !time
+value = S1959,32
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = !time
+value = S1959,32
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 39
+trigger1 = !time
+value = S1959,32
 
 [State 11000, AssertSpecial]
 type = AssertSpecial
@@ -1472,6 +1538,92 @@ flag = NoShadow
 [State 0, DestroySelf]
 type = DestroySelf
 trigger1 = time = 5
+
+;---------------------------------------------------------------------------
+; Super Cancel Display Helper (taken from daniel2x 2.0 for the lols)
+[Statedef 2310]
+type = A
+movetype = I
+physics = N
+ctrl = 0
+anim = 616
+velset = 0,0
+
+[State 2310, 1] ;Super Cancel Enter
+type = Explod
+trigger1 = Time = 0
+anim = 30005
+id = 30005
+postype = left
+pos = 320,0
+vel = -40,0
+facing = 1
+ontop = 1
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+scale = 0.5,0.5
+persistent = 0
+
+[State 2310, Kill Super Cancel Entry]
+type = RemoveExplod
+trigger1 =  time > 5
+id =  30005
+
+[State 2310, 1] ;Super Cancel Freeze
+type = Explod
+trigger1 = Time = 5
+anim = 30005
+id = 30015
+postype = left
+pos = 0,0
+vel = 0,0
+facing = 1
+bindtime = -1
+sprpriority = -100
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+persistent = 0
+ontop = 1
+scale = 0.5,0.5
+
+[State 2310, Kill Super Cancel Freeze]
+type = RemoveExplod
+trigger1 =  time > 35
+id =  30015
+
+[State 2310, 1] ;Super Cancel Exit
+type = Explod
+trigger1 = Time = 35
+anim = 30005
+id = 30025
+postype = left
+pos = 0,0
+vel = -40,0
+facing = 1
+sprpriority = -100
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+scale = 0.5,0.5
+persistent = 0
+ontop = 1
+
+[State 2310, Kill Super Cancel Exit]
+type = RemoveExplod
+trigger1 =  time > 40
+id =  30025
+
+[State 2310, PalFXWiz]
+type = BGPalFX
+trigger1 = 1
+time = 1
+add = -100,-100,-100
+mul = 256,256,256
+invertall = 0
+color = 256
+
+[State 2310, DestroySelf]
+type = DestroySelf
+trigger1 = time > 40
 
 ;---------------------------------------------------------------------------
 ;Slow Down
@@ -1539,7 +1691,7 @@ loop = 1
 [State 0, PosSet]
 type = PosSet
 trigger1 = 1
-x = 0
+x = 60
 y = 0
 
 [state 182, No Life Bar]
@@ -1563,8 +1715,10 @@ mul = 256,256,256
 
 [State 181, 0]
 type = AssertSpecial
-trigger1 = Time < 190
+trigger1 = Time < 290
 flag = RoundNotOver
+flag2 = nobardisplay
+flag3 = noFG
 
 [State 181, 1]
 type = NotHitBy
@@ -1572,61 +1726,109 @@ trigger1 = 1
 value = SCA
 time = 5
 
-
-[State 119904 , 1]
+;THIS IS STUFF FOR THE CLAP ANIMATION THINGY
+[State 119904, Explod Clap Base]
 type = Explod
 trigger1 = enemy, stateno = 1701801
 anim = 17424342
-pos = 0, 177
+pos = 0, cond(var(17) = 0, 234, 177)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
-sprpriority = 36
-scale = .5,.5
+sprpriority = 38
+scale = .5, .5
 persistent = 0
 
-[State 119904 , 1]
+[State 119904, Explod Human Anim]
 type = Explod
-trigger1 = enemy, stateno = 1701802
-anim = 17424342
-pos = 0, 234
-postype = left
-removetime=-1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 36
-scale = .5,.5
-persistent = 0
-
-[State 119904 , 1]
-type = Explod
+triggerall = enemy,ailevel = 0
 trigger1 = enemy, stateno = 1701801
-anim = ifelse(teamside=1,17323234,1732323)
-pos = 0, 177
+anim = cond(teamside=1, 17323234, 1732323)
+pos = 0, cond(var(17) = 0, 234, 177)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
-sprpriority = 34
-scale = .5,.5
+sprpriority = 33
+scale = .5, .5
 persistent = 0
 
-[State 119904 , 1]
+[State 119904, Explod AI Anim]
 type = Explod
-trigger1 = enemy, stateno = 1701802
-anim = ifelse(teamside=1,17323234,1732323)
-pos = 0, 234
+triggerall = enemy,ailevel >= 1
+trigger1 = enemy, stateno = 1701801
+anim = 16323234
+pos = 0, cond(var(17) = 0, 234, 177)
 postype = left
-removetime=-1
+removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
-sprpriority = 34
-scale = .5,.5
+sprpriority = 33
+scale = .5, .5
+persistent = 0
+
+[State 119904, Explod Human Layer2]
+type = Explod
+triggerall = enemy,ailevel = 0
+trigger1 = enemy, stateno = 1701801
+anim = cond(teamside=1, 17323235, 17323236)
+pos = 0, cond(var(17) = 0, 234, 177)
+postype = left
+removetime = -1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 38
+scale = .5, .5
+persistent = 0
+
+[State 119904, Explod AI Layer2]
+type = Explod
+triggerall = enemy,ailevel >= 1
+trigger1 = enemy, stateno = 1701801
+anim = 16323236
+pos = 0, cond(var(17) = 0, 234, 177)
+postype = left
+removetime = -1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 38
+scale = .5, .5
+persistent = 0
+
+[State 119904, Explod Human Layer3]
+type = Explod
+triggerall = enemy,ailevel = 0
+trigger1 = enemy, stateno = 1701801
+anim = cond(teamside=1, 17323237, 17323238)
+pos = 0, cond(var(17) = 0, 234, 177)
+postype = left
+removetime = -1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 37
+scale = .5, .5
+persistent = 0
+
+[State 119904, Explod AI Layer3]
+type = Explod
+triggerall = enemy,ailevel >= 1
+trigger1 = enemy, stateno = 1701801
+anim = 16323238
+pos = 0, cond(var(17) = 0, 234, 177)
+postype = left
+removetime = -1
+facing = 0
+bindtime = -1
+vel = 0, 0
+sprpriority = 37
+scale = .5, .5
 persistent = 0
 
 [State 181, Round Not Over Yet]

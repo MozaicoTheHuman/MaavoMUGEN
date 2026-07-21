@@ -2,7 +2,6 @@
 ; This CNS stores the 1.1 version of the KO Screen
 ;///////////////////////////////////////////////////////////////////////////
 
-
 [Statedef 911]
 anim = 616
 
@@ -66,44 +65,39 @@ pausemovetime = 99999
 ; 1 = opponent camera
 ; 0 = back to normal
 ;------------------------------------------------------------
-
-[State 911, Camera Follow Start]
-type = VarSet
-trigger1 = time = 0
-fvar(2) = 1
-
-; this makes the camera follow smoothly ease out to normal
-[State 911, Camera Follow EaseOut]
-type = VarSet
-trigger1 = time = [71,110]
-fvar(2) = ((110.0 - time) / 39.0) * ((110.0 - time) / 39.0)
-
-;------------------------------------------------------------
 ; fvar(0) controls your zoom value
 ; scale = 1 + fvar(0)
-
+;
 ; quick example of this
 ; fvar(0) = 0.6 = 1.6
-;------------------------------------------------------------
-[State 911, Zoom EaseIn]
-type = VarSet
-trigger1 = time <= 20
-fvar(0) = 0.6 * (1 - (((20 - time) / 20.0) * ((20 - time) / 20.0) * ((20 - time) / 20.0)))
+;============================================================
 
-[State 911, Zoom Hold]
-type = VarSet
-trigger1 = time = 21
-fvar(0) = 0.6
+[State 911, Null]
+type = Null
 
-[State 911, Zoom EaseOut]
-type = VarSet
-trigger1 = time = [71,110]
-fvar(0) = 0.6 * (((110 - time) / 40.0) * ((110 - time) / 40.0) * ((110 - time) / 40.0))
+;Camera Follow Start: locks the camera onto the opponent
+trigger1 = time = 0
+trigger1 = 0&&(fvar(2):=1)
 
-[State 911, Zoom Reset]
-type = VarSet
-trigger1 = time > 110
-fvar(0) = 0
+;Camera Follow EaseOut: smoothly eases the camera follow back to normal
+trigger2 = time = [71,110]
+trigger2 = 0&&(fvar(2):=((110.0 - time) / 39.0) * ((110.0 - time) / 39.0))
+
+;Zoom EaseIn: ramps the zoom up during the first 20 ticks
+trigger3 = time <= 20
+trigger3 = 0&&(fvar(0):=0.6 * (1 - (((20 - time) / 20.0) * ((20 - time) / 20.0) * ((20 - time) / 20.0))))
+
+;Zoom Hold: locks the zoom at its peak value
+trigger4 = time = 21
+trigger4 = 0&&(fvar(0):=0.6)
+
+;Zoom EaseOut: eases the zoom back down
+trigger5 = time = [71,110]
+trigger5 = 0&&(fvar(0):=0.6 * (((110 - time) / 40.0) * ((110 - time) / 40.0) * ((110 - time) / 40.0)))
+
+;Zoom Reset: fully resets the zoom after the sequence ends
+trigger6 = time > 110
+trigger6 = 0&&(fvar(0):=0)
 
 [State 911, Zoom Controller]
 type = Zoom
