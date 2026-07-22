@@ -1,3 +1,4 @@
+
 ;///////////////////////////////////////////////////////////////////////////
 ; Basic states related to victory screens, intros, taunts and parrys
 ;///////////////////////////////////////////////////////////////////////////
@@ -199,42 +200,23 @@ vel = 0, 0
 sprpriority = 38
 scale = .5, .5
 persistent = 0
-
 [State 119904, Explod Human Anim]
 type = Explod
-triggerall = enemy,ailevel = 0
 trigger1 = enemy, stateno = 1701801
-anim = cond(teamside=1, 17323234, 1732323)
+anim = cond(enemy,ailevel>0, 16323234,cond(teamside=1, 17323234, 1732323))	
 pos = 0, cond(root,var(17) = 1, 234, 177)
 postype = left
 removetime = -1
 facing = 0
 bindtime = -1
 vel = 0, 0
-sprpriority = 33
+sprpriority = 34
 scale = .5, .5
 persistent = 0
-
-[State 119904, Explod AI Anim]
-type = Explod
-triggerall = enemy,ailevel >= 1
-trigger1 = enemy, stateno = 1701801
-anim = 16323234
-pos = 0, cond(root,var(17) = 1, 234, 177)
-postype = left
-removetime = -1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 33
-scale = .5, .5
-persistent = 0
-
 [State 119904, Explod Human Layer2]
 type = Explod
-triggerall = enemy,ailevel = 0
 trigger1 = enemy, stateno = 1701801
-anim = cond(teamside=1, 17323235, 17323236)
+anim =  cond(enemy,ailevel>0, 16323236,cond(teamside=1, 17323235, 17323236))      
 pos = 0, cond(root,var(17) = 1, 234, 177)
 postype = left
 removetime = -1
@@ -244,42 +226,10 @@ vel = 0, 0
 sprpriority = 38
 scale = .5, .5
 persistent = 0
-
-[State 119904, Explod AI Layer2]
-type = Explod
-triggerall = enemy,ailevel >= 1
-trigger1 = enemy, stateno = 1701801
-anim = 16323236
-pos = 0, cond(root,var(17) = 1, 234, 177)
-postype = left
-removetime = -1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 38
-scale = .5, .5
-persistent = 0
-
 [State 119904, Explod Human Layer3]
 type = Explod
-triggerall = enemy,ailevel = 0
 trigger1 = enemy, stateno = 1701801
-anim = cond(teamside=1, 17323237, 17323238)
-pos = 0, cond(root,var(17) = 1, 234, 177)
-postype = left
-removetime = -1
-facing = 0
-bindtime = -1
-vel = 0, 0
-sprpriority = 37
-scale = .5, .5
-persistent = 0
-
-[State 119904, Explod AI Layer3]
-type = Explod
-triggerall = enemy,ailevel >= 1
-trigger1 = enemy, stateno = 1701801
-anim = 16323238
+anim = cond(enemy,ailevel>0, 16323238,cond(teamside=1, 17323237, 17323238)) 
 pos = 0, cond(root,var(17) = 1, 234, 177)
 postype = left
 removetime = -1
@@ -350,10 +300,9 @@ removeongethit = 1
 
 [State MaavoLineart]
 type = Explod
-triggerall = palno != 3 && palno != 5 && palno != 10 && palno != 11 && palno != 13 && palno != 14 && palno != 15 && palno != 16 && palno != 17 && palno != 19 && palno != 12 && palno != 24 && palno != 25 && palno != 26 && palno != 27 && palno != 28 && palno != 30 && palno != 31 && palno != 33 && palno != 34 && palno != 36 && palno != 37 && palno != 39
 trigger1 = Time = 168
 id = 1803
-anim = 1803
+anim = cond(root,var(23) = 1, 18904, 1803)
 pos = 180+ (root,var(17) * -35),0
 postype = back
 Facing = cond(facing = 1, 1, -1)
@@ -370,10 +319,9 @@ pausemovetime = -1
 removeongethit = 1
 [State MaavoLineart]
 type = Explod
-triggerall = palno != 3 && palno != 5 && palno != 10 && palno != 11 && palno != 13 && palno != 14 && palno != 15 && palno != 16 && palno != 17 && palno != 19 && palno != 12 && palno != 24 && palno != 25 && palno != 26 && palno != 27 && palno != 28 && palno != 30 && palno != 31 && palno != 33 && palno != 34 && palno != 36 && palno != 37 && palno != 39
 trigger1 = Time = 168
 id = 1803
-anim = 1803
+anim = cond(root,var(23) = 1, 18904, 1803)
 pos = 180+ (root,var(17) * -35),0
 postype = back
 Facing = cond(facing = 1, 1, -1)
@@ -388,45 +336,9 @@ ownpal = 1
 supermovetime = -1
 pausemovetime = -1
 removeongethit = 1
-[State MaavoLineart Gloveless]
+[State MaavoLineart Gloveless SMILE]
 type = Explod
-triggerall = palno = 3 || palno = 5 || palno = 10 || palno = 11  || palno = 12 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 19 || palno = 24 || palno = 25 || palno = 26 || palno = 27 || palno = 28 || palno = 30 || palno = 31 || palno = 32 || palno = 33 || palno = 34 || palno = 36 || palno = 37 || palno = 39
-trigger1 = Time = 168
-id = 1804
-anim = 18904
-pos = 180 + (root,var(17) * -35), 0
-postype = back
-Facing = cond(facing = 1, 1, -1)
-sprpriority = 35
-removeongethit = 1
-removetime = -1
-scale = .25 + (root,var(17) * .1), .25 + (root,var(17) * .1)
-ontop = 0
-ownpal = 1
-bindtime = -1
-supermovetime = -1
-pausemovetime = -1
-[State MaavoLineart Gloveless]
-type = Explod
-triggerall = palno = 3 || palno = 5 || palno = 10 || palno = 11  || palno = 12 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 19 || palno = 24 || palno = 25 || palno = 26 || palno = 27 || palno = 28 || palno = 30 || palno = 31 || palno = 32 || palno = 33 || palno = 34 || palno = 36 || palno = 37 || palno = 39
-trigger1 = Time = 168
-id = 1804
-anim = 18904
-pos = 180 + (root,var(17) * -35), 0
-postype = back
-Facing = cond(facing = 1, 1, -1)
-sprpriority = 35
-removeongethit = 1
-removetime = -1
-scale = .25 + (root,var(17) * .1), .25 + (root,var(17) * .1)
-ontop = 0
-bindtime = -1
-ownpal = 1
-supermovetime = -1
-pausemovetime = -1
-[State MaavoLineart Gloveless]
-type = Explod
-triggerall = palno = 3 || palno = 5 || palno = 10 || palno = 11  || palno = 12 || palno = 13 || palno = 14 || palno = 15 || palno = 16 || palno = 17 || palno = 19 || palno = 24 || palno = 25 || palno = 26 || palno = 27 || palno = 28 || palno = 30 || palno = 31 || palno = 32 || palno = 33 || palno = 34 || palno = 36 || palno = 37 || palno = 39
+triggerall = root,var(23) = 1
 trigger1 = Time = 168
 id = 1805
 anim = 18905
@@ -637,30 +549,11 @@ OwnPal = 1
 IgnoreHitPause = 1
 Persistent = 0
 PauseMovetime = -1
-
-[State P1/P2 Name]
+[State P1/P2/CPU Name]
 Type = Explod
-triggerall = root,ailevel = 0
 Trigger1 = time = 245
-Anim = cond(teamside=1,185,186)
+Anim =  cond(root,ailevel>0,187,cond(teamside=1,185,186))    
 ID = 185
-pos = 0,0
-PosType = Back
-Facing = cond(Facing=-1,-1,1)
-BindTime = -1
-RemoveTime = -1
-scale = .25,.25
-OnTop = 1
-OwnPal = 1
-IgnoreHitPause = 1
-Persistent = 0
-PauseMovetime = -1
-[State CPU Name]
-Type = Explod
-triggerall = root,ailevel = 1 || root,ailevel = 2 || root,ailevel = 3 || root,ailevel = 4 || root,ailevel = 5 || root,ailevel = 6 || root,ailevel = 7 || root,ailevel = 8
-Trigger1 = time = 245
-Anim = 187
-ID = 187
 pos = 0,0
 PosType = Back
 Facing = cond(Facing=-1,-1,1)
@@ -779,7 +672,6 @@ trigger1 = time = 25
 value = S50505,cond(root,var(52)=2,18,cond(root,var(52)=4,10,cond(root,var(52)=5,7,9)))
 loop = (root,var(52)=[4,5])
 channel = 9
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = [2,6]
@@ -788,7 +680,6 @@ trigger1 = time = 25
 value = S50505,cond(root,var(52)=2,18,cond(root,var(52)=4,10,cond(root,var(52)=5,7,9)))
 loop = (root,var(52)=[4,5])
 channel = 10
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 4
@@ -796,14 +687,12 @@ trigger1 = time = 25
 value = S50505,10
 loop = 1
 channel = 10
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 3
 trigger1 = time = 25
 value = S50505,14
 channel = 8
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 6
@@ -811,28 +700,24 @@ trigger1 = time = 33
 value = S50505,5
 loop = 1
 channel = 9
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 6
 trigger1 = time = 33
 value = S50505,5
 loop = 1
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 1
 trigger1 = time = 53
 value = S50505,17
 channel = 9
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 1
 trigger1 = time = 53
 value = S50505,17
 channel = 10
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 1
@@ -840,7 +725,6 @@ trigger1 = time = 168
 value = S50505,8
 loop = 1
 channel = 9
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 1
@@ -848,7 +732,6 @@ trigger1 = time = 168
 value = S50505,8
 loop = 1
 channel = 10
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 2
@@ -856,7 +739,6 @@ trigger1 = time = 317
 value = S50505,19
 loop = 1
 channel = 9
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 2
@@ -864,14 +746,12 @@ trigger1 = time = 317
 value = S50505,19
 loop = 1
 channel = 10
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 3
 trigger1 = time = 530
 value = S50505,15
 channel = 9
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(52) = 3
@@ -879,31 +759,26 @@ trigger1 = time = 540
 value = S50505,16
 loop = 1
 channel = 9
-
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = time = 57
 value = S50,0
-
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = time = 85
 value = S50,1
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
 triggerall = root,var(16) != 20
 trigger1 = time = 30
 value = S50505,2 + (root,var(20) * 10000)
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
 triggerall = root,var(16) != 20
 trigger1 = time = 30
 value = S50505,2 + (root,var(20) * 10000)
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
@@ -911,7 +786,6 @@ triggerall = root,var(16) != 20
 triggerall = root,var(20) = 2
 trigger1 = time = 30
 value = S50505,10002
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
@@ -919,7 +793,6 @@ triggerall = root,var(16) != 20
 triggerall = root,var(20) = 2
 trigger1 = time = 30
 value = S50505,10002
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
@@ -927,7 +800,6 @@ triggerall = root,var(16) != 20
 triggerall = root,var(20) = 2
 trigger1 = time = 100
 value = S50505,20003
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
@@ -935,7 +807,6 @@ triggerall = root,var(16) != 20
 triggerall = root,var(20) = 2
 trigger1 = time = 100
 value = S50505,20003
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
@@ -943,7 +814,6 @@ triggerall = root,var(16) != 20
 triggerall = root,var(20) = 1
 trigger1 = time = 100
 value = S50505,10003
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
@@ -951,7 +821,6 @@ triggerall = root,var(16) != 20
 triggerall = root,var(20) = 1
 trigger1 = time = 100
 value = S50505,10003
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
@@ -959,7 +828,6 @@ triggerall = root,var(16) != 20
 triggerall = root,var(20) = 0
 trigger1 = time = 186
 value = S50505,3
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life != lifemax
@@ -967,21 +835,18 @@ triggerall = root,var(16) != 20
 triggerall = root,var(20) = 0
 trigger1 = time = 186
 value = S50505,3
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life = lifemax
 triggerall = root,var(16) != 20
 trigger1 = time = 30
 value = S50505,69 + (root,var(20) * 10000)
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life = lifemax
 triggerall = root,var(16) != 20
 trigger1 = time = 30
 value = S50505,69 + (root,var(20) * 10000)
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,life = lifemax
@@ -989,72 +854,61 @@ triggerall = root,var(20) = 2
 trigger1 = time = 30
 value = S50505,10069
 volumescale = 255
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) != 20
 trigger1 = time = 168
 value = S50505,4
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) = 20
 triggerall = root,life = lifemax
 trigger1 = time = 30
 value = S1208,3
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) = 20
 triggerall = root,life = lifemax
 trigger1 = time = 30
 value = S1208,3
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) = 20
 triggerall = root,life != lifemax
 trigger1 = time = 30
 value = S1208,1
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) = 20
 triggerall = root,life != lifemax
 trigger1 = time = 30
 value = S1208,1
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) = 20
 trigger1 = time = 168
 value = S520,1
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) = 20
 trigger1 = time = 168
 value = S520,1
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) = 20
 trigger1 = time = 168
 value = S1208,0
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) = 20
 trigger1 = time = 168
 value = S1208,0
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) = 20
 triggerall = root,life != lifemax
 trigger1 = time = 186
 value = S1208,2
-
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = root,var(16) = 20
@@ -1822,10 +1676,6 @@ triggerall = var(16) != 20
 trigger1 = AnimElem = 2
 value = S195, 0+random%5
 channel = 0
-[State 195, VarSet]
-type = VarSet
-trigger1 = time = 0
-var(57) = 1
 [State 0, CtrlSet]
 type = CtrlSet
 trigger1 = roundstate = 2 && time = 20
@@ -1874,10 +1724,6 @@ type = CtrlSet
 trigger1 = prevstateno = 140002 || prevstateno = 140006
 value = 0
 ignorehitpause = 1
-[State 195, VarSet]
-type = VarSet
-trigger1 = time = 0
-var(57) = 1
 [State 196]
 type = ChangeState
 trigger1 = Animtime = 0

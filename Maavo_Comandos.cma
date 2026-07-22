@@ -989,7 +989,7 @@ triggerall = enemynear(!enemynear,alive),statetype != L && enemynear,pos y > -10
 triggerall = enemynear, statetype != L
 triggerall = enemynear,stateno != 5100 && enemynear,stateno != 5101 && enemynear,stateno != 5110 && enemynear, movetype != H
 triggerall = enemynear,stateno != [120,155]
-triggerall = p2bodydist x = [60,220]
+triggerall = p2bodydist x = [60,170]
 triggerall = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 3, 1.5)
 trigger1 = var(1) || var(2)
 trigger2 = ctrl

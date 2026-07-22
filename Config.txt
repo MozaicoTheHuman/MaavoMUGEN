@@ -1,129 +1,134 @@
-
+﻿																								[Statedef 5900]
 ;///////////////////////////////////////////////////////////////////////////
 ; This file let's you change Maavo's settings to your liking
 ;///////////////////////////////////////////////////////////////////////////
-
-[Statedef 5900]
-type = S	
-
-[State 5900, 1] ;Clear all int variables
-type = VarRangeSet
-trigger1 = roundsexisted = 0
-value = 0
-
-[State 5900, 2] ;Clear all float variables
-type = VarRangeSet
-trigger1 = roundsexisted = 0
-fvalue = 0
-
-;-------------------------------------------------------------------------------------------------
-; DO NOT EDIT ANYTHING ABOVE THIS LINE
-;-------------------------------------------------------------------------------------------------
-
-[State 0, Config Settings]
-type = Null
-
+																								type = S
+; ____   _____   _____   _____   ___    _   _    ____    ____  
+;/ ___| | ____| |_   _| |_   _| |_ _|  | \ | |  / ___|  / ___| 
+;\___ \ |  _|     | |     | |    | |   |  \| | | |  _   \___ \ 
+; ___) || |___    | |     | |    | |   | |\  | | |_| |   ___) |
+;|____/ |_____|   |_|     |_|   |___|  |_| \_|  \____|  |____/ 
+																								[State 5900, Config Settings]
+																								type = Null
 ;=================================================================================================
 ;Input Type?
-;				0 - Normal (QCF inputs only, one version per move, no EX 
-;				    variants)
-;				1 - Alternative (more complex inputs, two versions for most 
-;				    moves, some moves have EX versions)
-trigger1 = 0&&var(19):=		(0) ; Change value here.
-
+;				 ___________________________________________________________
+;				|0 - Normal (QCF inputs only, one version per move, no EX   |
+;				|    variants)                                              |
+;				|1 - Alternative (more complex inputs, two versions for most| 
+;				|    moves, some moves have EX versions)                    |    
+;            			|                                                           |
+trigger1 = 0&&var(19):=		(0) ; ◄ Change value here.                                  |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 ;=================================================================================================
 ;Assist X Pos?
-trigger2 = 0&&var(13):=		(5) ; Change value here.
-
-;Assist Y Pos?
-trigger3 = 0&&var(14):=		(48) ; Change value here.
-
+;				 ___________________________________________________________
+trigger2 = 0&&var(13):=		(5) ; ◄ Change value here.                                  |
+;				|                                                           |
+;Assist Y Pos?			|                                                           |
+trigger3 = 0&&var(14):=		(48) ; ◄ Change value here.                                 |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 ;=================================================================================================
 ;Screen Resolution?
-;				0 - Widescreen (16:9)
-;				1 - Normal Screen (4:3)
-;				2 - Auto
-trigger4 = 0&&var(17):=		(2) ; Change value here.
-
+;				 ___________________________________________________________
+;				|0 - Widescreen (16:9)                                      |
+;				|1 - Normal Screen (4:3)                                    |
+;				|2 - Auto                                                   |
+;            			|                                                           |
+trigger4 = 0&&var(17):=		(2) ; ◄ Change value here.                                  |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 ;=================================================================================================
 ;Voice Language?
-;				0 - Spanish
-;				1 - English
-trigger5 = 0&&var(16):=		(0) ; Change value here.
-
+;				 ___________________________________________________________
+;				|0 - Spanish                                                |
+;				|1 - English                                                |
+;            			|                                                           |
+trigger5 = 0&&var(16):=		(0) ; ◄ Change value here.                                  |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 ;=================================================================================================
-;Text Language? 
-;(Victory Quotes are only available on Spanish and English)
-;				0 - Spanish
-;				1 - English
-;				2 - Japanese
-;				3 - Portuguese
-;				4 - Russian
-;				5 - Italian
-trigger6 = 0&&var(20):=		(1) ; Change value here.
-
+;Text Language? (Victory Quotes are only available on Spanish and English) 
+;				 ___________________________________________________________
+;				|0 - Spanish                                                |
+;				|1 - English                                                |
+;				|2 - Japanese                                               |
+;				|3 - Portuguese                                             |
+;				|4 - Russian                                                |
+;				|5 - Italian                                                |
+;            			|                                                           |
+trigger6 = 0&&var(20):=		(1) ; ◄ Change value here.                                  |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 ;=================================================================================================
 ;Maritza/Ivette voices?
-;				0 - 2026 voices (L1llian_V1sual & Flanmby)
-;				1 - Legacy voices (Riusaki Fujioka & Miki)
-trigger7 = 0&&var(34):=		(0) ; Change value here.
-
-
-;=================================================================================================
-;Victory BGM? 
-;(Certain opponents and palettes will force a specific theme to play.)
-;				0: N/A
-;				1: Victory! (Showtime) by Kakow0 (Default)
-;				2: Victory! (Old) by Rossiter
-;				3: Victory! (Old) by Rossiter (Short) > Results Screen - 
-;				    Super Smash Brothers for 3DS and Wii U
-;				4: After the Battle - Persona 3
-;				5: Period - Persona 4
-;				6: Triumph - Persona 5
-;				7: Random
-trigger8 = 0&&var(52):=		(1) ; Change value here.
-
+;				 ___________________________________________________________
+;				|0 - 2026 voices (L1llian_V1sual & Flanmby)                 |
+;				|1 - Legacy voices (Riusaki Fujioka & Miki)                 |
+;            			|                                                           |
+trigger7 = 0&&var(34):=		(0) ; ◄ Change value here.                                  |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 ;=================================================================================================
-;Scrapped Moves? 
-;(This will enable 2 scrapped special moves)
-;				0 - Off
-;				1 - On
-trigger9 = 0&&var(39):=		(0) ; Change value here.
+;Victory BGM? (Certain opponents and palettes will force a specific theme to play.)
+;				 ___________________________________________________________
+;				|0: N/A                                                     |
+;				|1: Victory! (Showtime) by Kakow0 (Default)                 |
+;				|2: Victory! (Old) by Rossiter                              |
+;				|3: Victory! (Old) by Rossiter (Short) > Results Screen -   |
+;				|    Super Smash Brothers for 3DS and Wii U                 |
+;				|4: After the Battle - Persona 3                            |
+;				|5: Period - Persona 4                                      |
+;				|6: Triumph - Persona 5                                     |
+;				|7: Random                                                  |
+;            			|                                                           |
+trigger8 = 0&&var(52):=		(1) ; ◄ Change value here.                                  |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
-ignorehitpause = 1
-;------------------------------------------------------------------------------------------------
-; DO NOT EDIT ANYTHING BELOW THIS LINE
-;-------------------------------------------------------------------------------------------------
+;=================================================================================================
+;Scrapped Moves? (This will enable 2 scrapped special moves)
+;				 ___________________________________________________________
+;				|0 - Off                                                    |
+;				|1 - On                                                     |
+;            			|                                                           |
+trigger9 = 0&&var(39):=		(0) ; ◄ Change value here.                                  |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾																											ignorehitpause = 1
 
-[State 0, Null]
-type = Null
-trigger1 = teammode = simul
-trigger1 = !numpartner || numpartner && (partner,id > id)
-trigger1 = 0&&(fvar(10):=0)
-trigger2 = teammode = simul
-trigger2 = numpartner && (partner,id < id)
-trigger2 = partner,name = "Maavo"
-trigger2 = 0&&(fvar(10):=1)
-ignorehitpause = 1
+																																						[State 5900, 1] ;Clear all int variables
+																																						type = VarRangeSet
+																																						trigger1 = roundsexisted = 0
+																																						value = 0
 
-[State 5900, 3] ;Change palette
-type = RemapPal
-trigger1 = 1
-source = 1,1
-dest = 1,palno
+																																						[State 5900, 2] ;Clear all float variables
+																																						type = VarRangeSet
+																																						trigger1 = roundsexisted = 0
+																																						fvalue = 0
 
-[State 5900, 4] ;Intro for round 1
-type = ChangeState
-trigger1 = roundno = 1
-value = 190
+																																						[State 0, Null]
+																																						type = Null
+																																						trigger1 = teammode = simul
+																																						trigger1 = !numpartner || numpartner && (partner,id > id)
+																																						trigger1 = 0&&(fvar(10):=0)
+																																						trigger2 = teammode = simul
+																																						trigger2 = numpartner && (partner,id < id)
+																																						trigger2 = partner,name = "Maavo"
+																																						trigger2 = 0&&(fvar(10):=1)
+																																						ignorehitpause = 1
 
-[State 5900, 5] ;All other rounds
-type = ChangeState
-trigger1 = 1
-value = 0
+																																						[State 5900, 3] ;Change palette
+																																						type = RemapPal
+																																						trigger1 = 1
+																																						source = 1,1
+																																						dest = 1,palno
+
+																																						[State 5900, 4] ;Intro for round 1
+																																						type = ChangeState
+																																						trigger1 = roundno = 1
+																																						value = 190
+
+																																						[State 5900, 5] ;All other rounds
+																																						type = ChangeState
+																																						trigger1 = 1
+																																						value = 0

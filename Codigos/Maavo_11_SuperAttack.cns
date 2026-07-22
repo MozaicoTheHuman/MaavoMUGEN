@@ -1,3 +1,4 @@
+
 ;///////////////////////////////////////////////////////////////////////////
 ; This CNS is for super states that ONLY work on 1.1
 ;///////////////////////////////////////////////////////////////////////////
@@ -14,30 +15,6 @@ facep2=1
 poweradd = 0
 sprpriority = 2
 ctrl = 0
-
-[State 3000, Super Cancel pal denil]
-type = Helper
-triggerall = palno = 39
-triggerall = Time = 0
-trigger1 = prevstateno=2002 ||(prevstateno = [2210,2219])
-persistent = 0
-id = 30005
-name = "Super Cancel Helper"
-pos = 0,-48
-postype = P1
-stateno = 2310
-helpertype = normal
-keyctrl = 0
-ownpal = 1
-ignorehitpause = 1
-supermovetime = 99999
-pausemovetime = 99999
-
-[State 19000, VarSet]
-type = VarSet
-trigger1 = time = 0
-var(57) = 0
-ignorehitpause = 1
 
 [State 911, Zoom thing]
 type = Null
@@ -192,7 +169,6 @@ trigger1 = animelem = 3
 x = 0
 y = 0
 ignorehitpause = 1
-
 [State 3003, SuperPause]
 type = SuperPause
 trigger1 = animelem = 3
@@ -204,7 +180,22 @@ darken = 0
 poweradd = -1000
 unhittable = 1
 p2defmul = 1
-
+[State 3000, Super Cancel pal denil]
+type = Helper
+triggerall = palno = 39
+triggerall = Time = 0
+trigger1 = prevstateno=2002 ||(prevstateno = [2210,2219])
+persistent = 0
+id = 30005
+name = "Super Cancel Helper"
+pos = 0,-48
+postype = P1
+stateno = 2310
+keyctrl = 0
+ownpal = 1
+ignorehitpause = 1
+supermovetime = 99999
+pausemovetime = 99999
 [State 0, Helper]
 type = Helper
 trigger1 = animelem = 3
@@ -264,12 +255,6 @@ anim = 190001
 poweradd = 0
 sprpriority = 2
 ctrl = 0
-
-[State 190000, VarSet]
-type = VarSet
-trigger1 = time = 0
-var(57) = 1
-ignorehitpause = 1
 
 [State 911, Zoom thing]
 type = Null

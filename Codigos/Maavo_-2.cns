@@ -1,9 +1,16 @@
+
 ;///////////////////////////////////////////////////////////////////////////
 ; States that are always executed.
 ; Like Maavo in enemy state, the value still update.
 ;///////////////////////////////////////////////////////////////////////////
 
 [Statedef -2]
+
+[State -2, Gloveless Palettes]
+type = VarSet
+trigger1 = palno=3||palno=5||palno=10||palno=11||palno=12||palno=13||palno=14||palno=15||palno=16||palno=17||palno=19||palno=24||palno=25||palno=26||palno=27||palno=28||palno=30||palno=31||palno=32||palno=33||palno=34||palno=36||palno=37||palno=39
+var(23) = 1
+ignorehitpause = 1
 
 ;Clap Animation
 [State -2, ChangeState]
@@ -13,201 +20,6 @@ triggerall = Enemy, AuthorName = "Mozaico" && Enemy, Name = "Maavo"
 trigger1 = enemy, stateno = 180180
 value = 1701801
 ctrl = 0
-
-[State 0, VarSet]
-type = VarSet
-trigger1 = stateno != 2002
-trigger1 = stateno != 19000
-trigger1 = stateno != [190001,190002]
-trigger1 = stateno != 3000
-trigger1 = stateno != [17000,17002]
-trigger1 = stateno != 1210
-trigger2 = movecontact || movereversed
-var(22) = 0
-ignorehitpause = 1
-
-[State -2, Match Win]
-type = VarSet
-trigger1 = MatchOver = 1
-trigger1 = RoundState = 4
-trigger1 = Win
-var(31) = 1
-
-[State -2, Aspect Ratio detector]
-type = null
-trigger1 = var(17) = 2
-trigger1 = (GameWidth/GameHeight) >= 1.7
-trigger1 = 0&&(var(17):=0)
-trigger2 = var(17) = 2
-trigger2 = (GameWidth/GameHeight) < 1.7
-trigger2 = 0&&(var(17):=1)
-ignorehitpause = 1
-
-;VUELTA AL RUEDO
-[State -2, RemapPal]
-type = RemapPal
-triggerall = palno = 16
-trigger1 = var(20) = 1
-source = 1,1
-dest = 2,16
-ignorehitpause = 1
-[State -2, RemapPal]
-type = RemapPal
-triggerall = palno = 16
-trigger1 = var(20) = 0
-source = 1,1
-dest = 1,16
-ignorehitpause = 1
-[State -2, PalFX]
-type = PalFX
-triggerall = palno = 16
-trigger1 = var(21) > 0
-time = 2
-add = 255 - ((20 - var(21)) * 12), 255 - ((20 - var(21)) * 12), 255 - ((20 - var(21)) * 12)
-mul = 256,256,256
-ignorehitpause = 1
-[State -2, PalFX]
-type = PalFX
-triggerall = palno = 16
-trigger1 = var(21) <= 0
-time = 1
-add = 0,0,0
-mul = 256,256,256
-ignorehitpause = 1
-[State -2, VarAdd]
-type = VarAdd
-triggerall = palno = 16
-trigger1 = var(21) > 0
-var(21) = -1
-ignorehitpause = 1
-;VUELTA AL RUEDO
-
-;SUPER SONIC & SUPER SHADOW
-[State -2, Null]
-type = Null
-trigger1 = 1
-trigger1 = 0&&(var(33):=cond(stateno = 1210 || stateno = 1211 || stateno = 1212 || stateno = 1213 || stateno = 19000 || stateno = 190000 || stateno = 190001 || stateno = 190002 || stateno = 19001 || stateno = 3000 || stateno = 17000 || stateno = 17001 || stateno = 17002,1,0))
-trigger2 = var(33) != var(35)
-trigger2 = 0&&(var(36):=1)
-trigger3 = var(33) = var(35)
-trigger3 = 0&&(var(36):=0)
-trigger4 = 1
-trigger4 = 0&&(var(35):=var(33))
-ignorehitpause = 1
-[State -2, RemapPal]
-type = RemapPal
-trigger1 = var(33) = 1 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
-source = 1,1
-dest = 2,palno
-ignorehitpause = 1
-[State -2, RemapPal]
-type = RemapPal
-trigger1 = var(33) = 0 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
-source = 1,1
-dest = 1,palno
-ignorehitpause = 1
-[State -2, PalFX]
-type = PalFX
-trigger1 = var(36) = 1 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
-time = 20
-add = 255,255,255
-mul = 256,256,256
-sinadd = -255,-255,-255,20
-ignorehitpause = 1
-;SUPER SONIC & SUPER SHADOW
-
-;AY ESCUBI
-[State -2, PlaySnd]
-type = PlaySnd
-triggerall = palno = 12
-trigger1 = (Anim = 100 || Anim = 102 || Anim = 105 || Anim = 107) && !(var(25) = 100 || var(25) = 102 || var(25) = 105 || var(25) = 107)
-value = S1959,0
-channel = 10
-loop = 1
-volumescale = 100
-ignorehitpause = 1
-[State -2, StopSnd]
-type = StopSnd
-triggerall = palno = 12
-trigger1 = Anim != 100 && Anim != 102 && Anim != 105 && Anim != 107
-channel = 10
-ignorehitpause = 1
-[State -2, VarSet]
-type = VarSet
-trigger1 = 1
-var(25) = Anim
-ignorehitpause = 1
-;AY ESCUBI
-
-;ora del shou 2016
-[State 0, Force Martin Voice on pal 3]
-type = VarSet
-triggerall = palno = 3
-trigger1 = 1
-var(16) = 20
-ignorehitpause = 0
-;ora del shou 2016
-
-[State -2]
-type = VelAdd
-triggerall = vel y >= 1 && pos Y <= -20
-triggerall = movetype != H
-triggerall = stateno != 132
-triggerall = !var(15)
-trigger1 = command = "holddown"
-y = .55
-[State -2, Null]
-type = Null
-trigger1 = statetype != A
-trigger1 = 0&&(var(15):=0)
-trigger2 = movetype = H
-trigger2 = 0&&(var(32):=0)
-trigger3 = movetype != H
-trigger3 = stateno != 155
-trigger3 = 0&&(var(30):=var(32))
-trigger4 = movetype != H
-trigger4 = stateno != 132
-trigger4 = 0&&(var(32):=(vel y >= 1 && pos Y <= -20 && command = "holddown" && !var(15)))
-trigger5 = var(32) && !var(30)
-trigger5 = 0&&(var(15):=1)
-
-[State -2, PalFX]
-type = PalFX
-trigger1 = var(32) && !var(30) && movetype != H
-time = 2
-add = 190,190,190
-mul = 256,256,256
-
-[State 0, FF Flash]
-type = Explod
-trigger1 = var(32) && !var(30) && movetype != H
-anim = 48
-ID = 48
-pos = 35,-70
-postype = p1
-facing = 1
-vfacing = 1
-bindtime = 1
-removetime = -2
-pausemovetime = 0
-scale = .1,.1
-sprpriority = 6
-ontop = 0
-shadow = 0,0,0
-ownpal = 1
-removeongethit = 0
-pausemovetime = 99999
-supermovetime = 99999
-
-[State 0, Astral Bullshit]
-type = Null
-;No Astral Bullshit: resets every tick to check again
-trigger1 = 1
-trigger1 = 0&&(var(40):=0)
-;Astral Bullshit: sets it back to 1 if any of the 5 conditions hold 									                                                                                                         ;I know it's called a Super Skybound Art and not an Astral Heat, but shut up
-trigger2 = (((stateno = 180140 || stateno = 181) || stateno = 140002 || (stateno = 141002 || roundstate>2 && prevstateno = 141002) || stateno = 1410025 || numhelper(911)) && movetype != H)||(enemy,name = "Oliver Andersen" && enemy,stateno = [4301,4399])||((enemy,name = "Greninja_GBVS" || enemy,name = "NoNerfs_GBVS") && ((enemy,stateno = [3010,3019]) && enemy,movetype != H || (matchover && enemy,teammode != simul && (enemy,fvar(2)||enemy,stateno=[180,189]))))||(enemy,name = "Maavo" && ((enemy,stateno = 180140 || enemy,stateno = 181) || enemy,stateno = 140002 || (enemy,stateno = 141002 || roundstate>2 && enemy,prevstateno = 141002) || enemy,stateno = 1410025 || enemy,numhelper(911)) && enemy,movetype != H)																	
-trigger2 = 0&&(var(40):=1)
-ignorehitpause = 1
 
 [State 0, Helper]
 type = Helper
@@ -398,6 +210,16 @@ trigger7 = var(8) > 0
 trigger7 = 0&&(fvar(8):=.15)
 ignorehitpause = 1
 
+[State 0, Astral Bullshit]
+type = Null
+;No Astral Bullshit: resets every tick to check again
+trigger1 = 1
+trigger1 = 0&&(var(40):=0)
+;Astral Bullshit: sets it back to 1 if any of the 5 conditions hold 									                                                                                                         ;I know it's called a Super Skybound Art and not an Astral Heat, but shut up
+trigger2 = (((stateno = 180140 || stateno = 181) || stateno = 140002 || (stateno = 141002 || roundstate>2 && prevstateno = 141002) || stateno = 1410025 || numhelper(911)) && movetype != H)||(enemy,name = "Oliver Andersen" && enemy,stateno = [4301,4399])||((enemy,name = "Greninja_GBVS" || enemy,name = "NoNerfs_GBVS") && ((enemy,stateno = [3010,3019]) && enemy,movetype != H || (matchover && enemy,teammode != simul && (enemy,fvar(2)||enemy,stateno=[180,189]))))||(enemy,name = "Maavo" && ((enemy,stateno = 180140 || enemy,stateno = 181) || enemy,stateno = 140002 || (enemy,stateno = 141002 || roundstate>2 && enemy,prevstateno = 141002) || enemy,stateno = 1410025 || enemy,numhelper(911)) && enemy,movetype != H)																	
+trigger2 = 0&&(var(40):=1)
+ignorehitpause = 1
+
 [State Reset Ground Bounces]
 type = removeexplod
 triggerall = numexplod(190625)
@@ -430,6 +252,162 @@ trigger2 = numenemy
 trigger2 = enemynear,movetype != H && (enemynear,statetype != L)
 id = 520525
 ignorehitpause = 1 
+
+;VUELTA AL RUEDO
+[State -2, RemapPal]
+type = RemapPal
+triggerall = palno = 16
+trigger1 = var(20) = 1
+source = 1,1
+dest = 2,16
+ignorehitpause = 1
+[State -2, RemapPal]
+type = RemapPal
+triggerall = palno = 16
+trigger1 = var(20) = 0
+source = 1,1
+dest = 1,16
+ignorehitpause = 1
+[State -2, PalFX]
+type = PalFX
+triggerall = palno = 16
+trigger1 = var(21) > 0
+time = 2
+add = 255 - ((20 - var(21)) * 12), 255 - ((20 - var(21)) * 12), 255 - ((20 - var(21)) * 12)
+mul = 256,256,256
+ignorehitpause = 1
+[State -2, PalFX]
+type = PalFX
+triggerall = palno = 16
+trigger1 = var(21) <= 0
+time = 1
+add = 0,0,0
+mul = 256,256,256
+ignorehitpause = 1
+[State -2, VarAdd]
+type = VarAdd
+triggerall = palno = 16
+trigger1 = var(21) > 0
+var(21) = -1
+ignorehitpause = 1
+;VUELTA AL RUEDO
+
+;SUPER SONIC & SUPER SHADOW
+[State -2, Null]
+type = Null
+trigger1 = 1
+trigger1 = 0&&(var(33):=cond(stateno = 1210 || stateno = 1211 || stateno = 1212 || stateno = 1213 || stateno = 19000 || stateno = 190000 || stateno = 190001 || stateno = 190002 || stateno = 19001 || stateno = 3000 || stateno = 17000 || stateno = 17001 || stateno = 17002,1,0))
+trigger2 = var(33) != var(35)
+trigger2 = 0&&(var(36):=1)
+trigger3 = var(33) = var(35)
+trigger3 = 0&&(var(36):=0)
+trigger4 = 1
+trigger4 = 0&&(var(35):=var(33))
+ignorehitpause = 1
+[State -2, RemapPal]
+type = RemapPal
+trigger1 = var(33) = 1 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
+source = 1,1
+dest = 2,palno
+ignorehitpause = 1
+[State -2, RemapPal]
+type = RemapPal
+trigger1 = var(33) = 0 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
+source = 1,1
+dest = 1,palno
+ignorehitpause = 1
+[State -2, PalFX]
+type = PalFX
+trigger1 = var(36) = 1 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
+time = 20
+add = 255,255,255
+mul = 256,256,256
+sinadd = -255,-255,-255,20
+ignorehitpause = 1
+;SUPER SONIC & SUPER SHADOW
+
+;AY ESCUBI
+[State -2, PlaySnd]
+type = PlaySnd
+triggerall = palno = 12
+trigger1 = (Anim = 100 || Anim = 102 || Anim = 105 || Anim = 107) && !(var(25) = 100 || var(25) = 102 || var(25) = 105 || var(25) = 107)
+value = S1959,0
+channel = 10
+loop = 1
+volumescale = 100
+ignorehitpause = 1
+[State -2, StopSnd]
+type = StopSnd
+triggerall = palno = 12
+trigger1 = Anim != 100 && Anim != 102 && Anim != 105 && Anim != 107
+channel = 10
+ignorehitpause = 1
+[State -2, VarSet]
+type = VarSet
+trigger1 = 1
+var(25) = Anim
+ignorehitpause = 1
+;AY ESCUBI
+
+;ora del shou 2016
+[State 0, Force Martin Voice on pal 3]
+type = VarSet
+triggerall = palno = 3
+trigger1 = 1
+var(16) = 20
+ignorehitpause = 0
+;ora del shou 2016
+
+[State -2]
+type = VelAdd
+triggerall = vel y >= 1 && pos Y <= -20
+triggerall = movetype != H
+triggerall = stateno != 132
+triggerall = !var(15)
+trigger1 = command = "holddown"
+y = .55
+[State -2, Null]
+type = Null
+trigger1 = statetype != A
+trigger1 = 0&&(var(15):=0)
+trigger2 = movetype = H
+trigger2 = 0&&(var(32):=0)
+trigger3 = movetype != H
+trigger3 = stateno != 155
+trigger3 = 0&&(var(30):=var(32))
+trigger4 = movetype != H
+trigger4 = stateno != 132
+trigger4 = 0&&(var(32):=(vel y >= 1 && pos Y <= -20 && command = "holddown" && !var(15)))
+trigger5 = var(32) && !var(30)
+trigger5 = 0&&(var(15):=1)
+
+[State -2, PalFX]
+type = PalFX
+trigger1 = var(32) && !var(30) && movetype != H
+time = 2
+add = 190,190,190
+mul = 256,256,256
+
+[State 0, FF Flash]
+type = Explod
+trigger1 = var(32) && !var(30) && movetype != H
+anim = 48
+ID = 48
+pos = 35,-70
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+pausemovetime = 0
+scale = .1,.1
+sprpriority = 6
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+pausemovetime = 99999
+supermovetime = 99999
 
 [State 0, VarSet]
 type = VarSet
@@ -502,6 +480,35 @@ type = StopSnd
 trigger1 = StateNo = 0
 trigger2 = anim = 5200
 channel = 9
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = stateno != 2002
+trigger1 = stateno != 19000
+trigger1 = stateno != [190001,190002]
+trigger1 = stateno != 3000
+trigger1 = stateno != [17000,17002]
+trigger1 = stateno != 1210
+trigger2 = movecontact || movereversed
+var(22) = 0
+ignorehitpause = 1
+
+[State -2, Match Win]
+type = VarSet
+trigger1 = MatchOver = 1
+trigger1 = RoundState = 4
+trigger1 = Win
+var(31) = 1
+
+[State -2, Aspect Ratio detector]
+type = null
+trigger1 = var(17) = 2
+trigger1 = (GameWidth/GameHeight) >= 1.7
+trigger1 = 0&&(var(17):=0)
+trigger2 = var(17) = 2
+trigger2 = (GameWidth/GameHeight) < 1.7
+trigger2 = 0&&(var(17):=1)
+ignorehitpause = 1
 
 [State -2, No Bar Display when you win using All-Out Attack]
 type = AssertSpecial
