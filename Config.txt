@@ -1,8 +1,24 @@
-﻿																								[Statedef 5900]
 ;///////////////////////////////////////////////////////////////////////////
 ; This file let's you change Maavo's settings to your liking
 ;///////////////////////////////////////////////////////////////////////////
-																								type = S
+
+[Statedef 5900]
+type = S	
+
+[State 5900, 1] ;Clear all int variables
+type = VarRangeSet
+trigger1 = roundsexisted = 0
+value = 0
+
+[State 5900, 2] ;Clear all float variables
+type = VarRangeSet
+trigger1 = roundsexisted = 0
+fvalue = 0
+
+;-------------------------------------------------------------------------------------------------
+; DO NOT EDIT ANYTHING ABOVE THIS LINE
+;-------------------------------------------------------------------------------------------------
+
 ; ____   _____   _____   _____   ___    _   _    ____    ____  
 ;/ ___| | ____| |_   _| |_   _| |_ _|  | \ | |  / ___|  / ___| 
 ;\___ \ |  _|     | |     | |    | |   |  \| | | |  _   \___ \ 
@@ -94,41 +110,36 @@ trigger8 = 0&&var(52):=		(1) ; ◄ Change value here.                           
 ;				|1 - On                                                     |
 ;            			|                                                           |
 trigger9 = 0&&var(39):=		(0) ; ◄ Change value here.                                  |
-;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾																											ignorehitpause = 1
+;			
+ignorehitpause = 1
+;------------------------------------------------------------------------------------------------
+; DO NOT EDIT ANYTHING BELOW THIS LINE
+;-------------------------------------------------------------------------------------------------
 
-																																						[State 5900, 1] ;Clear all int variables
-																																						type = VarRangeSet
-																																						trigger1 = roundsexisted = 0
-																																						value = 0
+[State 0, Null]
+type = Null
+trigger1 = teammode = simul
+trigger1 = !numpartner || numpartner && (partner,id > id)
+trigger1 = 0&&(fvar(10):=0)
+trigger2 = teammode = simul
+trigger2 = numpartner && (partner,id < id)
+trigger2 = partner,name = "Maavo"
+trigger2 = 0&&(fvar(10):=1)
+ignorehitpause = 1
 
-																																						[State 5900, 2] ;Clear all float variables
-																																						type = VarRangeSet
-																																						trigger1 = roundsexisted = 0
-																																						fvalue = 0
+[State 5900, 3] ;Change palette
+type = RemapPal
+trigger1 = 1
+source = 1,1
+dest = 1,palno
 
-																																						[State 0, Null]
-																																						type = Null
-																																						trigger1 = teammode = simul
-																																						trigger1 = !numpartner || numpartner && (partner,id > id)
-																																						trigger1 = 0&&(fvar(10):=0)
-																																						trigger2 = teammode = simul
-																																						trigger2 = numpartner && (partner,id < id)
-																																						trigger2 = partner,name = "Maavo"
-																																						trigger2 = 0&&(fvar(10):=1)
-																																						ignorehitpause = 1
+[State 5900, 4] ;Intro for round 1
+type = ChangeState
+trigger1 = roundno = 1
+value = 190
 
-																																						[State 5900, 3] ;Change palette
-																																						type = RemapPal
-																																						trigger1 = 1
-																																						source = 1,1
-																																						dest = 1,palno
+[State 5900, 5] ;All other rounds
+type = ChangeState
+trigger1 = 1
+value = 0
 
-																																						[State 5900, 4] ;Intro for round 1
-																																						type = ChangeState
-																																						trigger1 = roundno = 1
-																																						value = 190
-
-																																						[State 5900, 5] ;All other rounds
-																																						type = ChangeState
-																																						trigger1 = 1
-																																						value = 0
