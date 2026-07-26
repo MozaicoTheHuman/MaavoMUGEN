@@ -584,7 +584,7 @@ persistent = 1
 
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9
+triggerall = palno != 18 && palno != 9 && palno != 21
 trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
@@ -603,6 +603,12 @@ type = PlaySnd
 triggerall = palno = 39
 trigger1 = Animelem = 3
 value = S1959, 29+floor(3*random/1000.0)
+[State 0]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = Animelem = 3
+value = S1957, 0
+freqmul = 0.9+(random/7333.3)
 
 [State 100, 0]
 type = AssertSpecial
@@ -1007,7 +1013,7 @@ persistent = 0
 
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9
+triggerall = palno != 18 && palno != 9 && palno != 21
 trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
@@ -1026,6 +1032,12 @@ type = PlaySnd
 triggerall = palno = 39
 trigger1 = Animelem = 3
 value = S1959, 29+floor(3*random/1000.0)
+[State 0]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = Animelem = 3
+value = S1957, 0
+freqmul = 0.9+(random/7333.3)
 
 [State 20, 2]
 type = ChangeState
@@ -1196,7 +1208,7 @@ trigger1 = time = 1
 value = ceil(23*fvar(8))
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9
+triggerall = palno != 18 && palno != 9 && palno != 21
 trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
@@ -1215,6 +1227,13 @@ type = PlaySnd
 triggerall = palno = 39
 trigger1 = Animelem = 3
 value = S1959, 29+floor(3*random/1000.0)
+[State 0]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = Animelem = 3
+value = S1957, 0
+freqmul = 0.9+(random/7333.3)
+
 [State 100, Run Effect 2]
 type = Explod
 trigger1 = AnimElem = 1
@@ -1281,23 +1300,11 @@ value = 117
 [State 100, Stop Running]
 type = ChangeState
 trigger1 = !ailevel
-value = 1022
-[State 100, Stop Running]
-type = ChangeState
-trigger1 = winko
-value = 1022
-[State 100, Stop Running]
-type = ChangeState
-trigger1 = power >= 3000
-value = 1022
-[State 100, Stop Running]
-type = ChangeState
-trigger1 = ailevel && enemynear,statetype != L
-value = 1022
-[State 100, Stop Running]
-type = ChangeState
-trigger1 = ailevel && enemynear,stateno = 5120
-value = 1022
+trigger2 = winko
+trigger3 = power >= 3000
+trigger4 = ailevel && enemynear,statetype != L
+trigger5 = ailevel && enemynear,stateno = 5120
+value = 102
 ;---------------------------------------------------------------------------
 ; AI DASH DANCE LEFT
 [Statedef 117]
@@ -1320,7 +1327,7 @@ value = ceil(23*fvar(8))
 
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9
+triggerall = palno != 18 && palno != 9 && palno != 21
 trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
@@ -1339,6 +1346,13 @@ type = PlaySnd
 triggerall = palno = 39
 trigger1 = Animelem = 3
 value = S1959, 29+floor(3*random/1000.0)
+[State 0]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = Animelem = 3
+value = S1957, 0
+freqmul = 0.9+(random/7333.3)
+
 [State 100, Run Effect 2]
 type = Explod
 trigger1 = AnimElem = 1
@@ -1402,14 +1416,14 @@ x = 0.5
 type = ChangeState
 trigger1 = time >= fvar(23)
 value = 116
-[State 105, Stop Running]
+[State 100, Stop Running]
 type = ChangeState
-trigger1 = ailevel && enemynear,statetype != L
-value = 103
-[State 105, Stop Running]
-type = ChangeState
-trigger1 = ailevel && enemynear,stateno = 5120
-value = 103
+trigger1 = !ailevel
+trigger2 = winko
+trigger3 = power >= 3000
+trigger4 = ailevel && enemynear,statetype != L
+trigger5 = ailevel && enemynear,stateno = 5120
+value = 105
 ;---------------------------------------------------------------------------
 ; RUN_UP
 [Statedef 110]
@@ -2568,8 +2582,15 @@ y = GetHitVar(yaccel)
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = palno != 21
 trigger1 = time = 10
 value = S5060,0
+channel = 5
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = time = 10
+value = S1957,4
 channel = 5
 
 [State 5050, 4] ;Recover near ground

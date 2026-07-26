@@ -508,7 +508,7 @@ trigger8 = 0&&(var(53):=var(53)-1)
 type = Null
 ;AI conchetumare
 trigger1 = 1
-trigger1 = 0&&(var(30):=(prevstateno = [19000,19999]) || (prevstateno = [190000,199999]) || prevstateno = 3000 || prevstateno = 17000 || prevstateno = 1210 || prevstateno = 611 || prevstateno = 1212 || prevstateno = 1213 || prevstateno = 1214 || prevstateno = 141002 || prevstateno = 1410025 || prevstateno = 14100251 || prevstateno = 14100285 || prevstateno = 2200 || (prevstateno = [2210,2220]))
+trigger1 = 0&&(var(30):=(stateno = [19000,19999]) || (stateno = [190000,199999]) || stateno = 3000 || stateno = 17000 || stateno = 1210 || stateno = 611 || stateno = 1212 || stateno = 1213 || stateno = 1214 || stateno = 141002 || stateno = 1410025 || stateno = 14100251 || stateno = 14100285 || stateno = 2200 || (stateno = [2210,2220]))
 ;AI Probability
 trigger2 = aiLevel && enemyNear,aiLevel > 0
 trigger2 = 0&&(var(59):=ceil(200 * cond(life < lifemax*0.02, 4.0, cond(life < lifemax*0.10, 2.5, cond(life < lifemax*0.25, 1.8, cond(life < lifemax*0.50, 1.3, 1.0))))))
@@ -550,29 +550,27 @@ trigger1 = AILevel
 flag = nowalk
 
 ;---------------------------------------------------------------------------
-[State -1, AI Contextual Recovery]
+[State -1,Ai Recover]
 type = ChangeState
-value = 5200
-triggerall = aiLevel && roundstate = 2 && alive
-triggerall = stateno = 5050 && vel y > 0 && pos y >= 0 && canRecover
-trigger1 = p2bodydist x >= 80 && random < 800
-trigger2 = enemynear,ctrl = 0 && enemynear,movetype != A && random < 600
-trigger3 = enemynear,ailevel > 0 && random < 900
-
+value = ifelse(pos y <= -20,5210,5200)
+triggerall = aiLevel>=3 && roundstate=2 && alive&& numenemy 
+triggerall = enemynear,ailevel = 0 && random < var(59)*ifelse(life < (lifemax*.5),2,1) || enemynear,ailevel
+triggerall = statetype = A && statetype != L
+trigger1 = stateno = 5050 && canrecover = 1
 ;Guard
 [State -1, AI Guard]
 type = ChangeState
 value = cond(statetype = A, 140, cond(enemynear,hitdefattr = C,NA,SA,HA,NP,SP,HP, 130, 120))
 triggerall = aiLevel >= 3 && roundstate = 2 && alive && numenemy
-triggerall = stateno != [120,132] 
+triggerall = stateno != [120,132]
 triggerall = stateno != 700 && stateno != 720
 triggerall = enemynear,movetype != H && enemynear(!enemynear,alive),statetype != L
 triggerall = inguarddist && enemynear,movetype = A && enemynear,stateno != [631,633]
 triggerall = ctrl
 trigger1 = (ctrl || (stateno = [21,22]) || stateno = 100 || stateno = 0) && statetype != A && pos y = 0
-trigger1 = random < var(59) * cond(life < lifemax*0.5, 140, 90)
+trigger1 = random < var(59) * cond(life < lifemax*0.5, 140, 110) * cond(enemynear,ailevel != 0, 1.5, cond(AILevel >= 8, 1, AILevel/8))
 trigger2 = ctrl && statetype = A
-trigger2 = random < var(59) * cond(life < lifemax*0.5, 140, 90)
+trigger2 = random < var(59) * cond(life < lifemax*0.5, 140, 110) * cond(enemynear,ailevel != 0, 1.5, cond(AILevel >= 8, 1, AILevel/8))
 
 [State -1, AI Guard Cancel]
 type = ChangeState
@@ -609,7 +607,7 @@ trigger6 = var(54) := 3000 || 1
 [State -1, AI React after blocking]
 type = ChangeState
 value = var(54)
-triggerall = AILevel > 2 && RoundState = 2 && numenemy
+triggerall = AILevel > 5 && RoundState = 2 && numenemy
 triggerall = statetype != A && pos y = 0
 trigger1 = (stateno = [130,131]) && enemynear,moveguarded && (enemynear,animtime < -6) && !(enemynear,ctrl)
 trigger1 = p2bodydist x <= 40
@@ -617,48 +615,6 @@ trigger1 = var(54) := cond(var(28) >= 8, 800, cond(power >= 3000, 17000, cond(po
 trigger2 = (stateno = [130,131]) && enemynear,moveguarded && (enemynear,animtime < -4) && !(enemynear,ctrl)
 trigger2 = p2bodydist x = [40,100]
 trigger2 = var(54) := cond(var(28) >= 8 && p2bodydist x <= 60, 800, cond(power >= 1000 && power <= 1450 && random < 450, 3000, cond(var(6) <= 0, 1100, 420))) || 1
-
-[State -1, AI Stand Parry]
-type = ChangeState
-value = 700
-triggerall = AILevel >= 7 && roundstate = 2 && alive && numenemy
-triggerall = random < cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*3, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 800, cond(life < lifemax*0.50, 700, 250))))))
-triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
-triggerall = statetype != A && pos y = 0
-triggerall = var(30) != 1
-trigger1 = hitdefattr != SCA, HA, HP, HT
-trigger2 = ctrl
-trigger3 = prevstateno = 1000 && prevstateno = 1100
-trigger3 = hitdefattr != SCA, HA, HP, HT
-
-[State -1, AI Crouch Parry]
-type = ChangeState
-value = 710
-triggerall = AILevel >= 7 && roundstate = 2 && alive && numenemy
-triggerall = random < cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*3, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 800, cond(life < lifemax*0.50, 700, 250))))))
-triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
-triggerall = statetype != A && pos y = 0
-triggerall = var(30) = 0
-triggerall = stateno != 2200 && stateno != 2002
-triggerall = stateno != 3000 && stateno != 800
-trigger1 = hitdefattr != SCA, HA, HP, HT
-trigger2 = ctrl
-trigger3 = prevstateno = 1000 && prevstateno = 1100
-trigger3 = hitdefattr != SCA, HA, HP, HT
-
-[State -1, AI Air Parry]
-type = ChangeState
-value = 720
-triggerall = AILevel >= 7 && roundstate = 2 && alive && numenemy
-triggerall = random < cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*3, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 800, cond(life < lifemax*0.50, 700, 250))))))
-triggerall = movetype = H && gethitvar(hitcount) = 1 && time = 0
-triggerall = statetype = A
-triggerall = var(30) = 0
-triggerall = stateno != 3000 && stateno != 800
-trigger1 = hitdefattr != SCA, HA, HP, HT
-trigger2 = ctrl
-trigger3 = prevstateno = 1321 && prevstateno = 8806
-trigger3 = hitdefattr != SCA, HA, HP, HT
 
 [State -1, AI Run]
 type = ChangeState
@@ -711,7 +667,7 @@ trigger3 = random < var(59) * 3
 [State -1, AI Low Life Attack]
 type = ChangeState
 value = cond(random<666,400,420)
-triggerall = AILevel && roundstate = 2 && var(58) && alive && numenemy
+triggerall = AILevel > 5 && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0 && power < powermax
 triggerall = enemynear,movetype != A && !InGuardDist
 triggerall = ctrl || stateno = 0 || (stateno = [20,22]) || (stateno = [100,109])
@@ -734,7 +690,7 @@ trigger1 = !InGuardDist
 [State -1, AI Pressure Throw]
 type = ChangeState
 value = 800
-triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
+triggerall = aiLevel > 5 && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
 triggerall = enemynear,statetype != A && enemynear,pos y = 0
 triggerall = enemynear,movetype != H && enemynear,statetype != L
@@ -766,7 +722,7 @@ trigger3 = var(1) && enemynear,statetype = A && !numhelper(9902)
 type = ChangeState
 value = 1000
 triggerall = var(5) <= 0
-triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
+triggerall = aiLevel >= 5 && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
 triggerall = ctrl || stateno = 0 || (stateno = [20,22]) || (stateno = [100,109]) || stateno = 1022 || (stateno = [116,117])
 triggerall = enemynear(!enemynear,alive),statetype != L
@@ -800,7 +756,7 @@ trigger3 = var(1) && !numhelper(9902)
 type = ChangeState
 value = 1000
 triggerall = var(5) <= 0
-triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
+triggerall = aiLevel > 5 && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
 triggerall = ctrl || stateno = 0 || (stateno = [20,22]) || (stateno = [100,109]) || stateno = 1022 || (stateno = [116,117])
 triggerall = enemynear,statetype = L
@@ -816,7 +772,7 @@ trigger1 = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 
 type = ChangeState
 value = 1321
 triggerall = var(5) <= 0
-triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
+triggerall = aiLevel > 5 && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype = A
 triggerall = ctrl || (stateno = [600,659])
 triggerall = enemynear,statetype = L
@@ -882,7 +838,8 @@ trigger1 = numenemy < 2 || (enemynear(1),movetype = A && enemynear(1),hitdefattr
 [State -1, AI Counter vs Get Up Attack]
 type = ChangeState
 value = 2200
-triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
+triggerall = aiLevel > 5 && roundstate = 2 && var(58) && alive && numenemy
+triggerall = statetype != A && pos y = 0 && InGuardDist
 triggerall = life < lifemax * 0.78
 triggerall = enemynear,stateno = 5120
 triggerall = enemynear,time >= 10
@@ -1034,7 +991,7 @@ trigger1 = (stateno = [2210,2212]) && movehit
 [State -1, AI Poke]
 type = ChangeState
 value = 400
-triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
+triggerall = aiLevel > 5 && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A
 triggerall = (p2bodydist x - (var(48) * 3)) = [0,40]
 triggerall = ctrl
@@ -1049,7 +1006,7 @@ type = ChangeState
 value = cond(random < 500, 400, 200)
 triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
-triggerall = enemynear,ailevel || enemynear,life < enemynear,lifemax*0.5
+triggerall = enemynear,ailevel || aiLevel >= 5 && enemynear,life < enemynear,lifemax*0.5
 triggerall = ctrl || stateno = 0 || (stateno = [20,22]) || (stateno = [100,109])
 triggerall = enemynear,stateno = 5120 && enemynear,time <= 12
 triggerall = p2bodydist x = [0,45]
@@ -1062,7 +1019,7 @@ type = ChangeState
 value = 420
 triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
-triggerall = enemynear,ailevel || enemynear,life < enemynear,lifemax*0.5
+triggerall = enemynear,ailevel || aiLevel >= 5 && enemynear,life < enemynear,lifemax*0.5
 triggerall = ctrl || stateno = 0 || (stateno = [20,22]) || (stateno = [100,109])
 triggerall = enemynear,stateno = 5120 && enemynear,time <= 10
 triggerall = p2bodydist x = [46,90]
@@ -1074,7 +1031,7 @@ type = ChangeState
 value = 3000
 triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
-triggerall = enemynear,ailevel || enemynear,life < enemynear,lifemax*0.5
+triggerall = enemynear,ailevel || aiLevel >= 5 && enemynear,life < enemynear,lifemax*0.5
 triggerall = power >= 1000 && power <= 1350 && var(30) = 0
 triggerall = ctrl || stateno = 0 || (stateno = [20,22]) || (stateno = [100,109])
 triggerall = enemynear,stateno = 5120 && enemynear,time <= 10
@@ -1090,7 +1047,7 @@ type = ChangeState
 value = 3000
 triggerall = AILevel > 2 && RoundState = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
-triggerall = enemynear,ailevel || enemynear,life < enemynear,lifemax*0.5
+triggerall = enemynear,ailevel || aiLevel >= 5 && enemynear,life < enemynear,lifemax*0.5
 triggerall = power >= 1000 && power <= 1550 && var(30) = 0
 triggerall = var(37) && enemynear,statetype = A && enemynear,pos y <= -15
 triggerall = p2bodydist x = [0,80]
@@ -1110,7 +1067,7 @@ type = ChangeState
 value = 17000
 triggerall = AILevel > 2 && RoundState = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
-triggerall = enemynear,ailevel || enemynear,life < enemynear,lifemax*0.5
+triggerall = enemynear,ailevel || aiLevel >= 5 && enemynear,life < enemynear,lifemax*0.5
 triggerall = power >= 3000 && var(30) = 0
 triggerall = var(37) && enemynear,statetype = A
 triggerall = enemynear(!enemynear,alive),statetype != L
@@ -1126,7 +1083,7 @@ trigger1 = random < var(59) * cond(enemynear,ailevel > 0, 5, 2)
 type = ChangeState
 value = 1000
 triggerall = var(5) <= 0
-triggerall = AILevel > 3 && RoundState = 2 && var(58) && alive && numenemy
+triggerall = AILevel > 5 && RoundState = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
 triggerall = var(49) > 14 && var(37) = 0
 triggerall = (p2bodydist x - var(48) * 6) = [0,65]
@@ -1230,7 +1187,7 @@ trigger3 = enemynear,stateno = 528 || enemynear,stateno = 628 || enemynear,state
 [State -1, AI CSP]
 type = ChangeState
 value = 420
-triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
+triggerall = aiLevel > 5 && roundstate = 2 && var(58) && alive && numenemy
 triggerall = ctrl || stateno = 0 || (stateno = [20,22]) || (stateno = [100,109]) || stateno = 1022 || (stateno = [116,117])
 triggerall = enemynear(!enemynear,alive),statetype != L
 triggerall = (p2bodydist x - (var(48) * 9)) = [90,120]

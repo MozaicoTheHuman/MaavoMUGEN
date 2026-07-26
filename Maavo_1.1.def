@@ -66,7 +66,7 @@ c2 = 12 ;12 - Scooby-Doo
 ;18 - Team Sonic
 ;19 - Undertale (2021 Palette Contest Winner: Oraflame)
 ;20 - No Straight Roads (2021 Palette Contest Winner: Rossiter)
-;21 - Random colors
+;21 - Ed, Edd & Eddy
 ;22 - Overwatch
 ;23 - TF2
 ;24 - Derker Bluer
@@ -85,7 +85,17 @@ c2 = 12 ;12 - Scooby-Doo
 ;37 - Oliver as Latias
 ;38 - SAMSONITE
 ;39 - Rudy MTortilla
-;40 - 2021 Demo
+;40 - Scene
+;41 - Chainsaw Man
+;42 - Pulentos
+;43 - Whitty
+;44 - Kaito
+;45 - Blazblue
+;46 - Rakugaki Showtime
+;47 - Sora
+;48 - Volnutt
+;49 - Hong Lu
+;50 - 2021 Demo
 
 [Arcade]
 intro.storyboard=

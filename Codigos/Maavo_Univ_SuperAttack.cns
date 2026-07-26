@@ -56,7 +56,20 @@ type = PlaySnd
 triggerall = anim = 190003
 trigger1 = animelem = 2
 value = S240,3
-
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1957,9
+ignorehitpause = 1
+persistent = 0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1957,9
+ignorehitpause = 1
+persistent = 0
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = anim = 190003
@@ -725,12 +738,12 @@ ctrl = 0
 sprpriority = 4
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12
+triggerall = palno = 12 || palno = 21
 trigger1 = time = 0
 value = S1959,10
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12
+triggerall = palno = 12 || palno = 21
 trigger1 = time = 0
 value = S1959,10
 [State 0, PlaySnd]
@@ -1114,7 +1127,18 @@ triggerall = palno = 12
 trigger1 = time = 0
 value = S1959,9
 persistent = 0
-
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = time = 0
+value = S1957,9
+persistent = 0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = time = 0
+value = S1957,9
+persistent = 0
 [State 0, EnvShake]
 type = EnvShake
 trigger1 = time = 0
@@ -3392,7 +3416,27 @@ pausemovetime = 99999
 supermovetime = 99999
 ignorehitpause = 1
 persistent = 1
-
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1957,15
+ignorehitpause = 1
+persistent = 0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1957,15
+ignorehitpause = 1
+persistent = 0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1957,15
+ignorehitpause = 1
+persistent = 0
 [State 0, Movement Effect]
 type = Explod
 trigger1 = time = 5
@@ -3558,7 +3602,6 @@ trigger1 = 1
 value = SCA
 time = 1
 ignorehitpause = 1
-
 [State 0, TargetState]
 type = TargetState
 triggerall = var(17) = 0

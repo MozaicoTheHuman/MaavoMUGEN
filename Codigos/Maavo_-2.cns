@@ -8,7 +8,7 @@
 
 [State -2, Gloveless Palettes]
 type = VarSet
-trigger1 = palno=3||palno=5||palno=10||palno=11||palno=12||palno=13||palno=14||palno=15||palno=16||palno=17||palno=19||palno=24||palno=25||palno=26||palno=27||palno=28||palno=30||palno=31||palno=32||palno=33||palno=34||palno=36||palno=37||palno=39
+trigger1 = palno=3||palno=5||palno=10||palno=11||palno=12||palno=13||palno=14||palno=15||palno=16||palno=17||palno=19||palno=21||palno=24||palno=25||palno=26||palno=27||palno=28||palno=30||palno=31||palno=32||palno=33||palno=34||palno=36||palno=37||palno=39||palno=41||palno=42||palno=43||palno=49||palno=51||palno=52
 var(23) = 1
 ignorehitpause = 1
 
@@ -329,16 +329,16 @@ ignorehitpause = 1
 ;AY ESCUBI
 [State -2, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12
+triggerall = palno = 12 || palno = 21
 trigger1 = (Anim = 100 || Anim = 102 || Anim = 105 || Anim = 107) && !(var(25) = 100 || var(25) = 102 || var(25) = 105 || var(25) = 107)
-value = S1959,0
+value = S1959,cond(palno=21, 88, 0)
 channel = 10
 loop = 1
 volumescale = 100
 ignorehitpause = 1
 [State -2, StopSnd]
 type = StopSnd
-triggerall = palno = 12
+triggerall = palno = 12 || palno = 21
 trigger1 = Anim != 100 && Anim != 102 && Anim != 105 && Anim != 107
 channel = 10
 ignorehitpause = 1
@@ -553,13 +553,13 @@ trigger5 = 0&&(var(52):=4)
 trigger6 = palno=35
 trigger6 = 0&&(var(52):=4+random%3)
 ;Victory Music Override: DEMO 2021, rossiter's original song (EXCLUSIVE FOR IKEMEN GO)
-trigger7 = palno=40
+trigger7 = palno=50
 trigger7 = 0&&(var(52):=2)
 ignorehitpause = 1
 
 [State 0, Legacy Mariri and Ivy voices override]; specifically for the 2021 demo palette (EXCLUSIVE FOR IKEMEN GO)
 type = VarSet
-trigger1 = palno = 40
+trigger1 = palno = 50
 var(34) = 1
 ignorehitpause = 1
 
@@ -652,8 +652,8 @@ trigger1 = win
 trigger1 = 0&&(var(56):=2)
 ;Mariri victory check
 trigger2 = roundno >= 2
-trigger2 = numhelper(1100) = 1
-trigger2 = helper(1100),movehit
+trigger2 = numhelper(84803) = 1
+trigger2 = helper(84803),movehit
 trigger2 = win
 trigger2 = 0&&(var(56):=1)
 ignorehitpause = 1
@@ -661,36 +661,43 @@ ignorehitpause = 1
 ;Victory Quotes
 [State -2, Maritza KO]
 type = VictoryQuote
+trigger1 = palno != 38
 trigger1 = var(56) = 1
 value = cond(var(20) = 0, 8, 52) + random%3
 
 [State -2, Ivette KO]
 type = VictoryQuote
+trigger1 = palno != 38
 trigger1 = var(56) = 2
 value = cond(var(20) = 0, 11, 55) + random%3
 
 [State -2, Normal]
 Type = VictoryQuote
+trigger1 = palno != 38
 trigger1 = var(56) = 0
 Value = cond(var(20) = 0, 0, 44) + random%8
 
 [State -2, Maavo]
 type = VictoryQuote
+trigger1 = palno != 38
 trigger1 = Enemy, Name = "Maavo"
 value = cond(var(20) = 0, 14, 58) + random%3
 
 [State -2, Rudy]
 type = VictoryQuote
-trigger1 = Enemy, Name = "Rudy" || Enemy, AuthorName = "jade_midori"
+trigger1 = palno != 38
+trigger1 = Enemy, Name = "Rudy" && Enemy, AuthorName = "jade_midori"
 value = cond(var(20) = 0, 17, 61) + random%4
 
 [State -2, Oliver]
 type = VictoryQuote
-trigger1 = Enemy, Name = "Oliver Andersen" || Enemy, AuthorName = "Oliver As Latias"
+trigger1 = palno != 38
+trigger1 = Enemy, Name = "Oliver Andersen" && Enemy, AuthorName = "Oliver As Latias"
 value = cond(var(20) = 0, 21, 65)
 
 [State -2, Martin]
 type = VictoryQuote
+trigger1 = palno != 38
 trigger1 = enemy, name = "Martin" && enemy, authorname = "Jeff Swag"
 trigger2 = enemy, name = "NewMartin" && enemy, authorname = "Jeff Swag"
 trigger3 = enemy, name = "Martin Bravo" && enemy, authorname = "Maavo!, AustinAnims"
@@ -698,54 +705,74 @@ value = cond(var(20) = 0, 22, 66)
 
 [State -2, Chase]
 type = VictoryQuote
-trigger1 = Enemy, Name = "CHASEVV1.1" || Enemy, AuthorName = "Chase2006"
+trigger1 = palno != 38
+trigger1 = Enemy, Name = "CHASEVV1.1" && Enemy, AuthorName = "Chase2006"
 value = cond(var(20) = 0, 23, 67) + random%5
 
 [State -2, Hanzo]
 type = VictoryQuote
-trigger1 = Enemy, Name = "Hanzo" || Enemy, AuthorName = "Hanzo Santiago"
+trigger1 = palno != 38
+trigger1 = Enemy, Name = "Hanzo" && Enemy, AuthorName = "Hanzo Santiago"
 trigger2 = Enemy, Name = "Hanzo" && Enemy, AuthorName = "Soga Celeste Hanzo Santiago"
 value = cond(var(20) = 0, 28, 72) + random%3
 
 [State -2, Alex]
 type = VictoryQuote
-trigger1 = Enemy, Name = "New_Alex" || Enemy, AuthorName = "ElAleUwU"
+trigger1 = palno != 38
+trigger1 = Enemy, Name = "New_Alex" && Enemy, AuthorName = "ElAleUwU"
 value = cond(var(20) = 0, 31, 75) + random%3
 
 [State -2, Capitan 2]
 type = VictoryQuote
-trigger1 = Enemy, Name = "Capitan_2" || Enemy, AuthorName = "Mario643D"
+trigger1 = palno != 38
+trigger1 = Enemy, Name = "Capitan_2" && Enemy, AuthorName = "Mario643D"
 value = cond(var(20) = 0, 34, 78) + random%2
 
 [State -2, Nick Hopper]
 type = VictoryQuote
-trigger1 = Enemy, Name = "Nick_Hooper" || Enemy, AuthorName = "DarkDonald1"
+trigger1 = palno != 38
+trigger1 = Enemy, Name = "Nick_Hooper" && Enemy, AuthorName = "DarkDonald1"
 value = cond(var(20) = 0, 36, 80) + random%2
 
 [State -2, Ulikander]
 type = VictoryQuote
+trigger1 = palno != 38
 trigger1 = Enemy, AuthorName = "Ulikander4001"
 value = cond(var(20) = 0, 38, 82) + random%2
 
 [State -2, Wach]
 type = VictoryQuote
-trigger1 = Enemy, Name = "Wach" || Enemy, AuthorName = "Wach"
+trigger1 = palno != 38
+trigger1 = Enemy, Name = "Wach" && Enemy, AuthorName = "Wach"
 value = cond(var(20) = 0, 40, 84) + random%2
 
 [State -2, Matias]
 type = VictoryQuote
-trigger1 = Enemy, Name = "Matias Ariel Zurita" || Enemy, AuthorName = "Matydel42008"
+trigger1 = palno != 38
+trigger1 = Enemy, Name = "Matias Ariel Zurita" && Enemy, AuthorName = "Matydel42008"
 value = cond(var(20) = 0, 42, 86)
 
 [State -2, Matt/Shaggy/Boyfriend]
 type = VictoryQuote
-trigger1 = Enemy, Name = "Wii Sports Matt" || Enemy, AuthorName = "Alexander Cooper 19"
+trigger1 = palno != 38
+trigger1 = Enemy, Name = "Wii Sports Matt" && Enemy, AuthorName = "Alexander Cooper 19"
 trigger2 = Enemy, Name = "bf-mugen"
 trigger3 = Enemy, Name = "Shaggy Rogers"
 trigger4 = Enemy, Name = "Norville Rogers"
 trigger5 = Enemy, Name = "BoyfriendFNF"
 trigger6 = Enemy, Name = "Boyfriend"
 value = cond(var(20) = 0, 43, 87)
+
+[State -2, SAMSON Palette]
+Type = VictoryQuote
+trigger1 = palno = 38
+Value = 88
+
+[State -2, SAMSON Palette Vs SAMSON]
+Type = VictoryQuote
+trigger1 = Enemy, Name = "Samson" && Enemy, AuthorName = "VWTG"
+trigger1 = palno = 38
+Value = 89+random%3
 
 ;-----------------------------------------------------------------------------------------------
 ; RemoveExplods
@@ -805,6 +832,18 @@ id = 139921
 type = RemoveExplod
 trigger1 = stateno != 620
 id = 622
+[State -1, lary dary, mi nombre es barry]
+type = HitOverride
+triggerall = RoundState = 2 && numenemy
+triggerall = ailevel
+triggerall = ctrl
+triggerall = var(30) = 0
+trigger1 = AILevel > 5 || enemynear,ailevel != 0
+trigger1 = random < cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*3, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 800, cond(life < lifemax*0.50, 700, 250))))))
+attr = SCA, AA, AP, AT
+slot = 1
+stateno = cond(statetype = A, 720, 700)
+time = 9
 
 ;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 [Statedef -3]

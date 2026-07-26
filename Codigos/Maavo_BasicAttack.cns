@@ -40,7 +40,7 @@ freqmul = 0.9+(random/5333.3)
 
 [State 200, Voice]
 type = PlaySnd
-triggerall = var(16) = 0 || var(16) = 1 || var(16) = 2 || var(16) = 3
+triggerall = var(16) <= 3
 trigger1 = time = 1
 trigger1 = random <=500
 value = S4200,6+random%2
@@ -178,7 +178,7 @@ freqmul = 0.9+(random/5333.3)
 
 [State 200, Voice]
 type = PlaySnd
-triggerall = var(16) = 0 || var(16) = 1 || var(16) = 2 || var(16) = 3
+triggerall = var(16) <= 3
 trigger1 = time = 1
 trigger1 = random <=500 ;5/10 Chance of Saying
 value = S4200,6+random%2
@@ -328,7 +328,7 @@ ignorehitpause = 1
 
 [State 200, Voice]
 type = PlaySnd
-triggerall = var(16) = 0 || var(16) = 1 || var(16) = 2 || var(16) = 3
+triggerall = var(16) <= 3
 trigger1 = AnimElem = 3
 trigger1 = random<=800
 value = S200,3+random%8
@@ -761,6 +761,16 @@ type = PlaySnd
 triggerall = var(16) = 0 || var(16) = 1 || var(16) = 2 || var(16) = 3
 trigger1 = AnimElem = 3
 value =S200,3+random%8
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = AnimElem = 4
+value = S1957,11
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = AnimElem = 4
+value = S1957,11
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = palno = 12
@@ -3590,6 +3600,16 @@ type = PlaySnd
 triggerall = var(16) = 0 || var(16) = 1 || var(16) = 2 || var(16) = 3
 trigger1 = AnimElem = 4
 value = S200,3+random%8
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = AnimElem = 4
+value = S1957,11
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = AnimElem = 4
+value = S1957,11
 
 [State 901, HitDef]
 type = HitDef
@@ -3819,6 +3839,25 @@ type = PlaySnd
 trigger1 = anim = 809 && animelem = 3
 value = S800,2
 channel = 1
+ignorehitpause = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = anim = 810 && animelem = 6
+value = S1957,7
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = anim = 810 && animelem = 6
+value = S1957,7
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = anim = 810 && animelem = 6
+value = S1957,7
 ignorehitpause = 1
 
 [State 0, Turn]

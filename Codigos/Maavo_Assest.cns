@@ -98,12 +98,37 @@ trigger1 = time = 0
 value = S6558,1
 channel = 8
 
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = time = 0
+value = S1957,5
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = time = 0
+value = S1957,5
+
 [State 0, Legacy Voice]
 type = PlaySnd
 triggerall = root,var(34) = 1
 trigger1 = animelem = 1
 value = S6553,0+random%4
 
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1957,8
+persistent = 0
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1957,8
+persistent = 0
+ignorehitpause = 1
 [State 0, FX 1]
 type = Helper
 Trigger1 = time = 0
@@ -980,6 +1005,11 @@ removeongethit = 0
 type = PlaySnd
 trigger1 = AnimElem = 1
 value = S7275,0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = AnimElem = 1
+value = S1957,10
 
 [State 0, PlaySnd]
 type = PlaySnd
@@ -1111,6 +1141,39 @@ volume = 255
 type = StateTypeSet
 trigger1 = var (30) >= 1
 movetype = I
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1957,6
+volume = 255
+persistent = 0
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1957,6
+volume = 255
+persistent = 0
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1957,6
+volume = 255
+persistent = 0
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = movehit
+value = S1957,6
+volume = 255
+persistent = 0
+ignorehitpause = 1
 
 [State 210, 1]
 type = HitDef

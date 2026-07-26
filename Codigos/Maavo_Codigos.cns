@@ -207,6 +207,15 @@ victory86 = "What a fight! I hope wherever you go, you keep fighting like that..
 ;Vs. Matt/Shaggy/Boyfriend
 victory87 = "...Something tells me we've met before..."
 
+;======================
+;SAMSON
+victory88 = "[ NOTHING BUT A FRACTION OF THE COMPLETE SAMSONIC COMPOUND ]"
+
+;SAMSON Palette (Vs. SAMSON)
+victory89 = "[ IT'S DECIDED, THEN. ] [ ASSIMILATING. ]  [ ASSIMILATING. ]  [ ASSIMILATING. ]"
+victory90 = "[ WE WILL RISE AGAIN. ] [ ASSIMILATING. ]  [ ASSIMILATING. ]  [ ASSIMILATING. ]"
+victory91 = "[ ONE STEP CLOSER TO COMPLETION. ] [ ASSIMILATING. ]  [ ASSIMILATING. ]  [ ASSIMILATING. ]"
+
 ;--var list
 ; var(0):= 2102, 2201, 2202, 87872, 99011
 ; var(1):= -1, 2102, 2201, 2202, 2203

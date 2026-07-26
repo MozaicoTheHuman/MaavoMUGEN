@@ -119,6 +119,25 @@ type = PlaySnd
 trigger1 = Time = 50
 value = S50505,1
 
+[State 911, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = Time = 0
+value = S1957,2
+ignorehitpause = 1
+[State 911, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = Time = 0
+value = S1957,2
+ignorehitpause = 1
+[State 911, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = Time = 0
+value = S1957,2
+ignorehitpause = 1
+
 [State 123456789, DestroySelf]
 type = null;DestroySelf
 trigger1 = time = 70

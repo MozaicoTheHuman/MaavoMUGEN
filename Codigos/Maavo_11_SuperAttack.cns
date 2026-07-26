@@ -150,7 +150,7 @@ id = 190011
 type = Explod
 trigger1 = animelem = 3
 id = 3232
-anim = 711
+anim = cond(palno = 15, 616, 711)
 pos = 0,0
 postype = back
 sprpriority = -8
@@ -174,9 +174,10 @@ type = SuperPause
 trigger1 = animelem = 3
 time = 26
 movetime = 26
-anim = -1
-sound = -1
-darken = 0
+anim = cond(palno = 15, 100, -1)
+pos = 18, -60
+sound = cond(palno=15,20,-1), 0
+darken = cond(palno = 15, 1, 0)
 poweradd = -1000
 unhittable = 1
 p2defmul = 1
@@ -198,6 +199,7 @@ supermovetime = 99999
 pausemovetime = 99999
 [State 0, Helper]
 type = Helper
+triggerall = palno != 15
 trigger1 = animelem = 3
 name = "Hyper Portrait"
 ID = 81000
@@ -366,7 +368,7 @@ value = S3440,0
 type = Explod
 trigger1 = animelem = 3
 id = 3232
-anim = 711
+anim = cond(palno=15, -1, 711)
 pos = 0,0
 postype = back
 sprpriority = -8
@@ -404,15 +406,17 @@ type = SuperPause
 trigger1 = animelem = 3
 time = 26
 movetime = 26
-anim = -1
-sound = -1
-darken = 0
+anim = cond(palno = 15, 100, -1)
+pos = 18, -60
+sound = cond(palno=15,20,-1), 0
+darken = cond(palno = 15, 1, 0)
 poweradd = -1000
 unhittable = 1
 p2defmul = 1
 
 [State 0, Helper]
 type = Helper
+triggerall = palno != 15
 trigger1 = animelem = 3
 name = "Hyper Portrait"
 ID = 81000
@@ -939,18 +943,31 @@ type = PlaySnd
 trigger1 = AnimElem = 9 || AnimElem = 21
 value = S240,0
 freqmul = 0.9+(random/7333.3)
-
 [State 19001, PlaySnd]
 type = PlaySnd
 trigger1 = AnimElem = 6 || AnimElem =  12 || AnimElem = 29
 value = S240,2
 freqmul = 0.9+(random/7333.3)
-
 [State 19001, PlaySnd]
 type = PlaySnd
 triggerall = palno = 12
 trigger1 = AnimElem = 29
 value = S1959,7
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = AnimElem = 29
+value = S1957,7
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = AnimElem = 29
+value = S1957,7
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = AnimElem = 29
+value = S1957,7
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = palno = 8
@@ -976,7 +993,16 @@ trigger1 = AnimElem =  2 || AnimElem = 15 || AnimElem = 21
 trigger2 = AnimElem = 25
 value = S240,1
 freqmul = 0.9+(random/7333.3)
-
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = time = 137
+value = S1957,3
+[State 19001, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = time = 137
+value = S1957,3
 [State 19001, PlaySnd]
 type = PlaySnd
 trigger1 = AnimElem = 18
@@ -1126,6 +1152,7 @@ trigger1 = Animelem = 29
 value = S3440,1
 [State 19001, PlaySnd]
 type = PlaySnd
+triggerall = palno != 21
 trigger1 = animelem = 29
 value = S240,12
 [State 0, PlaySnd]
@@ -1192,7 +1219,7 @@ pausemovetime = 99999
 type = Explod
 trigger1 = animelem = 3
 id = 713
-anim = 712
+anim = cond(palno = 15, -1, 712)
 pos = 0,0
 postype = back
 sprpriority = -6
@@ -1257,6 +1284,21 @@ type = PlaySnd
 triggerall = palno = 12
 trigger1 = Animelem = 7
 value = S1959,8
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = Animelem = 7
+value = S1957,5
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = Animelem = 7
+value = S1957,5
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = Animelem = 7
+value = S1957,5
 
 [State 19001, 1]
 type = Explod
@@ -1322,11 +1364,12 @@ type = SuperPause
 trigger1 = animelem = 3
 time = 40
 movetime = 40
-anim = -1
-sound = -1
-darken = 0
+anim = cond(palno = 15, 100, -1)
+sound = cond(palno=15,20,-1), 0
+pos = 10, -60
 poweradd = -1000
 unhittable = 1
+darken = cond(palno = 15, 1, 0)
 p2defmul = 1
 
 [State 0, EnvShake]
@@ -1480,6 +1523,7 @@ supermovetime = 9999
 removeongethit = 1
 [State 0, Helper]
 type = Helper
+triggerall = palno != 15
 trigger1 = animelem = 3
 name = "Hyper Portrait"
 ID = 81000
@@ -1582,6 +1626,12 @@ type = PlaySnd
 trigger1 = time = 10
 value = S21931,12
 
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno =21 
+trigger1 = time = 10
+value = S1957,12
+
 [State 19001, PlaySnd]
 type = PlaySnd
 triggerall = palno = 8
@@ -1612,7 +1662,7 @@ value = S21939,5+ (var(16) * 100)
 type = Explod
 trigger1 = animelem = 4
 id = 713
-anim = 712
+anim = cond(palno=15, -1, 712)
 pos = 0,0
 postype = back
 sprpriority = -6
@@ -1627,6 +1677,7 @@ removeongethit = 1
 ownpal = 1
 [State 0, Helper]
 type = Helper
+triggerall = palno != 15
 trigger1 = animelem = 4
 name = "Hyper Portrait"
 ID = 81000
@@ -1694,14 +1745,14 @@ type = SuperPause
 trigger1 = animelem = 4
 time = 40
 movetime = 40
-anim = -1
-sound = -1
+anim = cond(palno = 15, 100, -1)
+sound = cond(palno=15,20,-1), 0
+pos = -20, -50
 movetime = 0
-darken = 0
+darken = cond(palno = 15, 1, 0)
 poweradd = -3000
 unhittable = 1
 p2defmul = 1
-
 [State 19000, end]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -2050,6 +2101,21 @@ triggerall = palno = 8
 trigger1 = time = 0
 value = S1959,16
 
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = time = 0
+value = S1957,1
+ignorehitpause = 1
+persistent = 0
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = time = 0
+value = S1957,1
+ignorehitpause = 1
+persistent = 0
+
 [State 0, VarSet]
 type = VarSet
 triggerall = animelem = 2
@@ -2100,7 +2166,7 @@ ignorehitpause = 1
 type = Explod
 trigger1 = animelem = 2
 id = 713
-anim = 712
+anim = cond(palno=15, -1, 712)
 pos = 0,0
 postype = back
 sprpriority = -6
@@ -2116,6 +2182,7 @@ ownpal = 1
 
 [State 0, Helper]
 type = Helper
+triggerall = palno != 15
 trigger1 = animelem = 2
 name = "Hyper Portrait"
 ID = 81000
@@ -2135,13 +2202,15 @@ type = SuperPause
 trigger1 = animelem = 2
 time = 31
 movetime = 31
-anim = -1
-sound = -1
+anim = cond(palno = 15, 100, -1)
+sound = cond(palno=15,20,-1), 0
 movetime = 0
-darken = 0
+pos = -20, -50
 poweradd = -3000
 unhittable = 1
+darken = cond(palno = 15, 1, 0)
 p2defmul = 1
+
 [State 19000, end]
 type = ChangeState
 trigger1 = AnimTime = 0

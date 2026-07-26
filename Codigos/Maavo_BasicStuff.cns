@@ -1643,7 +1643,7 @@ trigger1 = time = 5
 [Statedef 195]
 type = S
 ctrl = 0
-anim = 195
+anim = cond(palno = 52, 198, 195)
 velset = 0,0
 movetype = I
 poweradd = 0
@@ -1723,6 +1723,11 @@ ignorehitpause = 1
 type = CtrlSet
 trigger1 = prevstateno = 140002 || prevstateno = 140006
 value = 0
+ignorehitpause = 1
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = prevstateno = 140002 || prevstateno = 140006
+value = SCA
 ignorehitpause = 1
 [State 196]
 type = ChangeState

@@ -46,6 +46,18 @@ type = PlaySnd
 triggerall = anim = 900
 trigger1 = animelem = 2
 value = S900,1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = time = 4
+value = S1957,11
+ignorehitpause =1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = palno = 21
+trigger1 = time = 4
+value = S1957,11
+ignorehitpause =1
 
 [State 210, 1]
 type = HitDef
@@ -1652,6 +1664,7 @@ var(5)= 120
 ignorehitpause = 1
 [State 0, Helper]
 type = Helper
+triggerall = !numhelper(9002)
 trigger1 = Animelem = 1
 helpertype = normal ;player
 name = "Ivette"
@@ -1717,6 +1730,7 @@ var(5)= 120
 ignorehitpause = 1
 [State 0, Helper]
 type = Helper
+triggerall = !numhelper(9002)
 trigger1 = time = 0
 helpertype = normal ;player
 name = "Ivette"
@@ -1779,6 +1793,7 @@ ignorehitpause = 1
 
 [State 0, Helper]
 type = Helper
+triggerall = !numhelper(84803)
 trigger1 = time = 0
 helpertype = normal ;player
 name = "Maritza"
@@ -1840,6 +1855,7 @@ ignorehitpause = 1
 
 [State 0, Helper]
 type = Helper
+triggerall = !numhelper(84803)
 trigger1 = time = 0
 helpertype = normal ;player
 name = "Maritza"
