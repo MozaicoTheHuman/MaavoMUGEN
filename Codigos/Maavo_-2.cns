@@ -6,7 +6,6 @@
 
 [Statedef -2]
 
-
 [state -2, No Clones]
 type = remappal
 triggerall=numenemy && (fvar(36)=[1,52]);fvar(36)=the number of pals available 

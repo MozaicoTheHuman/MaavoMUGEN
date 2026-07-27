@@ -13,6 +13,8 @@ ctrl = 0
 anim = 1301
 facep2 = 1
 
+
+
 [State 1220, After imajenes]
 type = AfterImage
 trigger1 = Time = 0
@@ -40,7 +42,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,palno
+dest = 1,ifelse(parent,fvar(37)= 1,parent,fvar(36),palno)
 ignorehitpause = 1
 [State 0, VarSet]
 type = ParentVarSet
@@ -359,7 +361,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,palno
+dest = 1,ifelse(parent,fvar(37)= 1,parent,fvar(36),palno)
 ignorehitpause = 1
 
 [State 0, PalFX]
@@ -511,7 +513,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,palno
+dest = 1,ifelse(parent,fvar(37)= 1,parent,fvar(36),palno)
 ignorehitpause = 1
 [State 0, PalFX]
 type = PalFX
@@ -912,7 +914,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,palno
+dest = 1,ifelse(parent,fvar(37)= 1,parent,fvar(36),palno)
 ignorehitpause = 1
 
 [State 0, PalFX]
@@ -1049,7 +1051,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,palno
+dest = 1,ifelse(parent,fvar(37)= 1,parent,fvar(36),palno)
 ignorehitpause = 1
 
 [State 0, PalFX]
