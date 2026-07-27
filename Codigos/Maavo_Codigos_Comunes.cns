@@ -3832,7 +3832,7 @@ type = Explod
 trigger1 = !time
 id = 19876
 anim = 19876
-pos = cond(root,facing = 1, 0, 350), cond(root,var(17) = 1, 160, 210)
+pos = cond(root,facing = 1, 0, 320), cond(root,var(17) = 1, 160, 210)
 postype = back
 removeongethit = 1
 removetime=-1
