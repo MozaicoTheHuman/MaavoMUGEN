@@ -3776,12 +3776,12 @@ anim = 616
 velset=0,0
 sprpriority=616
 
-[State 12345, PosSet]
-type = PosSet
-trigger1 =!time
-x = root,facing*-90
-y = 25
-ignorehitpause = 1
+;[State 12345, PosSet]
+;type = PosSet
+;trigger1 =!time
+;x = root,facing*-90
+;y = 25
+;ignorehitpause = 1
 
 [State 12345, AS]
 type=assertspecial
@@ -3832,10 +3832,11 @@ type = Explod
 trigger1 = !time
 id = 19876
 anim = 19876
-pos = 0,cond(root,var(17) = 1, 160, 210)
+pos = cond(root,facing = 1, 0, 350), cond(root,var(17) = 1, 160, 210)
 postype = back
 removeongethit = 1
 removetime=-1
+facing = root,facing
 scale = .25,.25
 supermovetime= 99999
 bindtime=-1
@@ -3855,7 +3856,7 @@ trigger1 = time = 1
 trigger2 = fvar(39)=1 || (fvar(39)>20 && (floor(fvar(39))-20)%5=0)
 id = 19877
 anim = 8900+fvar(36)
-pos = 70,cond(root,var(17) = 1, 212, 162)
+pos = cond(root,facing = 1, 70, 250),cond(root,var(17) = 1, 212, 162)
 postype = back
 removeongethit = 1
 removetime = -1
