@@ -23,7 +23,6 @@ flag = nobardisplay
 flag2 = nomusic
 [State 119911991, 1]
 type = AssertSpecial
-triggerall = root,var(14) > 0
 trigger1 = matchover
 flag = nomusic
 

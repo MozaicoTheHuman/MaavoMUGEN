@@ -505,7 +505,7 @@ postype = back
 sprpriority = -5
 removeongethit = 1
 removetime = 732
-scale = 15+(root,var(17) * .1),.25+(root,var(17) * .1)
+scale = 15+(var(17) * .1),.25+(var(17) * .1)
 bindtime = -1
 ownpal = 1
 ontop = 1
@@ -582,91 +582,57 @@ dest = 3,0
 type = RemapPal
 trigger1 = AnimElem = 29
 source = 1,1
-dest = 1,fvar(36)
+dest = 1,floor(fvar(36))
 ignorehitpause = 1
 
-[State 911, Ease In]
-type = VarSet
+[State 911, Camera/Zoom Vars]
+type = Null
 trigger1 = time = [124,134]
-fvar(20) = (time - 124.0) / 10.0
-
-[State 911, Ease Out]
-type = VarSet
-trigger1 = time = [172,170]
-fvar(21) = (170.0 - time) / 9.0
-
-[State 911, Camera Ease In Initial]
-type = VarSet
-trigger1 = time = [0,10]
-fvar(3) = (time / 10.0)
-fvar(3) = fvar(3)*fvar(3)*(3 - 2*fvar(3))
-
-[State 911, Camera Follow EaseIn]
-type = VarSet
-trigger1 = time = [124,134]
-fvar(2) = fvar(20)*fvar(20)*(3 - 2*fvar(20))
-
-[State 911, Camera Follow Full]
-type = VarSet
-trigger1 = time = [135,171]
-fvar(2) = 1
-ignorehitpause = 1
-
-[State 911, Camera Follow EaseOut]
-type = VarSet
-trigger1 = time = [172,170]
-fvar(2) = fvar(21)*fvar(21)*(3 - 2*fvar(21))
-
-[State 911, Zoom Light EaseIn]
-type = VarSet
-trigger1 = time = [124,134]
-fvar(0) = 0.05 * (fvar(20)*fvar(20)*(3 - 2*fvar(20)))
-
-[State 911, Zoom Ramp Up]
-type = VarSet
-trigger1 = time = [135,163]
-fvar(0) = 0.05 + ((time - 135.0) / 28.0) * 0.14
-
-[State 911, Zoom Hold]
-type = VarSet
-trigger1 = time = [164,171]
-fvar(0) = 0.19
-
-[State 911, Zoom EaseOut]
-type = VarSet
-trigger1 = time = [172,170]
-fvar(0) = 0.19 * (fvar(21)*fvar(21)*(3 - 2*fvar(21)))
-
-[State 911, Zoom Reset]
-type = VarSet
-trigger1 = time > 170
-fvar(0) = 0
-fvar(2) = 0
-[State 911, Shake Progress]
-type = VarSet
-trigger1 = time = [135,163]
-fvar(22) = (time - 135.0) / 28.0
+trigger1 = 0&&(fvar(20):=(time-124.0)/10.0)
+trigger2 = time = [172,170]
+trigger2 = 0&&(fvar(21):=(170.0-time)/9.0)
+trigger3 = time = [0,10]
+trigger3 = 0&&(fvar(3):=(time/10.0)*(time/10.0)*(3-2*(time/10.0)))
+trigger4 = time = [124,134]
+trigger4 = 0&&(fvar(2):=fvar(20)*fvar(20)*(3-2*fvar(20)))
+trigger5 = time = [135,171]
+trigger5 = 0&&(fvar(2):=1)
+trigger6 = time = [172,170]
+trigger6 = 0&&(fvar(2):=fvar(21)*fvar(21)*(3-2*fvar(21)))
+trigger7 = time = [124,134]
+trigger7 = 0&&(fvar(0):=0.05*(fvar(20)*fvar(20)*(3-2*fvar(20))))
+trigger8 = time = [135,163]
+trigger8 = 0&&(fvar(0):=0.05+((time-135.0)/28.0)*0.14)
+trigger9 = time = [164,171]
+trigger9 = 0&&(fvar(0):=0.19)
+trigger10 = time = [172,170]
+trigger10 = 0&&(fvar(0):=0.19*(fvar(21)*fvar(21)*(3-2*fvar(21))))
+trigger11 = time > 170
+trigger11 = 0&&(fvar(0):=0)
+trigger12 = time > 170
+trigger12 = 0&&(fvar(2):=0)
+trigger13 = time = [135,163]
+trigger13 = 0&&(fvar(22):=(time-135.0)/28.0)
 ignorehitpause = 1
 [State 911, Zoom Controller]
 type = Zoom
 trigger1 = time >= 0 && time < 135
 scale = 1 + fvar(0)
-pos = (enemynear,pos x - root,pos x) * fvar(3), (enemynear,pos y - pos y) - 35
+pos = (enemynear,pos x - pos x) * fvar(3), (enemynear,pos y - pos y) - 35
 bound = 0
 ignorehitpause = 1
-
 [State 911, Zoom Controller Shake]
 type = Zoom
 trigger1 = time = [135,163]
 scale = 1 + fvar(0)
-pos = (enemynear,pos x - root,pos x) * fvar(3) + cos(time * (0.5 + fvar(22) * 3.6)) * (0.2 + fvar(22) * 2.2), (enemynear,pos y - pos y) - 35 + sin(time * (0.4 + fvar(22) * 3.2)) * (0.1 + fvar(22) * 1.8)
+pos = (enemynear,pos x - pos x) * fvar(3) + cos(time * (0.5 + fvar(22) * 3.6)) * (0.2 + fvar(22) * 2.2), (enemynear,pos y - pos y) - 35 + sin(time * (0.4 + fvar(22) * 3.2)) * (0.1 + fvar(22) * 1.8)
 bound = 0
 ignorehitpause = 1
 [State 911, Zoom Controller Hold]
 type = Zoom
 trigger1 = time = [164,170]
 scale = 1 + fvar(0)
-pos = (enemynear,pos x - root,pos x) * fvar(3), (enemynear,pos y - pos y) - 35
+pos = (enemynear,pos x - pos x) * fvar(3), (enemynear,pos y - pos y) - 35
 bound = 0
 ignorehitpause = 1
 

@@ -179,6 +179,11 @@ trigger1 = 1
 text = "\nun saludo al geox lml"
 ignorehitpause = 1
 
+[State -2, reset kokun]
+type = VarSet
+trigger1 = stateno = [5000,5999]
+fvar(22) = 0.0
+
 [State 0, Null]
 type = Null
 trigger1 = var(5) = 120
@@ -405,7 +410,7 @@ var(16) = 20
 ignorehitpause = 0
 ;ora del shou 2016
 
-;ora del shou 2016
+;kfm
 [State 0, Force Default GFX/SFX on KFM palette]
 type = VarSet
 triggerall = !numhelper(12345)
@@ -413,7 +418,7 @@ triggerall = fvar(36) = 15
 trigger1 = 1
 var(18) = 0
 ignorehitpause = 0
-;ora del shou 2016
+;kfm
 
 [State -2]
 type = VelAdd
@@ -887,6 +892,7 @@ id = 139921
 type = RemoveExplod
 trigger1 = stateno != 620
 id = 622
+
 [State -1, lary dary, mi nombre es barry]
 type = HitOverride
 triggerall = RoundState = 2 && numenemy

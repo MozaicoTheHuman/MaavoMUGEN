@@ -3460,12 +3460,12 @@ ignorehitpause = 1
 [State 0, Remember X Pos]
 type = VarSet
 trigger1 = 1
-var(13) = (parent,var(13))
+fvar(13) = (parent,fvar(13))
 ignorehitpause = 1
 [State 0, Remember Y Pos]
 type = VarSet
 trigger1 = 1
-var(14) = (parent,var(14))
+fvar(14) = (parent,fvar(14))
 ignorehitpause = 1
 [State 0, Remember Ivette Cooldowns]
 type = VarSet
@@ -3544,7 +3544,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 1
 anim = 15550
 ID = 15500
-pos = var(13)+cond(fvar(10),25,0),var(14)
+pos = fvar(13)+cond(fvar(10),25,0),fvar(14)
 postype = back
 facing = 1
 vfacing = 1
@@ -3568,7 +3568,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 1
 anim = 15500+cond((var(5)>0&&var(5)<120),floor(fvar(5)),cond(var(5)>0,22,0))
 ID = 15500
-pos = var(13)+cond(fvar(10),25,0),var(14)
+pos = fvar(13)+cond(fvar(10),25,0),fvar(14)
 postype = back
 facing = 1
 vfacing = 1
@@ -3592,7 +3592,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 1
 anim = 15650
 ID = 15600
-pos = var(13)+cond(fvar(10),25,0),var(14)+26
+pos = fvar(13)+cond(fvar(10),25,0),fvar(14)+26
 postype = back
 facing = 1
 vfacing = 1
@@ -3616,7 +3616,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 1
 anim = 15600+cond((var(6)>0&&var(6)<120),floor(fvar(6)),cond(var(6)>0,22,0))
 ID = 15600
-pos = var(13)+cond(fvar(10),25,0),var(14)+26
+pos = fvar(13)+cond(fvar(10),25,0),fvar(14)+26
 postype = back
 facing = 1
 vfacing = 1
@@ -3640,7 +3640,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 2
 anim = 15550
 ID = 15500
-pos = 320-(var(13)+cond(fvar(10),25,0)),var(14)
+pos = 320-(fvar(13)+cond(fvar(10),25,0)),fvar(14)
 postype = back
 facing = -1
 vfacing = 1
@@ -3664,7 +3664,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 2
 anim = 15500+cond((var(5)>0&&var(5)<120),floor(fvar(5)),cond(var(5)>0,22,0))
 ID = 15500
-pos = 320-(var(13)+cond(fvar(10),25,0)),var(14)
+pos = 320-(fvar(13)+cond(fvar(10),25,0)),fvar(14)
 postype = back
 facing = -1
 vfacing = 1
@@ -3688,7 +3688,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 2
 anim = 15650
 ID = 15600
-pos = 320-(var(13)+cond(fvar(10),25,0)),var(14)+26
+pos = 320-(fvar(13)+cond(fvar(10),25,0)),fvar(14)+26
 postype = back
 facing = -1
 vfacing = 1
@@ -3712,7 +3712,7 @@ triggerall = var(40) = 0
 trigger1 = root,teamside = 2
 anim = 15600+cond((var(6)>0&&var(6)<120),floor(fvar(6)),cond(var(6)>0,22,0))
 ID = 15600
-pos = 320-(var(13)+cond(fvar(10),25,0)),var(14)+26
+pos = 320-(fvar(13)+cond(fvar(10),25,0)),fvar(14)+26
 postype = back
 facing = -1
 vfacing = 1
@@ -3769,7 +3769,7 @@ trigger1 = numhelper(84803) = 0
 var(6) = -1
 
 ;---------------------------------------------------------
-; Pal Selector Helper
+; Palette Selector Helper
 [Statedef 12345]
 physics = N
 anim = 616
@@ -3803,6 +3803,69 @@ fvar(36)=root,palno
 type=varset
 trigger1=fvar(36)<1||fvar(36)>55
 fvar(36)=1+(fvar(36)<1)*54
+
+[State 12345, timer APURATE GUEON]
+type = Explod
+trigger1 = !time
+id = 19878
+anim = 19878
+pos = 107,30
+postype = back
+removeongethit = 1
+removetime=-1
+scale = .25,.25
+supermovetime= 99999
+bindtime=-1
+pausemovetime = 99999
+sprpriority=55
+removeongethit = 1
+ownpal = 1
+[State 12345, Shrink Timer X]
+type = ModifyExplod
+trigger1 = time <= 600
+id = 19878
+scale = .25*(1-time/600.0), .25
+ignorehitpause = 1
+
+[State 12345, base de la guea]
+type = Explod
+trigger1 = !time
+id = 19876
+anim = 19876
+pos = 0,160
+postype = back
+removeongethit = 1
+removetime=-1
+scale = .25,.25
+supermovetime= 99999
+bindtime=-1
+pausemovetime = 99999
+sprpriority=55
+removeongethit = 1
+ownpal = 1
+[State 12345, actualizar nombresito]
+type = RemoveExplod
+trigger1 = !time
+trigger2 = fvar(39)=1 || (fvar(39)>20 && (floor(fvar(39))-20)%5=0)
+id = 19877
+ignorehitpause = 1
+[State 12345, nombresito bonito]
+type = Explod
+trigger1 = !time
+trigger2 = fvar(39)=1 || (fvar(39)>20 && (floor(fvar(39))-20)%5=0)
+id = 19877
+anim = 8900+fvar(36)
+pos = 70,162
+postype = back
+removeongethit = 1
+removetime = -1
+scale = .265,.265
+supermovetime = 99999
+bindtime = -1
+pausemovetime = 99999
+sprpriority = 57
+ownpal = 1
+ignorehitpause = 1
 
 [State 12345, Reset Hold]
 type = varset
@@ -3855,8 +3918,27 @@ trigger1=!fvar(39)&&fvar(38)<150
 trigger1=root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd"
 fvar(38)=25
 
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
+trigger2=root,AILevel
+trigger3=time>600
+id = 19876
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
+trigger2=root,AILevel
+trigger3=time>600
+id = 19877
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
+trigger2=root,AILevel
+trigger3=time>600
+id = 19878
 [State 12345, End]
 type=destroyself
 triggerall=ishelper(12345)
 trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
 trigger2=root,AILevel
+trigger3=time>600

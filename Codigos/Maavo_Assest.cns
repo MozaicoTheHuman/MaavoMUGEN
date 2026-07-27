@@ -40,7 +40,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,cond(parent,fvar(37)= 1,parent,fvar(36),palno)
+dest = 1,cond(parent,fvar(37)= 1,floor(parent,fvar(36)),palno)
 ignorehitpause = 1
 [State 0, VarSet]
 type = ParentVarSet
@@ -219,10 +219,10 @@ air.velocity = -4, 25
 yaccel=1
 air.fall = 1
 fall.recover=1
-ground.slidetime = ceil(18+3*(root,var(42)!=0))
-ground.hittime = ceil(18+3*(root,var(42)!=0))
-air.hittime = ceil(18*1+(root,var(42)!=0))
-fall.recovertime = ceil(36*1+(root,var(42)!=0))
+ground.slidetime = 18+3*(root,var(42)!=0)
+ground.hittime = 18+3*(root,var(42)!=0)
+air.hittime = 18*1+(root,var(42)!=0)
+fall.recovertime = 36*1+(root,var(42)!=0)
 guard.hittime = 16
 airguard.hittime = 16
 ground.type = low
@@ -290,7 +290,7 @@ channel = 31
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = var(18)=1
+triggerall = root,var(18)=1
 trigger1 = movehit
 value = S7676,0
 persistent = 0
@@ -363,7 +363,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,cond(parent,fvar(37)= 1,parent,fvar(36),palno)
+dest = 1,cond(parent,fvar(37)= 1,floor(parent,fvar(36)),palno)
 ignorehitpause = 1
 
 [State 0, PalFX]
@@ -515,7 +515,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,cond(parent,fvar(37)= 1,parent,fvar(36),palno)
+dest = 1,cond(parent,fvar(37)= 1,floor(parent,fvar(36)),palno)
 ignorehitpause = 1
 [State 0, PalFX]
 type = PalFX
@@ -649,10 +649,10 @@ air.velocity = -4, 25
 yaccel=1
 air.fall = 1
 fall.recover=1
-ground.slidetime = ceil(18+3*(root,var(42)!=0))
-ground.hittime = ceil(18+3*(root,var(42)!=0))
-air.hittime = ceil(18*1+(root,var(42)!=0))
-fall.recovertime = ceil(36*1+(root,var(42)!=0))
+ground.slidetime = 18+3*(root,var(42)!=0)
+ground.hittime = 18+3*(root,var(42)!=0)
+air.hittime = 18*1+(root,var(42)!=0)
+fall.recovertime = 36*1+(root,var(42)!=0)
 guard.hittime = 16
 airguard.hittime = 16
 ground.type = low
@@ -689,7 +689,7 @@ value = S65535,7
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = var(18)=1
+triggerall = root,var(18)=1
 trigger1 = movehit
 value = S7676,0
 persistent = 0
@@ -911,7 +911,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,cond(parent,fvar(37)= 1,parent,fvar(36),palno)
+dest = 1,cond(parent,fvar(37)= 1,floor(parent,fvar(36)),palno)
 ignorehitpause = 1
 
 [State 0, PalFX]
@@ -1040,7 +1040,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,cond(parent,fvar(37)= 1,parent,fvar(36),palno)
+dest = 1,cond(parent,fvar(37)= 1,floor(parent,fvar(36)),palno)
 ignorehitpause = 1
 
 [State 0, PalFX]
@@ -1185,10 +1185,10 @@ hitsound = cond(root, var(18)=0, 5, 0), 2
 sparkxy = -35, -40
 guardsound = 6, 0
 ground.type = Low
-ground.slidetime = ceil(18+3*(root,var(42)!=0))
-ground.hittime = ceil(18+3*(root,var(42)!=0))
-air.hittime = ceil(18*1+(root,var(42)!=0))
-fall.recovertime = ceil(18*1+(root,var(42)!=0))
+ground.slidetime = 18+3*(root,var(42)!=0)
+ground.hittime = 18+3*(root,var(42)!=0)
+air.hittime = 18*1+(root,var(42)!=0)
+fall.recovertime = 18*1+(root,var(42)!=0)
 guard.hittime = 18
 airguard.hittime = 18
 ground.velocity = -5

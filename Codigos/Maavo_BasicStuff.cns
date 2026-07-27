@@ -1867,6 +1867,60 @@ type = CtrlSet
 trigger1 = time = 18
 value = 1
 
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 0 || fvar(22) = 3
+trigger1 = animelemtime(2) = 0
+value = S1953,0
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 1
+trigger1 = animelemtime(2) = 0
+value = S1953,1
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 2
+trigger1 = animelemtime(2) = 0
+value = S1953,2
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 4
+trigger1 = animelemtime(2) = 0
+value = S1953,3
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 5 || fvar(22) = 7
+trigger1 = animelemtime(2) = 0
+value = S1953,4
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 6
+trigger1 = animelemtime(2) = 0
+value = S1953,5
+channel = 3
+ignorehitpause = 1
+[State 700, VarSet]
+type = VarSet
+triggerall = fvar(36) = 8
+trigger1 = AnimTime = 0
+fvar(22) = cond(fvar(22) >= 7.0, 0.0, fvar(22) + 1.0)
+
 [State 0, SelfState]
 type = SelfState
 trigger1 = animtime = 0
@@ -2004,6 +2058,60 @@ ignorehitpause = 1
 type = CtrlSet
 trigger1 = time = 18
 value = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 0 || fvar(22) = 3
+trigger1 = animelemtime(2) = 0
+value = S1953,0
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 1
+trigger1 = animelemtime(2) = 0
+value = S1953,1
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 2
+trigger1 = animelemtime(2) = 0
+value = S1953,2
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 4
+trigger1 = animelemtime(2) = 0
+value = S1953,3
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 5 || fvar(22) = 7
+trigger1 = animelemtime(2) = 0
+value = S1953,4
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 6
+trigger1 = animelemtime(2) = 0
+value = S1953,5
+channel = 3
+ignorehitpause = 1
+[State 700, VarSet]
+type = VarSet
+triggerall = fvar(36) = 8
+trigger1 = AnimTime = 0
+fvar(22) = cond(fvar(22) >= 7.0, 0.0, fvar(22) + 1.0)
 
 [State 0, SelfState]
 type = SelfState
@@ -2154,6 +2262,60 @@ time = 18
 movetime = 18
 pausebg = 0
 ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 0 || fvar(22) = 3
+trigger1 = animelemtime(2) = 0
+value = S1953,0
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 1
+trigger1 = animelemtime(2) = 0
+value = S1953,1
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 2
+trigger1 = animelemtime(2) = 0
+value = S1953,2
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 4
+trigger1 = animelemtime(2) = 0
+value = S1953,3
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 5 || fvar(22) = 7
+trigger1 = animelemtime(2) = 0
+value = S1953,4
+channel = 3
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 8
+triggerall = fvar(22) = 6
+trigger1 = animelemtime(2) = 0
+value = S1953,5
+channel = 3
+ignorehitpause = 1
+[State 700, VarSet]
+type = VarSet
+triggerall = fvar(36) = 8
+trigger1 = AnimTime = 0
+fvar(22) = cond(fvar(22) >= 7.0, 0.0, fvar(22) + 1.0)
+
 [State 0, CtrlSet]
 type = CtrlSet
 trigger1 = time = 18
