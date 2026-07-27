@@ -620,7 +620,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = AnimElem = 29
 source = 1,1
-dest = 1,palno
+dest = 1,fvar(36)
 ignorehitpause = 1
 
 [State 0, BGPalFX Black In]
