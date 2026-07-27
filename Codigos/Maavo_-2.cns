@@ -7,7 +7,6 @@
 [Statedef -2]
 
 
-
 [state -2, No Clones]
 type = remappal
 triggerall=numenemy && (fvar(36)=[1,52]);fvar(36)=the number of pals available 
@@ -38,8 +37,6 @@ trigger1=fvar(37)&&!AILevel&&matchno>1
 source = 1, 1
 dest = 1, fvar(36)
 ignorehitpause = 1
-
-
 
 [State -2, Gloveless Palettes]
 type = VarSet

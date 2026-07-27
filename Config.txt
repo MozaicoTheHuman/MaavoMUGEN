@@ -104,17 +104,27 @@ trigger8 = 0&&var(52):=		(1) ; ◄ Change value here.                           
 ;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 ;=================================================================================================
+;Palette Selector?
+;				 ___________________________________________________________
+;				|0 - Off                                                    |
+;				|1 - On                                                     |
+;            			|                                                           |
+
+trigger9 = 0&&fvar(37):=		(1) ; ◄ Change value here.                                  |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾	
+;=================================================================================================
 ;Scrapped Moves? (This will enable 2 scrapped special moves)
 ;				 ___________________________________________________________
 ;				|0 - Off                                                    |
 ;				|1 - On                                                     |
 ;            			|                                                           |
-trigger9 = 0&&var(39):=		(0) ; ◄ Change value here.                                  |
-;			
-ignorehitpause = 1
+trigger10 = 0&&var(39):=		(0) ; ◄ Change value here.                                  |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ;------------------------------------------------------------------------------------------------
 ; DO NOT EDIT ANYTHING BELOW THIS LINE
 ;-------------------------------------------------------------------------------------------------
+ignorehitpause = 1
+
 
 [State 0, Null]
 type = Null
@@ -126,16 +136,6 @@ trigger2 = numpartner && (partner,id < id)
 trigger2 = partner,name = "Maavo"
 trigger2 = 0&&(fvar(10):=1)
 ignorehitpause = 1
-
-[State 5900, Palette Selector]
-type = VarSet
-trigger1 = 1
-fv = 37
-value = 1
-
-; If value = 1 Palette Selector is ON
-; If value = 0 Palette Selector is OFF 
- 
  
 [State 5900, Pal Selector on]
 type=helper
@@ -169,89 +169,3 @@ value = 190
 type = ChangeState
 trigger1 = 1
 value = 0
-
-;This is the palette selector helper (statedef 12345)
-;You can change the animation size using the x-y scales.
-
-[Statedef 12345]
-physics = N
-anim = 12345
-velset=0,0
-sprpriority=99999
- 
-[State 12345, PosSet]
-type = PosSet
-trigger1 =!time 
-x = root,facing*-90
-y = 25
-ignorehitpause = 1
- 
-[State 12345, AS]
-type=assertspecial
-trigger1=1
-flag=intro
-flag2=noshadow
-
-[State 12345, Reset]
-type=varset
-trigger1=!time
-fvar(38)=200
-
-[State 12345, Pal]
-type=varset
-trigger1=!time
-fvar(36)=root,palno
- 
-[State 12345, Varset]
-type=varset
-trigger1=fvar(36)<1||fvar(36)>52 ; last palette
-fvar(36)=1+(fvar(36)<1)*51 ; subtract -1 from your last palette
- 
-[State 12345, PlaySnd]
-type = PlaySnd
-trigger1 =fvar(39)=2 
-value = S12345,0
-volumescale = 100
-channel = 20
-
-[State 12345, PlaySnd]
-type = PlaySnd
-triggerall=ishelper(12345)
-trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
-value = S12345,1
-volumescale = 100
-channel = 20
-persistent =0 
- 
-[State 12345, Countdown]
-type = VarAdd
-trigger1 =1 
-fvar(38)=-1
-
-[State 12345, Countdown]
-type = VarAdd
-trigger1=!fvar(39)&&fvar(38)<150
-trigger1=root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd"
-fvar(38)=25
- 
-[State 12345, Varadd]
-type=varadd
-trigger1=!fvar(39)
-trigger1=root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd"
-fvar(36)=1-(root,command="holddown"||root,command="holdback"&&facing=1||root,command="holdfwd"&&facing=-1)*2
- 
-[State 12345, Varadd]
-type=varadd
-trigger1=(root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd")&&!fvar(39)||fvar(39)
-fvar(39)=1
- 
-[State 12345, Varset]
-type=varset
-trigger1=!time||fvar(39)>=17
-fvar(39)=0
- 
-[State 12345, End]
-type=destroyself
-triggerall=ishelper(12345)
-trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
-trigger2=root,AILevel

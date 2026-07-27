@@ -508,7 +508,7 @@ value = S50,1
 freqmul = 0.9+(random/5333.3)
 [State 0]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = palno = 37 || fvar(36) = 37
 trigger1 = time = 0
 value = S1959, 22
 [State 0, PlaySnd]
@@ -3742,3 +3742,88 @@ triggerall = var(6) > 0 && var(6) < 120
 trigger1 = stateno != 8805 && stateno != 8825
 trigger1 = numhelper(84803) = 0
 var(6) = -1
+
+;---------------------------------------------------------
+; Pal Selector Helper
+[Statedef 12345]
+physics = N
+anim = 616
+velset=0,0
+sprpriority=616
+ 
+[State 12345, PosSet]
+type = PosSet
+trigger1 =!time 
+x = root,facing*-90
+y = 25
+ignorehitpause = 1
+ 
+[State 12345, AS]
+type=assertspecial
+trigger1=1
+flag=intro
+flag2=noshadow
+
+[State 12345, Reset]
+type=varset
+trigger1=!time
+fvar(38)=200
+
+[State 12345, Pal]
+type=varset
+trigger1=!time
+fvar(36)=root,palno
+ 
+[State 12345, Varset]
+type=varset
+trigger1=fvar(36)<1||fvar(36)>52 ; last palette
+fvar(36)=1+(fvar(36)<1)*51 ; subtract -1 from your last palette
+ 
+[State 12345, PlaySnd]
+type = PlaySnd
+trigger1 =fvar(39)=2 
+value = S12345,0
+volumescale = 100
+channel = 20
+
+[State 12345, PlaySnd]
+type = PlaySnd
+triggerall=ishelper(12345)
+trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
+value = S12345,1
+volumescale = 100
+channel = 20
+persistent =0 
+ 
+[State 12345, Countdown]
+type = VarAdd
+trigger1 =1 
+fvar(38)=-1
+
+[State 12345, Countdown]
+type = VarAdd
+trigger1=!fvar(39)&&fvar(38)<150
+trigger1=root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd"
+fvar(38)=25
+ 
+[State 12345, Varadd]
+type=varadd
+trigger1=!fvar(39)
+trigger1=root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd"
+fvar(36)=1-(root,command="holddown"||root,command="holdback"&&facing=1||root,command="holdfwd"&&facing=-1)*2
+ 
+[State 12345, Varadd]
+type=varadd
+trigger1=(root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd")&&!fvar(39)||fvar(39)
+fvar(39)=1
+ 
+[State 12345, Varset]
+type=varset
+trigger1=!time||fvar(39)>=7
+fvar(39)=0
+ 
+[State 12345, End]
+type=destroyself
+triggerall=ishelper(12345)
+trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
+trigger2=root,AILevel
