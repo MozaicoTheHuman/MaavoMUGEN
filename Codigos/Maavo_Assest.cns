@@ -208,9 +208,9 @@ getpower = 0,0
 givepower = ceil((52*root,fvar(11))*.015),ceil(52*.005)
 pausetime = 18,18
 guard.pausetime = 10,10
-hitsound = cond(root, fvar(36) = 15, 5, 0), 4
+hitsound = cond(root, var(18)=0, 5, 0), 4
 guardsound = 6,0
-sparkno = cond(root, fvar(36) = 15, 3, -1)
+sparkno = cond(root, var(18)=0, 3, -1)
 sparkxy = 0,0
 animtype = Hard
 ground.velocity = -4, 25
@@ -232,7 +232,7 @@ envshake.freq = 100
 ground.cornerpush.veloff = 0
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = root, fvar(36) != 15
+triggerall = root, var(18)=1
 trigger1 = MoveHit
 value = s240,15
 persistent = 0
@@ -240,7 +240,7 @@ freqmul = 0.9+(random/5333.3)
 ignorehitpause = 1
 [State 0, Hitspark]
 type = Helper
-triggerall = root, fvar(36) != 15
+triggerall = root, var(18)=1
 trigger1 = movehit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -290,6 +290,7 @@ channel = 31
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = var(18)=1
 trigger1 = movehit
 value = S7676,0
 persistent = 0
@@ -688,6 +689,7 @@ value = S65535,7
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = var(18)=1
 trigger1 = movehit
 value = S7676,0
 persistent = 0
@@ -697,12 +699,6 @@ type = PlaySnd
 trigger1 = AnimElem = 1
 value = S336,0
 channel = 11
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = AnimElem = 1
-value = S76767,1
-channel = 12
 
 [State 9902, 2]
 type = VelAdd
@@ -1184,8 +1180,8 @@ guardflag = MA
 hitflag = MAF
 priority = 1, Hit
 pausetime = 8, 8
-sparkno = cond(root, fvar(36) = 15, 3, -1)
-hitsound = cond(root, fvar(36) = 15, 5, 0), 4
+sparkno = cond(root, var(18)=0, 3, -1)
+hitsound = cond(root, var(18)=0, 5, 0), 2
 sparkxy = -35, -40
 guardsound = 6, 0
 ground.type = Low
@@ -1203,7 +1199,7 @@ forcestand = 1
 ground.cornerpush.veloff = 0
 [State 0, Helper]
 type = Helper
-triggerall = root,fvar(36) != 15
+triggerall = root,var(18)=1
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -1219,7 +1215,7 @@ persistent = 0
 ignorehitpause = 1
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = root, fvar(36) != 15
+triggerall = root, var(18)=1
 trigger1 = MoveHit
 value = S8983, 0
 persistent = 0

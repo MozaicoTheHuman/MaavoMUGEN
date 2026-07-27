@@ -150,7 +150,7 @@ id = 190011
 type = Explod
 trigger1 = animelem = 3
 id = 3232
-anim = cond(fvar(36) = 15, 616, 711)
+anim = cond(var(18)=0, 616, 711)
 pos = 0,0
 postype = back
 sprpriority = -8
@@ -174,10 +174,10 @@ type = SuperPause
 trigger1 = animelem = 3
 time = 26
 movetime = 26
-anim = cond(fvar(36) = 15, 100, -1)
+anim = cond(var(18)=0, 100, -1)
 pos = 18, -60
-sound = cond(fvar(36)=15,20,-1), 0
-darken = cond(fvar(36) = 15, 1, 0)
+sound = cond(var(18)=0,20,-1), 0
+darken = cond(var(18)=0, 1, 0)
 poweradd = -1000
 unhittable = 1
 p2defmul = 1
@@ -199,7 +199,7 @@ supermovetime = 99999
 pausemovetime = 99999
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = animelem = 3
 name = "Hyper Portrait"
 ID = 81000
@@ -368,7 +368,7 @@ value = S3440,0
 type = Explod
 trigger1 = animelem = 3
 id = 3232
-anim = cond(fvar(36)=15, -1, 711)
+anim = cond(var(18)=0, -1, 711)
 pos = 0,0
 postype = back
 sprpriority = -8
@@ -406,17 +406,17 @@ type = SuperPause
 trigger1 = animelem = 3
 time = 26
 movetime = 26
-anim = cond(fvar(36) = 15, 100, -1)
+anim = cond(var(18)=0, 100, -1)
 pos = 18, -60
-sound = cond(fvar(36)=15,20,-1), 0
-darken = cond(fvar(36) = 15, 1, 0)
+sound = cond(var(18)=0,20,-1), 0
+darken = cond(var(18)=0, 1, 0)
 poweradd = -1000
 unhittable = 1
 p2defmul = 1
 
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = animelem = 3
 name = "Hyper Portrait"
 ID = 81000
@@ -810,7 +810,7 @@ guardflag = MA
 hitflag = MAF
 priority = 7, Hit
 pausetime = 0, 22
-sparkno = S616
+sparkno = cond(var(18)=0, 3, -1)
 sparkxy = -20,-45 
 hitsound = -1
 guardsound = 6, 0
@@ -847,7 +847,7 @@ guardflag = MA
 hitflag = MAF
 priority = 7, Hit
 pausetime = 0, 22
-sparkno = S616
+sparkno = cond(var(18)=0, 3, -1)
 sparkxy = -20,-45 
 hitsound = -1
 guardsound = 6, 0
@@ -883,7 +883,7 @@ guardflag = MA
 hitflag = MAF
 priority = 7, Hit
 pausetime = 16, 16
-sparkno = S616
+sparkno = cond(var(18)=0, 3, -1)
 sparkxy = -20,-45 
 hitsound = -1
 guardsound = 6, 0
@@ -1021,6 +1021,7 @@ ampl = -21
 
 [State 0, Helper]
 type = Helper
+triggerall = var(18)=1
 trigger1 = AnimElem = 2
 trigger2 = AnimElem = 6 || AnimElem = 9 || AnimElem = 12
 trigger3 = AnimElem = 15 || AnimElem = 21 || AnimElem = 18
@@ -1040,6 +1041,7 @@ PauseMoveTime = 9999
 
 [State 0, Helper]
 type = Helper
+triggerall = var(18)=1
 trigger1 = AnimElem = 2
 trigger2 = AnimElem = 6 || AnimElem = 9 || AnimElem = 12
 trigger3 = AnimElem = 15 || AnimElem = 21 || AnimElem = 18
@@ -1217,9 +1219,10 @@ pausemovetime = 99999
 
 [State 19001, 1]
 type = Explod
+triggerall = var(18)=1
 trigger1 = animelem = 3
 id = 713
-anim = cond(fvar(36) = 15, -1, 712)
+anim = 712
 pos = 0,0
 postype = back
 sprpriority = -6
@@ -1364,12 +1367,12 @@ type = SuperPause
 trigger1 = animelem = 3
 time = 40
 movetime = 40
-anim = cond(fvar(36) = 15, 100, -1)
-sound = cond(fvar(36)=15,20,-1), 0
+anim = cond(var(18)=0, 100, -1)
+sound = cond(var(18)=0,20,-1), 0
 pos = 10, -60
 poweradd = -1000
 unhittable = 1
-darken = cond(fvar(36) = 15, 1, 0)
+darken = cond(var(18)=0, 1, 0)
 p2defmul = 1
 
 [State 0, EnvShake]
@@ -1523,7 +1526,7 @@ supermovetime = 9999
 removeongethit = 1
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = animelem = 3
 name = "Hyper Portrait"
 ID = 81000
@@ -1662,7 +1665,7 @@ value = S21939,5+ (var(16) * 100)
 type = Explod
 trigger1 = animelem = 4
 id = 713
-anim = cond(fvar(36)=15, -1, 712)
+anim = cond(var(18)=0, -1, 712)
 pos = 0,0
 postype = back
 sprpriority = -6
@@ -1677,7 +1680,7 @@ removeongethit = 1
 ownpal = 1
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = animelem = 4
 name = "Hyper Portrait"
 ID = 81000
@@ -1745,11 +1748,11 @@ type = SuperPause
 trigger1 = animelem = 4
 time = 40
 movetime = 40
-anim = cond(fvar(36) = 15, 100, -1)
-sound = cond(fvar(36)=15,20,-1), 0
+anim = cond(var(18)=0, 100, -1)
+sound = cond(var(18)=0,20,-1), 0
 pos = -20, -50
 movetime = 0
-darken = cond(fvar(36) = 15, 1, 0)
+darken = cond(var(18)=0, 1, 0)
 poweradd = -3000
 unhittable = 1
 p2defmul = 1
@@ -2166,7 +2169,7 @@ ignorehitpause = 1
 type = Explod
 trigger1 = animelem = 2
 id = 713
-anim = cond(fvar(36)=15, -1, 712)
+anim = cond(var(18)=0, -1, 712)
 pos = 0,0
 postype = back
 sprpriority = -6
@@ -2182,7 +2185,7 @@ ownpal = 1
 
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = animelem = 2
 name = "Hyper Portrait"
 ID = 81000
@@ -2202,13 +2205,13 @@ type = SuperPause
 trigger1 = animelem = 2
 time = 31
 movetime = 31
-anim = cond(fvar(36) = 15, 100, -1)
-sound = cond(fvar(36)=15,20,-1), 0
+anim = cond(var(18)=0, 100, -1)
+sound = cond(var(18)=0,20,-1), 0
 movetime = 0
 pos = -20, -50
 poweradd = -3000
 unhittable = 1
-darken = cond(fvar(36) = 15, 1, 0)
+darken = cond(var(18)=0, 1, 0)
 p2defmul = 1
 
 [State 19000, end]

@@ -179,9 +179,9 @@ guardflag = M
 hitflag = MAF
 priority = 7, Hit
 pausetime = 22, 22
-sparkno = cond(fvar(36) = 15, 3, -1)
+sparkno = cond(var(18)=0, 3, -1)
 sparkxy = -20,-75 
-hitsound = cond(fvar(36) = 15, 5, 0), 4
+hitsound = cond(var(18)=0, 5, 0), 4
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = 22+(3*var(42))
@@ -206,14 +206,14 @@ palfx.invertall = 0
 palfx.color = 256
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S240, 15
 persistent = 0
 ignorehitpause = 1
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -905,8 +905,8 @@ damage = ceil(cond(fvar(11)<=.45,(120*.45),(120*fvar(11)))*cond(var(42),1.1,1)),
 pausetime = 0, 22
 givepower = ceil(cond(fvar(11)<=.45,(120*.45),(120*fvar(11)))*.015),ceil(120*.15)
 guard.pausetime = 12,12
-hitsound = cond(fvar(36) = 15, 5, 0), 4
-sparkno = cond(fvar(36) = 15, 3, -1)
+hitsound = cond(var(18)=0, 5, 0), 4
+sparkno = cond(var(18)=0, 3, -1)
 sparkxy = -20,-25              ;X-offset for the "hit spark" rel. to p2,
 guardsound = 6, 0
 ground.type = Low
@@ -942,7 +942,7 @@ envshake.ampl = -4
 envshake.freq = 180
 [State hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit
 value = S210, 2
 persistent = 0
@@ -1192,7 +1192,7 @@ flag = noFG
 
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = time = 0
 helpertype = normal ;player
 name = "Hit Spark"
@@ -3499,8 +3499,8 @@ hitflag = MAFD
 priority = 7, Hit
 pausetime = 16, 16
 guard.pausetime = 12,12
-sparkno = cond(fvar(36) = 15, 3, -1)
-hitsound = cond(fvar(36) = 15, 5, 0), 4
+sparkno = cond(var(18)=0, 3, -1)
+hitsound = cond(var(18)=0, 5, 0), 4
 sparkxy = 0, -55
 guardsound = 6, 0
 ground.type = High
@@ -3524,7 +3524,7 @@ envshake.ampl = -4
 envshake.freq = 100
 [State hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit
 value = S240, 15
 persistent = 0
@@ -3540,7 +3540,7 @@ ignorehitpause = 1
 
 [State 0, Hit Spark]
 type = Explod
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 anim = 3000
 ID = 3000

@@ -6,55 +6,11 @@
 
 [Statedef -2]
 
-[state -2, Continue Palette]
-type = remappal
-triggerall = roundno != 1
-trigger1=Roundstate = 0
-source = 1, 1
-dest = 1, fvar(36)
-ignorehitpause = 1
-
-[state -2, No Clones]
-type = remappal
-triggerall=numenemy && (fvar(36)=[1,52]);fvar(36)=the number of pals available 
-trigger1=fvar(37)&&!numhelper(12345)&&matchno=1&&roundno=1
-trigger1=enemy,authorname="Maavo"&&enemy,name="Maavo"&&enemy,fvar(36)=fvar(36) 
-source = 1, 1
-dest = 1, Ifelse(teamside!=1 && enemynear,Numhelper(12345)=0,enemy,fvar(36)+teamside,fvar(36))
-ignorehitpause = 1
-
-[state -2, Palette]
-type = varset
-trigger1 = numhelper(12345)
-trigger1=helper(12345),fvar(36)=[1,52]
-fvar(36)= helper(12345),fvar(36)
-ignorehitpause = 1
-
-[state -2, Palette Selection]
-type = remappal
-trigger1 = numhelper(12345)
-trigger1=helper(12345),fvar(36)=[1,52]
-source = 1, 1
-dest = 1, fvar(36)
-ignorehitpause = 1
-
-[state -2, Continue Palette]
-type = remappal
-trigger1=fvar(37)&&!AILevel&&matchno>1
-source = 1, 1
-dest = 1, fvar(36)
-ignorehitpause = 1
-
 [State -2, Gloveless Palettes]
 type = VarSet
 trigger1 = fvar(36)=3||fvar(36)=5||fvar(36)=10||fvar(36)=11||fvar(36)=12||fvar(36)=13||fvar(36)=14||fvar(36)=15||fvar(36)=16||fvar(36)=17||fvar(36)=19||fvar(36)=21||fvar(36)=24||fvar(36)=25||fvar(36)=26||fvar(36)=27||fvar(36)=28||fvar(36)=30
 trigger2 = fvar(36)=31||fvar(36)=32||fvar(36)=33||fvar(36)=34||fvar(36)=36||fvar(36)=37||fvar(36)=39||fvar(36)=41||fvar(36)=42||fvar(36)=43||fvar(36)=49||fvar(36)=51||fvar(36)=52
 var(23) = 1
-ignorehitpause = 1
-[State -2, Sync fvar36 with palno]
-type = VarSet
-trigger1 = fvar(37) = 0
-fvar(36) = palno
 ignorehitpause = 1
 
 ;Clap Animation
@@ -298,6 +254,51 @@ trigger2 = enemynear,movetype != H && (enemynear,statetype != L)
 id = 520525
 ignorehitpause = 1 
 
+[state -2, Continue Palette]
+type = remappal
+triggerall = roundno != 1
+trigger1=Roundstate = 0
+source = 1, 1
+dest = 1, fvar(36)
+ignorehitpause = 1
+
+[state -2, No Clones]
+type = remappal
+triggerall=numenemy && (fvar(36)=[1,55]);fvar(36)=the number of pals available 
+trigger1=fvar(37)&&!numhelper(12345)&&matchno=1&&roundno=1
+trigger1=enemy,authorname="Maavo"&&enemy,name="Maavo"&&enemy,fvar(36)=fvar(36) 
+source = 1, 1
+dest = 1, Ifelse(teamside!=1 && enemynear,Numhelper(12345)=0,enemy,fvar(36)+teamside,fvar(36))
+ignorehitpause = 1
+
+[state -2, Palette]
+type = varset
+trigger1 = numhelper(12345)
+trigger1=helper(12345),fvar(36)=[1,55]
+fvar(36)= helper(12345),fvar(36)
+ignorehitpause = 1
+
+[state -2, Palette Selection]
+type = remappal
+trigger1 = numhelper(12345)
+trigger1=helper(12345),fvar(36)=[1,55]
+source = 1, 1
+dest = 1, floor(fvar(36))
+ignorehitpause = 1
+
+[state -2, Continue Palette]
+type = remappal
+trigger1=fvar(37)&&!AILevel&&matchno>1
+source = 1, 1
+dest = 1, floor(fvar(36))
+ignorehitpause = 1
+
+[State -2, Sync fvar36 with palno]
+type = VarSet
+trigger1 = fvar(37) = 0
+fvar(36) = palno
+ignorehitpause = 1
+
 ;VUELTA AL RUEDO
 [State -2, RemapPal]
 type = RemapPal
@@ -353,13 +354,13 @@ ignorehitpause = 1
 type = RemapPal
 trigger1 = var(33) = 1 && (fvar(36) = 18 || fvar(36) = 9 || fvar(36) = 8 || fvar(36) = 12)
 source = 1,1
-dest = 2,cond(fvar(37)= 1,fvar(36),palno)
+dest = 2,cond(fvar(37)= 1,floor(fvar(36)),palno)
 ignorehitpause = 1
 [State -2, RemapPal]
 type = RemapPal
 trigger1 = var(33) = 0 && (fvar(36) = 18 || fvar(36) = 9 || fvar(36) = 8 || fvar(36) = 12)
 source = 1,1
-dest = 1,cond(fvar(37)= 1,fvar(36),palno)
+dest = 1,cond(fvar(37)= 1,floor(fvar(36)),palno)
 ignorehitpause = 1
 [State -2, PalFX]
 type = PalFX
@@ -401,6 +402,16 @@ triggerall = !numhelper(12345)
 triggerall = fvar(36) = 3
 trigger1 = 1
 var(16) = 20
+ignorehitpause = 0
+;ora del shou 2016
+
+;ora del shou 2016
+[State 0, Force Default GFX/SFX on KFM palette]
+type = VarSet
+triggerall = !numhelper(12345)
+triggerall = fvar(36) = 15
+trigger1 = 1
+var(18) = 0
 ignorehitpause = 0
 ;ora del shou 2016
 
@@ -594,14 +605,14 @@ trigger3 = 0&&(var(52):=6)
 trigger4 = fvar(36)=35
 trigger4 = 0&&(var(52):=4+random%3)
 ;Victory Music Override: DEMO 2021, rossiter's original song (EXCLUSIVE FOR IKEMEN GO)
-trigger5 = fvar(36)=50
+trigger5 = fvar(36)=55
 trigger5 = 0&&(var(52):=2)
 ignorehitpause = 1
 
 [State 0, Legacy Mariri and Ivy voices override]; specifically for the 2021 demo palette (EXCLUSIVE FOR IKEMEN GO)
 type = VarSet
 triggerall = !numhelper(12345)
-trigger1 = fvar(36) = 50
+trigger1 = fvar(36) = 55
 var(34) = 1
 ignorehitpause = 1
 

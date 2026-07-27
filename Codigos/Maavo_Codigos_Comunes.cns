@@ -2582,6 +2582,7 @@ y = GetHitVar(yaccel)
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = var(18) = 1
 triggerall = fvar(36) != 21
 trigger1 = time = 10
 value = S5060,0
@@ -2811,8 +2812,22 @@ under = sysvar(1) <= 14
 type = HitFallDamage
 trigger1 = Time = 3
 
+[State 5100, 8]
+type = Explod
+triggerall = var(18) = 0
+trigger1 = Time = 1
+anim = F(60 + (sysvar(1) > Const720p(20)) + (sysvar(1) > Const720p(56)))
+pos = 0, 0
+sprpriority = ifelse (sysvar(1) <= Const720p(56), -10, 10)
+[State 5100, 10]
+type = PlaySnd
+triggerall = var(18) = 0
+trigger1 = Time = 1
+value = F7, (sysvar(1) > Const720p(20)) + (sysvar(1) > Const720p(56))
+
 [State 100, Land Effect]
 type = Explod
+triggerall = var(18) = 1
 trigger1 = Time = 0
 anim = 32850
 scale = 0.6,0.6
@@ -2825,9 +2840,9 @@ pausemovetime = 99999
 supermovetime = 99999
 ignorehitpause = 1
 persistent = 0
-
 [State 100, Land Effect]
 type = Explod
+triggerall = var(18) = 1
 trigger1 = Time = 0
 anim = 32849
 scale = 0.3,0.3
@@ -2840,12 +2855,12 @@ pausemovetime = 99999
 supermovetime = 99999
 ignorehitpause = 1
 persistent = 0
-
 [State 5100, 10]
 type = PlaySnd
+triggerall = var(18) = 1
 trigger1 = Time = 1
 value = S5100, 0
-
+freqmul = 0.9+(random/5333.3)
 [State 5100, 11]
 type = PosFreeze
 trigger1 = 1
@@ -2871,7 +2886,7 @@ physics = N
 
 [State 0, StopSnd]
 type = StopSnd
-trigger1 = time = 1
+trigger1 = 1
 channel = 5
 
 [State 5101, 1] ;Coming hit ground anim (normal)
@@ -2914,12 +2929,6 @@ value = 5110
 type    = L
 movetype= H
 physics = N
-sprpriority = -3
-
-[State 0, StopSnd]
-type = StopSnd
-trigger1 = time = 1
-channel = 5
 
 [State 5110, EnvShake]
 type = FallEnvShake
@@ -2927,6 +2936,7 @@ trigger1 = Time = 0
 
 [State 100, Land Effect]
 type = Explod
+triggerall = var(18) = 1
 trigger1 = Time = 0
 anim = 32849
 scale = 0.3,0.3
@@ -2939,9 +2949,9 @@ pausemovetime = 99999
 supermovetime = 99999
 ignorehitpause = 1
 persistent = 0
-
 [State 100, Land Effect]
 type = Explod
+triggerall = var(18) = 1
 trigger1 = Time = 0
 anim = 32849
 scale = 0.3,0.3
@@ -2954,9 +2964,9 @@ pausemovetime = 99999
 supermovetime = 99999
 ignorehitpause = 1
 persistent = 0
-
 [State 100, Land Effect]
 type = Explod
+triggerall = var(18) = 1
 trigger1 = Time = 0
 anim = 32850
 scale = 0.6,0.6
@@ -2969,6 +2979,13 @@ pausemovetime = 99999
 supermovetime = 99999
 ignorehitpause = 1
 persistent = 0
+[State 5110, 6]
+type = PlaySnd
+triggerall = var(18) = 1
+trigger1 = Time = 0
+trigger1 = !SysVar(0)
+value = S5100, 0
+freqmul = 0.9+(random/5333.3)
 
 [State 5110, 1] ;For hit up/up-diag type (from state 5081)
 type = ChangeAnim
@@ -3010,17 +3027,19 @@ sysvar(1) = floor(vel y)
 
 [State 5110, 6]
 type = PlaySnd
+triggerall = var(18) = 0
 trigger1 = Time = 0
 trigger1 = !SysVar(0)
-value = S5100, 0
+value = F7, (sysvar(1) > Const720p(20)) + (sysvar(1) > Const720p(56))
 
 [State 5110, 7]
-type = GameMakeAnim
+type = Explod
+triggerall = var(18) = 0
 trigger1 = Time = 0
 trigger1 = !SysVar(0)
-value = 60 + (sysvar(1) > 5) + (sysvar(1) > 14)
+anim = F(60 + (sysvar(1) > Const720p(20)) + (sysvar(1) > Const720p(56)))
 pos = 0, 0
-under = sysvar(1) <= 14
+sprpriority = ifelse (sysvar(1) <= Const720p(56), -10, 10)
 
 [State 5110, 8]
 type = VelSet
@@ -3063,7 +3082,13 @@ type = VelMul
 trigger1 = 1
 x = 0.85
 
-[State 5110, 14]
+[State 5110, 14] ;Friction
+type = VelSet
+trigger1 = abs(Vel x) < Const(movement.down.friction.threshold)
+persistent = 0
+x = 0
+
+[State 5110, 15]
 type = ForceFeedback
 trigger1 = alive
 trigger1 = Time = 0
@@ -3071,7 +3096,7 @@ time = 8
 ampl = 240
 waveform = sine
 
-[State 5110, 15]
+[State 5110, 16]
 type = ForceFeedback
 trigger1 = !alive
 trigger1 = Time = 0
@@ -3750,14 +3775,14 @@ physics = N
 anim = 616
 velset=0,0
 sprpriority=616
- 
+
 [State 12345, PosSet]
 type = PosSet
-trigger1 =!time 
+trigger1 =!time
 x = root,facing*-90
 y = 25
 ignorehitpause = 1
- 
+
 [State 12345, AS]
 type=assertspecial
 trigger1=1
@@ -3773,15 +3798,39 @@ fvar(38)=200
 type=varset
 trigger1=!time
 fvar(36)=root,palno
- 
+
 [State 12345, Varset]
 type=varset
-trigger1=fvar(36)<1||fvar(36)>52 ; last palette
-fvar(36)=1+(fvar(36)<1)*51 ; subtract -1 from your last palette
- 
+trigger1=fvar(36)<1||fvar(36)>55
+fvar(36)=1+(fvar(36)<1)*54
+
+[State 12345, Reset Hold]
+type = varset
+trigger1 = !(root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd")
+fvar(39) = 0
+ignorehitpause = 1
+
+[State 12345, Hold Counter]
+type = varadd
+trigger1 = root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd"
+fvar(39) = 1
+ignorehitpause = 1
+
+[State 12345, Tap Change]
+type = varadd
+trigger1 = fvar(39) = 1
+fvar(36) = 1-(root,command="holddown"||root,command="holdback"&&facing=1||root,command="holdfwd"&&facing=-1)*2
+ignorehitpause = 1
+
+[State 12345, Auto Repeat Change]
+type = varadd
+trigger1 = fvar(39) > 20 && (floor(fvar(39))-20)%5 = 0
+fvar(36) = 1-(root,command="holddown"||root,command="holdback"&&facing=1||root,command="holdfwd"&&facing=-1)*2
+ignorehitpause = 1
+
 [State 12345, PlaySnd]
 type = PlaySnd
-trigger1 =fvar(39)=2 
+trigger1 = fvar(39)=1 || (fvar(39)>20 && (floor(fvar(39))-20)%5=0)
 value = S12345,0
 volumescale = 100
 channel = 20
@@ -3793,11 +3842,11 @@ trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"|
 value = S12345,1
 volumescale = 100
 channel = 20
-persistent =0 
- 
+persistent =0
+
 [State 12345, Countdown]
 type = VarAdd
-trigger1 =1 
+trigger1 =1
 fvar(38)=-1
 
 [State 12345, Countdown]
@@ -3805,23 +3854,7 @@ type = VarAdd
 trigger1=!fvar(39)&&fvar(38)<150
 trigger1=root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd"
 fvar(38)=25
- 
-[State 12345, Varadd]
-type=varadd
-trigger1=!fvar(39)
-trigger1=root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd"
-fvar(36)=1-(root,command="holddown"||root,command="holdback"&&facing=1||root,command="holdfwd"&&facing=-1)*2
- 
-[State 12345, Varadd]
-type=varadd
-trigger1=(root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd")&&!fvar(39)||fvar(39)
-fvar(39)=1
- 
-[State 12345, Varset]
-type=varset
-trigger1=!time||fvar(39)>=7
-fvar(39)=0
- 
+
 [State 12345, End]
 type=destroyself
 triggerall=ishelper(12345)

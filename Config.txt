@@ -102,15 +102,21 @@ trigger7 = 0&&var(34):=		(0) ; ◄ Change value here.                           
 ;            			|                                                           |
 trigger8 = 0&&var(52):=		(1) ; ◄ Change value here.                                  |
 ;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-
+;=================================================================================================
+;GFX/SFX?
+;				 ___________________________________________________________
+;				|0 - Screenpack Default                                     |
+;				|1 - Smash Bros. Ultimate                                   |
+;            			|                                                           |
+trigger9 = 0&&var(18):=		(1) ; ◄ Change value here.                                  |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾	
 ;=================================================================================================
 ;Palette Selector?
 ;				 ___________________________________________________________
 ;				|0 - Off                                                    |
 ;				|1 - On                                                     |
 ;            			|                                                           |
-
-trigger9 = 0&&fvar(37):=		(1) ; ◄ Change value here.                                  |
+trigger10 = 0&&fvar(37):=		(1) ; ◄ Change value here.                                  |
 ;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾	
 ;=================================================================================================
 ;Scrapped Moves? (This will enable 2 scrapped special moves)
@@ -118,7 +124,7 @@ trigger9 = 0&&fvar(37):=		(1) ; ◄ Change value here.                          
 ;				|0 - Off                                                    |
 ;				|1 - On                                                     |
 ;            			|                                                           |
-trigger10 = 0&&var(39):=		(0) ; ◄ Change value here.                                  |
+trigger11 = 0&&var(39):=		(0) ; ◄ Change value here.                                  |
 ;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ;------------------------------------------------------------------------------------------------
 ; DO NOT EDIT ANYTHING BELOW THIS LINE
@@ -137,9 +143,9 @@ trigger2 = partner,name = "Maavo"
 trigger2 = 0&&(fvar(10):=1)
 ignorehitpause = 1
  
-[State 5900, Pal Selector on]
+[State 5900, PalSelect Helper]
 type=helper
-triggerall=fvar(37)&&!numhelper(12345)&&!AILevel&&numenemy 
+triggerall=fvar(37)&&!numhelper(12345)&&!ailevel&&numenemy 
 trigger1= roundno = 1 && matchno=1 && !(teammode = simul) && !(enemy, teammode = simul)
 trigger2= !fvar(36) 
 trigger3=(teammode = turns)
@@ -151,9 +157,9 @@ ownpal=1
 size.xscale = .25
 size.yscale = .25
 
-[state 5900, No Palette selector]
+[state 5900, No PalSelect]
 type = remappal
-trigger1 = !fvar(37)||AILevel
+trigger1 = !fvar(37)||ailevel
 source = 1, 1
 dest = 1, palno
 ignorehitpause = 1

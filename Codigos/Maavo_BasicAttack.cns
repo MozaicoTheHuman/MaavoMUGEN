@@ -59,10 +59,10 @@ guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 2, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 8, 8                 ;Time attacker pauses, time opponent shakes
-sparkno = cond(fvar(36) = 15, 0, -1)                    ;Spark anim no (Def: set above)
+sparkno = cond(var(18)=0, 0, -1)                    ;Spark anim no (Def: set above)
 sparkxy = -25,-47              ;X-offset for the "hit spark" rel. to p2,
 ;Y-offset for the spark rel. to p1
-hitsound = cond(fvar(36) = 15, 5, 0), 0                  ;Sound to play on hit
+hitsound = cond(var(18)=0, 5, 0), 0                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = Low
 ground.slidetime = ceil(12+3*(var(42)!=0))
@@ -76,7 +76,7 @@ air.type = High
 air.velocity = -2.4,-3
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S210,0
 freqmul = 0.9+(random/5333.3)
@@ -92,7 +92,7 @@ channel = 0
 
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -204,9 +204,9 @@ guardflag = M
 hitflag = MAF
 priority = 3, Hit
 pausetime = 10, 10
-sparkno = cond(fvar(36) = 15, 1, -1)
+sparkno = cond(var(18)=0, 1, -1)
 sparkxy = -20,-75 
-hitsound = cond(fvar(36) = 15, 5, 0), 2
+hitsound = cond(var(18)=0, 5, 0), 2
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = ceil(15+3*(var(42)!=0))
@@ -227,7 +227,7 @@ value = S2790,0
 channel = 0
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S210,1
 persistent = 0
@@ -235,7 +235,7 @@ freqmul = 0.9+(random/5333.3)
 ignorehitpause = 1
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -375,9 +375,9 @@ guardflag = M
 hitflag = MAF
 priority = 4, Hit
 pausetime = 12, 12
-sparkno = cond(fvar(36) = 15, 3, -1)
+sparkno = cond(var(18)=0, 3, -1)
 sparkxy = -20,-75
-hitsound = cond(fvar(36) = 15, 5, 0), 4
+hitsound = cond(var(18)=0, 5, 0), 4
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = ceil(18+3*(var(42)!=0))
@@ -395,7 +395,7 @@ envshake.ampl = -4
 envshake.freq = 100
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S240, 15
 persistent = 0
@@ -410,7 +410,7 @@ value = S2790,1+random%5
 channel = 0
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -548,7 +548,7 @@ hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 2, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 ;Hit/Miss/Dodge type (Def: Hit)
 pausetime = 8, 8                 ;Time attacker pauses, time opponent shakes
-sparkno = cond(fvar(36) = 15, 0, -1)
+sparkno = cond(var(18)=0, 0, -1)
 sparkxy = -20,-75              ;X-offset for the "hit spark" rel. to p2,
 ;Y-offset for the spark rel. to p1
 hitsound = S240,6                  ;Sound to play on hit
@@ -588,7 +588,7 @@ ignorehitpause = 1
 persistent = 0
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -688,7 +688,7 @@ guardflag = M
 hitflag = MAF
 priority = 3, Hit
 pausetime = 10, 10
-sparkno = cond(fvar(36) = 15, 1, -1)
+sparkno = cond(var(18)=0, 1, -1)
 sparkxy = -10,-48 
 hitsound = S240,10
 guardsound = 6, 0
@@ -712,7 +712,7 @@ channel = 0
 
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -818,7 +818,7 @@ guardflag = M
 hitflag = MAF
 priority = 4, Hit
 pausetime = 12,12
-sparkno = cond(fvar(36) = 15, 3, -1)
+sparkno = cond(var(18)=0, 3, -1)
 sparkxy = -20,-45 
 hitsound = S240,11
 guardsound = 6, 0
@@ -851,7 +851,7 @@ persistent = 0
 ignorehitpause = 1
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -922,10 +922,10 @@ guardflag = L
 hitflag = MAF
 priority = 2, Hit
 pausetime = 8, 8                 ;Time attacker pauses, time opponent shakes
-sparkno = cond(fvar(36) = 15, 0, -1)                    ;Spark anim no (Def: set above)
+sparkno = cond(var(18)=0, 0, -1)                    ;Spark anim no (Def: set above)
 sparkxy = -20,-15              ;X-offset for the "hit spark" rel. to p2,
 ;Y-offset for the spark rel. to p1
-hitsound = cond(fvar(36) = 15, 5, 0), 0                  ;Sound to play on hit
+hitsound = cond(var(18)=0, 5, 0), 0                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = Low
 ground.slidetime = ceil(12+3*(var(42)!=0))
@@ -939,7 +939,7 @@ air.type = High
 air.velocity = -2.4,-3
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S210,0
 freqmul = 0.9+(random/5333.3)
@@ -947,7 +947,7 @@ persistent = 0
 ignorehitpause = 1
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 helpertype = normal
 name = "Hit Spark"
@@ -1063,9 +1063,9 @@ guardflag = L
 hitflag = MAF
 priority = 4, Hit
 pausetime = 10,10
-sparkno = cond(fvar(36) = 15, 2, -1)
+sparkno = cond(var(18)=0, 2, -1)
 sparkxy = -20,-8
-hitsound = cond(fvar(36) = 15, 5, 0), 2
+hitsound = cond(var(18)=0, 5, 0), 2
 guardsound = 6, 0
 ground.type = Low
 ground.slidetime = ceil(15+3*(var(42)!=0))
@@ -1081,7 +1081,7 @@ envshake.ampl = -2
 envshake.freq = 100
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S240,14
 persistent = 0
@@ -1108,7 +1108,7 @@ removeongethit = 0
 [State 0, Helper]
 type = Helper
 trigger1 = MoveHit
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 helpertype = normal
 name = "Hit Spark"
 ID = 3000
@@ -1189,9 +1189,9 @@ guardflag = L
 hitflag = MAFD
 priority = 4, Hit
 pausetime = 10, 10
-sparkno = cond(fvar(36) = 15, 2, -1)
+sparkno = cond(var(18)=0, 2, -1)
 sparkxy = -10,-3
-hitsound = cond(fvar(36) = 15, 5, 0), 4
+hitsound = cond(var(18)=0, 5, 0), 2
 guardsound = 6, 0
 ground.type = trip
 ground.slidetime = ceil(18+3*(var(42)!=0))
@@ -1205,7 +1205,7 @@ air.velocity = -2,-3.5
 fall = 1
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S240, 15
 persistent = 0
@@ -1256,7 +1256,7 @@ persistent = 0
 
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 helpertype = normal
 name = "Hit Spark"
@@ -1383,7 +1383,7 @@ hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 2, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 ;Hit/Miss/Dodge type (Def: Hit)
 pausetime = 8, 8                 ;Time attacker pauses, time opponent shakes
-sparkno = cond(fvar(36) = 15, 0, -1)
+sparkno = cond(var(18)=0, 0, -1)
 sparkxy = -20,-35              ;X-offset for the "hit spark" rel. to p2,
 ;Y-offset for the spark rel. to p1
 hitsound = -1                 ;Sound to play on hit
@@ -1413,7 +1413,7 @@ value = S2790,0
 channel = 0
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -1505,7 +1505,7 @@ guardflag = M
 hitflag = MAF
 priority = 3, Hit
 pausetime = 10, 10
-sparkno = cond(fvar(36) = 15, 1, -1)
+sparkno = cond(var(18)=0, 1, -1)
 sparkxy = -10,-30 
 hitsound = S240,10
 guardsound = 6, 0
@@ -1530,7 +1530,7 @@ channel = 0
 [State 0, Helper]
 type = Helper
 trigger1 = MoveHit
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 helpertype = normal ;player
 name = "Hit Spark"
 ID = 33102
@@ -1698,7 +1698,7 @@ guardflag = L
 hitflag = MAFD
 priority = 4, Hit
 pausetime = 1, 4                 ;Time attacker pauses, time opponent shakes
-sparkno = cond(fvar(36) = 15, 0, -1)
+sparkno = cond(var(18)=0, 0, -1)
 sparkxy = -20,-7              ;X-offset for the "hit spark" rel. to p2,
 ;Y-offset for the spark rel. to p1
 hitsound = S240, 6                  ;Sound to play on hit
@@ -1727,7 +1727,7 @@ guardflag = L
 hitflag = MAFD
 priority = 4, Hit
 pausetime = 10, 10                 ;Time attacker pauses, time opponent shakes
-sparkno = cond(fvar(36) = 15, 2, -1)
+sparkno = cond(var(18)=0, 2, -1)
 sparkxy = -20,-7              ;X-offset for the "hit spark" rel. to p2,
 ;Y-offset for the spark rel. to p1
 hitsound = S240, 8                  ;Sound to play on hit
@@ -1762,11 +1762,11 @@ value = S2790,0
 channel = 0
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 triggerall = animelemtime(3) >= 0
 triggerall = animelemtime(4) < 0
 trigger1 = movehit
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 helpertype = normal ;player
 name = "Hit Spark"
 ID = 33101
@@ -1784,7 +1784,7 @@ persistent = 0
 ignorehitpause = 1
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 triggerall = animelemtime(5) >= 0
 triggerall = animelemtime(6) < 0
 trigger1 = movehit
@@ -1805,7 +1805,7 @@ persistent = 0
 ignorehitpause = 1
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 triggerall = animelemtime(7) >= 0
 triggerall = animelemtime(8) < 0
 trigger1 = movehit
@@ -1826,7 +1826,7 @@ persistent = 0
 ignorehitpause = 1
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 triggerall = animelemtime(9) >= 0
 trigger1 = movehit
 helpertype = normal ;player
@@ -1963,9 +1963,9 @@ guardflag = MA
 hitflag = MAF
 priority = 5, Hit
 pausetime = 6, 6
-sparkno = cond(fvar(36) = 15, 2, -1)
+sparkno = cond(var(18)=0, 2, -1)
 sparkxy = -20,-65 
-hitsound = cond(fvar(36) = 15, 5, 0), 4
+hitsound = cond(var(18)=0, 5, 0), 2
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = ceil(22+3*(var(42)!=0))
@@ -1979,7 +1979,7 @@ air.velocity = -5,-5.75
 fall = 1
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S240, 15
 persistent = 0
@@ -2001,7 +2001,7 @@ ignorehitpause = 1
 
 [State 0, Hit Spark]
 type = Explod
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 anim = 3000
 ID = 3000
@@ -2220,9 +2220,9 @@ guardflag = MA
 hitflag = MAF
 priority = 5, Hit
 pausetime = 6, 6
-sparkno = cond(fvar(36) = 15, 2, -1)
+sparkno = cond(var(18)=0, 2, -1)
 sparkxy = -20,-65 
-hitsound = cond(fvar(36) = 15, 5, 0), 4
+hitsound = cond(var(18)=0, 5, 0), 2
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = ceil(22+3*(var(42)!=0))
@@ -2236,7 +2236,7 @@ air.velocity = -5.5,-6.25
 fall = 1
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S240, 15
 persistent = 0
@@ -2244,7 +2244,7 @@ freqmul = 0.9+(random/5333.3)
 ignorehitpause = 1
 [State 0, Hit Spark]
 type = Explod
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 anim = 3000
 ID = 3000
@@ -2495,9 +2495,9 @@ guardflag = MA
 hitflag = MAF
 priority = 6, Hit
 pausetime = 6, 6
-sparkno = cond(fvar(36) = 15, 3, -1)
+sparkno = cond(var(18)=0, 3, -1)
 sparkxy = -20,-65 
-hitsound = cond(fvar(36) = 15, 5, 0), 4
+hitsound = cond(var(18)=0, 5, 0), 4
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = ceil(32+3*(var(42)!=0))
@@ -2515,7 +2515,7 @@ fall.recover = 0
 p2facing = 1
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S240, 15
 persistent = 0
@@ -2554,7 +2554,7 @@ persistent = 0
 
 [State 0, Hit Spark]
 type = Explod
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 anim = 3000
 ID = 3000
@@ -2899,10 +2899,10 @@ guardflag = HA                 ;Flags of conditions that move can hit
 priority = 2, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 ;Hit/Miss/Dodge type (Def: Hit)
 pausetime = 8, 8                 ;Time attacker pauses, time opponent shakes
-sparkno = cond(fvar(36) = 15, 0, -1)                    ;Spark anim no (Def: set above)
+sparkno = cond(var(18)=0, 0, -1)                    ;Spark anim no (Def: set above)
 sparkxy = -20,-43              ;X-offset for the "hit spark" rel. to p2,
 ;Y-offset for the spark rel. to p1
-hitsound = cond(fvar(36) = 15, 5, 0), 0                  ;Sound to play on hit
+hitsound = cond(var(18)=0, 5, 0), 0                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High
 ground.slidetime = ceil(12+3*(var(42)!=0))
@@ -2916,7 +2916,7 @@ air.type = High
 air.velocity = -1.4,-5
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S210,1
 freqmul = 0.9+(random/5333.3)
@@ -2931,7 +2931,7 @@ value = S2790,0
 channel = 0
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -3027,9 +3027,9 @@ guardflag = HA
 animtype = Medium
 priority = 4
 pausetime = 10,10
-sparkno = cond(fvar(36) = 15, 1, -1)                    ;Spark anim no (Def: set above)
+sparkno = cond(var(18)=0, 1, -1)                    ;Spark anim no (Def: set above)
 sparkxy = -28,-40
-hitsound = cond(fvar(36) = 15, 5, 0), 1 
+hitsound = cond(var(18)=0, 5, 0), 1 
 guardsound = 6,0
 ground.slidetime = ceil(12+3*(var(42)!=0))
 ground.hittime = ceil(12+3*(var(42)!=0))
@@ -3042,7 +3042,7 @@ air.type = High
 air.velocity = -1.4,-3
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 value = S240,14
 freqmul = 0.9+(random/5333.3)
@@ -3055,7 +3055,7 @@ value = 1
 
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -3184,9 +3184,9 @@ animtype = Hard
 guardflag = HA
 priority = 4, Hit
 pausetime = 2,2
-sparkno = cond(fvar(36) = 15, 1, -1)                    ;Spark anim no (Def: set above)
+sparkno = cond(var(18)=0, 1, -1)                    ;Spark anim no (Def: set above)
 sparkxy = 0,0
-hitsound = cond(fvar(36) = 15, 5, 0), 2
+hitsound = cond(var(18)=0, 5, 0), 2
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = ceil(12+3*(var(42)!=0))
@@ -3200,7 +3200,7 @@ air.type = High
 air.velocity = -1,1.5
 [State 200, Hitsound]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit && animelemtime(7) < 0
 value = S240,14
 freqmul = 0.9+(random/5333.3)
@@ -3208,13 +3208,14 @@ persistent = 0
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = var(18)=1
 trigger1 = movehit && animelemtime(7) >= 0
 value = S7676,0
 persistent = 0
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit && animelemtime(7) >= 0
 value = s240,15
 persistent = 0
@@ -3232,9 +3233,9 @@ getpower = ceil((30*fvar(8))*(1+var(42))),ceil(30*.5)
 givepower = ceil(25*.5),ceil(25*.15)
 pausetime = 18,18
 guard.pausetime = 8,8
-hitsound = cond(fvar(36) = 15, 5, 0), 3
+hitsound = cond(var(18)=0, 5, 0), 3
 guardsound = 6,0
-sparkno = cond(fvar(36) = 15, 3, -1)                    ;Spark anim no (Def: set above)
+sparkno = cond(var(18)=0, 3, -1)                    ;Spark anim no (Def: set above)
 sparkxy = 0,0
 animtype = Hard
 ground.velocity = -4, 25
@@ -3287,7 +3288,7 @@ persistent = 0
 
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit = 1 && animelemtime(4) >= 0 && animelemtime(5) < 0
 helpertype = normal ;player
 name = "Hit Spark"
@@ -3303,7 +3304,7 @@ persistent = 0
 ignorehitpause = 1
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit = 1 && animelemtime(6) >= 0 && animelemtime(7) < 0
 helpertype = normal ;player
 name = "Hit Spark"
@@ -3319,7 +3320,7 @@ persistent = 0
 ignorehitpause = 1
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit = 1 && animelemtime(8) >= 0 && animelemtime(10) < 0
 helpertype = normal ;player
 name = "Hit Spark"
@@ -3481,7 +3482,7 @@ guardflag = HA                 ;Flags of conditions that move can hit
 priority = 2, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 ;Hit/Miss/Dodge type (Def: Hit)
 pausetime = 8, 8                 ;Time attacker pauses, time opponent shakes
-sparkno = cond(fvar(36) = 15, 0, -1)                    ;Spark anim no (Def: set above)
+sparkno = cond(var(18)=0, 0, -1)                    ;Spark anim no (Def: set above)
 sparkxy = -28,-55
 hitsound = S240,9
 guardsound = 6, 0                ;Sound to play on guard
@@ -3498,7 +3499,7 @@ air.velocity = -1.4,-4
 
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -3587,7 +3588,7 @@ guardflag = HA
 animtype = Medium
 priority = 3, Hit
 pausetime = 10,10
-sparkno = cond(fvar(36) = 15,1, -1)                    ;Spark anim no (Def: set above)
+sparkno = cond(var(18)=0,1, -1)                    ;Spark anim no (Def: set above)
 sparkxy = -28,-40
 hitsound = S240,10
 guardsound = 6,0
@@ -3603,7 +3604,7 @@ air.velocity = -1.4,-3
 
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = MoveHit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -3706,7 +3707,7 @@ pausetime = 18,18
 guard.pausetime = 10,10
 hitsound = s240,8
 guardsound = 6,0
-sparkno = cond(fvar(36) = 15, 1, -1)                    ;Spark anim no (Def: set above)
+sparkno = cond(var(18)=0, 1, -1)                    ;Spark anim no (Def: set above)
 sparkxy = 0,0
 animtype = Hard
 ground.velocity = -4, 25
@@ -3729,6 +3730,7 @@ p2facing = 1
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = movehit
+triggerall = var(18)=1
 value = S7676,0
 persistent = 0
 ignorehitpause = 1
@@ -3764,7 +3766,7 @@ persistent = 0
 
 [State 0, Helper]
 type = Helper
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 trigger1 = movehit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -3986,13 +3988,13 @@ value = S800,1
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 triggerall = anim = 810
 trigger1 = AnimElem = 7
 value = S240,15
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = fvar(36) = 15
+triggerall = var(18)=0
 triggerall = anim = 810
 trigger1 = AnimElem = 7
 value = 5, 4
@@ -4005,7 +4007,7 @@ value = S800,3
 
 [State 100, Land Effect]
 type = Explod
-triggerall = fvar(36) != 15
+triggerall = var(18)=0
 triggerall = anim = 810
 trigger1 = animelem = 7
 anim = 32851
@@ -4022,7 +4024,7 @@ persistent = 0
 
 [State 100, Land Effect]
 type = Explod
-triggerall = fvar(36) != 15
+triggerall = var(18)=1
 triggerall = anim = 810
 trigger1 = animelem = 7
 anim = 32849
@@ -4036,6 +4038,16 @@ pausemovetime = 99999
 supermovetime = 99999
 ignorehitpause = 1
 persistent = 0
+
+[State 1217, Spark]
+type = Explod
+triggerall = var(18)=0
+triggerall = anim = 810
+trigger1 = animelem = 7
+anim = F62
+pos = 0,0
+postype = p1
+sprpriority = 3
 
 [State 0, TargetFacing]
 type = TargetFacing
