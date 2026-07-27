@@ -1,7 +1,7 @@
 [Info]
 name = "Maavo"
 displayname = "Maavo"
-versiondate = 22/07/2026
+versiondate = 20/07/2026
 mugenversion = 1.1
 author = "Mozaico" 
 
@@ -48,6 +48,7 @@ movelist = moveset.dat
 movelist1 = moveset_alt.dat
 movelist2 = moveset_scrapped.dat
 movelist3 = moveset_alt_scrapped.dat
+
 [Palette Keymap]
 a = 1
 b = 2
@@ -62,36 +63,66 @@ x2 = 4
 y2 = 5
 z2 = 6
 
-;THERE ARE WAY MORE PALETTES BUT YOU NEED TO PLAY IKEMEN GO NIGHTLY TO ACCESS THEM
-;13 - Skullgirls
-;14 - Pico School
-;15 - M.U.G.E.N. All-Stars
-;16 - FNAFHS
-;17 - FNAF 2
-;18 - Team Sonic
-;19 - Undertale (2021 Palette Contest Winner: Oraflame)
-;20 - No Straight Roads (2021 Palette Contest Winner: Rossiter)
-;21 - Random colors
-;22 - Overwatch
-;23 - TF2
-;24 - Derker Bluer
-;25 - The Simpsons
-;26 - Danganronpa 2
-;27 - Pastel colors
-;28 - Dark Purple colors
-;29 - Main solid colors
-;30 - Deltarune (Chapter 5)
-;31 - Ace Attorney
-;32 - Michael Jackson
-;33 - Persona 3
-;34 - Persona 4
-;35 - Velvet Room
-;36 - Splatoon
-;37 - Oliver as Latias
-;38 - SAMSONITE
-;39 - Rudy MTortilla
-;40 - 2021 Demo
-
 [Arcade]
 intro.storyboard=
 ending.storyboard=
+
+[PalInfo]
+palbox.slot1 = 231
+palbox.slot2 = 242
+palbox.slot3 = 245
+1  = Showtime
+2  = 2019 Maavo
+3  = Martin MUGEN
+4  = Mozaico The Robot
+5  = Trifunka
+6  = Phantom Thieves
+7  = Scott Pilgrim
+8  = Anime Classics
+9  = Team Dark
+10 = The GG's
+11 = The Dearests
+12 = Mystery Gang
+13 = Skullgirls
+14 = Pico's School
+15 = M.U.G.E.N. All-Stars
+16 = FNAFHS
+17 = Toys
+18 = sonsi el eriso
+19 = Underground
+20 = Bunk Bed Junction
+21 = Ed, Edd n Eddy
+22 = Overwatch
+23 = Team Red
+24 = El Rincon Antiestres
+25 = The Simpsons
+26 = Class 77-B
+27 = Pastel
+28 = Dark Purple
+29 = Silhouette
+30 = The Flowers
+31 = Wright and Co.
+32 = King Of Pop
+33 = S.E.E.S.
+34 = Investigation Team
+35 = Velvet Room
+36 = New Squidbeak Splatoon
+37 = Oliver as Latias
+38 = SAMSONITE
+39 = Rudy MTortilla
+40 = Scene
+41 = Chainsaw Man
+42 = Pulentos
+43 = Whitty
+44 = Vocaloid
+45 = Blazblue
+46 = Rakugaki
+47 = Dive to the Heart
+48 = Mega Man Legends
+49 = Limbus Company
+50 = Umamusume
+51 = Basuros
+52 = HQ Rip
+53 = Windows
+54 = Rayman
+55 = 2021 DEMO
