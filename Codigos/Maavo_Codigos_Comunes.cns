@@ -3809,7 +3809,7 @@ type = Explod
 trigger1 = !time
 id = 19878
 anim = 19878
-pos = 107,30
+pos = 107,cond(root,var(17) = 1, 40, 30)
 postype = back
 removeongethit = 1
 removetime=-1
@@ -3832,7 +3832,7 @@ type = Explod
 trigger1 = !time
 id = 19876
 anim = 19876
-pos = 0,160
+pos = 0,cond(root,var(17) = 1, 160, 210)
 postype = back
 removeongethit = 1
 removetime=-1
@@ -3851,11 +3851,11 @@ id = 19877
 ignorehitpause = 1
 [State 12345, nombresito bonito]
 type = Explod
-trigger1 = !time
+trigger1 = time = 1
 trigger2 = fvar(39)=1 || (fvar(39)>20 && (floor(fvar(39))-20)%5=0)
 id = 19877
 anim = 8900+fvar(36)
-pos = 70,162
+pos = 70,cond(root,var(17) = 1, 212, 162)
 postype = back
 removeongethit = 1
 removetime = -1

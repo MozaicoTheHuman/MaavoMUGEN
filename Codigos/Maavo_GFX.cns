@@ -1309,7 +1309,7 @@ trigger1 = enemy,stateno = 700
 trigger2 = enemy,stateno = 710
 trigger3 = enemy,stateno = 720
 ;---------------------------------------------------------------------------
-;Hyper Portait - Fondo (1.1/Ikemen GO)
+;Hyper Portait (1.1/Ikemen GO)
 [Statedef 81000]
 type = S
 movetype = I

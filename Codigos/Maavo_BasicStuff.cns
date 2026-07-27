@@ -150,7 +150,7 @@ trigger1 = MatchOver = 1
 trigger1 = Win
 value = 181
 ;---------------------------------------------------------------------------
-; Win pose 1
+; Win Screen
 [Statedef 1810]
 type = S
 ctrl = 0
