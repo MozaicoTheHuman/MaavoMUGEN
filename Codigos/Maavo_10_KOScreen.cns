@@ -76,6 +76,25 @@ channel = 3
 
 [State 911, PlaySnd]
 type = PlaySnd
+triggerall = root,fvar(36) = 21
+trigger1 = Time = 0
+value = S1957,2
+ignorehitpause = 1
+[State 911, PlaySnd]
+type = PlaySnd
+triggerall = root,fvar(36) = 21
+trigger1 = Time = 0
+value = S1957,2
+ignorehitpause = 1
+[State 911, PlaySnd]
+type = PlaySnd
+triggerall = root,fvar(36) = 21
+trigger1 = Time = 0
+value = S1957,2
+ignorehitpause = 1
+
+[State 911, PlaySnd]
+type = PlaySnd
 trigger1 = Time = 50
 value = S50505,1
 

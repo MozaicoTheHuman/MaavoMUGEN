@@ -121,19 +121,19 @@ value = S50505,1
 
 [State 911, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = Time = 0
 value = S1957,2
 ignorehitpause = 1
 [State 911, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = Time = 0
 value = S1957,2
 ignorehitpause = 1
 [State 911, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = Time = 0
 value = S1957,2
 ignorehitpause = 1

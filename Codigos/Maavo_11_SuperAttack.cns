@@ -63,7 +63,7 @@ ignorehitpause = 1
 
 [State 0, PalFX Fade White]
 type = PalFX
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = time = 0
 time = 20
 add = 255,255,255
@@ -74,56 +74,56 @@ ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(16) = 0 || var(16) = 1
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = Animelem = 4
 value = S1342,0
 
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(16) = 1 || var(16) = 0
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = Animelem = 4
 value = S1342,0
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 30
+triggerall = fvar(36) = 30
 trigger1 = Animelem = 4
 value = S1959,19
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 30
+triggerall = fvar(36) = 30
 trigger1 = Animelem = 4
 value = S1959,19
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 1
 value = S1959,5
 
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 8
+triggerall = fvar(36) = 8
 trigger1 = time = 0
 value = S1959,16
 
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(16) = 20
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = Animelem = 4
 value = S3440,0
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 1
 value = S1959,5
 
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 8
+triggerall = fvar(36) = 8
 trigger1 = time = 0
 value = S1959,16
 
@@ -150,7 +150,7 @@ id = 190011
 type = Explod
 trigger1 = animelem = 3
 id = 3232
-anim = cond(palno = 15, 616, 711)
+anim = cond(fvar(36) = 15, 616, 711)
 pos = 0,0
 postype = back
 sprpriority = -8
@@ -174,16 +174,16 @@ type = SuperPause
 trigger1 = animelem = 3
 time = 26
 movetime = 26
-anim = cond(palno = 15, 100, -1)
+anim = cond(fvar(36) = 15, 100, -1)
 pos = 18, -60
-sound = cond(palno=15,20,-1), 0
-darken = cond(palno = 15, 1, 0)
+sound = cond(fvar(36)=15,20,-1), 0
+darken = cond(fvar(36) = 15, 1, 0)
 poweradd = -1000
 unhittable = 1
 p2defmul = 1
 [State 3000, Super Cancel pal denil]
 type = Helper
-triggerall = palno = 39
+triggerall = fvar(36) = 39
 triggerall = Time = 0
 trigger1 = prevstateno=2002 ||(prevstateno = [2210,2219])
 persistent = 0
@@ -199,7 +199,7 @@ supermovetime = 99999
 pausemovetime = 99999
 [State 0, Helper]
 type = Helper
-triggerall = palno != 15
+triggerall = fvar(36) != 15
 trigger1 = animelem = 3
 name = "Hyper Portrait"
 ID = 81000
@@ -299,44 +299,44 @@ ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(16) = 0 || var(16) = 1
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = Animelem = 4
 value = S1342,0
 
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(16) = 1 || var(16) = 0
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = Animelem = 4
 value = S1342,0
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 30
+triggerall = fvar(36) = 30
 trigger1 = Animelem = 4
 value = S1959,19
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 30
+triggerall = fvar(36) = 30
 trigger1 = Animelem = 4
 value = S1959,19
 
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(16) = 20
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = Animelem = 4
 value = S3440,0
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 1
 value = S1959,5
 
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 8
+triggerall = fvar(36) = 8
 trigger1 = time = 0
 value = S1959,16
 
@@ -368,7 +368,7 @@ value = S3440,0
 type = Explod
 trigger1 = animelem = 3
 id = 3232
-anim = cond(palno=15, -1, 711)
+anim = cond(fvar(36)=15, -1, 711)
 pos = 0,0
 postype = back
 sprpriority = -8
@@ -406,17 +406,17 @@ type = SuperPause
 trigger1 = animelem = 3
 time = 26
 movetime = 26
-anim = cond(palno = 15, 100, -1)
+anim = cond(fvar(36) = 15, 100, -1)
 pos = 18, -60
-sound = cond(palno=15,20,-1), 0
-darken = cond(palno = 15, 1, 0)
+sound = cond(fvar(36)=15,20,-1), 0
+darken = cond(fvar(36) = 15, 1, 0)
 poweradd = -1000
 unhittable = 1
 p2defmul = 1
 
 [State 0, Helper]
 type = Helper
-triggerall = palno != 15
+triggerall = fvar(36) != 15
 trigger1 = animelem = 3
 name = "Hyper Portrait"
 ID = 81000
@@ -582,7 +582,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = AnimElem = 29
 source = 1,1
-dest = 1,palno
+dest = 1,fvar(36)
 ignorehitpause = 1
 
 [State 911, Ease In]
@@ -950,41 +950,41 @@ value = S240,2
 freqmul = 0.9+(random/7333.3)
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12
+triggerall = fvar(36) = 12
 trigger1 = AnimElem = 29
 value = S1959,7
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = AnimElem = 29
 value = S1957,7
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = AnimElem = 29
 value = S1957,7
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = AnimElem = 29
 value = S1957,7
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 8
+triggerall = fvar(36) = 8
 trigger1 = AnimElem = 29
 value = S1959,12
 persistent = 0
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 8
+triggerall = fvar(36) = 8
 trigger1 = AnimElem = 29
 value = S1959,12
 persistent = 0
 ignorehitpause = 1
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12
+triggerall = fvar(36) = 12
 trigger1 = AnimElem = 29
 value = S1959,7
 [State 19001, PlaySnd]
@@ -995,12 +995,12 @@ value = S240,1
 freqmul = 0.9+(random/7333.3)
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = time = 137
 value = S1957,3
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = time = 137
 value = S1957,3
 [State 19001, PlaySnd]
@@ -1152,7 +1152,7 @@ trigger1 = Animelem = 29
 value = S3440,1
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno != 21
+triggerall = fvar(36) != 21
 trigger1 = animelem = 29
 value = S240,12
 [State 0, PlaySnd]
@@ -1199,7 +1199,7 @@ sprpriority = 2
 
 [State 3000, Super Cancel pal denil]
 type = Helper
-triggerall = palno = 39
+triggerall = fvar(36) = 39
 triggerall = Time = 0
 trigger1 = prevstateno=2002 ||(prevstateno = [2210,2219])
 persistent = 0
@@ -1219,7 +1219,7 @@ pausemovetime = 99999
 type = Explod
 trigger1 = animelem = 3
 id = 713
-anim = cond(palno = 15, -1, 712)
+anim = cond(fvar(36) = 15, -1, 712)
 pos = 0,0
 postype = back
 sprpriority = -6
@@ -1275,28 +1275,28 @@ ignorehitpause = 1
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 1
 value = S1959,5
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12
+triggerall = fvar(36) = 12
 trigger1 = Animelem = 7
 value = S1959,8
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = Animelem = 7
 value = S1957,5
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = Animelem = 7
 value = S1957,5
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = Animelem = 7
 value = S1957,5
 
@@ -1364,12 +1364,12 @@ type = SuperPause
 trigger1 = animelem = 3
 time = 40
 movetime = 40
-anim = cond(palno = 15, 100, -1)
-sound = cond(palno=15,20,-1), 0
+anim = cond(fvar(36) = 15, 100, -1)
+sound = cond(fvar(36)=15,20,-1), 0
 pos = 10, -60
 poweradd = -1000
 unhittable = 1
-darken = cond(palno = 15, 1, 0)
+darken = cond(fvar(36) = 15, 1, 0)
 p2defmul = 1
 
 [State 0, EnvShake]
@@ -1397,41 +1397,41 @@ size.yscale = .73
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(16) != 20
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = animelem = 5
 value = S24500,0
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(16) != 20
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = animelem = 10
 value = S24500, 1
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(16) != 20
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = animelem = 5
 value = S24500,0
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = var(16) != 20
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = animelem = 10
 value = S24500, 1
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 30
+triggerall = fvar(36) = 30
 trigger1 = animelem = 3
 value = S1959, 18
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 30
+triggerall = fvar(36) = 30
 trigger1 = animelem = 3
 value = S1959, 18
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 30
+triggerall = fvar(36) = 30
 trigger1 = animelem = 3
 value = S1959, 18
 
@@ -1457,31 +1457,31 @@ value = S24500,4
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno != 37
+triggerall = fvar(36) != 37
 trigger1 = animelem = 1
 value = S24500,3
 channel = 3
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = fvar(36) = 37
 trigger1 = animelem = 1
 value = S1959,23
 channel = 3
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 8
+triggerall = fvar(36) = 8
 trigger1 = time = 0
 value = S1959,16
 
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 8
+triggerall = fvar(36) = 8
 trigger1 = time = 0
 value = S1959,15
 channel = 8
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 8
+triggerall = fvar(36) = 8
 trigger1 = animelem = 10
 value = S1959,14
 channel = 8
@@ -1497,13 +1497,13 @@ id = 87892
 [State 200, Voice]
 type = PlaySnd
 triggerall = var(16) = 20
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = animelem = 4
 value = S3440,6
 [State 200, Voice]
 type = PlaySnd
 triggerall = var(16) = 20
-triggerall = palno != 30
+triggerall = fvar(36) != 30
 trigger1 = animelem = 4
 value = S3440,6
 [State 19001, 1]
@@ -1523,7 +1523,7 @@ supermovetime = 9999
 removeongethit = 1
 [State 0, Helper]
 type = Helper
-triggerall = palno != 15
+triggerall = fvar(36) != 15
 trigger1 = animelem = 3
 name = "Hyper Portrait"
 ID = 81000
@@ -1560,7 +1560,7 @@ ctrl = 0
 
 [State 3000, Super Cancel pal denil]
 type = Helper
-triggerall = palno = 39
+triggerall = fvar(36) = 39
 triggerall = Time = 0
 trigger1 = prevstateno=2002 ||(prevstateno = [2210,2219])
 persistent = 0
@@ -1617,7 +1617,7 @@ ignorehitpause = 1
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 1
 value = S1959,5
 
@@ -1628,13 +1628,13 @@ value = S21931,12
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno =21 
+triggerall = fvar(36) =21 
 trigger1 = time = 10
 value = S1957,12
 
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 8
+triggerall = fvar(36) = 8
 trigger1 = time = 0
 value = S1959,16
 
@@ -1662,7 +1662,7 @@ value = S21939,5+ (var(16) * 100)
 type = Explod
 trigger1 = animelem = 4
 id = 713
-anim = cond(palno=15, -1, 712)
+anim = cond(fvar(36)=15, -1, 712)
 pos = 0,0
 postype = back
 sprpriority = -6
@@ -1677,7 +1677,7 @@ removeongethit = 1
 ownpal = 1
 [State 0, Helper]
 type = Helper
-triggerall = palno != 15
+triggerall = fvar(36) != 15
 trigger1 = animelem = 4
 name = "Hyper Portrait"
 ID = 81000
@@ -1745,11 +1745,11 @@ type = SuperPause
 trigger1 = animelem = 4
 time = 40
 movetime = 40
-anim = cond(palno = 15, 100, -1)
-sound = cond(palno=15,20,-1), 0
+anim = cond(fvar(36) = 15, 100, -1)
+sound = cond(fvar(36)=15,20,-1), 0
 pos = -20, -50
 movetime = 0
-darken = cond(palno = 15, 1, 0)
+darken = cond(fvar(36) = 15, 1, 0)
 poweradd = -3000
 unhittable = 1
 p2defmul = 1
@@ -2035,7 +2035,7 @@ ctrl = 0
 
 [State 3000, Super Cancel pal denil]
 type = Helper
-triggerall = palno = 39
+triggerall = fvar(36) = 39
 triggerall = Time = 0
 trigger1 = prevstateno=2002 ||(prevstateno = [2210,2219])
 persistent = 0
@@ -2091,26 +2091,26 @@ ignorehitpause = 1
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 1
 value = S1959,5
 
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 8
+triggerall = fvar(36) = 8
 trigger1 = time = 0
 value = S1959,16
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = time = 0
 value = S1957,1
 ignorehitpause = 1
 persistent = 0
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = time = 0
 value = S1957,1
 ignorehitpause = 1
@@ -2166,7 +2166,7 @@ ignorehitpause = 1
 type = Explod
 trigger1 = animelem = 2
 id = 713
-anim = cond(palno=15, -1, 712)
+anim = cond(fvar(36)=15, -1, 712)
 pos = 0,0
 postype = back
 sprpriority = -6
@@ -2182,7 +2182,7 @@ ownpal = 1
 
 [State 0, Helper]
 type = Helper
-triggerall = palno != 15
+triggerall = fvar(36) != 15
 trigger1 = animelem = 2
 name = "Hyper Portrait"
 ID = 81000
@@ -2202,13 +2202,13 @@ type = SuperPause
 trigger1 = animelem = 2
 time = 31
 movetime = 31
-anim = cond(palno = 15, 100, -1)
-sound = cond(palno=15,20,-1), 0
+anim = cond(fvar(36) = 15, 100, -1)
+sound = cond(fvar(36)=15,20,-1), 0
 movetime = 0
 pos = -20, -50
 poweradd = -3000
 unhittable = 1
-darken = cond(palno = 15, 1, 0)
+darken = cond(fvar(36) = 15, 1, 0)
 p2defmul = 1
 
 [State 19000, end]

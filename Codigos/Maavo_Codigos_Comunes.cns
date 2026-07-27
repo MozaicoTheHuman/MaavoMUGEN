@@ -184,18 +184,18 @@ trigger1 = !time
 value = 40
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9 && palno != 37
+triggerall = fvar(36) != 18 && fvar(36) != 9 && fvar(36) != 37
 trigger1 = Animelem = 1
 value = S50,0
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 1
 value = S1959,2
 [State 0]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = fvar(36) = 37
 trigger1 = Animelem = 1
 value = S1959, 21
 
@@ -341,12 +341,12 @@ trigger1 = Animelem = 1
 value = S50,0
 [State 41, PlaySnd]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9
+triggerall = fvar(36) != 18 && fvar(36) != 9
 trigger1 = Animelem = 1
 value = S50,0
 [State 41, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 1
 value = S1959,2
 [State 41, Jump Normal]
@@ -502,18 +502,18 @@ anim = 47
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9 && palno != 37
+triggerall = fvar(36) != 18 && fvar(36) != 9 && fvar(36) != 37
 trigger1 = time = 0
 value = S50,1
 freqmul = 0.9+(random/5333.3)
 [State 0]
 type = PlaySnd
-triggerall = palno = 37 || fvar(36) = 37
+triggerall = fvar(36) = 37
 trigger1 = time = 0
 value = S1959, 22
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = time = 0
 value = S1959,1
 freqmul = 0.9+(random/5333.3)
@@ -584,28 +584,28 @@ persistent = 1
 
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9 && palno != 21
+triggerall = fvar(36) != 18 && fvar(36) != 9 && fvar(36) != 21
 trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 3
 value = S1959,3
 [State 0]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = fvar(36) = 37
 trigger1 = Animelem = 3
 value = S1959, 20
 [State 0]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = fvar(36) = 39
 trigger1 = Animelem = 3
 value = S1959, 29+floor(3*random/1000.0)
 [State 0]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = Animelem = 3
 value = S1957, 0
 freqmul = 0.9+(random/7333.3)
@@ -715,7 +715,7 @@ value = S21,2+random%2
 freqmul = 0.9+(random/7333.3)
 [State THIRTY MILES!]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = fvar(36) = 39
 trigger1 = Time = 100
 value = S1959,28
 
@@ -887,13 +887,13 @@ ignorehitpause = 1
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9
+triggerall = fvar(36) != 18 && fvar(36) != 9
 trigger1 = animelem = 1
 value = S100,9
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 1
 value = S1959,4
 
@@ -937,7 +937,7 @@ ignorehitpause = 1
 persistent = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 2
 value = S1959,4
 [State 0, PlaySnd]
@@ -1013,28 +1013,28 @@ persistent = 0
 
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9 && palno != 21
+triggerall = fvar(36) != 18 && fvar(36) != 9 && fvar(36) != 21
 trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 3
 value = S1959,3
 [State 0]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = fvar(36) = 37
 trigger1 = Animelem = 3
 value = S1959, 20
 [State 0]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = fvar(36) = 39
 trigger1 = Animelem = 3
 value = S1959, 29+floor(3*random/1000.0)
 [State 0]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = Animelem = 3
 value = S1957, 0
 freqmul = 0.9+(random/7333.3)
@@ -1152,7 +1152,7 @@ value = S21,2+random%2
 freqmul = 0.9+(random/7333.3)
 [State THIRTY MILES!]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = fvar(36) = 39
 trigger1 = Time = 100
 value = S1959,28
 
@@ -1208,28 +1208,28 @@ trigger1 = time = 1
 value = ceil(23*fvar(8))
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9 && palno != 21
+triggerall = fvar(36) != 18 && fvar(36) != 9 && fvar(36) != 21
 trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 3
 value = S1959,3
 [State 0]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = fvar(36) = 37
 trigger1 = Animelem = 3
 value = S1959, 20
 [State 0]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = fvar(36) = 39
 trigger1 = Animelem = 3
 value = S1959, 29+floor(3*random/1000.0)
 [State 0]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = Animelem = 3
 value = S1957, 0
 freqmul = 0.9+(random/7333.3)
@@ -1327,28 +1327,28 @@ value = ceil(23*fvar(8))
 
 [State 100, Dash Sound]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9 && palno != 21
+triggerall = fvar(36) != 18 && fvar(36) != 9 && fvar(36) != 21
 trigger1 =  AnimElem = 3
 value = 100, 0
 freqmul = 0.9+(random/7333.3)
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = Animelem = 3
 value = S1959,3
 [State 0]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = fvar(36) = 37
 trigger1 = Animelem = 3
 value = S1959, 20
 [State 0]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = fvar(36) = 39
 trigger1 = Animelem = 3
 value = S1959, 29+floor(3*random/1000.0)
 [State 0]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = Animelem = 3
 value = S1957, 0
 freqmul = 0.9+(random/7333.3)
@@ -2582,13 +2582,13 @@ y = GetHitVar(yaccel)
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno != 21
+triggerall = fvar(36) != 21
 trigger1 = time = 10
 value = S5060,0
 channel = 5
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = time = 10
 value = S1957,4
 channel = 5

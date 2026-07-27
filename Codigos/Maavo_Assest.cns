@@ -13,8 +13,6 @@ ctrl = 0
 anim = 1301
 facep2 = 1
 
-
-
 [State 1220, After imajenes]
 type = AfterImage
 trigger1 = Time = 0
@@ -42,7 +40,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,ifelse(parent,fvar(37)= 1,parent,fvar(36),palno)
+dest = 1,cond(parent,fvar(37)= 1,parent,fvar(36),palno)
 ignorehitpause = 1
 [State 0, VarSet]
 type = ParentVarSet
@@ -102,12 +100,12 @@ channel = 8
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = time = 0
 value = S1957,5
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = time = 0
 value = S1957,5
 
@@ -119,14 +117,14 @@ value = S6553,0+random%4
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = movehit
 value = S1957,8
 persistent = 0
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = movehit
 value = S1957,8
 persistent = 0
@@ -361,7 +359,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,ifelse(parent,fvar(37)= 1,parent,fvar(36),palno)
+dest = 1,cond(parent,fvar(37)= 1,parent,fvar(36),palno)
 ignorehitpause = 1
 
 [State 0, PalFX]
@@ -513,7 +511,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,ifelse(parent,fvar(37)= 1,parent,fvar(36),palno)
+dest = 1,cond(parent,fvar(37)= 1,parent,fvar(36),palno)
 ignorehitpause = 1
 [State 0, PalFX]
 type = PalFX
@@ -914,7 +912,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,ifelse(parent,fvar(37)= 1,parent,fvar(36),palno)
+dest = 1,cond(parent,fvar(37)= 1,parent,fvar(36),palno)
 ignorehitpause = 1
 
 [State 0, PalFX]
@@ -966,14 +964,6 @@ pausemovetime = 99999
 supermovetime = 99999
 ignorehitpause = 1
 
-[State 3741]
-type = ChangeAnim
-triggerall = palno = 2 || palno = 6 || palno = 7 || palno = 10
-trigger1 = time = 0
-value = 848031
-ignorehitpause = 1
-persistent = 0
-
 [State 0, PosSet]
 type = PosSet
 trigger1 = time = 0
@@ -1009,7 +999,7 @@ trigger1 = AnimElem = 1
 value = S7275,0
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = AnimElem = 1
 value = S1957,10
 
@@ -1051,7 +1041,7 @@ dest = 3,0
 type = RemapPal
 trigger1 = parent, stateno != 19001
 source = 1,1
-dest = 1,ifelse(parent,fvar(37)= 1,parent,fvar(36),palno)
+dest = 1,cond(parent,fvar(37)= 1,parent,fvar(36),palno)
 ignorehitpause = 1
 
 [State 0, PalFX]
@@ -1146,7 +1136,7 @@ movetype = I
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = movehit
 value = S1957,6
 volume = 255
@@ -1154,7 +1144,7 @@ persistent = 0
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = movehit
 value = S1957,6
 volume = 255
@@ -1162,7 +1152,7 @@ persistent = 0
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = movehit
 value = S1957,6
 volume = 255
@@ -1170,7 +1160,7 @@ persistent = 0
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = root,fvar(36) = 21
 trigger1 = movehit
 value = S1957,6
 volume = 255

@@ -1344,37 +1344,37 @@ y = 0
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno != 37 || palno != 39
+triggerall = root,fvar(36) != 37 || root,fvar(36) != 39
 trigger1 = !time
 value = S979,0
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = root,fvar(36) = 37
 trigger1 = !time
 value = S1959,27
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = root,fvar(36) = 37
 trigger1 = !time
 value = S1959,27
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = root,fvar(36) = 37
 trigger1 = !time
 value = S1959,27
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = root,fvar(36) = 39
 trigger1 = !time
 value = S1959,32
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = root,fvar(36) = 39
 trigger1 = !time
 value = S1959,32
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = root,fvar(36) = 39
 trigger1 = !time
 value = S1959,32
 
@@ -1497,37 +1497,37 @@ y = 0
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno != 37 || palno != 39
+triggerall = root,fvar(36) != 37 || root,fvar(36) != 39
 trigger1 = !time
 value = S979,0
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = root,fvar(36) = 37
 trigger1 = !time
 value = S1959,27
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = root,fvar(36) = 37
 trigger1 = !time
 value = S1959,27
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = root,fvar(36) = 37
 trigger1 = !time
 value = S1959,27
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = root,fvar(36) = 39
 trigger1 = !time
 value = S1959,32
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = root,fvar(36) = 39
 trigger1 = !time
 value = S1959,32
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 39
+triggerall = root,fvar(36) = 39
 trigger1 = !time
 value = S1959,32
 

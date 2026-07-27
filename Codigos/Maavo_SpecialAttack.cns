@@ -48,13 +48,13 @@ trigger1 = animelem = 2
 value = S900,1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = time = 4
 value = S1957,11
 ignorehitpause =1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = time = 4
 value = S1957,11
 ignorehitpause =1
@@ -1150,7 +1150,7 @@ trigger1 = AnimElem = 3
 value = S2000,1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 6 || palno = 33 || palno = 34 || palno = 35
+triggerall = fvar(36) = 6 || fvar(36) = 33 || fvar(36) = 34 || fvar(36) = 35
 trigger1 = AnimElem = 3
 value = S1958,0
 [State 0, PlaySnd]
@@ -1377,7 +1377,7 @@ value = S2020,7
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12
+triggerall = fvar(36) = 12
 trigger1= movehit
 value = S1959,9
 persistent = 0
@@ -1592,19 +1592,19 @@ value = 2009
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno != 18 && palno != 9 && palno != 37
+triggerall = fvar(36) != 18 && fvar(36) != 9 && fvar(36) != 37
 trigger1 = anim = 2009
 value = S50,1
 persistent = 0
 [State megama]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = fvar(36) = 37
 trigger1 = time = 0
 value = S1959, 22
 persistent = 0
 [State 0, sonsi]
 type = PlaySnd
-triggerall = palno = 18 || palno = 9
+triggerall = fvar(36) = 18 || fvar(36) = 9
 trigger1 = time = 0
 value = S1959,1
 freqmul = 0.9+(random/5333.3)

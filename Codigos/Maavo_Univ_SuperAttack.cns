@@ -58,14 +58,14 @@ trigger1 = animelem = 2
 value = S240,3
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = movehit
 value = S1957,9
 ignorehitpause = 1
 persistent = 0
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = movehit
 value = S1957,9
 ignorehitpause = 1
@@ -77,14 +77,14 @@ trigger1 = animelem = 2
 value = S900,0
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12
+triggerall = fvar(36) = 12
 trigger1 = movehit
 value = S1959,11
 persistent = 0
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12
+triggerall = fvar(36) = 12
 trigger1 = movehit
 value = S1959,11
 persistent = 0
@@ -131,7 +131,7 @@ statetype = A       ;S,A,C,L
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 8
+triggerall = fvar(36) = 8
 trigger1 = movehit
 value = S1959,13
 persistent = 0
@@ -179,9 +179,9 @@ guardflag = M
 hitflag = MAF
 priority = 7, Hit
 pausetime = 22, 22
-sparkno = S3000
-sparkxy = -20,-45 
-hitsound = S240, 15
+sparkno = cond(fvar(36) = 15, 3, -1)
+sparkxy = -20,-75 
+hitsound = cond(fvar(36) = 15, 5, 0), 4
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = 22+(3*var(42))
@@ -204,6 +204,29 @@ palfx.mul = 256,256,256
 palfx.sinadd = 0,0,0,1
 palfx.invertall = 0
 palfx.color = 256
+[State 200, Hitsound]
+type = PlaySnd
+triggerall = fvar(36) != 15
+trigger1 = MoveHit
+value = S240, 15
+persistent = 0
+ignorehitpause = 1
+[State 0, Helper]
+type = Helper
+triggerall = fvar(36) != 15
+trigger1 = MoveHit
+helpertype = normal ;player
+name = "Hit Spark"
+ID = 3000
+stateno = 4008+random%3
+pos = 33,-65
+postype = p1
+keyctrl = 0
+ownpal = 1
+size.xscale = .90
+size.yscale = .90
+persistent = 0
+ignorehitpause = 1
 [State 210, 1]
 type = HitDef
 triggerall = anim = 190003
@@ -456,7 +479,7 @@ value = S24500,7
 channel = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = fvar(36) = 37
 trigger1 = time = 0
 value = S1959,26
 channel = 1
@@ -738,12 +761,12 @@ ctrl = 0
 sprpriority = 4
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12 || palno = 21
+triggerall = fvar(36) = 12 || fvar(36) = 21
 trigger1 = time = 0
 value = S1959,10
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12 || palno = 21
+triggerall = fvar(36) = 12 || fvar(36) = 21
 trigger1 = time = 0
 value = S1959,10
 [State 0, PlaySnd]
@@ -1123,19 +1146,19 @@ persistent = 0
 
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12
+triggerall = fvar(36) = 12
 trigger1 = time = 0
 value = S1959,9
 persistent = 0
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = time = 0
 value = S1957,9
 persistent = 0
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = time = 0
 value = S1957,9
 persistent = 0
@@ -1697,7 +1720,7 @@ trigger1 = Time = 110
 helpertype = normal
 name = "Dialogue Box"
 ID = 150000
-stateno = cond(palno=38, 150006, cond(random<400,150002, cond(random<800,150003, cond(random<900,150004,150005))))
+stateno = cond(fvar(36)=38, 150006, cond(random<400,150002, cond(random<800,150003, cond(random<900,150004,150005))))
 pos = 0,0
 postype = p1   ;p2,front,back,left,right
 keyctrl = 0
@@ -1712,7 +1735,7 @@ trigger1 = Time = 110
 helpertype = normal
 name = "Dialogue Box"
 ID = 150000
-stateno = cond(palno=38, 150006, cond(random<500, 150004+random%2, 150002+random%3))
+stateno = cond(fvar(36)=38, 150006, cond(random<500, 150004+random%2, 150002+random%3))
 pos = 0,0
 postype = p1   ;p2,front,back,left,right
 keyctrl = 0
@@ -3418,21 +3441,21 @@ ignorehitpause = 1
 persistent = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = movehit
 value = S1957,15
 ignorehitpause = 1
 persistent = 0
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = movehit
 value = S1957,15
 ignorehitpause = 1
 persistent = 0
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 21
+triggerall = fvar(36) = 21
 trigger1 = movehit
 value = S1957,15
 ignorehitpause = 1
@@ -3495,7 +3518,7 @@ envshake.freq = 100
 
 [State goofy ass sound]
 type = PlaySnd
-triggerall = palno = 12
+triggerall = fvar(36) = 12
 trigger1 = movehit
 value = S1959,9
 persistent = 0

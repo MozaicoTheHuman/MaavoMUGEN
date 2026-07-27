@@ -47,8 +47,14 @@ ignorehitpause = 1
 
 [State -2, Gloveless Palettes]
 type = VarSet
-trigger1 = palno=3||palno=5||palno=10||palno=11||palno=12||palno=13||palno=14||palno=15||palno=16||palno=17||palno=19||palno=21||palno=24||palno=25||palno=26||palno=27||palno=28||palno=30||palno=31||palno=32||palno=33||palno=34||palno=36||palno=37||palno=39||palno=41||palno=42||palno=43||palno=49||palno=51||palno=52
+trigger1 = fvar(36)=3||fvar(36)=5||fvar(36)=10||fvar(36)=11||fvar(36)=12||fvar(36)=13||fvar(36)=14||fvar(36)=15||fvar(36)=16||fvar(36)=17||fvar(36)=19||fvar(36)=21||fvar(36)=24||fvar(36)=25||fvar(36)=26||fvar(36)=27||fvar(36)=28||fvar(36)=30
+trigger2 = fvar(36)=31||fvar(36)=32||fvar(36)=33||fvar(36)=34||fvar(36)=36||fvar(36)=37||fvar(36)=39||fvar(36)=41||fvar(36)=42||fvar(36)=43||fvar(36)=49||fvar(36)=51||fvar(36)=52
 var(23) = 1
+ignorehitpause = 1
+[State -2, Sync fvar36 with palno]
+type = VarSet
+trigger1 = fvar(37) = 0
+fvar(36) = palno
 ignorehitpause = 1
 
 ;Clap Animation
@@ -295,21 +301,21 @@ ignorehitpause = 1
 ;VUELTA AL RUEDO
 [State -2, RemapPal]
 type = RemapPal
-triggerall = palno = 16
-trigger1 = var(20) = 1
+triggerall = fvar(36) = 16
+trigger1 = var(20) = 0
 source = 1,1
 dest = 2,16
 ignorehitpause = 1
 [State -2, RemapPal]
 type = RemapPal
-triggerall = palno = 16
-trigger1 = var(20) = 0
+triggerall = fvar(36) = 16
+trigger1 = var(20) = 1
 source = 1,1
 dest = 1,16
 ignorehitpause = 1
 [State -2, PalFX]
 type = PalFX
-triggerall = palno = 16
+triggerall = fvar(36) = 16
 trigger1 = var(21) > 0
 time = 2
 add = 255 - ((20 - var(21)) * 12), 255 - ((20 - var(21)) * 12), 255 - ((20 - var(21)) * 12)
@@ -317,7 +323,7 @@ mul = 256,256,256
 ignorehitpause = 1
 [State -2, PalFX]
 type = PalFX
-triggerall = palno = 16
+triggerall = fvar(36) = 16
 trigger1 = var(21) <= 0
 time = 1
 add = 0,0,0
@@ -325,7 +331,7 @@ mul = 256,256,256
 ignorehitpause = 1
 [State -2, VarAdd]
 type = VarAdd
-triggerall = palno = 16
+triggerall = fvar(36) = 16
 trigger1 = var(21) > 0
 var(21) = -1
 ignorehitpause = 1
@@ -345,19 +351,19 @@ trigger4 = 0&&(var(35):=var(33))
 ignorehitpause = 1
 [State -2, RemapPal]
 type = RemapPal
-trigger1 = var(33) = 1 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
+trigger1 = var(33) = 1 && (fvar(36) = 18 || fvar(36) = 9 || fvar(36) = 8 || fvar(36) = 12)
 source = 1,1
-dest = 2,palno
+dest = 2,cond(fvar(37)= 1,fvar(36),palno)
 ignorehitpause = 1
 [State -2, RemapPal]
 type = RemapPal
-trigger1 = var(33) = 0 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
+trigger1 = var(33) = 0 && (fvar(36) = 18 || fvar(36) = 9 || fvar(36) = 8 || fvar(36) = 12)
 source = 1,1
-dest = 1,palno
+dest = 1,cond(fvar(37)= 1,fvar(36),palno)
 ignorehitpause = 1
 [State -2, PalFX]
 type = PalFX
-trigger1 = var(36) = 1 && (palno = 18 || palno = 9 || palno = 8 || palno = 12)
+trigger1 = var(36) = 1 && (fvar(36) = 18 || fvar(36) = 9 || fvar(36) = 8 || fvar(36) = 12)
 time = 20
 add = 255,255,255
 mul = 256,256,256
@@ -368,16 +374,16 @@ ignorehitpause = 1
 ;AY ESCUBI
 [State -2, PlaySnd]
 type = PlaySnd
-triggerall = palno = 12 || palno = 21
+triggerall = fvar(36) = 12 || fvar(36) = 21
 trigger1 = (Anim = 100 || Anim = 102 || Anim = 105 || Anim = 107) && !(var(25) = 100 || var(25) = 102 || var(25) = 105 || var(25) = 107)
-value = S1959,cond(palno=21, 88, 0)
+value = S1959,cond(fvar(36)=21, 88, 0)
 channel = 10
 loop = 1
 volumescale = 100
 ignorehitpause = 1
 [State -2, StopSnd]
 type = StopSnd
-triggerall = palno = 12 || palno = 21
+triggerall = fvar(36) = 12 || fvar(36) = 21
 trigger1 = Anim != 100 && Anim != 102 && Anim != 105 && Anim != 107
 channel = 10
 ignorehitpause = 1
@@ -391,7 +397,8 @@ ignorehitpause = 1
 ;ora del shou 2016
 [State 0, Force Martin Voice on pal 3]
 type = VarSet
-triggerall = palno = 3
+triggerall = !numhelper(12345)
+triggerall = fvar(36) = 3
 trigger1 = 1
 var(16) = 20
 ignorehitpause = 0
@@ -570,35 +577,31 @@ ignorehitpause = 1
 [State 0, Victory Music Override]
 type = null
 triggerall = var(52)
+triggerall = !numhelper(12345)
 ;Victory Music Override: P3 Edition
                                                                                                                                                                                                                                      ;if anyone makes a kuromaru joke I swear              ;mister "not going to be made a mugen character 'cause I'm dead"
-trigger1 = (enemy,name="p3hero"||enemy,name="Junpei"||enemy,name="Junpei Iori"||enemy,name="Yukari Takeba"||enemy,name="Akihiko Sanada"||enemy,name="Mitsuru Kirijo"||enemy,name="Aigis"||enemy,name="Aegis"||enemy,name="Metis"||enemy,name="Ken Amada"||enemy,name="Koromaru"||enemy,name="Shinjiro Aragaki"                                                ||enemy,name="Elizabeth"||enemy,name="Theodore")
+trigger1 = (enemy,name="p3hero"||enemy,name="Junpei"||enemy,name="Junpei Iori"||enemy,name="Yukari Takeba"||enemy,name="Akihiko Sanada"||enemy,name="Mitsuru Kirijo"||enemy,name="Aigis"||enemy,name="Aegis"||enemy,name="Metis"||enemy,name="Ken Amada"||enemy,name="Koromaru"||enemy,name="Shinjiro Aragaki"                                                ||enemy,name="Elizabeth"||enemy,name="Theodore"||fvar(36)=33)
 trigger1 = 0&&(var(52):=4)
 ;Victory Music Override: P4 Edition
                                                                                                                                                                                                                                                  ;don't ask why she's on here but fuuka and futaba aren't
-trigger2 = (enemy,name="Yu Narukami"||enemy,name="Nyarukami Nyuu"||enemy,name="P4hero"||enemy,name="Yosuke Hanamura"||enemy,name="Chie Satonaka"||enemy,name="Yukiko Amagi"||enemy,name="Kanji Tatsumi"||enemy,name="Teddie"||enemy,name="Kuma"||enemy,name="Rise Kujikawa"                              ||enemy,name="Naoto Shirogane"||enemy,name="Margaret"||enemy,name="Marie"||enemy,name="Adachi"||enemy,name="Tohru Adachi")
+trigger2 = (enemy,name="Yu Narukami"||enemy,name="Nyarukami Nyuu"||enemy,name="P4hero"||enemy,name="Yosuke Hanamura"||enemy,name="Chie Satonaka"||enemy,name="Yukiko Amagi"||enemy,name="Kanji Tatsumi"||enemy,name="Teddie"||enemy,name="Kuma"||enemy,name="Rise Kujikawa"                              ||enemy,name="Naoto Shirogane"||enemy,name="Margaret"||enemy,name="Marie"||enemy,name="Adachi"||enemy,name="Tohru Adachi"||fvar(36)=34)
 trigger2 = 0&&(var(52):=5)
 ;Victory Music Override: P5 Edition + P5 Bonus Pack + MAAVO JOKER
 ;watch as literally nobody else besides joker gets made for mugen                                                                                                                                                                                                                                                                                                                                                                                ;aka the "literally never going to get made for mugen" squad, alongside shinji up there                                                                            ;MAAVO JOKER
-trigger3 = (enemy,name="Ren Amamiya"||enemy,name="Akira Kurusu"||enemy,name="Joker"||enemy,name="p5hero"||enemy,name="Trickster"||enemy,name="trickster"||enemy,name="Morgana"||enemy,name="Mona"||enemy,name="Ryuji Sakamoto"||enemy,name="Ann Takamaki"||enemy,name="Anne Takamaki"||enemy,name="Yusuke Kitagawa"||enemy,name="Makoto Nijima"||enemy,name="Haru Okumura"||enemy,name="Goro Akechi"||enemy,name="Caroline"||enemy,name="Justine"||enemy,name="Lavenza"||enemy,name="Black Mask"||enemy,name="Kasumi Yoshizawa"||enemy,name="Sumire Yoshizawa"||enemy,name="Sophia"||enemy,name="Zenkichi Hasegawa"||palno=6)
+trigger3 = (enemy,name="Ren Amamiya"||enemy,name="Akira Kurusu"||enemy,name="Joker"||enemy,name="p5hero"||enemy,name="Trickster"||enemy,name="trickster"||enemy,name="Morgana"||enemy,name="Mona"||enemy,name="Ryuji Sakamoto"||enemy,name="Ann Takamaki"||enemy,name="Anne Takamaki"||enemy,name="Yusuke Kitagawa"||enemy,name="Makoto Nijima"||enemy,name="Haru Okumura"||enemy,name="Goro Akechi"||enemy,name="Caroline"||enemy,name="Justine"||enemy,name="Lavenza"||enemy,name="Black Mask"||enemy,name="Kasumi Yoshizawa"||enemy,name="Sumire Yoshizawa"||enemy,name="Sophia"||enemy,name="Zenkichi Hasegawa"||fvar(36)=6)
 trigger3 = 0&&(var(52):=6)
-;Victory Music Override: MAAVO YU (EXCLUSIVE FOR IKEMEN GO)
-trigger4 = palno=34
-trigger4 = 0&&(var(52):=5)
-;Victory Music Override: MAAVO DOOR (EXCLUSIVE FOR IKEMEN GO)
-trigger5 = palno=33
-trigger5 = 0&&(var(52):=4)
 ;Victory Music Override: Random Persona song, velvet room palette (EXCLUSIVE FOR IKEMEN GO)
-trigger6 = palno=35
-trigger6 = 0&&(var(52):=4+random%3)
+trigger4 = fvar(36)=35
+trigger4 = 0&&(var(52):=4+random%3)
 ;Victory Music Override: DEMO 2021, rossiter's original song (EXCLUSIVE FOR IKEMEN GO)
-trigger7 = palno=50
-trigger7 = 0&&(var(52):=2)
+trigger5 = fvar(36)=50
+trigger5 = 0&&(var(52):=2)
 ignorehitpause = 1
 
 [State 0, Legacy Mariri and Ivy voices override]; specifically for the 2021 demo palette (EXCLUSIVE FOR IKEMEN GO)
 type = VarSet
-trigger1 = palno = 50
+triggerall = !numhelper(12345)
+trigger1 = fvar(36) = 50
 var(34) = 1
 ignorehitpause = 1
 
@@ -700,43 +703,43 @@ ignorehitpause = 1
 ;Victory Quotes
 [State -2, Maritza KO]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = var(56) = 1
 value = cond(var(20) = 0, 8, 52) + random%3
 
 [State -2, Ivette KO]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = var(56) = 2
 value = cond(var(20) = 0, 11, 55) + random%3
 
 [State -2, Normal]
 Type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = var(56) = 0
 Value = cond(var(20) = 0, 0, 44) + random%8
 
 [State -2, Maavo]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Maavo"
 value = cond(var(20) = 0, 14, 58) + random%3
 
 [State -2, Rudy]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Rudy" && Enemy, AuthorName = "jade_midori"
 value = cond(var(20) = 0, 17, 61) + random%4
 
 [State -2, Oliver]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Oliver Andersen" && Enemy, AuthorName = "Oliver As Latias"
 value = cond(var(20) = 0, 21, 65)
 
 [State -2, Martin]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = enemy, name = "Martin" && enemy, authorname = "Jeff Swag"
 trigger2 = enemy, name = "NewMartin" && enemy, authorname = "Jeff Swag"
 trigger3 = enemy, name = "Martin Bravo" && enemy, authorname = "Maavo!, AustinAnims"
@@ -744,56 +747,56 @@ value = cond(var(20) = 0, 22, 66)
 
 [State -2, Chase]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "CHASEVV1.1" && Enemy, AuthorName = "Chase2006"
 value = cond(var(20) = 0, 23, 67) + random%5
 
 [State -2, Hanzo]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Hanzo" && Enemy, AuthorName = "Hanzo Santiago"
 trigger2 = Enemy, Name = "Hanzo" && Enemy, AuthorName = "Soga Celeste Hanzo Santiago"
 value = cond(var(20) = 0, 28, 72) + random%3
 
 [State -2, Alex]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "New_Alex" && Enemy, AuthorName = "ElAleUwU"
 value = cond(var(20) = 0, 31, 75) + random%3
 
 [State -2, Capitan 2]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Capitan_2" && Enemy, AuthorName = "Mario643D"
 value = cond(var(20) = 0, 34, 78) + random%2
 
 [State -2, Nick Hopper]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Nick_Hooper" && Enemy, AuthorName = "DarkDonald1"
 value = cond(var(20) = 0, 36, 80) + random%2
 
 [State -2, Ulikander]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, AuthorName = "Ulikander4001"
 value = cond(var(20) = 0, 38, 82) + random%2
 
 [State -2, Wach]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Wach" && Enemy, AuthorName = "Wach"
 value = cond(var(20) = 0, 40, 84) + random%2
 
 [State -2, Matias]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Matias Ariel Zurita" && Enemy, AuthorName = "Matydel42008"
 value = cond(var(20) = 0, 42, 86)
 
 [State -2, Matt/Shaggy/Boyfriend]
 type = VictoryQuote
-trigger1 = palno != 38
+trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Wii Sports Matt" && Enemy, AuthorName = "Alexander Cooper 19"
 trigger2 = Enemy, Name = "bf-mugen"
 trigger3 = Enemy, Name = "Shaggy Rogers"
@@ -804,13 +807,15 @@ value = cond(var(20) = 0, 43, 87)
 
 [State -2, SAMSON Palette]
 Type = VictoryQuote
-trigger1 = palno = 38
+triggerall = !numhelper(12345)
+trigger1 = fvar(36) = 38
 Value = 88
 
 [State -2, SAMSON Palette Vs SAMSON]
 Type = VictoryQuote
+triggerall = !numhelper(12345)
 trigger1 = Enemy, Name = "Samson" && Enemy, AuthorName = "VWTG"
-trigger1 = palno = 38
+trigger1 = fvar(36) = 38
 Value = 89+random%3
 
 ;-----------------------------------------------------------------------------------------------
@@ -890,13 +895,15 @@ time = 9
 ;This is for the special Pal 16 thingy
 [State -3, Null]
 type = Null
-trigger1 = palno = 16
+triggerall = !numhelper(12345)
+trigger1 = fvar(36) = 16
 trigger1 = command = "start"
 trigger1 = 0&&(var(20):=!var(20))&&(var(21):=20)
 ignorehitpause = 1
 [State -3, PlaySnd]
 type = PlaySnd
-triggerall = palno = 16
+triggerall = !numhelper(12345)
+triggerall = fvar(36) = 16
 trigger1 = command = "start"
 value = S1958,0
 channel = 7

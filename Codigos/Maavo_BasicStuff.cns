@@ -1643,7 +1643,7 @@ trigger1 = time = 5
 [Statedef 195]
 type = S
 ctrl = 0
-anim = cond(palno = 52, 198, 195)
+anim = cond(palno = 52 || fvar(36) = 52, 198, 195)
 velset = 0,0
 movetype = I
 poweradd = 0
