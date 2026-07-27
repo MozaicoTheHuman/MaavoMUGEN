@@ -905,9 +905,9 @@ damage = ceil(cond(fvar(11)<=.45,(120*.45),(120*fvar(11)))*cond(var(42),1.1,1)),
 pausetime = 0, 22
 givepower = ceil(cond(fvar(11)<=.45,(120*.45),(120*fvar(11)))*.015),ceil(120*.15)
 guard.pausetime = 12,12
-sparkno = S3000
-hitsound = S210, 2
-sparkxy = -5, -65
+hitsound = cond(fvar(36) = 15, 5, 0), 4
+sparkno = cond(fvar(36) = 15, 3, -1)
+sparkxy = -20,-25              ;X-offset for the "hit spark" rel. to p2,
 guardsound = 6, 0
 ground.type = Low
 ground.slidetime = 32
@@ -940,7 +940,13 @@ p2facing = 1
 envshake.time = 8
 envshake.ampl = -4
 envshake.freq = 180
-
+[State hitsound]
+type = PlaySnd
+triggerall = fvar(36) != 15
+trigger1 = movehit
+value = S210, 2
+persistent = 0
+ignorehitpause = 1
 [State 0, TargetState]
 type = TargetState
 triggerall = NumTarget(17000) = 1
@@ -1186,6 +1192,7 @@ flag = noFG
 
 [State 0, Helper]
 type = Helper
+triggerall = fvar(36) != 15
 trigger1 = time = 0
 helpertype = normal ;player
 name = "Hit Spark"
@@ -3492,9 +3499,9 @@ hitflag = MAFD
 priority = 7, Hit
 pausetime = 16, 16
 guard.pausetime = 12,12
-sparkno = s616
-hitsound = S240, 15
-sparkxy = -5, -65
+sparkno = cond(fvar(36) = 15, 3, -1)
+hitsound = cond(fvar(36) = 15, 5, 0), 4
+sparkxy = 0, -55
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = ceil(18+3*(var(42)!=0))
@@ -3515,6 +3522,13 @@ guard.kill = 0
 envshake.time = 15
 envshake.ampl = -4
 envshake.freq = 100
+[State hitsound]
+type = PlaySnd
+triggerall = fvar(36) != 15
+trigger1 = movehit
+value = S240, 15
+persistent = 0
+ignorehitpause = 1
 
 [State goofy ass sound]
 type = PlaySnd
@@ -3526,6 +3540,7 @@ ignorehitpause = 1
 
 [State 0, Hit Spark]
 type = Explod
+triggerall = fvar(36) != 15
 trigger1 = MoveHit
 anim = 3000
 ID = 3000

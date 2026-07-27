@@ -3759,11 +3759,14 @@ Clsn2Default: 2
 
 ;
 [Begin Action 2102]
-Clsn1: 1
+Clsn1default: 1
   Clsn1[0] = -42, -35, 42, 35
-Clsn2: 1
+Clsn2default: 1
   Clsn2[0] = -25, -25, 25, 25
-2100,7, 0,0, 55
+451,0, 0,0, 2
+451,1, 0,0, 2
+451,2, 0,0, 2
+451,3, 0,0, 2
 
 ;
 [Begin Action 2103]
@@ -7982,8 +7985,8 @@ LoopStart
 
 ; Maritza - Ataque
 [Begin Action 848041]
+24247,5, 0,0, 1
 24247,6, 0,0, 1
-24247,7, 0,0, 1
 24246,8, 0,0, 2
 Clsn1: 1
   Clsn1[0] = 74, -142, 240, -54

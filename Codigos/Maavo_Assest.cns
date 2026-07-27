@@ -208,9 +208,9 @@ getpower = 0,0
 givepower = ceil((52*root,fvar(11))*.015),ceil(52*.005)
 pausetime = 18,18
 guard.pausetime = 10,10
-hitsound = s240,15
+hitsound = cond(root, fvar(36) = 15, 5, 0), 4
 guardsound = 6,0
-sparkno = S300032423432
+sparkno = cond(root, fvar(36) = 15, 3, -1)
 sparkxy = 0,0
 animtype = Hard
 ground.velocity = -4, 25
@@ -230,14 +230,17 @@ envshake.time = 5
 envshake.ampl = -4
 envshake.freq = 100
 ground.cornerpush.veloff = 0
-[State 0, Spike Sound]
+[State 200, Hitsound]
 type = PlaySnd
-trigger1 = movehit
-value = S7676,0
+triggerall = root, fvar(36) != 15
+trigger1 = MoveHit
+value = s240,15
 persistent = 0
+freqmul = 0.9+(random/5333.3)
 ignorehitpause = 1
 [State 0, Hitspark]
 type = Helper
+triggerall = root, fvar(36) != 15
 trigger1 = movehit
 helpertype = normal ;player
 name = "Hit Spark"
@@ -1181,9 +1184,9 @@ guardflag = MA
 hitflag = MAF
 priority = 1, Hit
 pausetime = 8, 8
-sparkno = S3000
-hitsound = S8983, 0
-sparkxy = -15, -45
+sparkno = cond(root, fvar(36) = 15, 3, -1)
+hitsound = cond(root, fvar(36) = 15, 5, 0), 4
+sparkxy = -35, -40
 guardsound = 6, 0
 ground.type = Low
 ground.slidetime = ceil(18+3*(root,var(42)!=0))
@@ -1198,6 +1201,30 @@ fall = 0
 forcenofall = 1
 forcestand = 1
 ground.cornerpush.veloff = 0
+[State 0, Helper]
+type = Helper
+triggerall = root,fvar(36) != 15
+trigger1 = MoveHit
+helpertype = normal ;player
+name = "Hit Spark"
+ID = 3000
+stateno = 4000+random%3
+pos = 80,-45
+postype = p1
+keyctrl = 0
+ownpal = 1
+size.xscale = .90
+size.yscale = .90
+persistent = 0
+ignorehitpause = 1
+[State 200, Hitsound]
+type = PlaySnd
+triggerall = root, fvar(36) != 15
+trigger1 = MoveHit
+value = S8983, 0
+persistent = 0
+freqmul = 0.9+(random/5333.3)
+ignorehitpause = 1
 [State 0, TargetState]
 type = TargetState
 triggerall = NumTarget(8483) = 1

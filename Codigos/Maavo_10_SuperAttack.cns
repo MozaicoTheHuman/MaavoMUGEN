@@ -839,7 +839,7 @@ guardflag = MA
 hitflag = MAF
 priority = 7, Hit
 pausetime = 0, 22
-sparkno = S616
+sparkno = cond(fvar(36) = 15, 3, -1)
 sparkxy = -20,-45 
 hitsound = -1
 guardsound = 6, 0
@@ -876,7 +876,7 @@ guardflag = MA
 hitflag = MAF
 priority = 7, Hit
 pausetime = 0, 22
-sparkno = S616
+sparkno = cond(fvar(36) = 15, 3, -1)
 sparkxy = -20,-45 
 hitsound = -1
 guardsound = 6, 0
@@ -912,7 +912,7 @@ guardflag = MA
 hitflag = MAF
 priority = 7, Hit
 pausetime = 16, 16
-sparkno = S616
+sparkno = cond(fvar(36) = 15, 3, -1)
 sparkxy = -20,-45 
 hitsound = -1
 guardsound = 6, 0
@@ -1004,6 +1004,7 @@ ampl = -21
 
 [State 0, Helper]
 type = Helper
+triggerall = fvar(36) != 15
 trigger1 = AnimElem = 2
 trigger2 = AnimElem = 6 || AnimElem = 9 || AnimElem = 12
 trigger3 = AnimElem = 15 || AnimElem = 21 || AnimElem = 18
@@ -1023,6 +1024,7 @@ PauseMoveTime = 9999
 
 [State 0, Helper]
 type = Helper
+triggerall = fvar(36) != 15
 trigger1 = AnimElem = 2
 trigger2 = AnimElem = 6 || AnimElem = 9 || AnimElem = 12
 trigger3 = AnimElem = 15 || AnimElem = 21 || AnimElem = 18
