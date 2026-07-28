@@ -3224,7 +3224,7 @@ id = 679
 type = changestate
 trigger1 = time = 1
 value= 196
-ctrl = 1
+ctrl = 0
 
 ;Hyper - All Out Attack (Not win 2)
 [StateDef 1400062]

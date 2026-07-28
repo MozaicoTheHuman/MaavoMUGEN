@@ -1220,6 +1220,11 @@ sinadd = 100,100,100,10
 invertall = 0
 color = 256
 
+[State fallaste]
+type = VarAdd
+trigger1 = time = 0
+fvar(33) = 1
+
 [State 0, end]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -1237,6 +1242,12 @@ ctrl = 0
 anim = 20032
 poweradd = 0
 sprpriority = -2
+
+[State mentira si le achuntaste xddxd]
+type = VarAdd
+trigger1 = time = 0
+trigger1 = fvar(33) > 0
+fvar(33) = -2
 
 [State 0, SuperPause]
 type = Pause

@@ -1,4 +1,4 @@
-﻿;///////////////////////////////////////////////////////////////////////////
+;///////////////////////////////////////////////////////////////////////////
 ; This file let's you change Maavo's settings to your liking
 ;///////////////////////////////////////////////////////////////////////////
 
@@ -44,7 +44,7 @@ trigger2 = 0&&fvar(13):=	(5) ; ◄ Change value here.                           
 ;				|                                                           |
 ;Assist Y Pos?			|                                                           |
 trigger3 = 0&&fvar(14):=	(48) ; ◄ Change value here.                                 |
-;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 ;=================================================================================================
 ;Screen Resolution?
@@ -108,7 +108,7 @@ trigger8 = 0&&var(52):=		(1) ; ◄ Change value here.                           
 ;				|0 - Screenpack Default                                     |
 ;				|1 - Smash Bros. Ultimate                                   |
 ;            			|                                                           |
-trigger9 = 0&&var(18):=		(1) ; ◄ Change value here.                                  |
+trigger9 = 0&&var(18):=		(0) ; ◄ Change value here.                                  |
 ;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾	
 ;=================================================================================================
 ;Palette Selector?
@@ -116,7 +116,7 @@ trigger9 = 0&&var(18):=		(1) ; ◄ Change value here.                           
 ;				|0 - Off                                                    |
 ;				|1 - On                                                     |
 ;            			|                                                           |
-trigger10 = 0&&fvar(37):=	(1) ; ◄ Change value here.                                  |
+trigger10 = 0&&fvar(37):=	(0) ; ◄ Change value here.                                  |
 ;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾	
 ;=================================================================================================
 ;Scrapped Moves? (This will enable 2 scrapped special moves)
@@ -170,6 +170,12 @@ trigger1 = roundno = 1
 trigger2 = !RoundsExisted
 trigger2 = teammode = Turns
 value = 190
+
+[State omero sinso]
+type = VarAdd
+trigger1 = time = 0
+trigger1 = fvar(33) > 0
+fvar(33) = -1
 
 [State 5900, 5] ;All other rounds
 type = ChangeState

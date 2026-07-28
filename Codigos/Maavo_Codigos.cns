@@ -15,7 +15,7 @@ sparkno = 2
 guard.sparkno = 40	
 KO.echo = 0				
 IntPersistIndex = 60	
-FloatPersistIndex = 36 
+FloatPersistIndex = 32 
 
 [Size]
 xscale = 0.43    

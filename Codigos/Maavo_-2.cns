@@ -168,6 +168,16 @@ trigger1 = 1
 text = "scaling table = %d || numhits = %d || cooldown = %d\nproration = %f || rage = %f ||D gain = %f"
 params = var(10),var(11), var(8), fvar(11), fvar(12), fvar(8)
 ignorehitpause = 1
+;[State -1, Debug Paper Counter]
+;type = DisplayToClipboard
+;trigger1 = 1
+;text = "StateNo=%d | PrevState=%d | FailPenaltyVar=%f"
+;params = stateno, prevstateno, fvar(33)
+;[State -1, Debug block counter]
+;type = DisplayToClipboard
+;trigger1 = roundstate = 2
+;text = "blokiadas=%d | selfState=%d selfTime=%d | enemyGuarded=%d enemyState=%d"
+;params = var(14), stateno, time, enemynear,moveguarded, enemynear,stateno
 [State -2, AppendToClipboard]
 type = appendtoclipboard
 trigger1 = 1
@@ -892,19 +902,49 @@ id = 139921
 type = RemoveExplod
 trigger1 = stateno != 620
 id = 622
+[State aaa conchetumare]
+type = VarSet
+trigger1 = RoundState = 3
+trigger1 = lose
+fvar(35) = 1
 
 [State -1, lary dary, mi nombre es barry]
 type = HitOverride
 triggerall = RoundState = 2 && numenemy
 triggerall = ailevel
-triggerall = ctrl
-triggerall = var(30) = 0
+triggerall = ctrl || (stateno = [100,105])
+triggerall = stateno = 0 || stateno = 20 || stateno = 50 || stateno = 40 || (stateno = [100,105])
 trigger1 = AILevel > 5 || enemynear,ailevel != 0
-trigger1 = random < cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*3, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 800, cond(life < lifemax*0.50, 700, 250))))))
-attr = SCA, AA, AP, AT
+trigger1 = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, 999, cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*3, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 800, cond(life < lifemax*0.50, 700, 550)))))))
+attr = SA, AA, AP, AT
 slot = 1
-stateno = cond(statetype = A, 720, 700)
+stateno = cond(pos y = 0, 700, 720)
 time = 9
+[State -1, lary dary, mi nombre es barry 2]
+type = HitOverride
+triggerall = RoundState = 2 && numenemy
+triggerall = ailevel
+triggerall = ctrl
+triggerall = stateno = 0 || stateno = 20 || stateno = 50 || stateno = 40 || (stateno = [100,105])
+trigger1 = AILevel > 5 || enemynear,ailevel != 0
+trigger1 = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, 999, cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*3, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 800, cond(life < lifemax*0.50, 700, 550)))))))
+attr = C, NA, SA, HA
+slot = 1
+stateno = 710
+time = 9
+
+[State 0, No Pal select override]
+type = VarSet
+trigger1 = ailevel
+fvar(37) = 0
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = anim = 8787 || anim = 8788
+v = 14
+value = 0
+ignorehitpause = 1
 
 ;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 [Statedef -3]

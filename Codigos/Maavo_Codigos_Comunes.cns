@@ -653,6 +653,13 @@ trigger2 = ailevel
 trigger2 = time > 10
 value = 101
 
+[State XD]
+type = ChangeState
+triggerall = ailevel
+triggerall = life < lifemax * 0.25
+trigger1 = enemy,movetype = A && inguarddist
+value = 130
+
 [State 100, Dash Stop]
 type = ChangeState
 trigger1 = command != "holdfwd"
@@ -768,6 +775,13 @@ trigger1 = command != "holdfwd"
 trigger2 = ailevel
 trigger2 = p2bodydist x < 90
 value = 1022
+
+[State XD]
+type = ChangeState
+triggerall = ailevel
+triggerall = life < lifemax * 0.25
+trigger1 = enemy,movetype = A && inguarddist
+value = 130
 
 ; Dash Stop
 [Statedef 102]
@@ -1078,6 +1092,13 @@ triggerall = command = "holdback"
 trigger1 = time > 10
 value = 106
 
+[State XD]
+type = ChangeState
+triggerall = ailevel
+triggerall = life < lifemax * 0.25
+trigger1 = enemy,movetype = A && inguarddist
+value = 130
+
 [State 100, 3]
 type = ChangeState
 triggerall = command != "holdback"
@@ -1182,6 +1203,13 @@ type = VelAdd
 trigger1 = Time > 10
 trigger1 = Vel X < 0
 x = 0.5
+
+[State XD]
+type = ChangeState
+triggerall = ailevel
+triggerall = life < lifemax * 0.25
+trigger1 = enemy,movetype = A && inguarddist
+value = 130
 
 [State 105, 3]
 type = ChangeState
@@ -2816,9 +2844,14 @@ trigger1 = Time = 3
 type = Explod
 triggerall = var(18) = 0
 trigger1 = Time = 1
-anim = F(60 + (sysvar(1) > Const720p(20)) + (sysvar(1) > Const720p(56)))
-pos = 0, 0
-sprpriority = ifelse (sysvar(1) <= Const720p(56), -10, 10)
+anim = F60
+pos = 0,0
+postype = p1
+facing = 1
+removetime = -2
+scale = 0.7,1
+sprpriority = -3
+ownpal = 1
 [State 5100, 10]
 type = PlaySnd
 triggerall = var(18) = 0
@@ -3037,9 +3070,14 @@ type = Explod
 triggerall = var(18) = 0
 trigger1 = Time = 0
 trigger1 = !SysVar(0)
-anim = F(60 + (sysvar(1) > Const720p(20)) + (sysvar(1) > Const720p(56)))
-pos = 0, 0
-sprpriority = ifelse (sysvar(1) <= Const720p(56), -10, 10)
+anim = F60
+pos = 0,0
+postype = p1
+facing = 1
+removetime = -2
+scale = 0.7,1
+sprpriority = -3
+ownpal = 1
 
 [State 5110, 8]
 type = VelSet
@@ -3829,10 +3867,10 @@ ignorehitpause = 1
 
 [State 12345, base de la guea]
 type = Explod
-trigger1 = !time
+trigger1 = time = 1
 id = 19876
 anim = 19876
-pos = cond(root,facing = 1, 0, 320), cond(root,var(17) = 1, 160, 210)
+pos = cond(root,facing = 1, 0, 320), cond(root,var(17) = 1, 210, 160)
 postype = back
 removeongethit = 1
 removetime=-1
@@ -3898,7 +3936,7 @@ trigger1 = fvar(39)=1 || (fvar(39)>20 && (floor(fvar(39))-20)%5=0)
 value = S12345,0
 volumescale = 100
 channel = 20
-
+abspan = 0
 [State 12345, PlaySnd]
 type = PlaySnd
 triggerall=ishelper(12345)
@@ -3907,7 +3945,7 @@ value = S12345,1
 volumescale = 100
 channel = 20
 persistent =0
-
+abspan = 0
 [State 12345, Countdown]
 type = VarAdd
 trigger1 =1
