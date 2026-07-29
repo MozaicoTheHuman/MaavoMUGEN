@@ -1223,7 +1223,7 @@ color = 256
 [State fallaste]
 type = VarAdd
 trigger1 = time = 0
-fvar(33) = 1
+fvar(33) = 1.0
 
 [State 0, end]
 type = ChangeState
@@ -1247,7 +1247,7 @@ sprpriority = -2
 type = VarAdd
 trigger1 = time = 0
 trigger1 = fvar(33) > 0
-fvar(33) = -2
+fvar(33) = -2.0
 
 [State 0, SuperPause]
 type = Pause
@@ -1337,7 +1337,7 @@ ignorehitpause = 1
 type = ChangeState
 triggerall = anim = 20032 && animelemtime(2) >= 0
 trigger1 = var(22) = 2
-value = 19000
+value = 2500
 ctrl = 0
 ignorehitpause = 1
 [State 0, ChangeState]
@@ -1351,14 +1351,14 @@ ignorehitpause = 1
 type = ChangeState
 triggerall = anim = 20032 && animelemtime(2) >= 0
 trigger1 = var(22) = 4
-value = 17000
+value = 2700
 ctrl = 0
 ignorehitpause = 1
 [State 0, ChangeState]
 type = ChangeState
 triggerall = anim = 20032 && animelemtime(2) >= 0
 trigger1 = var(22) = 5
-value = 1210
+value = 2800
 ctrl = 0
 ignorehitpause = 1
 [State 100, Strong Dash FX]
@@ -2686,7 +2686,7 @@ hitflag = MAF
 priority = 5, Hit
 pausetime = 2, 2
 sparkno = cond(var(18)=0, 1, -1)
-sparkxy = -40,-75 
+sparkxy = -25,-75 
 hitsound = S240, 7
 guardsound = 6, 0
 ground.type = Low
@@ -2714,7 +2714,7 @@ hitflag = MAF
 priority = 5, Hit
 pausetime = 2, 2
 sparkno = cond(var(18)=0, 1, -1)
-sparkxy = -40,-80 
+sparkxy = -25,-80 
 hitsound = S240, 7
 guardsound = 6, 0
 ground.type = High
@@ -2742,7 +2742,7 @@ hitflag = MAF
 priority = 5, Hit
 pausetime = 10, 10
 sparkno = cond(var(18)=0, 1, -1)
-sparkxy = -40,-70
+sparkxy = -25,-70
 hitsound = S240, 8
 guardsound = 6, 0
 ground.type = Low
@@ -2955,7 +2955,7 @@ hitflag = MAF
 priority = 5, Hit
 pausetime = 2, 2
 sparkno = cond(var(18)=0,2, -1)
-sparkxy = -40,-75  
+sparkxy = -25,-75  
 hitsound = S240, 7
 guardsound = 6, 0
 ground.type = Low
@@ -2983,7 +2983,7 @@ hitflag = MAF
 priority = 5, Hit
 pausetime = 2, 2
 sparkno = cond(var(18)=0,2, -1)
-sparkxy = -40,-80  
+sparkxy = -25,-80  
 hitsound = S240, 7
 guardsound = 6, 0
 ground.type = High
@@ -3011,7 +3011,7 @@ hitflag = MAF
 priority = 5, Hit
 pausetime = 10, 10
 sparkno = cond(var(18)=0, 2, -1)
-sparkxy = -40,-75  
+sparkxy = -25,-75  
 hitsound = S240, 8
 guardsound = 6, 0
 ground.type = High
@@ -3286,7 +3286,7 @@ hitflag = MAF
 priority = 6, Hit
 pausetime = 2, 2
 sparkno = cond(var(18)=0,2, -1)
-sparkxy = -40,-77   
+sparkxy = -25,-77   
 hitsound = S240, 7
 guardsound = 6, 0
 ground.type = Low
@@ -3315,7 +3315,7 @@ hitflag = MAF
 priority = 6, Hit
 pausetime = 2, 2
 sparkno = cond(var(18)=0,2, -1)
-sparkxy = -40,-75   
+sparkxy = -25,-75   
 hitsound = S240, 7
 guardsound = 6, 0
 ground.type = High
@@ -3344,7 +3344,7 @@ hitflag = MAF
 priority = 6, Hit
 pausetime = 10, 10
 sparkno = cond(var(18)=0, 3, -1)
-sparkxy = -40,-80   
+sparkxy = -25,-80   
 hitsound = S240, 8
 guardsound = 6, 0
 ground.type = High

@@ -7,7 +7,7 @@
 ; AIR JUGGLE
 ;===========================================================================
 ;Hyper - Air Juggle (DP!)
-[StateDef 190001]
+[StateDef 2503]
 type = U
 movetype= A
 physics = N
@@ -39,7 +39,7 @@ var(10) = 2
 ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
-trigger1 = prevstateno = 190000
+trigger1 = prevstateno = 2501
 value = SCA
 time = 3
 ignorehitpause = 1
@@ -278,7 +278,7 @@ persistent = 0
 type = ChangeState
 triggerall = movehit
 trigger1 = time >= 18
-value = 19001
+value = 2502
 ctrl = 0
 ignorehitpause = 1
 
@@ -349,7 +349,7 @@ ctrl = 1
 
 ;---------------------------------------------------------------------------
 ;Hyper - Air Juggle (Dash)
-[StateDef 190002]
+[StateDef 2504]
 type = U
 movetype= A
 physics = N
@@ -395,7 +395,7 @@ x = .83
 [State 11900, end]
 type = ChangeState
 trigger1 = time = 5
-value = 190001
+value = 2503
 
 ;---------------------------------------------------------------------------
 ;Hyper - Air Juggle - K.O. Screen check
@@ -418,7 +418,7 @@ ignorehitpause = 1
 ; GRAN TORNADO
 ;===========================================================================
 ;Hyper - Gran Tornado! (Tornado)
-[StateDef 87872]
+[StateDef 2600]
 type = S
 movetype= A
 physics = S
@@ -743,7 +743,7 @@ type = ChangeState
 trigger1 = ishelper(87871) && var(0) = 0 && time >= 70
 trigger2 = ishelper(87871) && var(0) >= 12 && movecontact
 trigger3 = ishelper(87872) && var(0) >= 10 && movecontact
-value = 87878
+value = 2601
 
 [State 119903, end]
 type = DestroySelf
@@ -751,7 +751,7 @@ trigger1 = frontedgebodydist <= -80
 
 ;---------------------------------------------------------------------------
 ;Hyper - Gran Tornado! (Tornado - Get Hit 2)
-[StateDef 87878]
+[StateDef 2601]
 type = S
 movetype= I
 physics = S
@@ -833,7 +833,7 @@ trigger1 = time = 10
 ; ALL-OUT ATTACK
 ;===========================================================================
 ;Hyper - All-Out Attack (Dash)
-[StateDef 17001]
+[StateDef 2708]
 type = S
 movetype= A
 physics = N
@@ -962,7 +962,7 @@ type = ChangeState
 triggerall = movehit = 1
 trigger1 = numtarget(17000)
 trigger1 = !(target,ishelper)
-value = 17002
+value = 2709
 ignorehitpause = 1
 
 [State 0, ChangeAnim]
@@ -1047,255 +1047,10 @@ type = ChangeState
 trigger1 = Animtime = 0
 value = 0
 ctrl = 1
-;---------------------------------------------------------------------------
-;Hyper - All-Out Attack (Hit!)
-[StateDef 17002]
-type = S
-movetype= A
-physics = N
-ctrl = 0
-anim = 14001
-poweradd = 0
-velset = 20,0
-sprpriority = 2
-ctrl = 0
-
-[State 17002, Helper]
-type = Helper
-triggerall = Enemy, TeamMode = Simul || TeamMode = Simul
-trigger1 = time = 0
-helpertype = normal ;player
-name = "Stop the other players"
-ID = 410002
-stateno = 410002
-pos = 0,0
-postype = left
-facing = 1
-ownpal = 0
-size.xscale = 9
-size.yscale = 9
-PauseMoveTime = 9999
-SuperMoveTime = 9999
-[State 17002, Helper]
-type = Helper
-triggerall = Enemy, TeamMode = Simul || TeamMode = Simul
-trigger1 = time = 1
-helpertype = normal ;player
-name = "Stop the other players"
-ID = 410002
-stateno = 410002
-pos = 0,0
-postype = left
-facing = 1
-ownpal = 0
-size.xscale = 9
-size.yscale = 9
-PauseMoveTime = 9999
-SuperMoveTime = 9999
-
-[State 17002, BgPalFx]
-type = BgPalFx
-trigger1 = time = 0
-time = 230
-sinadd = -255, -255, -255, 200  
-
-[State 17002, Damage Scaling]
-type = VarSet
-trigger1 = fvar(11) < .35
-fvar(11) = .35
-ignorehitpause = 1
-
-[State 17002, 1]
-type = Explod
-trigger1 = Time = 0
-id = 625
-anim = 625
-pos = 0,0
-postype = back
-sprpriority = -1
-removeongethit = 1
-removetime = 150
-pausemovetime = 0
-scale = 999,999
-OnTop = 0
-bindtime = -1
-supermove = 1
-ownpal = 1
-removeongethit = 1
-
-[State 0, VelMul]
-type = VelSet
-trigger1 = time = 0
-x = 30
-ignorehitpause = 1
-[State 0, VelMul]
-type = VelSet
-trigger1 = animelem = 2
-x = 15
-ignorehitpause = 1
-[State 0, VelMul]
-type = Velset
-trigger1 = animelem = 3
-x = .15
-ignorehitpause = 1
-
-[state 0, Time Freeze]
-type = assertspecial
-trigger1 = 1
-flag = timerfreeze
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 0
-value = S21931,11
-persistent = 0
-
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = fvar(36) = 12
-trigger1 = time = 0
-value = S1959,9
-persistent = 0
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = fvar(36) = 21
-trigger1 = time = 0
-value = S1957,9
-persistent = 0
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = fvar(36) = 21
-trigger1 = time = 0
-value = S1957,9
-persistent = 0
-[State 0, EnvShake]
-type = EnvShake
-trigger1 = time = 0
-time = 5
-freq = 50
-ampl = -2
-
-[State 17002, porsiacaso se sale el gueon (no funciono)]
-type = TargetState
-triggerall = NumTarget(17000)
-trigger1 = !(target,ishelper)
-trigger1 = Target(17000),stateno != 1700101
-value = 1700101
-ID = 17000
-ignorehitpause = 1
-
-[State 119911991, 1]
-type = AssertSpecial
-trigger1 = time > 51
-ignorehitpause=1
-flag = noFG
-
-[State 0, Helper]
-type = Helper
-triggerall = var(18)=1
-trigger1 = time = 0
-helpertype = normal ;player
-name = "Hit Spark"
-ID = 1700030
-stateno = 1700030
-pos = 0,-35
-postype = p2
-facing = 1
-keyctrl = 0
-ownpal = 1
-size.xscale = .75
-size.yscale = .75
-PauseMoveTime = 9999
-SuperMoveTime = 9999
-
-[State 911, 1]
-type = Explod
-trigger1 = Time = 49
-id = 11700
-anim = 11700 
-pos = 0,0 
-Facing = cond(facing = 1, 1, -1)
-postype = back
-sprpriority = 31
-removeongethit = 1
-ontop = 1
-removetime = 40
-scale = .5+(var(17) * .15),.5+ (var(17) * .2)
-bindtime = -1
-supermove = 1
-ownpal = 1
-removeongethit = 1
-
-[State 911, 1]
-type = Explod
-trigger1 = Time = 49
-id = 12700
-anim = 12700
-pos = 0,0 
-postype = back
-Facing = cond(facing = 1, 1, -1)
-sprpriority = 31
-removeongethit = 1
-removetime = 60
-ontop = 1
-scale = .5+(var(17) * .15),.5+ (var(17) * .2)
-bindtime = -1
-supermove = 1
-ownpal = 1
-removeongethit = 1
-[State 0, Helper]
-type = Helper
-triggerall = Enemy, TeamMode = Simul || TeamMode = Simul
-trigger1 = time = 0
-helpertype = normal ;player
-name = "Stop the other players"
-ID = 410002
-stateno = 410002
-pos = 0,0
-postype = left
-facing = 1
-ownpal = 0
-size.xscale = 9
-size.yscale = 9
-PauseMoveTime = 9999
-SuperMoveTime = 9999
-[State 0, Helper]
-type = Helper
-triggerall = Enemy, TeamMode = Simul || TeamMode = Simul
-trigger1 = time = 1
-helpertype = normal ;player
-name = "Stop the other players"
-ID = 410002
-stateno = 410002
-pos = 0,0
-postype = left
-facing = 1
-ownpal = 0
-size.xscale = 9
-size.yscale = 9
-PauseMoveTime = 9999
-SuperMoveTime = 9999
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 49
-value = S21931,0
-channel = 16
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = time = 49
-value = S21931,0
-channel = 15
-
-[State 0, ChangeState]
-type = ChangeState
-trigger1 = time = 57
-value =140002
-ctrl = 0
 
 ;---------------------------------------------------------------------------
 ;Hyper - All-Out Attack (Get Hit - Hit Spark)
-[StateDef 1700030]
+[StateDef 2710]
 type = S
 movetype= A
 anim = 30001
@@ -1322,7 +1077,7 @@ trigger1 = animtime = 0
 
 ;---------------------------------------------------------------------------
 ;Hyper - All-Out Attack (Stop the other players)
-[StateDef 410002]
+[StateDef 2711]
 type = S
 movetype = A
 anim = 140011
@@ -1350,7 +1105,7 @@ trigger1 = time = 30
 
 ;---------------------------------------------------------------------------
 ;Hyper - All-Out Attack (Stop the other players 2)
-[StateDef 4100020]
+[StateDef 2712]
 type = S
 movetype = A
 anim = 140011
@@ -1378,7 +1133,7 @@ trigger1 = time = 150
 
 ;---------------------------------------------------------------------------
 ;Hyper - All Out Attack (Attack)
-[StateDef 140002]
+[StateDef 2713]
 type = S
 movetype = A
 physics = S
@@ -1442,7 +1197,7 @@ trigger1 = time = 0
 helpertype = normal ;player
 name = "Stop the other players"
 ID = 4100020
-stateno = 4100020
+stateno = 2712
 pos = 0,0
 postype = left
 facing = 1
@@ -1458,7 +1213,7 @@ trigger1 = time = 1
 helpertype = normal ;player
 name = "Stop the other players"
 ID = 4100020
-stateno = 4100020
+stateno = 2712
 pos = 0,0
 postype = left
 facing = 1
@@ -1786,7 +1541,7 @@ trigger1 = enemy,life <= 1
 helpertype = normal ;player
 name = "Stop the other players"
 ID = 4100020
-stateno = 4100020
+stateno = 2712
 pos = 0,0
 postype = left
 facing = 1
@@ -1869,7 +1624,7 @@ ID = 17000
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = time = 263
-value = 140006
+value = 2724
 ctrl = 1
 [State 0, Helper]
 type = Helper
@@ -1878,7 +1633,7 @@ trigger1 = time = 0
 helpertype = normal ;player
 name = "Stop the other players"
 ID = 4100020
-stateno = 4100020
+stateno = 2712
 pos = 0,0
 postype = left
 facing = 1
@@ -1894,7 +1649,7 @@ trigger1 = time = 1
 helpertype = normal ;player
 name = "Stop the other players"
 ID = 4100020
-stateno = 4100020
+stateno = 2712
 pos = 0,0
 postype = left
 facing = 1
@@ -1908,11 +1663,12 @@ SuperMoveTime = 9999
 type = ChangeState
 triggerall = enemy,life <= 1
 trigger1 = time = 262
-value = 141002
+value = 2714
 
 ;Hyper - All Out Attack (Win)
-[Statedef 141002]
+[Statedef 2714]
 type = S
+movetype = A
 anim = 616
 ctrl = 0
 
@@ -1928,7 +1684,7 @@ trigger1 = Time = 156
 helpertype = normal
 name = "Final Screen"
 ID = 1410025
-stateno = 1410025
+stateno = 2701
 pos = 0,0
 postype = p1   ;p2,front,back,left,right
 keyctrl = 0
@@ -1940,7 +1696,7 @@ trigger1 = Time = 160
 helpertype = normal
 name = "Quote"
 ID = 14100285
-stateno = 14100285
+stateno = 2715
 pos = 0,0
 postype = p1   ;p2,front,back,left,right
 keyctrl = 0
@@ -2006,7 +1762,7 @@ trigger1 = Time = 40
 helpertype = normal
 name = "Floor"
 ID = 1400014
-stateno = 1400014
+stateno = 2723
 pos = 0,0
 ownpal = 1
 postype = p1   ;p2,front,back,left,right
@@ -2121,14 +1877,14 @@ type = ChangeState
 trigger1 = Win = 1
 trigger1 = MatchOver = 0
 trigger1 = time > 264
-value = 140006
+value = 2724
 ctrl = 1
 
 [State 0, Enemy stills alive]
 type = ChangeState
 trigger1 = enemy,alive = 1
 trigger1 = time > 265
-value = 140006
+value = 2724
 ctrl = 1
 
 [State 0, PalFXWiz]
@@ -2146,18 +1902,18 @@ type = ChangeState
 trigger1 = Win = 1
 trigger1 = MatchOver = 0
 trigger1 = time > 264
-value = 140006
+value = 2724
 ctrl = 1
 
 [State 0, Enemy stills alive]
 type = ChangeState
 trigger1 = enemy,alive = 1
 trigger1 = time > 265
-value = 140006
+value = 2724
 ctrl = 1
 
 ;Hyper - All Out Attack (Game Set)
-[Statedef 14100285]
+[Statedef 2715]
 type = S
 anim = 616
 ctrl = 0
@@ -2187,7 +1943,7 @@ trigger1 = time = 0
 value = S21935,root, var(41)+(root, var(16) * 100)
 
 ;Hyper - All Out Attack (Victory Screen)
-[Statedef 14100251]
+[Statedef 2716]
 type = S
 anim = 616
 ctrl = 0
@@ -2968,7 +2724,7 @@ type = DestroySelf
 trigger1 = time =125
 
 ;Hyper - All Out Attack (P2 Blood)
-[StateDef 140004]
+[StateDef 2722]
 type = S
 movetype= A
 physics = S
@@ -3012,7 +2768,7 @@ trigger1 = MatchOver = 0
 trigger1 = time > 113
 
 ;Hyper - All Out Attack (Floor)
-[StateDef 1400014]
+[StateDef 2723]
 type = S
 movetype= A
 physics = S
@@ -3070,7 +2826,7 @@ trigger1 = MatchOver = 0
 trigger1 = time > 225
 
 ;Hyper - All Out Attack (Not win)
-[StateDef 140006]
+[StateDef 2724]
 type = S
 movetype= A
 physics = S
@@ -3227,7 +2983,7 @@ value= 196
 ctrl = 0
 
 ;Hyper - All Out Attack (Not win 2)
-[StateDef 1400062]
+[StateDef 2725]
 type = S
 movetype= A
 physics = S
@@ -3395,7 +3151,7 @@ trigger1 = time = 10
 ; OBRA MAESTRA
 ;===========================================================================
 ;Hyper - Obra Maestra (Starter)
-[StateDef 1211]
+[StateDef 2801]
 type = S
 movetype= A
 physics = S
@@ -3576,7 +3332,7 @@ triggerall = NumTarget(1210) = 1
 triggerall = movehit = 1
 trigger1 = Target(1210),ishelper=0
 trigger1 = Target(1210),stateno = 1310
-value = 1212
+value = 2802
 ctrl = 0
 ignorehitpause = 1
 [State 0, StateTypeSet]
@@ -3594,11 +3350,11 @@ ctrl = 1
 
 ;---------------------------------------------------------------------------
 ;Hyper - Obra Maestra (Hit)
-[Statedef 1212]
+[Statedef 2802]
 type = S
 ctrl = 0
 velset = 0,0
-movetype = I
+movetype = A
 poweradd = 0
 physics = S
 sprpriority = 2
@@ -3667,7 +3423,7 @@ trigger1 = time = 0
 helpertype = normal ;player
 name = "Stop the other players"
 ID = 12205
-stateno = 12205
+stateno = 2805
 pos = 0,0
 postype = left
 facing = 1
@@ -3683,7 +3439,7 @@ trigger1 = time = 1
 helpertype = normal ;player
 name = "Stop the other players"
 ID = 12205
-stateno = 12205
+stateno = 2805
 pos = 0,0
 postype = left
 facing = 1
@@ -3696,16 +3452,16 @@ SuperMoveTime = 9999
 [State 195, 2]
 type = ChangeState
 trigger1 = time
-value = 1213
+value = 2803
 
 ;---------------------------------------------------------------------------
 ;Hyper - Obra Maestra (Cinematic)
-[Statedef 1213]
+[Statedef 2803]
 type = S
 ctrl = 0
 anim = 616
 velset = 0,0
-movetype = I
+movetype = A
 poweradd = 0
 physics = S
 sprpriority = 2
@@ -4378,7 +4134,7 @@ trigger1 = time = 0
 helpertype = normal ;player
 name = "Stop the other players"
 ID = 12205
-stateno = 12205
+stateno = 2805
 pos = 0,0
 postype = left
 facing = 1
@@ -4394,7 +4150,7 @@ trigger1 = time = 1
 helpertype = normal ;player
 name = "Stop the other players"
 ID = 12205
-stateno = 12205
+stateno = 2805
 pos = 0,0
 postype = left
 facing = 1
@@ -4463,11 +4219,11 @@ type = ChangeState
 trigger1 = roundstate <= 2 || roundstate > 2 && !winko
 trigger1 = time = 350
 trigger2 = time = 450
-value = 1214
+value = 2804
 
 ;---------------------------------------------------------------------------
 ;Hyper - Obra Maestra (Ending)
-[Statedef 1214]
+[Statedef 2804]
 type = S
 anim = 195
 velset = 0,0
@@ -4563,7 +4319,7 @@ ctrl = 1
 
 ;---------------------------------------------------------------------------
 ;Hyper - Obra Maestra (Stop the other players)
-[StateDef 12205]
+[StateDef 2805]
 type = S
 movetype = A
 anim = 140011

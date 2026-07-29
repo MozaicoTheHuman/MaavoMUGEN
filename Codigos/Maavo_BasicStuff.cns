@@ -184,7 +184,7 @@ loop = 1
 
 [State -2, RemapPal]
 type = RemapPal
-triggerall = palno = 29
+triggerall = fvar(36) = 29
 trigger1 = time > 20
 source = 1,1
 dest = 1,1
@@ -373,7 +373,7 @@ scale = .25+(root,var(17) * .1),.25+ (root,var(17) * .1)
 OnTop = 0
 supermovetime=999
 bindtime=-1
-ownpal = cond(palno = 29, 1, 0)
+ownpal = cond(fvar(36) = 29, 1, 0)
 supermovetime = -1
 pausemovetime = -1
 removeongethit = 1
@@ -1656,12 +1656,12 @@ sprpriority = 2
 
 [State 0]
 type = PlaySnd
-triggerall = palno = 37
+triggerall = fvar(36) = 37
 trigger1 = time = 0
 value = S1959, 25
 [State 0]
 type = PlaySnd
-triggerall = var(16) = 20
+triggerall = var(16) = 20 || fvar(36) = 53
 trigger1 = time = 0
 value = S519, 0+random%3
 [State 0, PlaySnd]
@@ -1696,7 +1696,7 @@ ctrl = 1
 [Statedef 196]
 type = S
 ctrl = 0
-anim = cond(prevstateno = 140006 ||prevstateno = 140002, 197, 196)
+anim = cond(prevstateno = 2724 ||prevstateno = 2713, 197, 196)
 velset = 0,0
 movetype = I
 poweradd = 0
@@ -1705,7 +1705,7 @@ sprpriority = 2
 
 [State 0]
 type = PlaySnd
-triggerall = var(16) = 20
+triggerall = var(16) = 20 || fvar(36) = 53
 trigger1 = time = 0
 value = S519, 0+random%3
 [State 0, PlaySnd]
@@ -1725,12 +1725,12 @@ value = 1
 ignorehitpause = 1
 [State 0, CtrlSet]
 type = CtrlSet
-trigger1 = prevstateno = 140002 || prevstateno = 140006
+trigger1 = prevstateno = 2713 || prevstateno = 2724
 value = 0
 ignorehitpause = 1
 [State 0, NotHitBy]
 type = NotHitBy
-trigger1 = prevstateno = 140002 || prevstateno = 140006
+trigger1 = prevstateno = 2713 || prevstateno = 2724
 value = SCA
 ignorehitpause = 1
 [State 196]
@@ -1781,7 +1781,7 @@ value = S709,0
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 31
+triggerall = fvar(36) = 31
 trigger1 = animelemtime(2) = 0
 value = S1959,17
 channel = 3
@@ -1791,7 +1791,6 @@ type = NotHitBy
 trigger1 = time < 18
 value = SCA
 time = 1
-
 [State 0, EnvShake]
 type = EnvShake
 trigger1 = animelemtime(2) = 0
@@ -1887,7 +1886,7 @@ ignorehitpause = 1
 type = VarSet
 triggerall = fvar(36) = 8
 trigger1 = time = 1
-fvar(22) = cond(fvar(22) >= 8.0, 0.0, fvar(22) + 1.0)
+fvar(22) = cond(fvar(22) >= 8.0, 1.0, fvar(22) + 1.0)
 
 [State 0, SelfState]
 type = SelfState
@@ -1932,7 +1931,7 @@ value = S709,0
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 31
+triggerall = fvar(36) = 31
 trigger1 = animelemtime(2) = 0
 value = S1959,17
 channel = 3
@@ -1942,7 +1941,6 @@ type = NotHitBy
 trigger1 = time < 18
 value = SCA
 time = 1
-
 [State 0, StopSnd]
 type = StopSnd
 trigger1 = time = 0
@@ -2043,7 +2041,7 @@ ignorehitpause = 1
 type = VarSet
 triggerall = fvar(36) = 8
 trigger1 = time = 1
-fvar(22) = cond(fvar(22) >= 8.0, 0.0, fvar(22) + 1.0)
+fvar(22) = cond(fvar(22) >= 8.0, 1.0, fvar(22) + 1.0)
 
 [State 0, SelfState]
 type = SelfState
@@ -2088,7 +2086,7 @@ value = S709,0
 ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = palno = 31
+triggerall = fvar(36) = 31
 trigger1 = animelemtime(2) = 0
 value = S1959,17
 channel = 3
@@ -2210,7 +2208,7 @@ ignorehitpause = 1
 type = VarSet
 triggerall = fvar(36) = 8
 trigger1 = time = 1
-fvar(22) = cond(fvar(22) >= 8.0, 0.0, fvar(22) + 1.0)
+fvar(22) = cond(fvar(22) >= 8.0, 1.0, fvar(22) + 1.0)
 
 [State 0, CtrlSet]
 type = CtrlSet

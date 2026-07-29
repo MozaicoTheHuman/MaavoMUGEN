@@ -108,7 +108,15 @@ trigger8 = 0&&var(52):=		(1) ; ◄ Change value here.                           
 ;				|0 - Screenpack Default                                     |
 ;				|1 - Smash Bros. Ultimate                                   |
 ;            			|                                                           |
-trigger9 = 0&&var(18):=		(0) ; ◄ Change value here.                                  |
+trigger9 = 0&&var(18):=		(1) ; ◄ Change value here.                                  |
+;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾	
+;=================================================================================================
+;Zoom on Super intros? (This only applies on MUGEN 1.1/IKEMEN Go)
+;				 ___________________________________________________________
+;				|0 - Off                                                    |
+;				|1 - On                                                     |
+;            			|                                                           |
+trigger10 = 0&&fvar(30):=		(1) ; ◄ Change value here.                                  |
 ;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾	
 ;=================================================================================================
 ;Palette Selector?
@@ -116,7 +124,7 @@ trigger9 = 0&&var(18):=		(0) ; ◄ Change value here.                           
 ;				|0 - Off                                                    |
 ;				|1 - On                                                     |
 ;            			|                                                           |
-trigger10 = 0&&fvar(37):=	(0) ; ◄ Change value here.                                  |
+trigger11 = 0&&fvar(37):=	(1) ; ◄ Change value here.                                  |
 ;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾	
 ;=================================================================================================
 ;Scrapped Moves? (This will enable 2 scrapped special moves)
@@ -124,7 +132,7 @@ trigger10 = 0&&fvar(37):=	(0) ; ◄ Change value here.                          
 ;				|0 - Off                                                    |
 ;				|1 - On                                                     |
 ;            			|                                                           |
-trigger11 = 0&&var(39):=	(0) ; ◄ Change value here.                                  |
+trigger12 = 0&&var(39):=	(0) ; ◄ Change value here.                                  |
 ;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ;------------------------------------------------------------------------------------------------
 ; DO NOT EDIT ANYTHING BELOW THIS LINE
@@ -175,7 +183,7 @@ value = 190
 type = VarAdd
 trigger1 = time = 0
 trigger1 = fvar(33) > 0
-fvar(33) = -1
+fvar(33) = -1.0
 
 [State 5900, 5] ;All other rounds
 type = ChangeState

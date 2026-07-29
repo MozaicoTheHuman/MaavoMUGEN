@@ -1,3 +1,4 @@
+
 ;///////////////////////////////////////////////////////////////////////////
 ; This CNS stores the 1.0 version of the KO Screen
 ;///////////////////////////////////////////////////////////////////////////
@@ -9,12 +10,6 @@ anim = 616
 type = VarSet
 trigger1 = winko
 var(39) = 1
-
-[State 0, PosSet]
-type = PosSet
-trigger1 = 1
-x = 0
-y = -10
 
 [State 119911991, 1]
 type = AssertSpecial
@@ -72,12 +67,13 @@ type = PlaySnd
 trigger1 = AnimElem = 1
 value = ifelse((root,var(16)=20),520,21649),0
 channel = 3
-
+abspan = 0
 [State 911, PlaySnd]
 type = PlaySnd
 triggerall = root,fvar(36) = 21
 trigger1 = Time = 0
 value = S1957,2
+abspan = 0
 ignorehitpause = 1
 [State 911, PlaySnd]
 type = PlaySnd
@@ -85,18 +81,23 @@ triggerall = root,fvar(36) = 21
 trigger1 = Time = 0
 value = S1957,2
 ignorehitpause = 1
+abspan = 0
 [State 911, PlaySnd]
 type = PlaySnd
 triggerall = root,fvar(36) = 21
 trigger1 = Time = 0
+abspan = 0
 value = S1957,2
 ignorehitpause = 1
-
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
 [State 911, PlaySnd]
 type = PlaySnd
 trigger1 = Time = 50
 value = S50505,1
-
+abspan = 0
 [State 123456789, DestroySelf]
 type = null;DestroySelf
 trigger1 = time = 70

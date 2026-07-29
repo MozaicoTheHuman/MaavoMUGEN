@@ -138,7 +138,7 @@ trigger12 = 0&&(fvar(11):=.15*fvar(12))
 ;Damage Scaling
 trigger13 = (var(10) = 2 && var(11) > 15)||(var(10) = 3 && var(11) > 8)
 trigger13 = 0&&(fvar(11):=.1*fvar(12))
-trigger14 = fvar(11) < .25 && (stateno = 19001||stateno = 190001||stateno = 3000)
+trigger14 = fvar(11) < .25 && (stateno = 2502||stateno = 2503||stateno = 3000)
 trigger14 = 0&&(fvar(11):=.20)
 ;Rage
 trigger15 = life > (lifemax*.77)
@@ -162,31 +162,27 @@ trigger21 = life <= (lifemax*.25)
 trigger21 = 0&&(fvar(12):=1.15)
 ignorehitpause = 1
 
-[State 0, AppendToClipboard]
-type = DisplayToClipboard
-trigger1 = 1
-text = "scaling table = %d || numhits = %d || cooldown = %d\nproration = %f || rage = %f ||D gain = %f"
-params = var(10),var(11), var(8), fvar(11), fvar(12), fvar(8)
-ignorehitpause = 1
+;[State 0, Debug Damage Scaling]
+;type = DisplayToClipboard
+;trigger1 = 1
+;text = "scaling table = %d || numhits = %d || cooldown = %d || proration = %f || rage = %f ||D gain = %f"
+;params = var(10),var(11), var(8), fvar(11), fvar(12), fvar(8)
+;ignorehitpause = 1
 ;[State -1, Debug Paper Counter]
 ;type = DisplayToClipboard
 ;trigger1 = 1
-;text = "StateNo=%d | PrevState=%d | FailPenaltyVar=%f"
+;text = "StateNo=%d | PrevState=%d | CounterFailAmount=%f"
 ;params = stateno, prevstateno, fvar(33)
 ;[State -1, Debug block counter]
 ;type = DisplayToClipboard
 ;trigger1 = roundstate = 2
-;text = "blokiadas=%d | selfState=%d selfTime=%d | enemyGuarded=%d enemyState=%d"
-;params = var(14), stateno, time, enemynear,moveguarded, enemynear,stateno
+;text = "blokiadas=%d"
+;params = var(14)
+
 [State -2, AppendToClipboard]
-type = appendtoclipboard
+type = DisplayToClipboard
 trigger1 = 1
 text = "\nChar by MozaicoTheRobot and the Maavo MUGEN team"
-ignorehitpause = 1
-[State -2, AppendToClipboard]
-type = appendtoclipboard
-trigger1 = 1
-text = "\nun saludo al geox lml"
 ignorehitpause = 1
 
 [State -2, reset kokun]
@@ -215,10 +211,10 @@ trigger4 = stateno != 8805 && stateno != 8825
 trigger4 = numhelper(84803) = 0
 trigger4 = 0&&(var(6):=var(6)-1)
 trigger5 = var(8) > 1 || var(8) = 1 && (!numenemy || numenemy && (enemy,movetype != H || enemy,stateno = [5120,5150]))
-trigger5 = (stateno != 19000 && stateno != 190000) || ((stateno = 19000 || stateno = 190000) && (animelemtime(3) < 0 || animelemtime(3) > 26))
+trigger5 = (stateno != 2500 && stateno != 2501) || ((stateno = 2500 || stateno = 2501) && (animelemtime(3) < 0 || animelemtime(3) > 26))
 trigger5 = (stateno != 3000) || ((stateno = 3000) && (animelemtime(3) < 0 || animelemtime(9) >= 0))
-trigger5 = (stateno != 17000) || (stateno = 17000 && (animelemtime(3) < 0 || animelemtime(3) > 26))
-trigger5 = (stateno != 17002 && stateno != 140002 && stateno != 141002)
+trigger5 = (stateno != 2700) || (stateno = 2700 && (animelemtime(3) < 0 || animelemtime(3) > 26))
+trigger5 = (stateno != 2709 && stateno != 2713 && stateno != 2714)
 trigger5 = 0&&(var(8):=var(8)-1)
 trigger6 = var(8) <= 0
 trigger6 = 0&&(fvar(8):=1)
@@ -232,7 +228,7 @@ type = Null
 trigger1 = 1
 trigger1 = 0&&(var(40):=0)
 ;Astral Bullshit: sets it back to 1 if any of the 5 conditions hold 									                                                                                                         ;I know it's called a Super Skybound Art and not an Astral Heat, but shut up
-trigger2 = (((stateno = 180140 || stateno = 181) || stateno = 140002 || (stateno = 141002 || roundstate>2 && prevstateno = 141002) || stateno = 1410025 || numhelper(911)) && movetype != H)||(enemy,name = "Oliver Andersen" && enemy,stateno = [4301,4399])||((enemy,name = "Greninja_GBVS" || enemy,name = "NoNerfs_GBVS") && ((enemy,stateno = [3010,3019]) && enemy,movetype != H || (matchover && enemy,teammode != simul && (enemy,fvar(2)||enemy,stateno=[180,189]))))||(enemy,name = "Maavo" && ((enemy,stateno = 180140 || enemy,stateno = 181) || enemy,stateno = 140002 || (enemy,stateno = 141002 || roundstate>2 && enemy,prevstateno = 141002) || enemy,stateno = 1410025 || enemy,numhelper(911)) && enemy,movetype != H)																	
+trigger2 = (((stateno = 180140 || stateno = 181) || stateno = 2713 || (stateno = 2714 || roundstate>2 && prevstateno = 2714) || stateno = 2701 || numhelper(911)) && movetype != H)||(enemy,name = "Oliver Andersen" && enemy,stateno = [4301,4399])||((enemy,name = "Greninja_GBVS" || enemy,name = "NoNerfs_GBVS") && ((enemy,stateno = [3010,3019]) && enemy,movetype != H || (matchover && enemy,teammode != simul && (enemy,fvar(2)||enemy,stateno=[180,189]))))||(enemy,name = "Maavo" && ((enemy,stateno = 180140 || enemy,stateno = 181) || enemy,stateno = 2713 || (enemy,stateno = 2714 || roundstate>2 && enemy,prevstateno = 2714) || enemy,stateno = 2701 || enemy,numhelper(911)) && enemy,movetype != H)																	
 trigger2 = 0&&(var(40):=1)
 ignorehitpause = 1
 
@@ -274,7 +270,7 @@ type = remappal
 triggerall = roundno != 1
 trigger1=Roundstate = 0
 source = 1, 1
-dest = 1, fvar(36)
+dest = 1, floor(fvar(36))
 ignorehitpause = 1
 
 [state -2, No Clones]
@@ -329,35 +325,13 @@ trigger1 = var(20) = 1
 source = 1,1
 dest = 1,16
 ignorehitpause = 1
-[State -2, PalFX]
-type = PalFX
-triggerall = fvar(36) = 16
-trigger1 = var(21) > 0
-time = 2
-add = 255 - ((20 - var(21)) * 12), 255 - ((20 - var(21)) * 12), 255 - ((20 - var(21)) * 12)
-mul = 256,256,256
-ignorehitpause = 1
-[State -2, PalFX]
-type = PalFX
-triggerall = fvar(36) = 16
-trigger1 = var(21) <= 0
-time = 1
-add = 0,0,0
-mul = 256,256,256
-ignorehitpause = 1
-[State -2, VarAdd]
-type = VarAdd
-triggerall = fvar(36) = 16
-trigger1 = var(21) > 0
-var(21) = -1
-ignorehitpause = 1
 ;VUELTA AL RUEDO
 
 ;SUPER SONIC & SUPER SHADOW
 [State -2, Null]
 type = Null
 trigger1 = 1
-trigger1 = 0&&(var(33):=cond(stateno = 1210 || stateno = 1211 || stateno = 1212 || stateno = 1213 || stateno = 19000 || stateno = 190000 || stateno = 190001 || stateno = 190002 || stateno = 19001 || stateno = 3000 || stateno = 17000 || stateno = 17001 || stateno = 17002,1,0))
+trigger1 = 0&&(var(33):=cond(stateno = 2500 || stateno = 2501 || stateno = 2502 || stateno = 2503 || stateno = 2504 || stateno = 3000 || stateno = 2600 || stateno = 2700 || stateno = 2708 || stateno = 2709 || stateno = 2713 || stateno = 2714 || stateno = 2800 || stateno = 2801 || stateno = 2802 || stateno = 2803 || stateno = 700 || stateno = 710 || stateno = 720,1,0))
 trigger2 = var(33) != var(35)
 trigger2 = 0&&(var(36):=1)
 trigger3 = var(33) = var(35)
@@ -380,7 +354,7 @@ ignorehitpause = 1
 [State -2, PalFX]
 type = PalFX
 trigger1 = var(36) = 1 && (fvar(36) = 18 || fvar(36) = 9 || fvar(36) = 8 || fvar(36) = 12)
-time = 20
+time = 6
 add = 255,255,255
 mul = 256,256,256
 sinadd = -255,-255,-255,20
@@ -556,11 +530,12 @@ channel = 9
 [State 0, VarSet]
 type = VarSet
 trigger1 = stateno != 2002
-trigger1 = stateno != 19000
-trigger1 = stateno != [190001,190002]
+trigger1 = stateno != 2500
+trigger1 = stateno != [2503,2504]
 trigger1 = stateno != 3000
-trigger1 = stateno != [17000,17002]
-trigger1 = stateno != 1210
+trigger1 = stateno != 2700
+trigger1 = stateno != [2708,2709]
+trigger1 = stateno != 2800
 trigger2 = movecontact || movereversed
 var(22) = 0
 ignorehitpause = 1
@@ -660,7 +635,7 @@ ignorehitpause = 1
 type = Helper
 triggerall = numhelper(911) = 0
 triggerall = numpartner = 0
-triggerall = stateno != 141002 && prevstateno != 141002
+triggerall = stateno != 2714 && prevstateno != 2714
 trigger1 = var(55) = 0
 Trigger1 = WinKO
 Trigger1 = RoundState=3
@@ -668,7 +643,7 @@ Name = "K.O. Screen"
 StateNo = 911
 ID = 911
 Pos = 0,0
-PosType = Back
+PosType = p1
 OwnPal = 1
 IgnoreHitPause = 1
 Persistent = 0
@@ -678,7 +653,7 @@ SuperMoveTime = 9999
 type = Helper
 triggerall = numhelper(911) = 0
 triggerall = numpartner > 0
-triggerall = stateno != 141002 && prevstateno != 141002
+triggerall = stateno != 2714 && prevstateno != 2714
 triggerall = id < partner, id
 trigger1 = var(55) = 0
 Trigger1 = WinKO
@@ -687,7 +662,7 @@ Name = "K.O. Screen"
 StateNo = 911
 ID = 911
 Pos = 0,0
-PosType = Back
+PosType = p1
 OwnPal = 1
 IgnoreHitPause = 1
 Persistent = 0
@@ -849,33 +824,33 @@ Value = 89+random%3
 ;-----------------------------------------------------------------------------------------------
 [State 0, RemoveExplod]
 type = RemoveExplod
-trigger1 = stateno != [19000,199999]
-trigger1 = stateno != [17000,17002]
-trigger1 = stateno != [1210,1212]
+trigger1 = stateno != [2500,2504]
+trigger1 = stateno != [2700,2709]
+trigger1 = stateno != [2800,2802]
 id = 3232
 [State 0, RemoveExplod]
 type = RemoveExplod
-trigger1 = stateno != 19001
+trigger1 = stateno != 2502
 id = 611
 ignorehitpause = 1
 [State 0, RemoveExplod]
 type = RemoveExplod
-trigger1 = stateno != 19001
+trigger1 = stateno != 2502
 id = 54535
 ignorehitpause = 1
 [State 0, RemoveExplod]
 type = RemoveExplod
-trigger1 = stateno != 19001
+trigger1 = stateno != 2502
 id = 54536
 ignorehitpause = 1
 [State 0, RemoveExplod]
 type = RemoveExplod
-trigger1 = stateno != 19001
+trigger1 = stateno != 2502
 id = 55535
 ignorehitpause = 1
 [State 0, RemoveExplod]
 type = RemoveExplod
-trigger1 = stateno != 19001
+trigger1 = stateno != 2502
 id = 55536
 ignorehitpause = 1
 [State 0, RemoveExplod]
@@ -953,6 +928,7 @@ ignorehitpause = 1
 [State -3, Null]
 type = Null
 triggerall = !numhelper(12345)
+triggerall = roundstate = 2
 trigger1 = fvar(36) = 16
 trigger1 = command = "start"
 trigger1 = 0&&(var(20):=!var(20))&&(var(21):=20)
@@ -961,6 +937,7 @@ ignorehitpause = 1
 type = PlaySnd
 triggerall = !numhelper(12345)
 triggerall = fvar(36) = 16
+triggerall = roundstate = 2
 trigger1 = command = "start"
 value = S1958,0
 channel = 7
