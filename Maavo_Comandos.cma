@@ -691,6 +691,7 @@ type = ChangeState
 value = 800
 triggerall = aiLevel > 5 && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
+triggerall = enemynear,stateno != [3745,3747]
 triggerall = enemynear,statetype != A && enemynear,pos y = 0
 triggerall = enemynear,movetype != H && enemynear,statetype != L
 triggerall = stateno != 800 
@@ -703,7 +704,7 @@ triggerall = enemynear,life < enemynear,lifemax*0.5
 trigger1 = random < var(59) * 15
 
 ;---------------------------------------------------------------------------
-;Ve, Ivette!
+;AI Assists
 [State -1, AI Ivette]
 type = ChangeState
 value = 1000
@@ -793,7 +794,6 @@ triggerall = (p2bodydist x - var(48) * 6) = [0,60]
 triggerall = !numhelper(9902)
 trigger1 = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 4, 2)
 
-;Ve, Maritza!
 [State -1, AI Maritza]
 type = ChangeState
 value = 1100
@@ -801,16 +801,27 @@ triggerall = var(6) <= 0
 triggerall = var(14) < 15 && power <= 999
 triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy && stateno != 2200
 triggerall = statetype != A && pos y = 0
-triggerall = ctrl || stateno = 0 || (stateno = [20,22]) || (stateno = [100,109]) || stateno = 1022 || (stateno = [116,117])
 triggerall = enemynear(!enemynear,alive),statetype != L
 triggerall = var(51) && enemynear,pos y >= -10
 triggerall = stateno != [5000,5035]
 triggerall = (enemynear,pos y + (enemynear,vel y * 10)) = [-20,0]
-triggerall = random < var(59) * cond(life < lifemax*0.5 || BackEdgeBodyDist < 10 || enemynear,ailevel > 0, 3, 1.5)
-triggerall = ctrl
 triggerall = !numhelper(84803)
+trigger1 = ctrl
 trigger1 = enemynear,movetype != A
-trigger2 = var(1) && !numhelper(84803)
+trigger1 = random < var(59) * cond(life < lifemax*0.5 || BackEdgeBodyDist < 10 || enemynear,ailevel > 0, 3, 1.5)
+trigger2 = ctrl
+trigger2 = var(1)
+trigger2 = random < var(59) * cond(life < lifemax*0.5 || BackEdgeBodyDist < 10 || enemynear,ailevel > 0, 3, 1.5)
+trigger3 = ctrl
+trigger3 = enemynear,movetype = A
+trigger3 = p2bodydist x <= 100
+trigger3 = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 3, 1.5)
+trigger4 = ctrl
+trigger4 = (facing = 1 && enemynear,vel x < 0) || (facing = -1 && enemynear,vel x > 0)
+trigger4 = p2bodydist x <= 150
+trigger4 = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 3, 1.5)
+trigger5 = (stateno = 200 || stateno = 210 || stateno = 230 || stateno = 240 || stateno = 250) && movehit
+trigger6 = (stateno = 400 || stateno = 410 || stateno = 430 || stateno = 440 || stateno = 450) && movehit
 
 [State -1, AI Maritza Air]
 type = ChangeState
@@ -818,16 +829,26 @@ value = 8806
 triggerall = var(6) <= 0
 triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy && stateno != 2200
 triggerall = statetype = A
-triggerall = ctrl || (stateno = [600,659])
 triggerall = enemynear(!enemynear,alive),statetype != L
 triggerall = enemynear,pos y >= -20
 triggerall = stateno != [5000,5035]
 triggerall = !numhelper(84803)
 triggerall = (enemynear,pos y + (enemynear,vel y * 10)) = [-20,0]
-triggerall = random < var(59) * cond(life < lifemax*0.5 || BackEdgeBodyDist < 10 || enemynear,ailevel > 0, 3, 1.5)
-triggerall = ctrl
+trigger1 = ctrl
 trigger1 = enemynear,movetype != A && var(51)
-trigger2 = var(1) && !numhelper(84803)
+trigger1 = random < var(59) * cond(life < lifemax*0.5 || BackEdgeBodyDist < 10 || enemynear,ailevel > 0, 3, 1.5)
+trigger2 = ctrl
+trigger2 = var(1)
+trigger2 = random < var(59) * cond(life < lifemax*0.5 || BackEdgeBodyDist < 10 || enemynear,ailevel > 0, 3, 1.5)
+trigger3 = ctrl
+trigger3 = enemynear,movetype = A
+trigger3 = p2bodydist x <= 150
+trigger3 = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 3, 1.5)
+trigger4 = ctrl
+trigger4 = (facing = 1 && enemynear,vel x < 0) || (facing = -1 && enemynear,vel x > 0)
+trigger4 = p2bodydist x <= 200
+trigger4 = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 3, 1.5)
+trigger5 = (stateno = [600,659]) && movehit
 
 ;---------------------------------------------------------------------------
 ;Paper Counter
@@ -837,6 +858,7 @@ value = 2200
 triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy 
 triggerall = statetype != A && pos y = 0 && InGuardDist
 triggerall = fvar(33) < 3
+triggerall = enemynear,stateno != [3745,3747]
 triggerall = random < ifelse(life < (lifemax*.5) || BackEdgeBodyDist < 10, 950, 300)
 triggerall = prevstateno != 700
 triggerall = stateno != 700
@@ -862,6 +884,7 @@ type = ChangeState
 value = 2200
 triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0
+triggerall = enemynear,stateno != [3745,3747]
 ;triggerall = life < lifemax * 0.78
 triggerall = fvar(33) < 3
 triggerall = enemynear,stateno = 5120
@@ -876,6 +899,7 @@ type = ChangeState
 value = 800
 triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
 triggerall = var(14) < 15 && power <= 999
+triggerall = enemynear,stateno != [3745,3747]
 triggerall = statetype != A && pos y = 0
 triggerall = enemynear,statetype != A && enemynear,pos y = 0
 triggerall = enemynear,movetype != H && enemynear,statetype != L
@@ -922,10 +946,13 @@ trigger6 = enemynear,statetype = L
 trigger6 = enemynear,pos y >= -4*const(size.yscale)
 trigger6 = p2bodydist x = [-20,80]
 trigger7 = (stateno = 200 || stateno = 210 || stateno = 230 || stateno = 240 || stateno = 250) && movehit
-trigger7 = (stateno = 400 || stateno = 410 || stateno = 430 || stateno = 440 || stateno = 450) && movehit
 trigger7 = enemynear,statetype != L
-trigger7 = p2bodydist x <= 50
+trigger7 = p2bodydist x <= 40
 trigger7 = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 4, 2)
+trigger8 = (stateno = 400 || stateno = 410 || stateno = 430 || stateno = 440 || stateno = 450) && movehit
+trigger8 = enemynear,statetype != L
+trigger8 = p2bodydist x <= 40
+trigger8 = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 4, 2)
 ;Masterpiece
 [State -1, AI Masterpiece]
 type = ChangeState
@@ -948,10 +975,13 @@ trigger5 = ctrl
 trigger6 = (enemynear, stateno = [3745,3749])
 trigger6 = ctrl
 trigger7 = (stateno = 200 || stateno = 210 || stateno = 230 || stateno = 240 || stateno = 250) && movehit
-trigger7 = (stateno = 400 || stateno = 410 || stateno = 430 || stateno = 440 || stateno = 450) && movehit
 trigger7 = enemynear,statetype != L
 trigger7 = p2bodydist x <= 40
 trigger7 = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 4, 2)
+trigger8 = (stateno = 400 || stateno = 410 || stateno = 430 || stateno = 440 || stateno = 450) && movehit
+trigger8 = enemynear,statetype != L
+trigger8 = p2bodydist x <= 40
+trigger8 = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 4, 2)
 ;Gran Tornado Super
 [State -1, AI Tornado Super]
 type = ChangeState
@@ -1016,6 +1046,20 @@ trigger8 = enemynear,statetype != L
 trigger8 = p2bodydist x <= 50
 trigger8 = p2bodydist y = [-40,40]
 trigger8 = random < var(59) * cond(life < lifemax*0.5 || enemynear,ailevel > 0, 4, 2)
+
+[State -1, AI Super on Mariri hit]
+type = ChangeState
+value = cond(power >= 3000, 2800, 3000)
+triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
+triggerall = ctrl
+triggerall = enemynear,stateno = [3745,3747]
+trigger1 = power >= 3000 && statetype != A && var(30) = 0
+trigger1 = p2bodydist x <= 30
+trigger2 = power >= 1000 && power <= 1750 && var(30) = 0
+trigger2 = statetype != A && pos y = 0
+trigger2 = p2bodydist x = [0,120]
+trigger2 = var(9) := cond(p2bodydist x < 60, 1, 2) || 1
+
 ;===========================================================================
 ;AI Flash Stab follow-ups
 [State -1, AI Flash Stab to Masterpiece]
@@ -1400,6 +1444,9 @@ trigger9 = stateno = 250 && movehit && power >= 3000 && p2bodydist x = [0,30]
 trigger9 = (enemynear,pos y + enemynear,vel y * 4) >= -30
 trigger9 = var(54) := 1210 || 1
 trigger9 = p2bodydist x <= 30
+trigger10 = (stateno = 220 || stateno = 250) && movehit
+trigger10 = power >= 3000
+trigger10 = var(54) := 2800 || 1
 
 ;===========================================================================
 ; AI Kick to Air Combo

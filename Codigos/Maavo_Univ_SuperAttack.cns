@@ -4205,7 +4205,6 @@ type = AssertSpecial
 trigger1 = 1
 flag = noBG
 flag2 = noKOslow
-;flag3 = nokosnd
 
 [State 181, AssertSpecial]
 type = AssertSpecial

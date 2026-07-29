@@ -279,7 +279,7 @@ triggerall=numenemy && (fvar(36)=[1,55]);fvar(36)=the number of pals available
 trigger1=fvar(37)&&!numhelper(12345)&&matchno=1&&roundno=1
 trigger1=enemy,authorname="Maavo"&&enemy,name="Maavo"&&enemy,fvar(36)=fvar(36) 
 source = 1, 1
-dest = 1, Ifelse(teamside!=1 && enemynear,Numhelper(12345)=0,enemy,fvar(36)+teamside,fvar(36))
+dest = 1, cond(teamside!=1 && enemynear,Numhelper(12345)=0,enemy,fvar(36)+teamside,fvar(36))
 ignorehitpause = 1
 
 [state -2, Palette]
@@ -889,6 +889,7 @@ triggerall = RoundState = 2 && numenemy
 triggerall = ailevel
 triggerall = ctrl || (stateno = [100,105])
 triggerall = stateno = 0 || stateno = 20 || stateno = 50 || stateno = 40 || (stateno = [100,105])
+triggerall = stateno = 1000 || stateno = 1321 || stateno = 1100 || stateno = 8806
 trigger1 = AILevel > 5 || enemynear,ailevel != 0
 trigger1 = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, 999, cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*3, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 800, cond(life < lifemax*0.50, 700, 550)))))))
 attr = SA, AA, AP, AT
