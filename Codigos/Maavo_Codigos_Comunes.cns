@@ -1543,40 +1543,11 @@ trigger1 = AnimTime = 0
 value = 0
 
 ;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
 ; GUARD (start)
 [Statedef 120]
-type = U    ;Leave state type unchanged
-physics = U ;Leave physics unchanged
-
-[State 0, Hi to Lo]
-type = StateTypeSet
-TriggerAll = StateType = S
-triggerall = ailevel
-Trigger1 = var(59) = 0 && command = "holddown"
-Trigger2 = var(59) != 0 && P2StateType != A && (Random <= var(59)*20 || var(59) > 9)
-stateType = C
-physics = C
-
-[State 0, Lo to Hi]
-type = StateTypeSet
-TriggerAll = StateType = C
-TriggerAll = ailevel
-Trigger1 = var(59) = 0 && command != "holddown"
-Trigger2 = var(59) != 0 && P2StateType = A && (Random <= var(59)*20 || var(59) > 9)
-stateType = S
-physics = S
-
-[State 0, Stop Guarding]
-type = ChangeState
-value = 140
-triggerall = ailevel
-trigger1 = var(59) = 0
-trigger1 = command != "holdback"
-trigger2 = !InGuardDist
-trigger3 = var(59) >= 1
-trigger3 = var(59) <= 9
-trigger3 = P2BodyDist X < 0
-trigger3 = Random <= (10 - var(59)) * 40
+type = U
+physics = U
 
 [State 120, 1]
 type = ChangeAnim
@@ -1600,31 +1571,40 @@ physics = A
 
 [State 120, Hi to Lo]
 type = StateTypeSet
-trigger1 = statetype = S && command = "holddown"
+TriggerAll=Statetype = S
+Trigger1 = aiLevel = 0
+Trigger1 = command = "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType!=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = C
 physics = C
 
 [State 120, Lo to Hi]
 type = StateTypeSet
-trigger1 = statetype = C && command != "holddown"
+TriggerAll=Statetype = C
+Trigger1 = aiLevel = 0
+Trigger1 = command != "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = S
 physics = S
 
-[State 120, ChangeNotAi]
+[State 120, 5]
 type = ChangeState
-triggerall = !ailevel
 trigger1 = AnimTime = 0
 value = 130 + (statetype = C) + (statetype = A)*2
-[State 120, ChangeAi]
-type = ChangeState
-triggerall = ailevel
-trigger1 = AnimTime = 0
-value = cond((enemy,statetype=C),131,130)
+
 [State 120, Stop Guarding]
 type = ChangeState
-triggerall = !ailevel
 trigger1 = command != "holdback"
+Trigger1 = aiLevel = 0
 trigger2 = !inguarddist
+Trigger3 = aiLevel = [1,6]
+Trigger3 = P2BodyDist X<0
+Trigger3 = !enemynear,aiLevel
+Trigger3 = Random <= (7-aiLevel)*40
 value = 140
 
 ;---------------------------------------------------------------------------
@@ -1633,23 +1613,11 @@ value = 140
 type    = S
 physics = S
 
-[State 0, Hi to Lo]
-type = StateTypeSet
-TriggerAll = StateType = S
-triggerall = ailevel
-Trigger1 = var(59) = 0 && command = "holddown"
-Trigger2 = var(59) != 0 && P2StateType != A && (Random <= var(59)*20 || var(59) > 9)
-stateType = C
-physics = C
-
-[State 0, Lo to Hi]
-type = StateTypeSet
-TriggerAll = StateType = C
-TriggerAll = ailevel
-Trigger1 = var(59) = 0 && command != "holddown"
-Trigger2 = var(59) != 0 && P2StateType = A && (Random <= var(59)*20 || var(59) > 9)
-stateType = S
-physics = S
+[State 130, 4]
+type = CtrlSet
+trigger1 = PalNo = 12
+trigger1 = Time = 0
+value = 1
 
 [State 130, 1]
 type = ChangeAnim
@@ -1658,15 +1626,22 @@ value = 130
 
 [State 130, Hi to Lo]
 type = ChangeState
-triggerall = !ailevel
-trigger1 = command = "holddown"
+Trigger1 = aiLevel = 0
+Trigger1 = command = "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType!=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 value = 131
 
 [State 130, Stop Guarding]
 type = ChangeState
-triggerall = !ailevel
-trigger1 = command != "holdback"
+Trigger1 = aiLevel = 0
+Trigger1 = command != "holdback"
 trigger2 = !inguarddist
+Trigger3 = aiLevel = [1,6]
+Trigger3 = P2BodyDist X<0
+Trigger3 = !enemynear,aiLevel
+Trigger3 = Random <= (7-aiLevel)*40
 value = 140
 
 ;---------------------------------------------------------------------------
@@ -1675,11 +1650,11 @@ value = 140
 type    = C
 physics = C
 
-[State 0, Stop Guarding]
-type = ChangeState
-value = 140
-triggerall = ailevel
-trigger1 = !InGuardDist
+[State 131, 4]
+type = CtrlSet
+trigger1 = PalNo = 12
+trigger1 = Time = 0
+value = 1
 
 [State 131, 1]
 type = ChangeAnim
@@ -1688,15 +1663,35 @@ value = 131
 
 [State 131, Lo to Hi]
 type = ChangeState
-triggerall = !ailevel
-trigger1 = command != "holddown"
+Trigger1 = aiLevel = 0
+Trigger1 = command != "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 value = 130
+
+[State 131, Stop Guarding]
+type = ChangeState
+Trigger1 = aiLevel = 0
+Trigger1 = command != "holdback"
+trigger2 = !inguarddist
+Trigger3 = aiLevel = [1,6]
+Trigger3 = P2BodyDist X<0
+Trigger3 = !enemynear,aiLevel
+Trigger3 = Random <= (7-aiLevel)*40
+value = 140
 
 ;---------------------------------------------------------------------------
 ; AIR GUARD (guarding)
 [Statedef 132]
 type    = A
 physics = N
+
+[State 132, 4]
+type = CtrlSet
+trigger1 = PalNo = 12
+trigger1 = Time = 0
+value = 1
 
 [State 132, 1]
 type = ChangeAnim
@@ -1725,7 +1720,6 @@ y = 0
 
 [State 132, 6]
 type = ChangeState
-triggerall = !ailevel
 trigger1 = sysvar(0)
 trigger1 = command = "holdback"
 trigger1 = inguarddist
@@ -1738,35 +1732,21 @@ value = 52
 
 [State 132, Stop Guarding]
 type = ChangeState
-triggerall = !ailevel
-trigger1 = command != "holdback"
+Trigger1 = aiLevel = 0
+Trigger1 = command != "holdback"
 trigger2 = !inguarddist
+Trigger3 = aiLevel = [1,6]
+Trigger3 = P2BodyDist X<0
+Trigger3 = !enemynear,aiLevel
+Trigger3 = Random <= (7-aiLevel)*40
 value = 140
 
 ;---------------------------------------------------------------------------
 ; GUARD (end)
 [Statedef 140]
-type = U    ;Leave state type unchanged
-physics = U ;Leave physics unchanged
+type = U
+physics = U
 ctrl = 1
-
-[State 0, Hi to Lo]
-type = StateTypeSet
-TriggerAll = StateType = S
-triggerall = ailevel
-Trigger1 = var(59) = 0 && command = "holddown"
-Trigger2 = var(59) != 0 && P2StateType != A && (Random <= var(59)*20 || var(59) > 9)
-stateType = C
-physics = C
-
-[State 0, Lo to Hi]
-type = StateTypeSet
-TriggerAll = StateType = C
-TriggerAll = ailevel
-Trigger1 = var(59) = 0 && command != "holddown"
-Trigger2 = var(59) != 0 && P2StateType = A && (Random <= var(59)*20 || var(59) > 9)
-stateType = S
-physics = S
 
 [State 140, 1]
 type = ChangeAnim
@@ -1790,20 +1770,25 @@ physics = A
 
 [State 140, Hi to Lo]
 type = StateTypeSet
-trigger1 = statetype = S && command = "holddown"
+TriggerAll=Statetype = S
+Trigger1 = aiLevel = 0
+Trigger1 = command = "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType!=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = C
 physics = C
 
 [State 140, Lo to Hi]
 type = StateTypeSet
-trigger1 = statetype = C && command != "holddown"
+TriggerAll=Statetype = C
+Trigger1 = aiLevel = 0
+Trigger1 = command != "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = S
 physics = S
-
-;[State 140, 5] ;Implemented within engine
-;type = ChangeState
-;trigger1 = AnimTime = 0
-;value = (statetype = C)*11 + (statetype = A)*51
 
 ;---------------------------------------------------------------------------
 ; SGUARDHIT (shaking)
@@ -1813,24 +1798,6 @@ movetype= H
 physics = N
 velset = 0,0
 
-[State 0, Hi to Lo]
-type = StateTypeSet
-TriggerAll = StateType = S
-triggerall = ailevel
-Trigger1 = var(59) = 0 && command = "holddown"
-Trigger2 = var(59) != 0 && P2StateType != A && (Random <= var(59)*20 || var(59) > 9)
-stateType = C
-physics = C
-
-[State 0, Lo to Hi]
-type = StateTypeSet
-TriggerAll = StateType = C
-TriggerAll = ailevel
-Trigger1 = var(59) = 0 && command != "holddown"
-Trigger2 = var(59) != 0 && P2StateType = A && (Random <= var(59)*20 || var(59) > 9)
-stateType = S
-physics = S
-
 [State 150, 1]
 type = ChangeAnim
 trigger1 = 1
@@ -1838,25 +1805,28 @@ value = 150
 
 [State 150, 2]
 type = ChangeState
-triggerall = !ailevel
 trigger1 = HitShakeOver
 value = 151 + 2*(command = "holddown")
 
-[State 150, 2]
-type = ChangeState
-triggerall = ailevel
-trigger1 = HitShakeOver
-value = 151
-
 [State 150, Hi to Lo]
 type = StateTypeSet
-trigger1 = statetype = S && command = "holddown"
+TriggerAll=Statetype = S
+Trigger1 = aiLevel = 0
+Trigger1 = command = "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType!=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = C
 physics = C
 
 [State 150, Lo to Hi]
 type = StateTypeSet
-trigger1 = statetype = C && command != "holddown"
+TriggerAll=Statetype = C
+Trigger1 = aiLevel = 0
+Trigger1 = command != "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = S
 physics = S
 
@@ -1892,27 +1862,32 @@ value = 1
 
 [State 151, Hi to Lo]
 type = StateTypeSet
-trigger1 = statetype = S && command = "holddown"
+TriggerAll=Statetype = S
+Trigger1 = aiLevel = 0
+Trigger1 = command = "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType!=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = C
 physics = C
 
 [State 151, Lo to Hi]
 type = StateTypeSet
-trigger1 = statetype = C && command != "holddown"
+TriggerAll=Statetype = C
+Trigger1 = aiLevel = 0
+Trigger1 = command != "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = S
 physics = S
 
 [State 151, 4]
 type = ChangeState
-trigger1 = !ailevel
 trigger1 = HitOver
 value = 130
 ctrl = 1
-[State 151, 4]
-type = ChangeState
-trigger1 = ailevel
-trigger1 = HitOver
-value = cond((enemy,statetype=C),131,130)
+
 ;---------------------------------------------------------------------------
 ; CGUARDHIT (shaking)
 [Statedef 152]
@@ -1928,23 +1903,28 @@ value = 151
 
 [State 152, 3]
 type = ChangeState
-triggerall = !ailevel
 trigger1 = HitShakeOver
-value = 151 + 2*(command = "holddown")
-[State 150, 2]
-type = ChangeState
-triggerall = ailevel
-trigger1 = HitShakeOver
-value = 151
+value = 151 + 2*ifelse(aiLevel = 0,(command = "holddown"),(fvar(38)=1))
+
 [State 152, Hi to Lo]
 type = StateTypeSet
-trigger1 = statetype = S && command = "holddown"
+TriggerAll=Statetype = S
+Trigger1 = aiLevel = 0
+Trigger1 = command = "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType!=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = C
 physics = C
 
 [State 152, Lo to Hi]
 type = StateTypeSet
-trigger1 = statetype = C && command != "holddown"
+TriggerAll=Statetype = C
+Trigger1 = aiLevel = 0
+Trigger1 = command != "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = S
 physics = S
 
@@ -1980,27 +1960,32 @@ value = 1
 
 [State 153, Hi to Lo]
 type = StateTypeSet
-trigger1 = statetype = S && command = "holddown"
+TriggerAll=Statetype = S
+Trigger1 = aiLevel = 0
+Trigger1 = command = "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType!=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = C
 physics = C
 
 [State 153, Lo to Hi]
 type = StateTypeSet
-trigger1 = statetype = C && command != "holddown"
+TriggerAll=Statetype = C
+Trigger1 = aiLevel = 0
+Trigger1 = command != "holddown"
+Trigger2 = aiLevel != 0
+Trigger2 = EnemyNear,StateType=A
+Trigger2 = Random <= aiLevel*20||aiLevel>6||enemynear,aiLevel
 statetype = S
 physics = S
 
 [State 153, 4]
 type = ChangeState
-trigger1 = !ailevel
 trigger1 = HitOver
 value = 131
 ctrl = 1
-[State 151, 4]
-type = ChangeState
-trigger1 = ailevel
-trigger1 = HitOver
-value = cond((enemy,statetype=C),131,130)
+
 ;---------------------------------------------------------------------------
 ; AGUARDHIT (shaking)
 [Statedef 154]
@@ -2017,7 +2002,7 @@ value = 152
 [State 154, 2]
 type = ChangeState
 trigger1 = HitShakeOver
-value = 155 ;AGUARDHIT2
+value = 155
 
 [State 154, 3]
 type = ForceFeedback
@@ -2628,7 +2613,10 @@ triggerall = Vel Y > 0
 triggerall = Pos Y >= -20
 triggerall = alive
 triggerall = CanRecover
-trigger1 = Command = "recovery"
+Trigger1 = aiLevel = 0
+Trigger1 = command = "recovery"
+Trigger2 = aiLevel != 0
+Trigger2 = Random <= aiLevel*100 || aiLevel > 6
 value = 5200 ;HITFALL_RECOVER
 
 [State 5050, 5]; Recover in mid air
@@ -2636,7 +2624,10 @@ type = ChangeState
 triggerall = Vel Y > -1
 triggerall = alive
 triggerall = CanRecover
-trigger1 = Command = "recovery"
+Trigger1 = aiLevel = 0
+Trigger1 = command = "recovery"
+Trigger2 = aiLevel != 0
+Trigger2 = Random <= aiLevel*100 || aiLevel > 6
 value = 5210 ;HITFALL_AIRRECOVER
 
 [State 5050, 6]
@@ -3839,8 +3830,8 @@ fvar(36)=root,palno
 
 [State 12345, Varset]
 type=varset
-trigger1=fvar(36)<1||fvar(36)>55
-fvar(36)=1+(fvar(36)<1)*54
+trigger1=floor(fvar(36))<1||floor(fvar(36))>55
+fvar(36)=1+(floor(fvar(36))<1)*54
 
 [State 12345, timer APURATE GUEON]
 type = Explod
@@ -3885,16 +3876,16 @@ ownpal = 1
 [State 12345, actualizar nombresito]
 type = RemoveExplod
 trigger1 = !time
-trigger2 = fvar(39)=1 || (fvar(39)>20 && (floor(fvar(39))-20)%5=0)
+trigger2 = floor(fvar(39))=1 || (floor(fvar(39))>20.0 && (floor(fvar(39))-20)%5=0)
 id = 19877
 ignorehitpause = 1
 [State 12345, nombresito bonito]
 type = Explod
 trigger1 = time = 1
-trigger2 = fvar(39)=1 || (fvar(39)>20 && (floor(fvar(39))-20)%5=0)
+trigger2 = floor(fvar(39))=1 || (floor(fvar(39))>20.0 && (floor(fvar(39))-20)%5=0)
 id = 19877
-anim = 8900+fvar(36)
-pos = cond(root,facing = 1, 70, 250),cond(root,var(17) = 1, 212, 162)
+anim = cond(root,facing = 1,8900,7800)+floor(fvar(36))
+pos = cond(root,facing = 1, 30, 290),cond(root,var(17) = 1, 212, 162)
 postype = back
 removeongethit = 1
 removetime = -1
@@ -3920,19 +3911,19 @@ ignorehitpause = 1
 
 [State 12345, Tap Change]
 type = varadd
-trigger1 = fvar(39) = 1
+trigger1 = floor(fvar(39)) = 1
 fvar(36) = 1-(root,command="holddown"||root,command="holdback"&&facing=1||root,command="holdfwd"&&facing=-1)*2
 ignorehitpause = 1
 
 [State 12345, Auto Repeat Change]
 type = varadd
-trigger1 = fvar(39) > 20 && (floor(fvar(39))-20)%5 = 0
+trigger1 = floor(fvar(39)) > 20 && (floor(fvar(39))-20)%5 = 0
 fvar(36) = 1-(root,command="holddown"||root,command="holdback"&&facing=1||root,command="holdfwd"&&facing=-1)*2
 ignorehitpause = 1
 
 [State 12345, PlaySnd]
 type = PlaySnd
-trigger1 = fvar(39)=1 || (fvar(39)>20 && (floor(fvar(39))-20)%5=0)
+trigger1 = floor(fvar(39))=1 || (floor(fvar(39))>20 && (floor(fvar(39))-20)%5=0)
 value = S12345,0
 volumescale = 100
 channel = 20
@@ -3953,7 +3944,7 @@ fvar(38)=-1
 
 [State 12345, Countdown]
 type = VarAdd
-trigger1=!fvar(39)&&fvar(38)<150
+trigger1=!floor(fvar(39))&&floor(fvar(38))<150
 trigger1=root,command="holdup"||root,command="holddown"||root,command="holdback"||root,command="holdfwd"
 fvar(38)=25
 
@@ -3975,6 +3966,12 @@ trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"|
 trigger2=root,AILevel
 trigger3=time>600
 id = 19878
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
+trigger2=root,AILevel
+trigger3=time>600
+id = 2415030
 [State 12345, End]
 type=destroyself
 triggerall=ishelper(12345)

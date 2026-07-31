@@ -613,6 +613,19 @@ trigger1 = partner,Name = "Martin"
 trigger1 = partner,AuthorName = "Jeff Swag"
 var(52) = 22
 
+[State 0, No Pal select override]
+type = VarSet
+trigger1 = ailevel
+fvar(37) = 0
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = anim = 8787 || anim = 8788
+v = 14
+value = 0
+ignorehitpause = 1
+
 [State 119911991, 1]
 type = AssertSpecial
 triggerall = var(52) != 0
@@ -685,6 +698,12 @@ Persistent = 0
 PauseMoveTime = 9999
 SuperMoveTime = 9999
 
+[State aaa conchetumare]
+type = VarSet
+trigger1 = RoundState = 3
+trigger1 = lose
+fvar(35) = 1
+
 [State 0, Null]
 type = Null
 ;Ivy victory check
@@ -749,7 +768,7 @@ value = cond(var(20) = 0, 22, 66)
 [State -2, Chase]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
-trigger1 = Enemy, Name = "CHASEVV1.1" && Enemy, AuthorName = "Chase2006"
+trigger1 = Enemy, Name = "CHASEVV1.1" || Enemy, Name = "CHASEVV_DEVBUILD"
 value = cond(var(20) = 0, 23, 67) + random%5
 
 [State -2, Hanzo]
@@ -867,62 +886,57 @@ trigger1 = stateno != 3000
 id = 87892
 [State 0, RemoveExplod]
 type = RemoveExplod
-trigger1 = stateno != 19000
+trigger1 = stateno != 2503
 id = 190011
 [State 0, RemoveExplod]
 type = RemoveExplod
-trigger1 = stateno != 17000
+trigger1 = stateno != 2700
 id = 139921
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1 = stateno != 620
 id = 622
-[State aaa conchetumare]
-type = VarSet
-trigger1 = RoundState = 3
-trigger1 = lose
-fvar(35) = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1=!numhelper(12345)
+id = 2415030
+
+[State 12345, iconsito bonito pal palette select]
+type = Explod
+trigger1 = numhelper(12345) = 1
+persistent=0
+id = 2415030
+anim = 1044001
+pos = cond(facing = 1, 10, 22), cond(var(17) = 1, 204.2, 154.2)
+postype = back
+removeongethit = 1
+removetime=-1
+facing = facing
+scale = .47,.47
+supermovetime= 99999
+bindtime=-1
+pausemovetime = 99999
+sprpriority=58
+removeongethit = 1
+ownpal = 0
 
 [State -1, lary dary, mi nombre es barry]
 type = HitOverride
-triggerall = RoundState = 2 && numenemy
-triggerall = ailevel
-triggerall = ctrl || (stateno = [100,105])
-triggerall = stateno = 0 || stateno = 20 || stateno = 50 || stateno = 40 || (stateno = [100,105])
-triggerall = stateno = 1000 || stateno = 1321 || stateno = 1100 || stateno = 8806
-trigger1 = AILevel > 5 || enemynear,ailevel != 0
-trigger1 = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, 999, cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*3, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 800, cond(life < lifemax*0.50, 700, 550)))))))
-attr = SA, AA, AP, AT
+triggerall = aiLevel && roundstate = 2 && alive && numenemy
+triggerall = stateno != [150,155]
+triggerall = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, cond(life > lifemax*0.50, 800, 999), cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*0.8, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 650, cond(life < lifemax*0.50, 550, 150)))))))
+trigger1 = ctrl 
+trigger2 = (stateno = [20,22]) || (stateno = [100,109])
+trigger3 = stateno = 1022 || (stateno = [116,117])
+trigger4 = stateno = 0 || stateno = 20 || stateno = 50 || stateno = 40 ||  stateno=5120 || (stateno = [100,105])
+trigger5 = stateno = 1000 || stateno = 1321 || stateno = 1100 || stateno = 8806
+attr = SCA, AA, AP, AT
 slot = 1
-stateno = cond(pos y = 0, 700, 720)
+stateno = cond(statetype != A, 700, 720)
 time = 9
-[State -1, lary dary, mi nombre es barry 2]
-type = HitOverride
-triggerall = RoundState = 2 && numenemy
-triggerall = ailevel
-triggerall = ctrl
-triggerall = stateno = 0 || stateno = 20 || stateno = 50 || stateno = 40 || (stateno = [100,105])
-trigger1 = AILevel > 5 || enemynear,ailevel != 0
-trigger1 = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, 999, cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*3, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 800, cond(life < lifemax*0.50, 700, 550)))))))
-attr = C, NA, SA, HA
-slot = 1
-stateno = 710
-time = 9
-
-[State 0, No Pal select override]
-type = VarSet
-trigger1 = ailevel
-fvar(37) = 0
-ignorehitpause = 1
-
-[State 0, VarSet]
-type = VarSet
-trigger1 = anim = 8787 || anim = 8788
-v = 14
-value = 0
-ignorehitpause = 1
 
 ;_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
 [Statedef -3]
 
 ;This is for the special Pal 16 thingy
@@ -944,14 +958,13 @@ value = S1958,0
 channel = 7
 volumescale = 100
 ignorehitpause = 1
+;This is for the special Pal 16 thingy
 
-;This controller plays a sound everytime the player lands from a jump, or
-;from a back-dash.
 [State -3, Landing Sound]
 type = PlaySnd
 triggerall = Time = 1
-trigger1 = stateno = 52 ;Jump land
-trigger2 = stateno = 106 ;Run-back land
+trigger1 = stateno = 52
+trigger2 = stateno = 106
 value = S51, 0
 
 [State -3]
@@ -974,6 +987,7 @@ channel = 18
 type = StopSnd
 trigger1 = alive = 0
 channel = 1
+
 [State -3, Pain Sound]
 type = playsnd
 triggerall = var(16) = 0 || var(16) = 1 || var(16) = 2 || var(16) = 3

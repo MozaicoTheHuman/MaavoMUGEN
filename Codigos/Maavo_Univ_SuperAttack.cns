@@ -479,7 +479,7 @@ value = S24500,7
 channel = 1
 [State 0, PlaySnd]
 type = PlaySnd
-triggerall = fvar(36) = 37
+triggerall = root, fvar(36) = 37
 trigger1 = time = 0
 value = S1959,26
 channel = 1
@@ -761,12 +761,12 @@ ctrl = 0
 sprpriority = 4
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = fvar(36) = 12 || fvar(36) = 21
+triggerall = root, fvar(36) = 12 || root, fvar(36) = 21
 trigger1 = time = 0
 value = S1959,10
 [State 19001, PlaySnd]
 type = PlaySnd
-triggerall = fvar(36) = 12 || fvar(36) = 21
+triggerall = root, fvar(36) = 12 || root, fvar(36) = 21
 trigger1 = time = 0
 value = S1959,10
 [State 0, PlaySnd]
@@ -1060,7 +1060,7 @@ sprpriority = -1
 [State 0, Trans]
 type = Trans
 trigger1 = 1
-trans = add ;none, add, addalpha, add1, sub
+trans = add
 alpha = 256,256
 ignorehitpause = 1
 persistent = 1
@@ -1949,75 +1949,11 @@ anim = 616
 ctrl = 0
 
 ;Orbi you're amazing
-[State 19001, 1]
-type = Explod
-triggerall = root,var(52)!=[4,5]
-trigger1 = time = 0
-id = 6128
-anim = 6128
-pos = -225+ (root,var(17) * -100),0
-postype = back
-Facing = cond(facing = 1, 1, -1)
-sprpriority = 52
-removeongethit = 1
-removetime=-1
-scale = .7+ (root,var(17) * .2),.63+ (root,var(17) * .2)
-OnTop = 0
-supermovetime=-1
-ownpal = 1
-bindtime=-1
-supermovetime = 9999
-persistent= 0
-pausemovetime = 99999
-removeongethit = 1
-[State 19001, 1]
-type = Explod
-triggerall = root,var(52)=4
-trigger1 = time = 0
-id = 6128
-anim = 6126
-pos = -225+ (root,var(17) * -100),0
-postype = back
-Facing = cond(facing = 1, 1, -1)
-sprpriority = 52
-removeongethit = 1
-removetime=-1
-scale = .7+ (root,var(17) * .2),.63+ (root,var(17) * .2)
-OnTop = 0
-supermovetime=-1
-ownpal = 1
-bindtime=-1
-supermovetime = 9999
-persistent= 0
-pausemovetime = 99999
-removeongethit = 1
-[State 19001, 1]
-type = Explod
-triggerall = root,var(52)=5
-trigger1 = time = 0
-id = 6128
-anim = 6127
-pos = -225+ (root,var(17) * -100),0
-postype = back
-Facing = cond(facing = 1, 1, -1)
-sprpriority = 52
-removeongethit = 1
-removetime=-1
-scale = .7+ (root,var(17) * .2),.63+ (root,var(17) * .2)
-OnTop = 0
-supermovetime=-1
-ownpal = 1
-bindtime=-1
-supermovetime = 9999
-persistent= 0
-pausemovetime = 99999
-removeongethit = 1
-
-[State 19001, 1]
+[State 2716, 1]
 type = Explod
 trigger1 = time = 0
 id = 6128
-anim = 6128
+anim = cond(root,var(52) = 4, 6126, cond(root,var(52) = 5, 6127, 6128))
 pos = -225+ (root,var(17) * -100),0
 postype = back
 Facing = cond(facing = 1, 1, -1)
@@ -2038,28 +1974,6 @@ removeongethit = 1
 type = AssertSpecial
 trigger1 = 1
 flag = noBG
-
-[State 19001, 1]
-type = Explod
-trigger1 = time = 0
-id = 7565
-anim = 7565
-pos = 0,0
-postype = back
-Facing = cond(facing = 1, 1, -1)
-sprpriority = 49
-removeongethit = 1
-removetime=-1
-scale = 99,99
-OnTop = 0
-supermovetime=-1
-ownpal = 1
-bindtime=-1
-supermovetime = 9999
-persistent= 0
-pausemovetime = 99999
-removeongethit = 1
-removeongethit = 1
 
 [State 0, Null]
 type = Null

@@ -272,14 +272,6 @@ type    = A
 movetype= H
 physics = N
 
-[State 0, EnvShake]
-type = EnvShake
-trigger1 = time = 0
-time=20
-freq=175
-ampl=-5
-ignorehitpause = 1
-
 [State 821, CameraBack]
 type = ScreenBound
 trigger1 = Time = 0

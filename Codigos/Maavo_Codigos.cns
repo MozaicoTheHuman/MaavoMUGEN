@@ -261,7 +261,7 @@ victory91 = "[ ONE STEP CLOSER TO COMPLETION. ] [ ASSIMILATING. ]  [ ASSIMILATIN
 ; var(43):= -2
 ; var(44):= 1212, 1213, 1214
 ; var(45):= 180180, 180181
-; var(46):= 181, 1213, 1214
+; var(46):= 181, 1213, 1214 (this is mainly an ikemen check)
 ; var(47):= -1
 ; var(48):= -1
 ; var(49):= -1
@@ -276,7 +276,6 @@ victory91 = "[ ONE STEP CLOSER TO COMPLETION. ] [ ASSIMILATING. ]  [ ASSIMILATIN
 ; var(59):= -1, 120, 130, 140, 150, 5001
 
 ;--FREE VARS
-
 ; var(13)
 ; var(28)
 ; var(57)

@@ -1832,7 +1832,7 @@ Clsn2Default: 2
   Clsn2[0] = -25, -248, 36, -122
   Clsn2[1] = -35, -125, 36, 1
 Clsn1: 1
-  Clsn1[0] = 0, -204, 107, 1
+  Clsn1[0] = 0, -204, 137, 1
 801,0, 0,0, 1
 801,0, 0,0, 1
 801,1, 0,0, 2
@@ -5768,13 +5768,6 @@ Loopstart
 ;--------------------------------
 
 ;
-[Begin Action 7565]
-1191,11, 0,0, 3,, AS32D223
-Loopstart
-1191,11, 0,0, 3,, AS256D150
-
-
-;
 [Begin Action 7964]
 4280,0, 0,0, 1
 4280,1, 0,0, 1
@@ -7353,7 +7346,7 @@ LoopStart
 ; Maritza - Avanzando
 [Begin Action 84803]
 Clsn2default: 1
-  Clsn2[0] = -31, -162, 73, 2
+  Clsn2[0] = -31, -142, 83, -3
 24247,1, 0,0, 2
 24247,2, 0,0, 2
 24247,3, 0,0, 2
@@ -7973,26 +7966,6 @@ LoopStart
 LoopStart
 -1,0, 0,0, -1
 
-[Begin Action 848031]
-24247,1, 0,0, 2
-24247,2, 0,0, 2
-24247,3, 0,0, 2
-24247,4, 0,0, 3
-24247,5, 0,0, 3
-24247,1, 0,0, 4
-24247,2, 0,0, 4
-24247,3, 0,0, 5
-24247,4, 0,0, 5
-24247,5, 0,0, 5
-24247,1, 0,0, 5
-24247,2, 0,0, 5
-LoopStart
-24247,3, 0,0, 7
-24247,4, 0,0, 7
-24247,5, 0,0, 7
-24247,1, 0,0, 7
-24247,2, 0,0, 7
-
 ; Maritza - Ataque
 [Begin Action 848041]
 24247,5, 0,0, 1
@@ -8409,168 +8382,342 @@ LoopStart
 [Begin Action 19878]
 12145,1, 0,0, 10
 
+
+
+;--------------------
+;WEAS DE NOMBRES DEL PALETTE SELECT (LADO IZQUIERDO)
+
 ; 1: Showtime
 [Begin Action 8901]
-12146,0, 0,0, -1
+12146,0, 87,0, -1
 ; 2: 2019 Maavo
 [Begin Action 8902]
-12146,1, 0,0, -1
+12146,1, 110,0, -1
 ; 3: Martin M.U.G.E.N
 [Begin Action 8903]
-12146,2, 0,0, -1
+12146,2, 148,0, -1
 ; 4: Mozaico The Robot
 [Begin Action 8904]
-12146,3, 0,0, -1
+12146,3, 162,0, -1
 ; 5: Webiando' Trifunka
 [Begin Action 8905]
-12146,4, 0,0, -1
+12146,4, 163,0, -1
 ; 6: Phantom Thieves
 [Begin Action 8906]
-12146,5, 0,0, -1
+12146,5, 144,0, -1
 ; 7: Scott Pilgrim
 [Begin Action 8907]
-12146,6, 0,0, -1
+12146,6, 114,0, -1
 ; 8: Anime Classics
 [Begin Action 8908]
-12146,7, 0,0, -1
+12146,7, 128,0, -1
 ; 9: Team Dark
 [Begin Action 8909]
-12146,8, 0,0, -1
+12146,8, 95,0, -1
 ; 10: The GG's
 [Begin Action 8910]
-12146,9, 0,0, -1
+12146,9, 93,0, -1
 ; 11: The Dearests
 [Begin Action 8911]
-12146,10, 0,0, -1
+12146,10, 125,0, -1
 ; 12: Mystery Gang
 [Begin Action 8912]
-12146,11, 0,0, -1
+12146,11, 130,0, -1
 ; 13: Skullgirls
 [Begin Action 8913]
-12146,12, 0,0, -1
+12146,12, 93,0, -1
 ; 14: Pico's School
 [Begin Action 8914]
-12146,13, 0,0, -1
+12146,13, 127,0, -1
 ; 15: M.U.G.E.N. All-Stars
 [Begin Action 8915]
-12146,14, 0,0, -1
+12146,14, 181,0, -1
 ; 16: FNAFHS
 [Begin Action 8916]
-12146,15, 0,0, -1
+12146,15, 86,0, -1
 ; 17: Toys
 [Begin Action 8917]
-12146,16, 0,0, -1
+12146,16, 59,0, -1
 ; 18: Sonic The Hedgehog
 [Begin Action 8918]
-12146,17, 0,0, -1
+12146,17, 178,0, -1
 ; 19: Underground
 [Begin Action 8919]
-12146,18, 0,0, -1
+12146,18, 125,0, -1
 ; 20: Bunk Bed Junction
 [Begin Action 8920]
-12146,19, 0,0, -1
+12146,19, 168,0, -1
 ; 21: Ed, Edd n Eddy
 [Begin Action 8921]
-12146,20, 0,0, -1
+12146,20, 142,0, -1
 ; 22: Overwatch
 [Begin Action 8922]
-12146,21, 0,0, -1
+12146,21, 105,0, -1
 ; 23: Team Red
 [Begin Action 8923]
-12146,22, 0,0, -1
+12146,22, 98,0, -1
 ; 24: El Rincon Antiestres
 [Begin Action 8924]
-12146,23, 0,0, -1
+12146,23, 180,0, -1
 ; 25: The Simpsons
 [Begin Action 8925]
-12146,24, 0,0, -1
+12146,24, 131,0, -1
 ; 26: Class 77-B
 [Begin Action 8926]
-12146,25, 0,0, -1
+12146,25, 108,0, -1
 ; 27: Pastel
 [Begin Action 8927]
-12146,26, 0,0, -1
+12146,26, 69,0, -1
 ; 28: Dark Purple
 [Begin Action 8928]
-12146,27, 0,0, -1
+12146,27, 113,0, -1
 ; 29: Silhouette
 [Begin Action 8929]
-12146,28, 0,0, -1
+12146,28, 102,0, -1
 ; 30: The Flowers
 [Begin Action 8930]
-12146,29, 0,0, -1
+12146,29, 116,0, -1
 ; 31: Wright & Co.
 [Begin Action 8931]
-12146,30, 0,0, -1
+12146,30, 120,0, -1
 ; 32: King of Pop
 [Begin Action 8932]
-12146,31, 0,0, -1
+12146,31, 112,0, -1
 ; 33: S.E.E.S.
 [Begin Action 8933]
-12146,32, 0,0, -1
+12146,32, 84,0, -1
 ; 34: Investigation Team
 [Begin Action 8934]
-12146,33, 0,0, -1
+12146,33, 169,0, -1
 ; 35: Velvet Room
 [Begin Action 8935]
-12146,34, 0,0, -1
+12146,34, 119,0, -1
 ; 36: New Squidbeak Splatoon
 [Begin Action 8936]
-12146,35, 0,0, -1
+12146,35, 217,0, -1
 ; 37: Oliver as Latias
 [Begin Action 8937]
-12146,36, 0,0, -1
+12146,36, 141,0, -1
 ; 38: SAMSONITE
 [Begin Action 8938]
-12146,37, 0,0, -1
+12146,37, 118,0, -1
 ; 39: Rudy MTortilla
 [Begin Action 8939]
-12146,38, 0,0, -1
+12146,38, 136,0, -1
 ; 40: Scene
 [Begin Action 8940]
-12146,39, 0,0, -1
+12146,39, 70,0, -1
 ; 41: Chainsaw Man
 [Begin Action 8941]
-12146,40, 0,0, -1
+12146,40, 133,0, -1
 ; 42: Pulentos
 [Begin Action 8942]
-12146,41, 0,0, -1
+12146,41, 91,0, -1
 ; 43: Whitty
 [Begin Action 8943]
-12146,42, 0,0, -1
+12146,42, 71,0, -1
 ; 44: Vocaloid
 [Begin Action 8944]
-12146,43, 0,0, -1
+12146,43, 88,0, -1
 ; 45: Blazblue
 [Begin Action 8945]
-12146,44, 0,0, -1
+12146,44, 88,0, -1
 ; 46: Rakugaki Showtime
 [Begin Action 8946]
-12146,45, 0,0, -1
+12146,45, 173,0, -1
 ; 47: Diva to the Heart
 [Begin Action 8947]
-12146,46, 0,0, -1
+12146,46, 155,0, -1
 ; 48: Mega Man Legends
 [Begin Action 8948]
-12146,47, 0,0, -1
+12146,47, 174,0, -1
 ; 49: Limbus Company
 [Begin Action 8949]
-12146,48, 0,0, -1
+12146,48, 155,0, -1
 ; 50: Umamusume
 [Begin Action 8950]
-12146,49, 0,0, -1
+12146,49, 122,0, -1
 ; 51: Basuros
 [Begin Action 8951]
-12146,50, 0,0, -1
+12146,50, 85,0, -1
 ; 52: HQ Rip
 [Begin Action 8952]
-12146,51, 0,0, -1
+12146,51, 76,0, -1
 ; 53: Windows
 [Begin Action 8953]
-12146,52, 0,0, -1
+12146,52, 91,0, -1
 ; 54: Rayman
 [Begin Action 8954]
-12146,53, 0,0, -1
+12146,53, 82,0, -1
 ; 55: 2021 DEMO
 [Begin Action 8955]
-12146,54, 0,0, -1
+12146,54, 117,0, -1
+
+;--------------------
+;WEAS DE NOMBRES DEL PALETTE SELECT (LADO DERECHO)
+
+; 1: Showtime
+[Begin Action 7801]
+12146,0, -87,0, -1
+; 2: 2019 Maavo
+[Begin Action 7802]
+12146,1, -110,0, -1
+; 3: Martin M.U.G.E.N
+[Begin Action 7803]
+12146,2, -148,0, -1
+; 4: Mozaico The Robot
+[Begin Action 7804]
+12146,3, -162,0, -1
+; 5: Webiando' Trifunka
+[Begin Action 7805]
+12146,4, -163,0, -1
+; 6: Phantom Thieves
+[Begin Action 7806]
+12146,5, -144,0, -1
+; 7: Scott Pilgrim
+[Begin Action 7807]
+12146,6, -114,0, -1
+; 8: Anime Classics
+[Begin Action 7808]
+12146,7, -128,0, -1
+; 9: Team Dark
+[Begin Action 7809]
+12146,8, -95,0, -1
+; 10: The GG's
+[Begin Action 7810]
+12146,9, -93,0, -1
+; 11: The Dearests
+[Begin Action 7811]
+12146,10, -125,0, -1
+; 12: Mystery Gang
+[Begin Action 7812]
+12146,11, -130,0, -1
+; 13: Skullgirls
+[Begin Action 7813]
+12146,12, -93,0, -1
+; 14: Pico's School
+[Begin Action 7814]
+12146,13, -127,0, -1
+; 15: M.U.G.E.N. All-Stars
+[Begin Action 7815]
+12146,14, -181,0, -1
+; 16: FNAFHS
+[Begin Action 7816]
+12146,15, -86,0, -1
+; 17: Toys
+[Begin Action 7817]
+12146,16, -59,0, -1
+; 18: Sonic The Hedgehog
+[Begin Action 7818]
+12146,17, -178,0, -1
+; 19: Underground
+[Begin Action 7819]
+12146,18, -125,0, -1
+; 20: Bunk Bed Junction
+[Begin Action 7820]
+12146,19, -168,0, -1
+; 21: Ed, Edd n Eddy
+[Begin Action 7821]
+12146,20, -142,0, -1
+; 22: Overwatch
+[Begin Action 7822]
+12146,21, -105,0, -1
+; 23: Team Red
+[Begin Action 7823]
+12146,22, -98,0, -1
+; 24: El Rincon Antiestres
+[Begin Action 7824]
+12146,23, -180,0, -1
+; 25: The Simpsons
+[Begin Action 7825]
+12146,24, -131,0, -1
+; 26: Class 77-B
+[Begin Action 7826]
+12146,25, -108,0, -1
+; 27: Pastel
+[Begin Action 7827]
+12146,26, -69,0, -1
+; 28: Dark Purple
+[Begin Action 7828]
+12146,27, -113,0, -1
+; 29: Silhouette
+[Begin Action 7829]
+12146,28, -102,0, -1
+; 30: The Flowers
+[Begin Action 7830]
+12146,29, -116,0, -1
+; 31: Wright & Co.
+[Begin Action 7831]
+12146,30, -120,0, -1
+; 32: King of Pop
+[Begin Action 7832]
+12146,31, -112,0, -1
+; 33: S.E.E.S.
+[Begin Action 7833]
+12146,32, -84,0, -1
+; 34: Investigation Team
+[Begin Action 7834]
+12146,33, -169,0, -1
+; 35: Velvet Room
+[Begin Action 7835]
+12146,34, -119,0, -1
+; 36: New Squidbeak Splatoon
+[Begin Action 7836]
+12146,35, -217,0, -1
+; 37: Oliver as Latias
+[Begin Action 7837]
+12146,36, -141,0, -1
+; 38: SAMSONITE
+[Begin Action 7838]
+12146,37, -118,0, -1
+; 39: Rudy MTortilla
+[Begin Action 7839]
+12146,38, -136,0, -1
+; 40: Scene
+[Begin Action 7840]
+12146,39, -70,0, -1
+; 41: Chainsaw Man
+[Begin Action 7841]
+12146,40, -133,0, -1
+; 42: Pulentos
+[Begin Action 7842]
+12146,41, -91,0, -1
+; 43: Whitty
+[Begin Action 7843]
+12146,42, -71,0, -1
+; 44: Vocaloid
+[Begin Action 7844]
+12146,43, -88,0, -1
+; 45: Blazblue
+[Begin Action 7845]
+12146,44, -88,0, -1
+; 46: Rakugaki Showtime
+[Begin Action 7846]
+12146,45, -173,0, -1
+; 47: Diva to the Heart
+[Begin Action 7847]
+12146,46, -155,0, -1
+; 48: Mega Man Legends
+[Begin Action 7848]
+12146,47, -174,0, -1
+; 49: Limbus Company
+[Begin Action 7849]
+12146,48, -155,0, -1
+; 50: Umamusume
+[Begin Action 7850]
+12146,49, -122,0, -1
+; 51: Basuros
+[Begin Action 7851]
+12146,50, -85,0, -1
+; 52: HQ Rip
+[Begin Action 7852]
+12146,51, -76,0, -1
+; 53: Windows
+[Begin Action 7853]
+12146,52, -91,0, -1
+; 54: Rayman
+[Begin Action 7854]
+12146,53, -82,0, -1
+; 55: 2021 DEMO
+[Begin Action 7855]
+12146,54, -117,0, -1
