@@ -3911,14 +3911,28 @@ ignorehitpause = 1
 
 [State 12345, Tap Change]
 type = varadd
+triggerall = root,facing = 1
 trigger1 = floor(fvar(39)) = 1
-fvar(36) = 1-(root,command="holddown"||root,command="holdback"&&facing=1||root,command="holdfwd"&&facing=-1)*2
+fvar(36) = 1-(root,command="holddown"|root,command="holdback"&&facing=1||root,command="holdfwd"&&facing=-1)*2
+ignorehitpause = 1
+[State 12345, Tap Change]
+type = varadd
+triggerall = root,facing = -1
+trigger1 = floor(fvar(39)) = 1
+fvar(36) = 1-(root,command="holddown"|root,command="holdfwd"&&facing=1||root,command="holdback"&&facing=-1)*2
 ignorehitpause = 1
 
 [State 12345, Auto Repeat Change]
 type = varadd
+triggerall = root,facing = 1
 trigger1 = floor(fvar(39)) > 20 && (floor(fvar(39))-20)%4 = 0
 fvar(36) = 1-(root,command="holddown"||root,command="holdback"&&facing=1||root,command="holdfwd"&&facing=-1)*2
+ignorehitpause = 1
+[State 12345, Auto Repeat Change]
+type = varadd
+triggerall = root,facing = -1
+trigger1 = floor(fvar(39)) > 20 && (floor(fvar(39))-20)%4 = 0
+fvar(36) = 1-(root,command="holddown"||root,command="holdfwd"&&facing=1||root,command="holdback"&&facing=-1)*2
 ignorehitpause = 1
 
 [State 12345, PlaySnd]
