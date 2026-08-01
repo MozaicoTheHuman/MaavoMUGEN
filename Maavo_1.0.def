@@ -25,10 +25,10 @@ author = "Mozaico"
 pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
 
 [Files]
-sprite = Maavo_Sprites.sff
-sound = Maavo_SFX.snd
-anim = Maavo_Animaciones.air
-cmd = Maavo_Comandos.cma
+sprite = Assets/Maavo_Sprites.sff
+sound = Assets/Assets/Maavo_SFX.snd
+anim = Assets/Maavo_Animaciones.air
+cmd = Codigos/Maavo_Comandos.cma
 cns = Codigos/Maavo_Codigos.cns
 st = Codigos/Maavo_-2.cns
 st0 = Codigos/Maavo_BasicStuff.cns

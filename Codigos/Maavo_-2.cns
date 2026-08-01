@@ -265,6 +265,15 @@ trigger2 = enemynear,movetype != H && (enemynear,statetype != L)
 id = 520525
 ignorehitpause = 1 
 
+[state -2, No Clones]
+type = remappal
+triggerall=numenemy && (fvar(36)=[1,60]);fvar(36)=the number of pals available 
+trigger1=fvar(37)&&!numhelper(12345)&&matchno=1&&roundno=1
+trigger1=enemy,authorname="Mozaico"&&enemy,name="Maavo"&&enemy,fvar(36)=fvar(36) 
+source = 1, 1
+dest = 1, cond(teamside!=1 && enemynear,Numhelper(12345)=0,enemy,fvar(36)+teamside-1,fvar(36))
+ignorehitpause = 1
+
 [state -2, Continue Palette]
 type = remappal
 triggerall = roundno != 1
