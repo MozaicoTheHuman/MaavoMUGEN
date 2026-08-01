@@ -1903,7 +1903,7 @@ value = 151
 [State 152, 3]
 type = ChangeState
 trigger1 = HitShakeOver
-value = 151 + 2*ifelse(aiLevel = 0,(command = "holddown"),(fvar(38)=1))
+value = 151 + 2*cond(aiLevel = 0,(command = "holddown"),(fvar(38)=1))
 
 [State 152, Hi to Lo]
 type = StateTypeSet

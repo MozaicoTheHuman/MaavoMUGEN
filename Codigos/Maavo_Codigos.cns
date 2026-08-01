@@ -54,7 +54,7 @@ crouch.friction = .82
 ;======================
 ;Spanish
 ;======================
-victory0 = "Eso fue divertido! Deberiamos pelear otra vez! ...si es que te levantas, jaja."
+victory0 = "Eso fue divertido! Deberiamos pelear otra vez! ...si es que te levantas, claro."
 victory1 = "Jeje! Nada mal."
 victory2 = "Que tal estuve? Lo hice bien?"
 victory3 = "Y... corte!"
@@ -66,155 +66,153 @@ victory7 = "Jeje, quieres otro round?"
 ;Maritza K.O.
 victory8 = "Viste eso? Esa es mi hermanita!"
 victory9 = "Mira su cara, Maritza! Ni alcanzo a parpadear!"
-victory10 = "Si escuchas un martillo, ya es muy tarde!"
 
 ;Ivette K.O.
-victory11 = "Ves? Eres mas fuerte de lo que crees, Ivy. Te lo recordare cada que lo olvides!"
-victory12 = "Luchar contigo hace que todo se sienta mas tranquilo, Ivette."
-victory13 = "Ves? Si podias hacerlo, Ivette! Yo lo sabia!"
+victory10 = "Ves? Eres mas fuerte de lo que crees, Ivy. Te lo recordare cada que lo olvides!"
+victory11 = "Luchar contigo hace que todo se sienta mas tranquilo, Ivette."
+victory12 = "Ves? Si podias hacerlo, Ivette! Yo lo sabia!"
 
 ;Vs. Maavo
-victory14 = "Si yo perdia... Eso igual cuenta como victoria?"
-victory15 = "Asi se siente pelear contra mi? Con razon se asustan."
-victory16 = "Siempre he tenido esa sonrisa de tonto?"
+victory13 = "Si yo perdia... Eso igual cuenta como victoria?"
+victory14 = "Asi se siente pelear contra mi? Con razon se asustan."
+victory15 = "Siempre he tenido esa sonrisa de tonto?"
 
 ;Vs. Rudy
-victory17 = "Oye... si no encontramos tu plata, podemos fingir que nunca existio!"
-victory18 = "Si te sirve de consuelo, una vez tambien se me perdio la billetera!"
-victory19 = "Ahhh, con que ASI se ve el estres!"
-victory20 = "Oye, mira el lado bueno! Al menos estas haciendo ejercicio!"
+victory16 = "Oye... si no encontramos tu plata, podemos fingir que nunca existio!"
+victory17 = "Si te sirve de consuelo, una vez tambien se me perdio la billetera!"
+victory18 = "Ahhh, con que ASI se ve el estres!"
+victory19 = "Oye, mira el lado bueno! Al menos estas haciendo ejercicio!"
 
 ;Vs. Oliver
-victory21 = "Viste eso Maritza? Creo que le gane a Mega Man!"
+victory20 = "Viste eso Maritza? Creo que le gane a Mega Man!"
 
 ;Vs. Martin
-victory22 = "Disculpa, nos conocemos de algun lado? Tu cara me suena..."
+victory21 = "Disculpa, nos conocemos de algun lado? Tu cara me suena..."
 
 ;Vs. Chase
-victory23 = "Eres como yo... pero mas griton!"
-victory24 = "Me encanta pelear con alguien que puede seguirme el ritmo!"
-victory25 = "Si pelearamos en equipo, nadie nos alcanzaria!"
-victory26 = "Te mueves como si persiguieras el futuro. Yo solo disfruto el momento!"
-victory27 = "Eres muy bacan, Chase! Me haces esforzarme mas de la cuenta."
+victory22 = "Eres como yo... pero mas griton!"
+victory23 = "Me encanta pelear con alguien que puede seguirme el ritmo!"
+victory24 = "Si pelearamos en equipo, nadie nos alcanzaria!"
+victory25 = "Te mueves como si persiguieras el futuro. Yo solo disfruto el momento!"
+victory26 = "Eres muy bacan, Chase! Me haces esforzarme mas de la cuenta."
 
 ;Vs. Hanzo
-victory28 = "Apuntas directo a zonas vitales, eh? Buena eleccion!"
-victory29 = "Jeje, voy a necesitar puntos despues. Valio la pena!"
-victory30 = "Sabes usar ese cuchillo! Haces cortes limpios, muy precisos."
+victory27 = "Apuntas directo a zonas vitales, eh? Buena eleccion!"
+victory28 = "Jeje, voy a necesitar puntos despues. Valio la pena!"
+victory29 = "Sabes usar ese cuchillo! Haces cortes limpios, muy precisos."
 
 ;Vs. Alex
-victory31 = "Te ries del peligro. Eso no lo hace cualquiera!"
-victory32 = "Eso de ser mitad y mitad... Te peleas solo a veces? O ya hiciste las paces?"
-victory33 = "Sabes? Me gusta pensar que tu lado demonio es el que lucha, mientras que tu lado angel es el que sonrie."
+victory30 = "Te ries del peligro. Eso no lo hace cualquiera!"
+victory31 = "Eso de ser mitad y mitad... Te peleas solo a veces? O ya hiciste las paces?"
+victory32 = "Sabes? Me gusta pensar que tu lado demonio es el que lucha, mientras que tu lado angel es el que sonrie."
 
 ;Vs. Capitan 2
-victory34 = "Hay gente que solo pelea por ganar. Tu peleaste porque querias. Se nota la diferencia!"
-victory35 = "Eres el tipo de rival que hace que uno quiera dar mas!"
+victory33 = "Hay gente que solo pelea por ganar. Tu peleaste porque querias. Se nota la diferencia!"
+victory34 = "Eres el tipo de rival que hace que uno quiera dar mas!"
 
 ;Vs. Nick Hopper
-victory36 = "Vamos, peleaste muy bien! Deberias usar tu cuchillo mas seguido."
-victory37 = "Peleas como si fuera personal, esta todo bien?"
+victory35 = "Vamos, peleaste muy bien! Deberias usar tu cuchillo mas seguido."
+victory36 = "Peleas como si fuera personal, esta todo bien?"
 
 ;Vs. Ulikander
-victory38 = "Llevas mucho tiempo en esto, verdad? Se nota en cada uno de tus ataques!"
-victory39 = "Oye, si algun dia das clases, avisame!"
+victory37 = "Llevas mucho tiempo en esto, verdad? Se nota en cada uno de tus ataques!"
+victory38 = "Oye, si algun dia das clases, avisame!"
 
 ;Vs. Wach
-victory40 = "Deberias probar dormir mas, tal vez asi estas mas atento!"
-victory41 = "Debes enseñarme a dibujar asi, enano! Si pelearamos juntos, seriamos imparables!"
+victory39 = "Deberias probar dormir mas, tal vez asi estas mas atento!"
+victory40 = "Debes enseñarme a dibujar asi, enano! Si pelearamos juntos, seriamos imparables!"
 
 ;Vs. Matias
-victory42 = "Que pelea! Espero que donde sea que vayas, sigas peleando asi..."
+victory41 = "Que pelea! Espero que donde sea que vayas, sigas peleando asi..."
 
 ;Vs. Matt/Shaggy/Boyfriend
-victory43 = "...Algo me dice que nos hemos visto antes..."
+victory42 = "...Algo me dice que nos hemos visto antes..."
 
 ;======================
 ;English
 ;======================
-victory44 = "That was fun! We should fight again! ...if you can get back up, haha."
-victory45 = "Hehe! Not bad!"
-victory46 = "So, how did I do? Did I do good?"
-victory47 = "And... cut!"
-victory48 = "I could do this all day!"
-victory49 = "Every fight's a show, and tonight the stars were perfect!"
-victory50 = "Once I start moving, it's really hard for me to stop!"
-victory51 = "Hehe... wanna go another round?"
+victory43 = "That was fun! We should fight again! ...if you can get back up, of course."
+victory44 = "Hehe! Not bad!"
+victory45 = "So, how did I do? Did I do good?"
+victory46 = "And... cut!"
+victory47 = "I could do this all day!"
+victory48 = "Every fight's a show, and tonight the stars were perfect!"
+victory49 = "Once I get going, I just can't stop"
+victory50 = "Hehe, care for another round?"
 
 ;Maritza K.O.
-victory52 = "Did you see that? That's my little sister!"
-victory53 = "Look at their face, Maritza! I didn't even get to blink!"
-victory54 = "If you hear a hammer, it's already too late!"
+victory51 = "Did you see that? That's my little sister!"
+victory52 = "Look at their face, Maritza! I didn't even get to blink!"
 
 ;Ivette K.O.
-victory55 = "See? You're stronger than you think, Ivy. I'll remind you every time you forget!"
-victory56 = "Fighting with you makes everything feel calmer, Ivette."
-victory57 = "See? You could do it, Ivette! I knew it!"
+victory53 = "See? You're stronger than you think, Ivy. I'll remind you every time you forget!"
+victory54 = "Fighting with you makes everything feel calmer, Ivette."
+victory55 = "See? You could do it, Ivette! I knew it!"
 
 ;Vs. Maavo
-victory58 = "If I lost... would that still count as a win?"
-victory59 = "So this is what fighting me feels like? No wonder people panic."
-victory60 = "Have I always had that dumb smile?"
+victory56 = "If I lost... would that still count as a win?"
+victory57 = "So this is what fighting me feels like? No wonder people panic."
+victory58 = "Have I always had that dumb smile?"
 
 ;Vs. Rudy
-victory61 = "Hey... if we don't find your money, we can pretend it never existed!"
-victory62 = "If it makes you feel better, I once lost my wallet too!"
-victory63 = "Ohhh, so THIS is what stress looks like!"
-victory64 = "Hey, look on the bright side! At least you're getting exercise!"
+victory59 = "Hey... if we don't find your money, we can pretend it never existed!"
+victory60 = "If it makes you feel better, I once lost my wallet too!"
+victory61 = "Ohhh, so THIS is what stress looks like!"
+victory62 = "Hey, look on the bright side! At least you're getting exercise!"
 
 ;Vs. Oliver
-victory65 = "Did you see that, Maritza? I think I just beat Mega Man!"
+victory63 = "Did you see that, Maritza? I think I just beat Mega Man!"
 
 ;Vs. Martin
-victory66 = "Sorry, do we know each other? Your face looks familiar..."
+victory64 = "Sorry, do we know each other? Your face looks familiar..."
 
 ;Vs. Chase
-victory67 = "You're kinda like me... just louder!"
-victory68 = "I like fighting people who can keep up. Makes it exciting!"
-victory69 = "Can you imagine us on the same team? Nobody could keep up!"
-victory70 = "You move like you're chasing the future. I just enjoy the moment!"
-victory71 = "That was fun, Chase! You push me harder than most."
+victory65 = "You're kinda like me... just louder!"
+victory66 = "I like fighting people who can keep up. Makes it exciting!"
+victory67 = "Can you imagine us on the same team? Nobody could keep up!"
+victory68 = "You move like you're chasing the future. I just enjoy the moment!"
+victory69 = "That was fun, Chase! You push me harder than most."
 
 ;Vs. Hanzo
-victory72 = "Wow, you really go for the vitals, huh? Bold choice!"
-victory73 = "Heh, I'll need stitches later. Totally worth it!"
-victory74 = "You're good with that knife! Clean cuts. Efficient."
+victory70 = "Wow, you really go for the vitals, huh? Bold choice!"
+victory71 = "Heh, I'll need stitches later. Totally worth it!"
+victory72 = "You're good with that knife! Clean cuts. Efficient."
 
 ;Vs. Alex
-victory75 = "You laugh at danger. I respect that!"
-victory76 = "That whole half-and-half thing... do you fight with yourself sometimes? Or did you already make peace?"
-victory77 = "You know... I like to think your demon side does the fighting, and your angel side does the smiling."
+victory73 = "You laugh at danger. I respect that!"
+victory74 = "That whole half-and-half thing... do you fight with yourself sometimes? Or did you already make peace?"
+victory75 = "You know... I like to think your demon side does the fighting, and your angel side does the smiling."
 
 ;Vs. Capitan 2
-victory78 = "Some people only fight to win. You fought because you wanted to. You can feel the difference!"
-victory79 = "You're the kind of rival that makes you want to give it your all!"
+victory76 = "Some people only fight to win. You fought because you wanted to. You can feel the difference!"
+victory77 = "You're the kind of rival that makes you want to give it your all!"
 
 ;Vs. Nick Hopper
-victory80 = "Hey, you fought really well! You should use your knife more often."
-victory81 = "You fight like it's personal... everything okay?"
+victory78 = "Hey, you fought really well! You should use your knife more often."
+victory79 = "You fight like it's personal... everything okay?"
 
 ;Vs. Ulikander
-victory82 = "You've been at this for a long time, haven't you? It shows in every one of your attacks!"
-victory83 = "Hey, if you ever give lessons, let me know!"
+victory80 = "You've been at this for a long time, haven't you? It shows in every one of your attacks!"
+victory81 = "Hey, if you ever give lessons, let me know!"
 
 ;Vs. Wach
-victory84 = "You should try sleeping more, maybe then you'd be more alert!"
-victory85 = "You gotta teach me to draw like that, little guy! If we fought together, we'd be unstoppable!"
+victory82 = "You should try sleeping more, maybe then you'd be more alert!"
+victory83 = "You gotta teach me to draw like that, little guy! If we fought together, we'd be unstoppable!"
 
 ;Vs. Matias
-victory86 = "What a fight! I hope wherever you go, you keep fighting like that..."
+victory84 = "What a fight! I hope wherever you go, you keep fighting like that..."
 
 ;Vs. Matt/Shaggy/Boyfriend
-victory87 = "...Something tells me we've met before..."
+victory85 = "...Something tells me we've met before..."
 
 ;======================
 ;SAMSON
-victory88 = "[ NOTHING BUT A FRACTION OF THE COMPLETE SAMSONIC COMPOUND ]"
+victory86 = "[ NOTHING BUT A FRACTION OF THE COMPLETE SAMSONIC COMPOUND ]"
 
 ;SAMSON Palette (Vs. SAMSON)
-victory89 = "[ IT'S DECIDED, THEN. ] [ ASSIMILATING. ]  [ ASSIMILATING. ]  [ ASSIMILATING. ]"
-victory90 = "[ WE WILL RISE AGAIN. ] [ ASSIMILATING. ]  [ ASSIMILATING. ]  [ ASSIMILATING. ]"
-victory91 = "[ ONE STEP CLOSER TO COMPLETION. ] [ ASSIMILATING. ]  [ ASSIMILATING. ]  [ ASSIMILATING. ]"
+victory87 = "[ IT'S DECIDED, THEN. ] [ ASSIMILATING. ]  [ ASSIMILATING. ]  [ ASSIMILATING. ]"
+victory88 = "[ WE WILL RISE AGAIN. ] [ ASSIMILATING. ]  [ ASSIMILATING. ]  [ ASSIMILATING. ]"
+victory89 = "[ ONE STEP CLOSER TO COMPLETION. ] [ ASSIMILATING. ]  [ ASSIMILATING. ]  [ ASSIMILATING. ]"
 
 ;--var list
 ; var(0):= 2102, 2201, 2202, 87872, 99011
