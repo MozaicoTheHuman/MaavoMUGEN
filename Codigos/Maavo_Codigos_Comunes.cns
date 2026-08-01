@@ -3830,8 +3830,8 @@ fvar(36)=root,palno
 
 [State 12345, Varset]
 type=varset
-trigger1=floor(fvar(36))<1||floor(fvar(36))>55
-fvar(36)=1+(floor(fvar(36))<1)*54
+trigger1=floor(fvar(36))<1||floor(fvar(36))>60
+fvar(36)=1+(floor(fvar(36))<1)*59
 
 [State 12345, timer APURATE GUEON]
 type = Explod
@@ -3917,7 +3917,7 @@ ignorehitpause = 1
 
 [State 12345, Auto Repeat Change]
 type = varadd
-trigger1 = floor(fvar(39)) > 20 && (floor(fvar(39))-20)%5 = 0
+trigger1 = floor(fvar(39)) > 20 && (floor(fvar(39))-20)%4 = 0
 fvar(36) = 1-(root,command="holddown"||root,command="holdback"&&facing=1||root,command="holdfwd"&&facing=-1)*2
 ignorehitpause = 1
 

@@ -466,6 +466,17 @@ triggerall = fvar(36) = 8
 trigger1 = time = 0
 value = S1959,16
 
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 7
+trigger1 = time = 0
+value = S1959,33
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 7
+trigger1 = time = 0
+value = S1959,33
+
 [State 3003, SuperPause]
 type = SuperPause
 trigger1 = animelem = 3
@@ -758,6 +769,17 @@ type = PlaySnd
 triggerall = fvar(36) = 8
 trigger1 = time = 0
 value = S1959,16
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 7
+trigger1 = time = 0
+value = S1959,33
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 7
+trigger1 = time = 0
+value = S1959,33
 
 [State 3003, SuperPause]
 type = SuperPause
@@ -1765,6 +1787,17 @@ value = S1959, 18
 
 [State 0, PlaySnd]
 type = PlaySnd
+triggerall = fvar(36) = 7
+trigger1 = time = 0
+value = S1959,33
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 7
+trigger1 = time = 0
+value = S1959,33
+
+[State 0, PlaySnd]
+type = PlaySnd
 trigger1 = animelem = 2
 value = S24500,5
 
@@ -2052,6 +2085,17 @@ type = PlaySnd
 triggerall = fvar(36) = 8
 trigger1 = time = 0
 value = S1959,16
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 7
+trigger1 = time = 0
+value = S1959,33
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 7
+trigger1 = time = 0
+value = S1959,33
 
 [State 19001, 1]
 type = Explod
@@ -3068,7 +3112,16 @@ trigger1 = time = 0
 value = S1957,1
 ignorehitpause = 1
 persistent = 0
-
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 7
+trigger1 = time = 0
+value = S1959,33
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 7
+trigger1 = time = 0
+value = S1959,33
 [State 19001, AfterImage]
 type = AfterImage
 trigger1 = time = 0            

@@ -6,7 +6,6 @@
 ;Standing Strong Punch - Motion Trail
 [StateDef 221]
 type = S
-movetype= A
 anim = 221
 poweradd = 0
 sprpriority = -1
@@ -45,7 +44,6 @@ trigger1 = animtime = 0
 ;Jump Strong Punch - Motion Trail
 [StateDef 231]
 type = S
-movetype= A
 anim = 621
 poweradd = 0
 sprpriority = -1
@@ -84,7 +82,6 @@ trigger1 = animtime = 0
 ;Crouching Strong Kick - Motion Trail
 [StateDef 451]
 type = S
-movetype= A
 anim = 221
 poweradd = 0
 sprpriority = 3
@@ -124,7 +121,6 @@ trigger1 = animtime = 0
 ;Crouching Strong Kick - Motion Trail 2
 [StateDef 452]
 type = S
-movetype= A
 anim = 221
 poweradd = 0
 sprpriority = -1
@@ -163,25 +159,21 @@ trigger1 = animtime = 0
 ;Counter de Papel - Papel
 [StateDef 2001]
 type = S
-movetype= A
 physics = S
-juggle  = 1
-velset = 0,0
 ctrl = 0
 anim = 2001
-poweradd = 0
-sprpriority = 0
+sprpriority = 2
 
 [State 2001]
 type = BindtoRoot
 trigger1 = 1
 time = -1
 facing = 1
-pos = 2,2
+pos = 0,0
 
 [State 0, end]
 type = DestroySelf
-trigger1 = AnimTime = 0
+trigger1 = time = 30
 
 [State 0, end]
 type = DestroySelf
@@ -238,7 +230,6 @@ trigger1 = AnimTime = 0
 ;Counter de Papel - Papel (Pedazo 2)
 [StateDef 20012]
 type = S
-movetype= A
 physics = S
 juggle  = 1
 velset = 0,0
@@ -287,7 +278,6 @@ trigger1 = AnimTime = 0
 ;Estocada Veloz - Hit Spark
 [StateDef 22101]
 type = S
-movetype= A
 anim = 3001
 poweradd = 0
 sprpriority = -1
@@ -319,7 +309,6 @@ trigger1 = animtime = 0
 ;Estocada Veloz - Hit Spark
 [StateDef 22102]
 type = S
-movetype= A
 anim = 3001
 poweradd = 0
 sprpriority = -1
@@ -351,7 +340,6 @@ trigger1 = animtime = 0
 ;Estocada Veloz - Hit Spark
 [StateDef 22103]
 type = S
-movetype= A
 anim = 3001
 poweradd = 0
 sprpriority = -1
@@ -383,7 +371,6 @@ trigger1 = animtime = 0
 ;Estocada Veloz - Trail
 [StateDef 2220]
 type = S
-movetype= A
 anim = 2501
 poweradd = 0
 sprpriority = -1
@@ -413,7 +400,6 @@ trigger1 = animtime = 0
 ;Estocada Veloz - Trail
 [StateDef 2221]
 type = S
-movetype= A
 anim = 2501
 poweradd = 0
 sprpriority = -1
@@ -437,7 +423,6 @@ trigger1 = animtime = 0
 ;Estocada Veloz - Trail
 [StateDef 2222]
 type = S
-movetype= A
 anim = 2501
 poweradd = 0
 sprpriority = -1
@@ -461,7 +446,6 @@ trigger1 = animtime = 0
 ;Media Luna - Hit Spark
 [StateDef 14021]
 type = S
-movetype= A
 anim = 3001
 poweradd = 0
 sprpriority = -1
@@ -493,7 +477,6 @@ trigger1 = animtime = 0
 ;Ve, Ivette! - Ivette Cayendo (FX 1)
 [Statedef 99022]
 type    = S
-movetype= A
 physics = N
 velset = 0,0
 ctrl = 0
@@ -577,7 +560,6 @@ trigger1 = parent, stateno = 3748
 ;Ve, Ivette! - Ivette Cayendo (FX 2)
 [Statedef 99023]
 type    = S
-movetype= A
 physics = N
 velset = 0,0
 ctrl = 0
@@ -687,7 +669,6 @@ trigger1 = animtime = 0
 ;Hyper - Air Juggle (Hitspark)
 [StateDef 190021]
 type = S
-movetype= A
 anim = 1900051+random%6
 poweradd = 0
 sprpriority = 3
@@ -1541,7 +1522,55 @@ type = DestroySelf
 trigger1 = time = 5
 
 ;---------------------------------------------------------------------------
-; Super Cancel Display Helper (taken from daniel2x 2.0 for the lols)
+;Scott Pilgrim - KROWW
+[StateDef 3365]
+type = S
+anim = 3366
+poweradd = 0
+sprpriority = -3
+
+[State 0, AngleDraw]
+type = AngleDraw
+triggerall = root,facing = -1
+trigger1 = time > 0
+value = -20
+ignorehitpause = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = (1 + 0.01*time),(1 + 0.01*time)
+ignorehitpause = 1
+
+[State no te giri conchetumare]
+type = AssertSpecial
+trigger1 = 1
+flag = NoAutoTurn
+
+[State no turn]
+type = Turn
+trigger1 = Time = 0
+trigger1 = Facing = -1 
+
+[State 3365, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+ignorehitpause = 1
+
+[State Fade]
+type = Trans
+trigger1 = Time >= 20
+trans = add
+alpha = 256*(35-Time)/15, 256
+ignorehitpause = 1
+
+[State 3365, ChangeState]
+type = DestroySelf
+trigger1 = Time = 35
+
+;---------------------------------------------------------------------------
+; Super Cancel Display Helper (taken from daniel2x 2.0 on a vc with jaede asdjgmfkldas)
 [Statedef 2310]
 type = A
 movetype = I

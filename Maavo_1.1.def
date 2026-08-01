@@ -57,6 +57,8 @@ b2 = 11 ;11 - Friday Night Funkin' (2021 Palette Contest Winner: Bacon1233TheArm
 c2 = 12 ;12 - Scooby-Doo
 
 ;THERE ARE WAY MORE PALETTES BUT YOU NEED TO PLAY IKEMEN GO NIGHTLY TO ACCESS THEM
+;Or you can also use them using the Palette Selector on the config.txt file!!!
+
 ;13 - Skullgirls
 ;14 - Pico School
 ;15 - M.U.G.E.N. All-Stars
@@ -94,7 +96,17 @@ c2 = 12 ;12 - Scooby-Doo
 ;47 - Sora
 ;48 - Volnutt
 ;49 - Hong Lu
-;50 - 2021 Demo
+;50 - Umamusume
+;51 - Basuros
+;52 - HQ Rip
+;53 - Windows
+;54 - Rayman
+;55 - Fairly OddParents
+;56 - The Big 3
+;57 - Paper Mario
+;58 - Holy Trinity
+;59 - Creppypasta
+;60 - 2021 DEMO
 
 [Arcade]
 intro.storyboard=

@@ -601,7 +601,7 @@ if var(19) = 1 && var(39) = 1 {
 }
 
 
-if time%3 = 0 && palno = 30 && (
+if time%3 = 0 && fvar(36) = 30 && (
     (stateno >= 100 && stateno <= 117) ||
     (stateno >= 191 && stateno <= 196) ||
     (stateno >= 700 && stateno <= 740) ||

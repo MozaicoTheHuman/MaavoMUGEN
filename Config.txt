@@ -116,7 +116,7 @@ trigger9 = 0&&var(18):=		(1) ; ◄ Change value here.                           
 ;				|0 - Off                                                    |
 ;				|1 - On                                                     |
 ;            			|                                                           |
-trigger10 = 0&&fvar(30):=		(1) ; ◄ Change value here.                                  |
+trigger10 = 0&&fvar(30):=	(1) ; ◄ Change value here.                                  |
 ;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾	
 ;=================================================================================================
 ;Palette Selector?
@@ -124,7 +124,7 @@ trigger10 = 0&&fvar(30):=		(1) ; ◄ Change value here.                         
 ;				|0 - Off                                                    |
 ;				|1 - On                                                     |
 ;            			|                                                           |
-trigger11 = 0&&fvar(37):=	(1) ; ◄ Change value here.                                  |
+trigger11 = 0&&fvar(37):=	(0) ; ◄ Change value here.                                  |
 ;				 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾	
 ;=================================================================================================
 ;Scrapped Moves? (This will enable 2 scrapped special moves)

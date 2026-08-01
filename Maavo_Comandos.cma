@@ -1222,14 +1222,13 @@ trigger1 = (stateno = 220 || stateno = 250) && movehit
 trigger2 = (stateno = 440 || stateno = 450) && movehit
 
 ;---------------------------------------------------------------------------
-;Punch1
 [State -1, AI PencilJab]
 type = ChangeState
 value = cond(var(19) = 1, cond(power >= 500 && random < 500+cond(life < lifemax*0.5,200,0),2212,2210), 2210)
 triggerall = aiLevel && roundstate = 2 && var(58) && alive && numenemy
 triggerall = ctrl || stateno = 0 || (stateno = [20,22]) || (stateno = [100,109]) || stateno = 1022 || (stateno = [116,117])
 triggerall = enemynear(!enemynear,alive),statetype != L
-triggerall = (p2bodydist x - (var(48) * 9)) = [70,80]
+triggerall = (p2bodydist x - (var(48) * 9)) = [65,75]
 triggerall = (p2bodydist y - (enemynear,vel y * 9)) = [-38,0]
 triggerall = statetype != A && pos y = 0
 triggerall = enemynear,movetype != A

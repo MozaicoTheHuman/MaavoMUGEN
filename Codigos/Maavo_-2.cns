@@ -9,7 +9,7 @@
 [State -2, Gloveless Palettes]
 type = VarSet
 trigger1 = fvar(36)=3||fvar(36)=5||fvar(36)=10||fvar(36)=11||fvar(36)=12||fvar(36)=13||fvar(36)=14||fvar(36)=15||fvar(36)=16||fvar(36)=17||fvar(36)=19||fvar(36)=21||fvar(36)=24||fvar(36)=25||fvar(36)=26||fvar(36)=27||fvar(36)=28||fvar(36)=30
-trigger2 = fvar(36)=31||fvar(36)=32||fvar(36)=33||fvar(36)=34||fvar(36)=36||fvar(36)=37||fvar(36)=39||fvar(36)=41||fvar(36)=42||fvar(36)=43||fvar(36)=49||fvar(36)=51||fvar(36)=52
+trigger2 = fvar(36)=31||fvar(36)=32||fvar(36)=33||fvar(36)=34||fvar(36)=36||fvar(36)=37||fvar(36)=39||fvar(36)=41||fvar(36)=42||fvar(36)=43||fvar(36)=49||fvar(36)=51||fvar(36)=52||fvar(36)=55||fvar(36)=58||fvar(36)=59
 var(23) = 1
 ignorehitpause = 1
 
@@ -275,7 +275,7 @@ ignorehitpause = 1
 
 [state -2, No Clones]
 type = remappal
-triggerall=numenemy && (fvar(36)=[1,55]);fvar(36)=the number of pals available 
+triggerall=numenemy && (fvar(36)=[1,60]);fvar(36)=the number of pals available 
 trigger1=fvar(37)&&!numhelper(12345)&&matchno=1&&roundno=1
 trigger1=enemy,authorname="Maavo"&&enemy,name="Maavo"&&enemy,fvar(36)=fvar(36) 
 source = 1, 1
@@ -285,14 +285,14 @@ ignorehitpause = 1
 [state -2, Palette]
 type = varset
 trigger1 = numhelper(12345)
-trigger1=helper(12345),fvar(36)=[1,55]
+trigger1=helper(12345),fvar(36)=[1,60]
 fvar(36)= helper(12345),fvar(36)
 ignorehitpause = 1
 
 [state -2, Palette Selection]
 type = remappal
 trigger1 = numhelper(12345)
-trigger1=helper(12345),fvar(36)=[1,55]
+trigger1=helper(12345),fvar(36)=[1,60]
 source = 1, 1
 dest = 1, floor(fvar(36))
 ignorehitpause = 1
@@ -595,14 +595,14 @@ trigger3 = 0&&(var(52):=6)
 trigger4 = fvar(36)=35
 trigger4 = 0&&(var(52):=4+random%3)
 ;Victory Music Override: DEMO 2021, rossiter's original song (EXCLUSIVE FOR IKEMEN GO)
-trigger5 = fvar(36)=55
+trigger5 = fvar(36)=60
 trigger5 = 0&&(var(52):=2)
 ignorehitpause = 1
 
 [State 0, Legacy Mariri and Ivy voices override]; specifically for the 2021 demo palette (EXCLUSIVE FOR IKEMEN GO)
 type = VarSet
 triggerall = !numhelper(12345)
-trigger1 = fvar(36) = 55
+trigger1 = fvar(36) = 60
 var(34) = 1
 ignorehitpause = 1
 
@@ -924,7 +924,7 @@ ownpal = 0
 type = HitOverride
 triggerall = aiLevel && roundstate = 2 && alive && numenemy
 triggerall = stateno != [150,155]
-triggerall = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, cond(life > lifemax*0.50, 800, 999), cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*0.8, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 990, cond(life < lifemax*0.10, 900, cond(life < lifemax*0.25, 650, cond(life < lifemax*0.50, 550, 150)))))))
+triggerall = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, cond(life > lifemax*0.50, 750, 999), cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*0.8, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 820, cond(life < lifemax*0.10, 600, cond(life < lifemax*0.25, 550, cond(life < lifemax*0.50, 350, 150)))))))
 trigger1 = ctrl 
 trigger2 = (stateno = [20,22]) || (stateno = [100,109])
 trigger3 = stateno = 1022 || (stateno = [116,117])
