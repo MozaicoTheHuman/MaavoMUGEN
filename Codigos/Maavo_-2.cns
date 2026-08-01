@@ -907,9 +907,9 @@ ownpal = 0
 
 [State -1, lary dary, mi nombre es barry]
 type = HitOverride
-triggerall = aiLevel && roundstate = 2 && alive && numenemy
+triggerall = AILevel > 7 || ailevel && enemynear,aiLevel && roundstate = 2 && alive && numenemy
 triggerall = stateno != [150,155]
-triggerall = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, cond(life > lifemax*0.50, 750, 999), cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*0.8, var(59)*0.5), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 820, cond(life < lifemax*0.10, 600, cond(life < lifemax*0.25, 550, cond(life < lifemax*0.50, 350, 150)))))))
+triggerall = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, cond(life > lifemax*0.50, 750, 999), cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*0.3, var(59)*0.15), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 820, cond(life < lifemax*0.10, 600, cond(life < lifemax*0.25, 550, cond(life < lifemax*0.50, 350, 150)))))))
 trigger1 = ctrl 
 trigger2 = (stateno = [20,22]) || (stateno = [100,109])
 trigger3 = stateno = 1022 || (stateno = [116,117])

@@ -615,3 +615,7 @@ if time%3 = 0 && fvar(36) = 30 && (
 ignoreHitPause if roundstate = 2 && (stateno >= 700 && stateno <= 720) && time = 0 {
     lifebarAction{spr: const(MsgParry),0; top: 1}
 }
+
+ignoreHitPause if stateNo = 2803 || stateNo = 2713 || stateNo = 2714 {
+    assertSpecial{flag: NoComboDisplay}
+}
