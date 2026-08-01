@@ -273,15 +273,6 @@ source = 1, 1
 dest = 1, floor(fvar(36))
 ignorehitpause = 1
 
-[state -2, No Clones]
-type = remappal
-triggerall=numenemy && (fvar(36)=[1,60]);fvar(36)=the number of pals available 
-trigger1=fvar(37)&&!numhelper(12345)&&matchno=1&&roundno=1
-trigger1=enemy,authorname="Maavo"&&enemy,name="Maavo"&&enemy,fvar(36)=fvar(36) 
-source = 1, 1
-dest = 1, cond(teamside!=1 && enemynear,Numhelper(12345)=0,enemy,fvar(36)+teamside,fvar(36))
-ignorehitpause = 1
-
 [state -2, Palette]
 type = varset
 trigger1 = numhelper(12345)
@@ -612,12 +603,6 @@ triggerall = numpartner
 trigger1 = partner,Name = "Martin"
 trigger1 = partner,AuthorName = "Jeff Swag"
 var(52) = 22
-
-[State 0, No Pal select override]
-type = VarSet
-trigger1 = ailevel
-fvar(37) = 0
-ignorehitpause = 1
 
 [State 0, VarSet]
 type = VarSet

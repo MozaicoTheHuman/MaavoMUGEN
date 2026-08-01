@@ -1260,7 +1260,7 @@ ignorehitpause = 1
 type = VarSet
 triggerall = AILevel > 2 && RoundState = 2 && alive && numenemy && power >= 1000
 triggerall = enemynear,ailevel > 0
-triggerall = anim = 20032 && animelemtime(2) >= 0 && animelemtime(8) < 0
+triggerall = anim = 20032 && animelemtime(2) < 0
 trigger1 = random < cond(life < (lifemax*.5), 850, 50)
 var(22) = cond(power >= 3000, 5, cond(power >= 1000 && power < 1350, cond(random < 500, 2, 3), 1))
 ignorehitpause = 1

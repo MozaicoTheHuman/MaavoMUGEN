@@ -3851,9 +3851,9 @@ removeongethit = 1
 ownpal = 1
 [State 12345, Shrink Timer X]
 type = ModifyExplod
-trigger1 = time <= 600
+trigger1 = time <= 900
 id = 19878
-scale = .25*(1-time/600.0), .25
+scale = .25*(1-time/900.0), .25
 ignorehitpause = 1
 
 [State 12345, base de la guea]
@@ -3876,13 +3876,13 @@ ownpal = 1
 [State 12345, actualizar nombresito]
 type = RemoveExplod
 trigger1 = !time
-trigger2 = floor(fvar(39))=1 || (floor(fvar(39))>20.0 && (floor(fvar(39))-20)%5=0)
+trigger2 = floor(fvar(39))=1 || (floor(fvar(39))>20.0 && (floor(fvar(39))-20)%4=0)
 id = 19877
 ignorehitpause = 1
 [State 12345, nombresito bonito]
 type = Explod
 trigger1 = time = 1
-trigger2 = floor(fvar(39))=1 || (floor(fvar(39))>20.0 && (floor(fvar(39))-20)%5=0)
+trigger2 = floor(fvar(39))=1 || (floor(fvar(39))>20.0 && (floor(fvar(39))-20)%4=0)
 id = 19877
 anim = cond(root,facing = 1,8900,7800)+floor(fvar(36))
 pos = cond(root,facing = 1, 30, 290),cond(root,var(17) = 1, 212, 162)
@@ -3923,7 +3923,7 @@ ignorehitpause = 1
 
 [State 12345, PlaySnd]
 type = PlaySnd
-trigger1 = floor(fvar(39))=1 || (floor(fvar(39))>20 && (floor(fvar(39))-20)%5=0)
+trigger1 = floor(fvar(39))=1 || (floor(fvar(39))>20 && (floor(fvar(39))-20)%4=0)
 value = S12345,0
 volumescale = 100
 channel = 20
@@ -3952,29 +3952,29 @@ fvar(38)=25
 type = RemoveExplod
 trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
 trigger2=root,AILevel
-trigger3=time>600
+trigger3=time>900
 id = 19876
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
 trigger2=root,AILevel
-trigger3=time>600
+trigger3=time>900
 id = 19877
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
 trigger2=root,AILevel
-trigger3=time>600
+trigger3=time>900
 id = 19878
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
 trigger2=root,AILevel
-trigger3=time>600
+trigger3=time>900
 id = 2415030
 [State 12345, End]
 type=destroyself
 triggerall=ishelper(12345)
 trigger1=root,command="a"||root,command="b"||root,command="c"||root,command="x"||root,command="y"||root,command="z"||root,command="start"||roundstate=2
 trigger2=root,AILevel
-trigger3=time>600
+trigger3=time>900
