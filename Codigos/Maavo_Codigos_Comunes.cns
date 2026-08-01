@@ -3468,7 +3468,7 @@ ignorehitpause = 1
 [State 0, Astral Bullshit]
 type = VarSet
 triggerall = numenemy 
-trigger1 = ((root,stateno = 180140 || root,stateno = 181) || root,stateno = 140002 || (root,stateno = 141002 || roundstate>2 && root, prevstateno = 141002) || root,stateno = 1410025 || root,stateno = 1213 || root,numhelper(911)) && root,movetype != H
+trigger1 = ((root,stateno = 180140 || root,stateno = 181) || root,stateno = 2713 || (root,stateno = 2714 || roundstate>2 && root, prevstateno = 2714) || root,stateno = 2701 || root,stateno = 2803 || root,numhelper(911)) && root,movetype != H
 trigger2 = enemy, name = "Oliver Andersen"
 trigger2 = enemy, stateno = [4301,4399]
 trigger3 = enemy, name = "Nick (Mega Man)"
@@ -3476,7 +3476,7 @@ trigger3 = enemy, stateno = [4002,4099]
 trigger4 = enemy, name = "Greninja_GBVS" || enemy, name = "NoNerfs_GBVS"
 trigger4 = (enemy, stateno = [3010,3019]) && enemy,movetype != H || (matchover && enemy,teammode != simul && (enemy,fvar(2)||enemy,stateno=[180,189])); I know it's called a Super Skybound Art and not an Astral Heat, but shut up
 trigger5 = enemy, name = "Maavo"
-trigger5 = ((enemy,stateno = 180140 || enemy,stateno = 181) || enemy,stateno = 140002 || (enemy,stateno = 141002 || roundstate>2 && enemy, prevstateno = 141002) || enemy,stateno = 1410025 || enemy,numhelper(911)) && enemy,movetype != H
+trigger5 = ((enemy,stateno = 180140 || enemy,stateno = 181) || enemy,stateno = 2713 || (enemy,stateno = 2714 || roundstate>2 && enemy, prevstateno = 2714) || enemy,stateno = 2803 || enemy,numhelper(911)) && enemy,movetype != H
 var(40) = 1
 ignorehitpause = 1
 
