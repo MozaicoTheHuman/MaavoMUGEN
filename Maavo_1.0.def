@@ -26,7 +26,7 @@ pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
 
 [Files]
 sprite = Assets/Maavo_Sprites.sff
-sound = Assets/Assets/Maavo_SFX.snd
+sound = Assets/Maavo_SFX.snd
 anim = Assets/Maavo_Animaciones.air
 cmd = Codigos/Maavo_Comandos.cma
 cns = Codigos/Maavo_Codigos.cns
