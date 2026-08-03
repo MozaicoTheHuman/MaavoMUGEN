@@ -1191,7 +1191,7 @@ priority = 4, Hit
 pausetime = 10, 10
 sparkno = cond(var(18)=0, 2, -1)
 sparkxy = -10,-3
-hitsound = cond(var(18)=0, 5, 0), 2
+hitsound = cond(var(18)=0, 5, 0), 4
 guardsound = 6, 0
 ground.type = trip
 ground.slidetime = ceil(18+3*(var(42)!=0))

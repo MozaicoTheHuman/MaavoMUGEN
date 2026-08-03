@@ -1660,7 +1660,7 @@ ctrl = 1
 [Statedef 196]
 type = S
 ctrl = 0
-anim = cond(prevstateno = 2724 ||prevstateno = 2713, 197, 196)
+anim = cond(prevstateno = 2724||prevstateno=2713,197,196)
 velset = 0,0
 movetype = I
 poweradd = 0
