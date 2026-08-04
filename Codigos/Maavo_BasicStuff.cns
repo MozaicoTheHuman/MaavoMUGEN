@@ -1733,11 +1733,44 @@ supermovetime = 99999
 ignorehitpause = 1
 persistent = 0
 
+;MARTIN mUGEN;
+[State martin mugne]
+type = Explod
+triggerall = fvar(36) = 3
+trigger1 = time = 1
+id = 3367
+anim = 3367
+pos = -20,-70
+postype = p1
+sprpriority = 0
+ignorehitpause = 1
+persistent = 0
+sprpriority = 1
+removetime=33
+scale = .6,.6
+bindtime=-1
+ownpal = 1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 3
+trigger1 = time = 1
+value = S1959,35
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 3
+trigger1 = time = 1
+value = S1959,35
+ignorehitpause = 1
+;MARTIN mUGEN;
+
 [State 0, StopSnd]
 type = StopSnd
 trigger1 = time = 0
 channel = 1
-
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = animelemtime(2) = 0
@@ -1888,6 +1921,40 @@ supermovetime = 99999
 ignorehitpause = 1
 persistent = 0
 
+;MARTIN mUGEN;
+[State martin mugne]
+type = Explod
+triggerall = fvar(36) = 3
+trigger1 = time = 1
+id = 3367
+anim = 3367
+pos = -20,-50
+postype = p1
+sprpriority = 0
+ignorehitpause = 1
+persistent = 0
+removetime=33
+scale = .6,.6
+bindtime=-1
+sprpriority = 1
+ownpal = 1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 3
+trigger1 = time = 1
+value = S1959,35
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 3
+trigger1 = time = 1
+value = S1959,35
+ignorehitpause = 1
+;MARTIN mUGEN;
+
 [State 0, PlaySnd]
 type = PlaySnd
 trigger1 = animelemtime(2) = 0
@@ -2028,7 +2095,7 @@ velset = vel x,vel y
 ctrl = 0
 anim = 720
 
-[State 100, Land Effect]
+[State 100, Effect]
 type = Explod
 trigger1 = animelemtime(2) = 0
 anim = 3004
@@ -2066,6 +2133,40 @@ triggerall = !time
 trigger1 = vel y > -3
 y = -3
 persistent = 0
+
+;MARTIN mUGEN;
+[State martin mugne]
+type = Explod
+triggerall = fvar(36) = 3
+trigger1 = time = 1
+id = 3367
+anim = 3367
+pos = -20,-70
+postype = p1
+sprpriority = 0
+ignorehitpause = 1
+persistent = 0
+sprpriority = 1
+removetime=33
+scale = .6,.6
+bindtime=-1
+ownpal = 1
+supermovetime = 9999
+pausemovetime = 99999
+removeongethit = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 3
+trigger1 = time = 1
+value = S1959,35
+ignorehitpause = 1
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = fvar(36) = 3
+trigger1 = time = 1
+value = S1959,35
+ignorehitpause = 1
+;MARTIN mUGEN;
 
 [State 0, StopSnd]
 type = StopSnd

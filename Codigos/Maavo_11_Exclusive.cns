@@ -751,7 +751,7 @@ value = S1959,33
 [State 19001, 1]
 type = Explod
 trigger1 = AnimElem = 3
-id = 190011
+id = 190018
 anim = 190011
 pos = 0,0
 postype = p1

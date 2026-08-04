@@ -706,41 +706,41 @@ trigger2 = 0&&(var(56):=1)
 ignorehitpause = 1
 
 ;Victory Quotes
+[State -2, Normal]
+Type = VictoryQuote
+trigger1 = fvar(36) != 38
+trigger1 = var(56) = 0
+Value = cond(var(20) = 0, 0, 45) + random%8
+
 [State -2, Maritza KO]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = var(56) = 1
-value = cond(var(20) = 0, 8, 51) + random%2
+value = cond(var(20) = 0, 8, 53) + random%2
 
 [State -2, Ivette KO]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = var(56) = 2
-value = cond(var(20) = 0, 10, 53) + random%3
-
-[State -2, Normal]
-Type = VictoryQuote
-trigger1 = fvar(36) != 38
-trigger1 = var(56) = 0
-Value = cond(var(20) = 0, 0, 43) + random%8
+value = cond(var(20) = 0, 10, 55) + random%2
 
 [State -2, Maavo]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Maavo"
-value = cond(var(20) = 0, 13, 56) + random%3
+value = cond(var(20) = 0, 12, 57) + random%3
 
 [State -2, Rudy]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Rudy" && Enemy, AuthorName = "jade_midori"
-value = cond(var(20) = 0, 16, 59) + random%4
+value = cond(var(20) = 0, 15, 60) + random%3
 
 [State -2, Oliver]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Oliver Andersen" && Enemy, AuthorName = "Oliver As Latias"
-value = cond(var(20) = 0, 20, 63)
+value = cond(var(20) = 0, 18, 63)
 
 [State -2, Martin]
 type = VictoryQuote
@@ -748,56 +748,56 @@ trigger1 = fvar(36) != 38
 trigger1 = enemy, name = "Martin" && enemy, authorname = "Jeff Swag"
 trigger2 = enemy, name = "NewMartin" && enemy, authorname = "Jeff Swag"
 trigger3 = enemy, name = "Martin Bravo" && enemy, authorname = "Maavo!, AustinAnims"
-value = cond(var(20) = 0, 21, 64)
+value = cond(var(20) = 0, 19, 64)
 
 [State -2, Chase]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "CHASEVV1.1" || Enemy, Name = "CHASEVV_DEVBUILD"
-value = cond(var(20) = 0, 22, 65) + random%5
+value = cond(var(20) = 0, 20, 65) + random%5
 
 [State -2, Hanzo]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Hanzo" && Enemy, AuthorName = "Hanzo Santiago"
 trigger2 = Enemy, Name = "Hanzo" && Enemy, AuthorName = "Soga Celeste Hanzo Santiago"
-value = cond(var(20) = 0, 27, 70) + random%3
+value = cond(var(20) = 0, 25, 70) + random%3
 
 [State -2, Alex]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "New_Alex" && Enemy, AuthorName = "ElAleUwU"
-value = cond(var(20) = 0, 30, 73) + random%3
+value = cond(var(20) = 0, 28, 73) + random%3
 
 [State -2, Capitan 2]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Capitan_2" && Enemy, AuthorName = "Mario643D"
-value = cond(var(20) = 0, 33, 76) + random%2
+value = cond(var(20) = 0, 31, 76) + random%2
 
 [State -2, Nick Hopper]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Nick_Hooper" && Enemy, AuthorName = "DarkDonald1"
-value = cond(var(20) = 0, 35, 78) + random%2
+value = cond(var(20) = 0, 33, 78) + random%2
 
 [State -2, Ulikander]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = Enemy, AuthorName = "Ulikander4001"
-value = cond(var(20) = 0, 37, 80) + random%2
+value = cond(var(20) = 0, 35, 80)
 
 [State -2, Wach]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Wach" && Enemy, AuthorName = "Wach"
-value = cond(var(20) = 0, 39, 82) + random%2
+value = cond(var(20) = 0, 36, 81) + random%2
 
 [State -2, Matias]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
 trigger1 = Enemy, Name = "Matias Ariel Zurita" && Enemy, AuthorName = "Matydel42008"
-value = cond(var(20) = 0, 41, 84)
+value = cond(var(20) = 0, 38, 83)
 
 [State -2, Matt/Shaggy/Boyfriend]
 type = VictoryQuote
@@ -808,20 +808,32 @@ trigger3 = Enemy, Name = "Shaggy Rogers"
 trigger4 = Enemy, Name = "Norville Rogers"
 trigger5 = Enemy, Name = "BoyfriendFNF"
 trigger6 = Enemy, Name = "Boyfriend"
-value = cond(var(20) = 0, 42, 85)
+value = cond(var(20) = 0, 39, 84)
+
+[State -2, Mozaico]
+type = VictoryQuote
+trigger1 = fvar(36) != 38
+trigger1 = Enemy, Name = "Mozaico The Robot" && Enemy, AuthorName = "Mozaico"
+value = cond(var(20) = 0, 40, 85) + random%3
+
+[State -2, Erin]
+type = VictoryQuote
+trigger1 = fvar(36) != 38
+trigger1 = Enemy, Name = "Erin" && Enemy, AuthorName = "erin"
+value = cond(var(20) = 0, 43, 88) + random%2
 
 [State -2, SAMSON Palette]
 Type = VictoryQuote
 triggerall = !numhelper(12345)
 trigger1 = fvar(36) = 38
-Value = 86
+Value = 90
 
 [State -2, SAMSON Palette Vs SAMSON]
 Type = VictoryQuote
 triggerall = !numhelper(12345)
 trigger1 = Enemy, Name = "Samson" && Enemy, AuthorName = "VWTG"
 trigger1 = fvar(36) = 38
-Value = 87+random%3
+Value = 91 + random%3
 
 ;-----------------------------------------------------------------------------------------------
 ; RemoveExplods
@@ -871,8 +883,12 @@ trigger1 = stateno != 3000
 id = 87892
 [State 0, RemoveExplod]
 type = RemoveExplod
-trigger1 = stateno != 2503
+trigger1 = stateno != 2500
 id = 190011
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 2501
+id = 190018
 [State 0, RemoveExplod]
 type = RemoveExplod
 trigger1 = stateno != 2700

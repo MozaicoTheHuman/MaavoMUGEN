@@ -6724,6 +6724,7 @@ Clsn2: 2
   Clsn2[1] = -30, -202, 32, -130
 800,11, -10,0, 11
 
+; waos
 [Begin Action 14446]
 3434,0, 0,0, 2, , A
 3434,1, 0,0, 2, , A
@@ -7028,6 +7029,7 @@ Loopstart
 1906,1, 0,0, 130
 1906,2, 0,0, 140
 
+; Oliver intro mouth
 [Begin Action 19514]
 1905,13, 0,0, 4
 1905,14, 0,0, 3
@@ -7469,6 +7471,7 @@ LoopStart
 [Begin Action 112013]
 5030,10, 0,0, 3
 
+; no recuerdo q era esta wea pero se ve chistoso
 [Begin Action 112014]
 17990,1, -296,-234, 2, , AS0D256
 17990,1, -296,-234, 2, , AS8D256
@@ -8018,6 +8021,7 @@ LoopStart
 Loopstart
 173,0, 0,-130, 1
 
+; Encore Rush GFX
 [Begin Action 1900051]
 24248,0, 0,0, 2, , A
 24248,0, 0,0, 2, , AS150D256
@@ -8025,6 +8029,7 @@ Loopstart
 24248,0, 0,0, 2, , AS50D256
 24248,0, 0,0, 2, , AS10D256
 
+; Encore Rush GFX
 [Begin Action 1900052]
 24248,1, 0,0, 2, , A
 24248,1, 0,0, 2, , AS150D256
@@ -8032,6 +8037,7 @@ Loopstart
 24248,1, 0,0, 2, , AS50D256
 24248,1, 0,0, 2, , AS10D256
 
+; Encore Rush GFX
 [Begin Action 1900053]
 24248,2, 0,0, 2, , A
 24248,2, 0,0, 2, , AS150D256
@@ -8039,6 +8045,7 @@ Loopstart
 24248,2, 0,0, 2, , AS50D256
 24248,2, 0,0, 2, , AS10D256
 
+; Encore Rush GFX
 [Begin Action 1900054]
 24248,3, 0,0, 2, , A
 24248,3, 0,0, 2, , AS150D256
@@ -8046,6 +8053,7 @@ Loopstart
 24248,3, 0,0, 2, , AS50D256
 24248,3, 0,0, 2, , AS10D256
 
+; Encore Rush GFX
 [Begin Action 1900055]
 24248,4, 0,0, 2, , A
 24248,4, 0,0, 2, , AS150D256
@@ -8053,6 +8061,7 @@ Loopstart
 24248,4, 0,0, 2, , AS50D256
 24248,4, 0,0, 2, , AS10D256
 
+; Encore Rush GFX
 [Begin Action 1900056]
 24248,5, 0,0, 2, , A
 24248,5, 0,0, 2, , AS150D256
@@ -8363,8 +8372,8 @@ LoopStart
 6769,0, 0,0, 76, , A
 
 
-;Hit by Itadaki Scoop
-    [Begin Action 333666777]
+; Hit by Itadaki Scoop
+[Begin Action 333666777]
     ; First pose
 191,11, 0,0, 1
     ; Second pose
@@ -8377,12 +8386,12 @@ LoopStart
 195,3, 0,0, 3
 195,4, 0,0, 11
 
-
 ; Palette Selector base
 [BegIn Action 19876]
 12145,0, 0,0, -1, , S
 
 
+; pal selector time bar
 [Begin Action 19878]
 12145,1, 0,0, 10
 
@@ -8781,4 +8790,14 @@ LoopStart
 ; Scott Pilgrim  - KROWW
 [Begin Action 3366]
 3255,1, 0,0, -1
+
+
+; Martin Parry thing
+[Begin Action 3367]
+3256,0, 0,0, 2
+3256,3, 0,0, 16
+3256,2, 0,0, 2
+3256,1, 0,0, 2
+3256,0, 0,0, 2
+-1,0, 0,0, 10
 
