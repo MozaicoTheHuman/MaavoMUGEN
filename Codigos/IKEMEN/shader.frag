@@ -123,7 +123,6 @@ vec3 GlowBlend(vec3 base, vec3 blend) {
 	return clamp(result, 0.0, 1.0);
 }
 
-// Paint.NET "Overlay" blend mode: Multiply on the dark half, Screen on the light half.
 vec3 OverlayBlend(vec3 base, vec3 blend) {
 	vec3 lo = 2.0 * base * blend;
 	vec3 hi = 1.0 - 2.0 * (1.0 - base) * (1.0 - blend);
@@ -131,7 +130,6 @@ vec3 OverlayBlend(vec3 base, vec3 blend) {
 	return clamp(mix(lo, hi, mask), 0.0, 1.0);
 }
 
-// Simple contrast adjustment, same range convention as Paint.NET's Brightness/Contrast (-100..100).
 vec3 ApplyContrast(vec3 color, float amount) {
 	float factor = 1.0 + (amount / 100.0);
 	return clamp((color - 0.5) * factor + 0.5, 0.0, 1.0);
@@ -176,8 +174,6 @@ void main()
 
 	vec3 tintedBase = mix(ikemenColor.rgb, OverlayBlend(ikemenColor.rgb, tintColor), isIgnoredIndex ? 0.0 : tintIntensity);
 	vec3 glowed = GlowBlend(tintedBase, rimColor);
-	// rimOpacity ahora es una opacidad real: mezcla el glow sobre la base según su propia opacidad,
-	// además de la mascara de borde (rimMask) que ya definia la forma/silueta del rim.
 	vec3 finalColor = mix(tintedBase, glowed, rimMask * rimOpacity);
 
 	finalColor = ApplyContrast(finalColor, contrastAmount);
