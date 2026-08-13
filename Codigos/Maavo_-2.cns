@@ -9,7 +9,7 @@
 [State -2, Gloveless Palettes]
 type = VarSet
 trigger1 = fvar(36)=3||fvar(36)=5||fvar(36)=10||fvar(36)=11||fvar(36)=12||fvar(36)=13||fvar(36)=14||fvar(36)=15||fvar(36)=16||fvar(36)=17||fvar(36)=19||fvar(36)=21||fvar(36)=24||fvar(36)=25||fvar(36)=26||fvar(36)=27||fvar(36)=28||fvar(36)=30
-trigger2 = fvar(36)=31||fvar(36)=32||fvar(36)=33||fvar(36)=34||fvar(36)=36||fvar(36)=37||fvar(36)=39||fvar(36)=41||fvar(36)=42||fvar(36)=43||fvar(36)=49||fvar(36)=51||fvar(36)=52||fvar(36)=55||fvar(36)=58||fvar(36)=59
+trigger2 = fvar(36)=31||fvar(36)=32||fvar(36)=33||fvar(36)=34||fvar(36)=36||fvar(36)=37||fvar(36)=39||fvar(36)=40||fvar(36)=41||fvar(36)=42||fvar(36)=43||fvar(36)=49||fvar(36)=51||fvar(36)=52||fvar(36)=55||fvar(36)=58||fvar(36)=59
 var(23) = 1
 ignorehitpause = 1
 
@@ -641,7 +641,7 @@ Name = "K.O. Screen"
 StateNo = 911
 ID = 911
 Pos = 0,0
-PosType = p1
+PosType = p2
 OwnPal = 1
 IgnoreHitPause = 1
 Persistent = 0
@@ -660,7 +660,7 @@ Name = "K.O. Screen"
 StateNo = 911
 ID = 911
 Pos = 0,0
-PosType = p1
+PosType = p2
 OwnPal = 1
 IgnoreHitPause = 1
 Persistent = 0
@@ -923,10 +923,13 @@ ownpal = 0
 
 [State -1, lary dary, mi nombre es barry]
 type = HitOverride
-triggerall = AILevel > 7 || ailevel && enemynear,aiLevel && roundstate = 2 && alive && numenemy
+triggerall = AILevel > 7 || ailevel && enemynear,aiLevel 
+triggerall = roundstate = 2 && alive && numenemy
 triggerall = stateno != [150,155]
-triggerall = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, cond(life > lifemax*0.50, 750, 999), cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*0.3, var(59)*0.15), cond(life < lifemax*0.033, 999, cond(life < lifemax*0.075, 820, cond(life < lifemax*0.10, 600, cond(life < lifemax*0.25, 550, cond(life < lifemax*0.50, 350, 150)))))))
-trigger1 = ctrl 
+triggerall = stateno != [200,650]
+triggerall = stateno != [2000,3000]
+triggerall = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, cond(life > lifemax*0.50, 750, 999), cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*0.3, var(59)*0.15), cond(life < lifemax*0.033, 900, cond(life < lifemax*0.075, 720, cond(life < lifemax*0.10, 600, cond(life < lifemax*0.25, 350, cond(life < lifemax*0.50, 350, 100)))))))
+trigger1 = ctrl = 1
 trigger2 = (stateno = [20,22]) || (stateno = [100,109])
 trigger3 = stateno = 1022 || (stateno = [116,117])
 trigger4 = stateno = 0 || stateno = 20 || stateno = 50 || stateno = 40 ||  stateno=5120 || (stateno = [100,105])
@@ -960,13 +963,6 @@ channel = 7
 volumescale = 100
 ignorehitpause = 1
 ;This is for the special Pal 16 thingy
-
-[State -3, Landing Sound]
-type = PlaySnd
-triggerall = Time = 1
-trigger1 = stateno = 52
-trigger2 = stateno = 106
-value = S51, 0
 
 [State -3]
 type = ChangeState

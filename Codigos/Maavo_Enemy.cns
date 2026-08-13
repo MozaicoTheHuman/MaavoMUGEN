@@ -16,10 +16,23 @@ trigger1 = !hitshakeover
 value = 1
 ignorehitpause = 1
 
-[State 1215, Anim] ;Custom animation
+[State 1215, Anim]
 type = ChangeAnim
-trigger1 = 1
+trigger1 = !(Name = "Erin" && AuthorName = "erin")
+trigger1 = !(Name = "Dan" && AuthorName = "Daniel9999999")
+trigger1 = !(Name = "Rudy" && AuthorName = "jade_midori")
 value = cond(statetype=L,5170,5050)
+[State 1215, Anim Up]
+type = ChangeAnim
+trigger1 = (Name = "Erin" && AuthorName = "erin") || (Name = "Dan" && AuthorName = "Daniel9999999") || (Name = "Rudy" && AuthorName = "jade_midori")
+trigger1 = (GetHitVar(animtype) != [4,5]) || !SelfAnimExist(5047 + GetHitVar(animtype))
+value = cond(statetype=L,5170,5050)
+[State 1215, Anim Up variant]
+type = ChangeAnim
+trigger1 = (Name = "Erin" && AuthorName = "erin") || (Name = "Dan" && AuthorName = "Daniel9999999") || (Name = "Rudy" && AuthorName = "jade_midori")
+trigger1 = GetHitVar(animtype) = [4,5]
+trigger1 = SelfAnimExist(5047 + GetHitVar(animtype))
+value = 5047 + GetHitVar(animtype)
 
 [State 1215, State]
 type = ChangeState
@@ -165,8 +178,24 @@ value = 5210 ;HITFALL_RECOVER
 [State 1028, Hit ground]
 type = SelfState
 trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = !((Name = "Erin" && AuthorName = "erin") || (Name = "Dan" && AuthorName = "Daniel9999999") || (Name = "Rudy" && AuthorName = "jade_midori"))
 value = 5110
 anim = cond(selfanimexist(5161),5161,5160)
+[State 1028, Hit ground Normal]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = (Name = "Erin" && AuthorName = "erin") || (Name = "Dan" && AuthorName = "Daniel9999999") || (Name = "Rudy" && AuthorName = "jade_midori")
+trigger1 = (anim != [5051,5059]) && (anim != [5061,5069])
+value = 5110
+anim = 5160
+[State 1028, Hit ground Up]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = (Name = "Erin" && AuthorName = "erin") || (Name = "Dan" && AuthorName = "Daniel9999999") || (Name = "Rudy" && AuthorName = "jade_midori")
+trigger1 = (anim = [5051,5059]) || (anim = [5061,5069])
+trigger1 = SelfAnimExist(5160 + (anim % 10))
+value = 5110
+anim = 5160 + (anim % 10)
 
 ;------------------
 ; Already Used A Groundbounce - shaking from the hit
@@ -182,10 +211,23 @@ trigger1 = !hitshakeover
 value = 1
 ignorehitpause = 1
 
-[State 1215, Anim] ;Custom animation
+[State 1215, Anim]
 type = ChangeAnim
-trigger1 = 1
+trigger1 = !(Name = "Erin" && AuthorName = "erin")
+trigger1 = !(Name = "Dan" && AuthorName = "Daniel9999999")
+trigger1 = !(Name = "Rudy" && AuthorName = "jade_midori")
 value = cond(statetype=L,5170,5050)
+[State 1215, Anim Up]
+type = ChangeAnim
+trigger1 = (Name = "Erin" && AuthorName = "erin") || (Name = "Dan" && AuthorName = "Daniel9999999") || (Name = "Rudy" && AuthorName = "jade_midori")
+trigger1 = (GetHitVar(animtype) != [4,5]) || !SelfAnimExist(5047 + GetHitVar(animtype))
+value = cond(statetype=L,5170,5050)
+[State 1215, Anim Up variant]
+type = ChangeAnim
+trigger1 = (Name = "Erin" && AuthorName = "erin") || (Name = "Dan" && AuthorName = "Daniel9999999") || (Name = "Rudy" && AuthorName = "jade_midori")
+trigger1 = GetHitVar(animtype) = [4,5]
+trigger1 = SelfAnimExist(5047 + GetHitVar(animtype))
+value = 5047 + GetHitVar(animtype)
 
 [State 1215, State]
 type = ChangeState
@@ -356,8 +398,25 @@ persistent = 0
 [State 1028, Hit ground]
 type = SelfState
 trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = !((Name = "Erin" && AuthorName = "erin") || (Name = "Dan" && AuthorName = "Daniel9999999") || (Name = "Rudy" && AuthorName = "jade_midori"))
 value = 5110
 anim = cond(selfanimexist(5161),5161,5160)
+[State 1028, Hit ground Normal]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = (Name = "Erin" && AuthorName = "erin") || (Name = "Dan" && AuthorName = "Daniel9999999") || (Name = "Rudy" && AuthorName = "jade_midori")
+trigger1 = (anim != [5051,5059]) && (anim != [5061,5069])
+value = 5110
+anim = 5160
+[State 1028, Hit ground Up]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = (Name = "Erin" && AuthorName = "erin") || (Name = "Dan" && AuthorName = "Daniel9999999") || (Name = "Rudy" && AuthorName = "jade_midori")
+trigger1 = (anim = [5051,5059]) || (anim = [5061,5069])
+trigger1 = SelfAnimExist(5160 + (anim % 10))
+value = 5110
+anim = 5160 + (anim % 10)
+
 
 ;Throw Escape
 [Statedef 890]

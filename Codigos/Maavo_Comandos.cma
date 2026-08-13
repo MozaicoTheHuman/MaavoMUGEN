@@ -561,9 +561,9 @@ flag = nowalk
 ;---------------------------------------------------------------------------
 [State -1, Ai Recover]
 type = ChangeState
-value = ifelse(pos y <= -20,5210,5200)
+value = cond(pos y <= -20,5210,5200)
 triggerall = aiLevel && roundstate = 2 && alive && numenemy
-triggerall = enemynear,ailevel = 0 && random < var(59)*ifelse(life < (lifemax*.5),2,1) || enemynear,ailevel 
+triggerall = enemynear,ailevel = 0 && random < var(59)*cond(life < (lifemax*.5),2,1) || enemynear,ailevel 
 triggerall = statetype = A && statetype != L
 trigger1 = stateno = 5050 && canrecover = 1
 ctrl = 1
@@ -654,10 +654,8 @@ value = 420
 triggerall = (AILevel > 5 || ailevel && enemynear,aiLevel) && roundstate = 2 && var(58) && alive && numenemy
 triggerall = statetype != A && pos y = 0 && power < powermax
 triggerall = enemynear,movetype != A && !InGuardDist
-triggerall = ctrl || stateno = 0 || (stateno = [20,22]) || (stateno = [100,109])
-;triggerall = enemynear,statetype != L
-triggerall = enemynear,ailevel
 triggerall = ctrl
+;triggerall = enemynear,statetype != L
 trigger1 = enemynear,life < lifemax*0.04 && random < var(59) * 9
 
 [State -1, AI Power Charge]
@@ -866,7 +864,7 @@ triggerall = (aiLevel > 6 || ailevel && enemynear,aiLevel) && roundstate = 2 && 
 triggerall = statetype != A && pos y = 0 && InGuardDist
 triggerall = fvar(33) < 3
 triggerall = enemynear,stateno != [3745,3747]
-triggerall = random < ifelse(life < (lifemax*.5) || BackEdgeBodyDist < 10, 950, 300)
+triggerall = random < cond(life < (lifemax*.5) || BackEdgeBodyDist < 10, 950, 300)
 triggerall = prevstateno != 700
 triggerall = enemy, anim != 5300 || enemynear,stateno != 5300
 triggerall = stateno != 700

@@ -49,6 +49,9 @@ movelist = Codigos/IKEMEN/moveset.dat
 movelist1 = Codigos/IKEMEN/moveset_alt.dat
 movelist2 = Codigos/IKEMEN/moveset_scrapped.dat
 movelist3 = Codigos/IKEMEN/moveset_alt_scrapped.dat
+;===============================
+[Shaders]
+shader = Codigos/IKEMEN/shader.frag
 
 [Palette Keymap]
 a = 1

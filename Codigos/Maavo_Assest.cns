@@ -444,6 +444,7 @@ persistent = 0
 [State 99011, end]
 type = ChangeState
 trigger1 = animtime = 0
+trigger2 = root, stateno = 2803
 value = 99045
 
 ;---------------------------------------------------------------------------
@@ -512,6 +513,7 @@ value = S7275,1
 type = DestroySelf
 triggerall = root,win = 0
 Trigger1 = time = 20
+trigger2 = root, stateno = 2803
 
 ;---------------------------------------------------------------------------
 ;Ve, Ivette! - ???
@@ -1230,6 +1232,7 @@ removeongethit = 0
 type = DestroySelf
 triggerall = root,win = 0
 trigger1 = time = 90
+trigger2 = root, stateno = 2803
 
 ;---------------------------------------------------------------------------
 ; Ve, Maritza! - shaking from the hit
