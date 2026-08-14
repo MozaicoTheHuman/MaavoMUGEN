@@ -928,7 +928,7 @@ triggerall = roundstate = 2 && alive && numenemy
 triggerall = stateno != [150,155]
 triggerall = stateno != [200,650]
 triggerall = stateno != [2000,3000]
-triggerall = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, cond(life > lifemax*0.50, 750, 999), cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*0.3, var(59)*0.15), cond(life < lifemax*0.033, 900, cond(life < lifemax*0.075, 720, cond(life < lifemax*0.10, 600, cond(life < lifemax*0.25, 250, cond(life < lifemax*0.50, 150, 40)))))))
+triggerall = random < cond(fvar(35) = 1 && enemynear,ailevel != 0, cond(life > lifemax*0.50, 750, 999), cond(enemynear,ailevel = 0, cond(life < lifemax*0.50, var(59)*0.3, var(59)*0.15), cond(life < lifemax*0.033, 900, cond(life < lifemax*0.075, 720, cond(life < lifemax*0.10, 500, cond(life < lifemax*0.25, 150, cond(life < lifemax*0.50, 150, 20)))))))
 trigger1 = ctrl = 1
 trigger2 = (stateno = [20,22]) || (stateno = [100,109])
 trigger3 = stateno = 1022 || (stateno = [116,117])
