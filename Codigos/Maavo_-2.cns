@@ -688,16 +688,6 @@ type = VarSet
 trigger1 = RoundState = 3
 trigger1 = lose
 fvar(35) = 1
-[State viva xile]
-type = VarSet
-trigger1 = RoundState = 3
-trigger1 = win && life > lifemax*0.85
-fvar(32) = 1
-[State porla chucha]
-type = VarSet
-trigger1 = RoundState = 3
-trigger1 = lose
-fvar(35) = 0
 
 [State 0, Null]
 type = Null
@@ -933,7 +923,6 @@ ownpal = 0
 
 [State -1, lary dary, mi nombre es barry]
 type = HitOverride
-triggerall = fvar(32) = 0
 triggerall = AILevel > 7 || ailevel && enemynear,aiLevel 
 triggerall = roundstate = 2 && alive && numenemy
 triggerall = stateno != [150,155]
