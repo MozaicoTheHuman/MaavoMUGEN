@@ -656,7 +656,7 @@ triggerall = statetype != A && pos y = 0 && power < powermax
 triggerall = enemynear,movetype != A && !InGuardDist
 triggerall = ctrl
 ;triggerall = enemynear,statetype != L
-trigger1 = enemynear,life < lifemax*0.04 && random < var(59) * 9
+trigger1 = enemynear,life < lifemax*0.02 && random < var(59) * 9
 
 [State -1, AI Power Charge]
 type = ChangeState
