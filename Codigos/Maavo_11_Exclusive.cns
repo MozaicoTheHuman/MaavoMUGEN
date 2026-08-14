@@ -906,7 +906,7 @@ ignorehitpause = 1
 ;IKEMEN GO variant
 [State 911, Zoom Controller]
 type = Zoom
-triggerall = var(46) = 1
+triggerall = root,var(46) = 1
 trigger1 = time >= 0 && time < 135
 scale = 1 + fvar(0)
 pos = pos X*camerazoom* fvar(3), pos y + 40
@@ -915,7 +915,7 @@ ignorehitpause = 1
 camerabound = 0
 [State 911, Zoom Controller Shake]
 type = Zoom
-triggerall = var(46) = 1
+triggerall = root,var(46) = 1
 trigger1 = time = [135,163]
 scale = 1 + fvar(0)
 pos = pos X*camerazoom* fvar(3) + cos(time * (0.5 + fvar(22) * 3.6)) * (0.2 + fvar(22) * 2.2), (pos y)+ 40 + sin(time * (0.4 + fvar(22) * 3.2)) * (0.1 + fvar(22) * 1.8)
@@ -924,7 +924,7 @@ ignorehitpause = 1
 camerabound = 0
 [State 911, Zoom Controller Hold]
 type = Zoom
-triggerall = var(46) = 1
+triggerall = root,var(46) = 1
 trigger1 = time = [164,170]
 scale = 1 + fvar(0)
 pos = pos X*camerazoom* fvar(3), pos y + 40
@@ -935,7 +935,7 @@ camerabound = 0
 ;M.U.G.E.N. 1.1 variant
 [State 911, Zoom Controller]
 type = Zoom
-triggerall = var(46) = 0
+triggerall = root,var(46) = 0
 trigger1 = time >= 0 && time < 135
 scale = 1 + fvar(0)
 pos = (enemynear,pos x - pos x) * fvar(3), (enemynear,pos y - pos y) - 35
@@ -943,7 +943,7 @@ bound = 0
 ignorehitpause = 1
 [State 911, Zoom Controller Shake]
 type = Zoom
-triggerall = var(46) = 0
+triggerall = root,var(46) = 0
 trigger1 = time = [135,163]
 scale = 1 + fvar(0)
 pos = (enemynear,pos x - pos x) * fvar(3) + cos(time * (0.5 + fvar(22) * 3.6)) * (0.2 + fvar(22) * 2.2), (enemynear,pos y - pos y) - 35 + sin(time * (0.4 + fvar(22) * 3.2)) * (0.1 + fvar(22) * 1.8)
@@ -951,7 +951,7 @@ bound = 0
 ignorehitpause = 1
 [State 911, Zoom Controller Hold]
 type = Zoom
-triggerall = var(46) = 0
+triggerall = root,var(46) = 0
 trigger1 = time = [164,170]
 scale = 1 + fvar(0)
 pos = (enemynear,pos x - pos x) * fvar(3), (enemynear,pos y - pos y) - 35
