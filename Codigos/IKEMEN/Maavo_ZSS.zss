@@ -302,8 +302,8 @@ shaderSet{
     shaderparam.p0: 0.03;
     shaderparam.p1: 2.2;
     shaderparam.p2: 255;
-    shaderparam.p3: 222;
-    shaderparam.p4: 192;
+    shaderparam.p3: 186;
+    shaderparam.p4: 109;
     shaderparam.p5: $rimOp;
     shaderparam.p6: 245;
     shaderparam.p7: $tintPacked;
@@ -342,7 +342,7 @@ if root,var(52) = 22 && time = 30 {
     playSnd{value: 888,0+random%2; loop: 1}
 }
 
-ignoreHitPause {
+ignoreHitPause if time >= 32 {
     let flashColor = ifelse(teamside = 2, 255, 16711680);
     let flashDelta = $flashColor - 16380136.0;
     if time < 168 {
