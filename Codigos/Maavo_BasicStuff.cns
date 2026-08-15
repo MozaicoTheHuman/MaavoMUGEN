@@ -184,7 +184,7 @@ loop = 1
 
 [State -2, RemapPal]
 type = RemapPal
-triggerall = fvar(36) = 29
+triggerall = root,fvar(36) = 29
 trigger1 = time > 20
 source = 1,1
 dest = 1,1
@@ -1759,12 +1759,6 @@ triggerall = fvar(36) = 3
 trigger1 = time = 1
 value = S1959,35
 ignorehitpause = 1
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = fvar(36) = 3
-trigger1 = time = 1
-value = S1959,35
-ignorehitpause = 1
 ;MARTIN mUGEN;
 
 [State 0, StopSnd]
@@ -1941,12 +1935,6 @@ ownpal = 1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = fvar(36) = 3
-trigger1 = time = 1
-value = S1959,35
-ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = fvar(36) = 3
@@ -2154,12 +2142,6 @@ ownpal = 1
 supermovetime = 9999
 pausemovetime = 99999
 removeongethit = 1
-[State 0, PlaySnd]
-type = PlaySnd
-triggerall = fvar(36) = 3
-trigger1 = time = 1
-value = S1959,35
-ignorehitpause = 1
 [State 0, PlaySnd]
 type = PlaySnd
 triggerall = fvar(36) = 3
