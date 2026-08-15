@@ -901,6 +901,8 @@ trigger12 = time > 170
 trigger12 = 0&&(fvar(2):=0)
 trigger13 = time = [135,163]
 trigger13 = 0&&(fvar(22):=(time-135.0)/28.0)
+trigger14 = 1
+trigger14 = 0&&(fvar(24):=ifelse( pos y < -80, -80 + (pos y - (-80)) * -0.13, pos y ))
 ignorehitpause = 1
 
 ;IKEMEN GO variant
@@ -909,25 +911,27 @@ type = Zoom
 triggerall = root,var(46) = 1
 trigger1 = time >= 0 && time < 135
 scale = 1 + fvar(0)
-pos = pos X*camerazoom* fvar(3), pos y + 40
+pos = pos X*camerazoom* fvar(3), fvar(24) + 40
 stagebound = 0
 ignorehitpause = 1
 camerabound = 0
+
 [State 911, Zoom Controller Shake]
 type = Zoom
 triggerall = root,var(46) = 1
 trigger1 = time = [135,163]
 scale = 1 + fvar(0)
-pos = pos X*camerazoom* fvar(3) + cos(time * (0.5 + fvar(22) * 3.6)) * (0.2 + fvar(22) * 2.2), (pos y)+ 40 + sin(time * (0.4 + fvar(22) * 3.2)) * (0.1 + fvar(22) * 1.8)
+pos = pos X*camerazoom* fvar(3) + cos(time * (0.5 + fvar(22) * 3.6)) * (0.2 + fvar(22) * 2.2), fvar(24) + 40 + sin(time * (0.4 + fvar(22) * 3.2)) * (0.1 + fvar(22) * 1.8)
 stagebound = 0
 ignorehitpause = 1
 camerabound = 0
+
 [State 911, Zoom Controller Hold]
 type = Zoom
 triggerall = root,var(46) = 1
 trigger1 = time = [164,170]
 scale = 1 + fvar(0)
-pos = pos X*camerazoom* fvar(3), pos y + 40
+pos = pos X*camerazoom* fvar(3), fvar(24) + 40
 stagebound = 0
 ignorehitpause = 1
 camerabound = 0
