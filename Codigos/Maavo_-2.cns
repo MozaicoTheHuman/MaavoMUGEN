@@ -790,7 +790,7 @@ value = cond(var(20) = 0, 35, 80)
 [State -2, Sketchy]
 type = VictoryQuote
 trigger1 = fvar(36) != 38
-trigger1 = Enemy, Name = "Sketchy (Artblock)" && Enemy, AuthorName = "Wach"
+trigger1 = Enemy, Name = "Sketchy [Artblock Build]" && Enemy, AuthorName = "Wach"
 trigger2 = Enemy, Name = "Sketchy" && Enemy, AuthorName = "Wach"
 value = cond(var(20) = 0, 36, 81) + random%2
 

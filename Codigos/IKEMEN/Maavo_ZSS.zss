@@ -171,7 +171,11 @@ if facing = 1 {
     turn{}
 }
 if time = 32 {
-    changeAnim{value: 181}
+    if AnimExist(1816767) {
+        changeAnim{value: 1816767}
+    } else {
+        changeAnim{value: 181}
+    }
     if numpartner = 1 {
         posSet{x: pos x + (180 - screenpos x); y: pos y + (179 - screenpos y)}
     } else if numpartner = 2 {
@@ -197,7 +201,11 @@ if facing = 1 && numpartner = 3 {
     turn{}
 }
 if time = 32 {
-    changeAnim{value: 181}
+    if AnimExist(1816767) {
+        changeAnim{value: 1816767}
+    } else {
+        changeAnim{value: 181}
+    }
     if numpartner = 2 {
         posSet{x: pos x + (260 - screenpos x); y: pos y + (179 - screenpos y)}
     } else {
@@ -218,7 +226,11 @@ screenBound{value: 0}
 
 [StateDef 1825; type: S; ctrl: 0; velset: 0,0; movetype: I; sprpriority: 27;]
 if time = 32 {
-    changeAnim{value: 181}
+    if AnimExist(1816767) {
+        changeAnim{value: 1816767}
+    } else {
+        changeAnim{value: 181}
+    }
     posSet{x: pos x + (260 - screenpos x); y: pos y + (182 - screenpos y)}
 }
 if time >= 32 {
@@ -243,7 +255,11 @@ if facing = 1 {
     turn{}
 }
 if time = 32 {
-    changeAnim{value: 181}
+    if AnimExist(1816767) {
+        changeAnim{value: 1816767}
+    } else {
+        changeAnim{value: 181}
+    }
     if numpartner = 1 {
         posSet{x: pos x + (140 - screenpos x); y: pos y + (129 - screenpos y)}
     } else if numpartner = 2 {
@@ -267,7 +283,11 @@ if facing = 1 && numpartner = 3 {
     turn{}
 }
 if time = 32 {
-    changeAnim{value: 181}
+    if AnimExist(1816767) {
+        changeAnim{value: 1816767}
+    } else {
+        changeAnim{value: 181}
+    }
     if numpartner = 2 {
         posSet{x: pos x + (260 - screenpos x); y: pos y + (129 - screenpos y)}
     } else {
@@ -286,7 +306,11 @@ if time >= 32 {
 
 [StateDef 1835; type: S; ctrl: 0; velset: 0,0; movetype: I; sprpriority: 27;]
 if time = 32 {
-    changeAnim{value: 181}
+    if AnimExist(1816767) {
+        changeAnim{value: 1816767}
+    } else {
+        changeAnim{value: 181}
+    }
     posSet{x: pos x + (260 - screenpos x); y: pos y + (129 - screenpos y)}
 }
 if time >= 32 {

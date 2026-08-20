@@ -34,6 +34,10 @@ trigger1 = abs(vel x) < 2
 trigger2 = Time = 4
 x = 0
 
+[State 0, 4] ;are u a helper???? wtf
+type = destroyself
+trigger1 = ishelper = 1
+
 [State 0, 4] ;Are you dead?
 type = ChangeState
 trigger1 = !alive
@@ -2202,6 +2206,10 @@ time = 8
 waveform = sinesquare
 ampl = 110,-1,-.3
 
+[State 0, 4] ;are u a helper???? wtf
+type = destroyself
+trigger1 = ishelper = 1
+
 [State 5000, FFB Hard]
 type = ForceFeedback
 trigger1 = anim = 5012
@@ -2421,6 +2429,10 @@ time = 8
 waveform = sinesquare
 ampl = 110,-1,-.3
 
+[State 0, 4] ;are u a helper???? wtf
+type = destroyself
+trigger1 = ishelper = 1
+
 [State 5020, FFB Hard]
 type = ForceFeedback
 trigger1 = anim = 5012
@@ -2628,6 +2640,10 @@ Trigger1 = command = "recovery"
 Trigger2 = aiLevel != 0
 Trigger2 = Random <= cond(enemynear,aiLevel,8,aiLevel)*100 || (aiLevel > 6 || enemynear,aiLevel)
 value = 5210 ;HITFALL_AIRRECOVER
+
+[State 0, 4] ;are u a helper???? wtf
+type = destroyself
+trigger1 = ishelper = 1
 
 [State 5050, 6]
 type = ChangeState
@@ -2956,6 +2972,10 @@ physics = N
 [State 5110, EnvShake]
 type = FallEnvShake
 trigger1 = Time = 0
+
+[State 0, 4] ;are u a helper???? wtf
+type = destroyself
+trigger1 = ishelper = 1
 
 [State 100, Land Effect]
 type = Explod
